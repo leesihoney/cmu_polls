@@ -14,6 +14,7 @@
 		A764781E23613316003B793C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A764781C23613316003B793C /* LaunchScreen.storyboard */; };
 		A764782923613316003B793C /* CMUPollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764782823613316003B793C /* CMUPollTests.swift */; };
 		A764783423613316003B793C /* CMUPollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A764783323613316003B793C /* CMUPollUITests.swift */; };
+		A764784223613349003B793C /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A764784123613349003B793C /* Podfile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		A764782F23613316003B793C /* CMUPollUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CMUPollUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A764783323613316003B793C /* CMUPollUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMUPollUITests.swift; sourceTree = "<group>"; };
 		A764783523613316003B793C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A764784123613349003B793C /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		A764780723613314003B793C = {
 			isa = PBXGroup;
 			children = (
+				A764784123613349003B793C /* Podfile */,
 				A764781223613314003B793C /* CMUPoll */,
 				A764782723613316003B793C /* CMUPollTests */,
 				A764783223613316003B793C /* CMUPollUITests */,
@@ -231,6 +234,7 @@
 			files = (
 				A764781E23613316003B793C /* LaunchScreen.storyboard in Resources */,
 				A764781B23613316003B793C /* Assets.xcassets in Resources */,
+				A764784223613349003B793C /* Podfile in Resources */,
 				A764781923613314003B793C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -439,7 +443,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-7442.CMUPoll";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -457,7 +461,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "-7442.CMUPoll";
+				PRODUCT_BUNDLE_IDENTIFIER = com.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
