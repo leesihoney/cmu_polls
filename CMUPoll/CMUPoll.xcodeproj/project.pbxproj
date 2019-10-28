@@ -16,6 +16,33 @@
 		E8D6E2E02366AFB100F75AA2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D6E2DE2366AFB100F75AA2 /* LaunchScreen.storyboard */; };
 		E8D6E2EB2366AFB100F75AA2 /* CMUPollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2EA2366AFB100F75AA2 /* CMUPollTests.swift */; };
 		E8D6E2F62366AFB100F75AA2 /* CMUPollUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2F52366AFB100F75AA2 /* CMUPollUITests.swift */; };
+		E8D6E3052366B08D00F75AA2 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3042366B08D00F75AA2 /* Poll.swift */; };
+		E8D6E3062366B08D00F75AA2 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3042366B08D00F75AA2 /* Poll.swift */; };
+		E8D6E3072366B08D00F75AA2 /* Poll.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3042366B08D00F75AA2 /* Poll.swift */; };
+		E8D6E3092366B09800F75AA2 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3082366B09800F75AA2 /* Like.swift */; };
+		E8D6E30A2366B09800F75AA2 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3082366B09800F75AA2 /* Like.swift */; };
+		E8D6E30B2366B09800F75AA2 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3082366B09800F75AA2 /* Like.swift */; };
+		E8D6E30D2366B0A500F75AA2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E30C2366B0A500F75AA2 /* User.swift */; };
+		E8D6E30E2366B0A500F75AA2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E30C2366B0A500F75AA2 /* User.swift */; };
+		E8D6E30F2366B0A500F75AA2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E30C2366B0A500F75AA2 /* User.swift */; };
+		E8D6E3112366B0B000F75AA2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3102366B0B000F75AA2 /* Comment.swift */; };
+		E8D6E3122366B0B000F75AA2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3102366B0B000F75AA2 /* Comment.swift */; };
+		E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3102366B0B000F75AA2 /* Comment.swift */; };
+		E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3142366B0BD00F75AA2 /* PollTag.swift */; };
+		E8D6E3162366B0BD00F75AA2 /* PollTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3142366B0BD00F75AA2 /* PollTag.swift */; };
+		E8D6E3172366B0BD00F75AA2 /* PollTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3142366B0BD00F75AA2 /* PollTag.swift */; };
+		E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3182366B0C900F75AA2 /* Tag.swift */; };
+		E8D6E31A2366B0C900F75AA2 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3182366B0C900F75AA2 /* Tag.swift */; };
+		E8D6E31B2366B0C900F75AA2 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3182366B0C900F75AA2 /* Tag.swift */; };
+		E8D6E31D2366B0D100F75AA2 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E31C2366B0D100F75AA2 /* Question.swift */; };
+		E8D6E31E2366B0D100F75AA2 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E31C2366B0D100F75AA2 /* Question.swift */; };
+		E8D6E31F2366B0D100F75AA2 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E31C2366B0D100F75AA2 /* Question.swift */; };
+		E8D6E3212366B0E100F75AA2 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3202366B0E100F75AA2 /* Answer.swift */; };
+		E8D6E3222366B0E100F75AA2 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3202366B0E100F75AA2 /* Answer.swift */; };
+		E8D6E3232366B0E100F75AA2 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3202366B0E100F75AA2 /* Answer.swift */; };
+		E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
+		E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
+		E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +78,15 @@
 		E8D6E2F12366AFB100F75AA2 /* CMUPollUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CMUPollUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D6E2F52366AFB100F75AA2 /* CMUPollUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMUPollUITests.swift; sourceTree = "<group>"; };
 		E8D6E2F72366AFB100F75AA2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8D6E3042366B08D00F75AA2 /* Poll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poll.swift; sourceTree = "<group>"; };
+		E8D6E3082366B09800F75AA2 /* Like.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		E8D6E30C2366B0A500F75AA2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E8D6E3102366B0B000F75AA2 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		E8D6E3142366B0BD00F75AA2 /* PollTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollTag.swift; sourceTree = "<group>"; };
+		E8D6E3182366B0C900F75AA2 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		E8D6E31C2366B0D100F75AA2 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		E8D6E3202366B0E100F75AA2 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		E8D6E3242366B0EA00F75AA2 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +179,15 @@
 		E8D6E3032366AFDD00F75AA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E8D6E3042366B08D00F75AA2 /* Poll.swift */,
+				E8D6E3082366B09800F75AA2 /* Like.swift */,
+				E8D6E30C2366B0A500F75AA2 /* User.swift */,
+				E8D6E3102366B0B000F75AA2 /* Comment.swift */,
+				E8D6E3142366B0BD00F75AA2 /* PollTag.swift */,
+				E8D6E3182366B0C900F75AA2 /* Tag.swift */,
+				E8D6E31C2366B0D100F75AA2 /* Question.swift */,
+				E8D6E3202366B0E100F75AA2 /* Answer.swift */,
+				E8D6E3242366B0EA00F75AA2 /* Option.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,10 +323,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D6E3092366B09800F75AA2 /* Like.swift in Sources */,
+				E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */,
+				E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */,
+				E8D6E3212366B0E100F75AA2 /* Answer.swift in Sources */,
+				E8D6E3052366B08D00F75AA2 /* Poll.swift in Sources */,
 				E8D6E2D12366AFAF00F75AA2 /* AppDelegate.swift in Sources */,
+				E8D6E3112366B0B000F75AA2 /* Comment.swift in Sources */,
+				E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E2D82366AFAF00F75AA2 /* ContentView.swift in Sources */,
 				E8D6E2D32366AFAF00F75AA2 /* SceneDelegate.swift in Sources */,
+				E8D6E31D2366B0D100F75AA2 /* Question.swift in Sources */,
+				E8D6E30D2366B0A500F75AA2 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +343,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D6E3122366B0B000F75AA2 /* Comment.swift in Sources */,
+				E8D6E31E2366B0D100F75AA2 /* Question.swift in Sources */,
+				E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */,
+				E8D6E3162366B0BD00F75AA2 /* PollTag.swift in Sources */,
+				E8D6E3222366B0E100F75AA2 /* Answer.swift in Sources */,
+				E8D6E30E2366B0A500F75AA2 /* User.swift in Sources */,
+				E8D6E31A2366B0C900F75AA2 /* Tag.swift in Sources */,
+				E8D6E30A2366B09800F75AA2 /* Like.swift in Sources */,
+				E8D6E3062366B08D00F75AA2 /* Poll.swift in Sources */,
 				E8D6E2EB2366AFB100F75AA2 /* CMUPollTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,6 +360,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */,
+				E8D6E31F2366B0D100F75AA2 /* Question.swift in Sources */,
+				E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */,
+				E8D6E3172366B0BD00F75AA2 /* PollTag.swift in Sources */,
+				E8D6E3232366B0E100F75AA2 /* Answer.swift in Sources */,
+				E8D6E30F2366B0A500F75AA2 /* User.swift in Sources */,
+				E8D6E31B2366B0C900F75AA2 /* Tag.swift in Sources */,
+				E8D6E30B2366B09800F75AA2 /* Like.swift in Sources */,
+				E8D6E3072366B08D00F75AA2 /* Poll.swift in Sources */,
 				E8D6E2F62366AFB100F75AA2 /* CMUPollUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
