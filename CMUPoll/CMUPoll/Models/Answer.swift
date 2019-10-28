@@ -13,7 +13,7 @@ struct Answer: Identifiable {
   var id = UUID()
   var user_id : UUID
   var question_id: UUID
-  var option_id: UUID  
+  var option_id: UUID
 }
 
 

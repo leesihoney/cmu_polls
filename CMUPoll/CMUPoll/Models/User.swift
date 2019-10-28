@@ -16,6 +16,10 @@ struct User: Identifiable {
   var major: String
   var graduation_year: Int
   var points: Int
+  
+  
+
+  
 }
 
 
