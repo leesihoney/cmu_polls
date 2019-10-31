@@ -10,6 +10,7 @@
 		1B87FA49AF065C93995A49DC /* Pods_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E5DBA11E16AFB56AC1A5BE /* Pods_CMUPollUITests.framework */; };
 		A70E95B9236B011B00C38F2B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A70E95B8236B011A00C38F2B /* Podfile */; };
 		A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
+		A7B9080E236B1C09000E0E2C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A7B9080D236B1C09000E0E2C /* GoogleService-Info.plist */; };
 		A7C06048D6C855E66A1DDD37 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DD33ABB6ED706D71A62FF4 /* Pods_CMUPoll.framework */; };
 		DB23BBD2352ED6F96262348D /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3079E0D6E1ADCBA613C08C30 /* Pods_CMUPollTests.framework */; };
 		E8D6E2D12366AFAF00F75AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
@@ -77,6 +78,7 @@
 		9CDD9FB3C4B6901D9D98583D /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
 		A70E95B8236B011A00C38F2B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataHandler.swift; sourceTree = "<group>"; };
+		A7B9080D236B1C09000E0E2C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAD1AB7BD6FC8FB47CD348E8 /* Pods-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollUITests/Pods-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D1DD33ABB6ED706D71A62FF4 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D6E2CD2366AFAF00F75AA2 /* CMUPoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMUPoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */,
+				A7B9080D236B1C09000E0E2C /* GoogleService-Info.plist */,
 				E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */,
 				E8D6E2D72366AFAF00F75AA2 /* ContentView.swift */,
 				A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */,
@@ -349,6 +352,7 @@
 			files = (
 				E8D6E2E02366AFB100F75AA2 /* LaunchScreen.storyboard in Resources */,
 				E8D6E2DD2366AFB100F75AA2 /* Preview Assets.xcassets in Resources */,
+				A7B9080E236B1C09000E0E2C /* GoogleService-Info.plist in Resources */,
 				A70E95B9236B011B00C38F2B /* Podfile in Resources */,
 				E8D6E2DA2366AFB100F75AA2 /* Assets.xcassets in Resources */,
 			);
