@@ -14,6 +14,12 @@ struct Answer: Identifiable {
   var user_id : UUID
   var question_id: UUID
   var option_id: UUID
+  var documentId: String = "It is a document for model: Answer"
+  
+  init (user_id: UUID, question_id: UUID, option_id: UUID, documentId: String) {
+    self.user_id = user_id
+    self.question_id = question_id
+    self.option_id = option_id
+    self.documentId = documentId
+  }
 }
-
-

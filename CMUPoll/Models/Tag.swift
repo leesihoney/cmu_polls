@@ -11,7 +11,11 @@ import SwiftUI
 
 struct Tag: Identifiable {
   var id = UUID()
-  var name: String  
+  var name: String
+  var documentId: String = "It is a document for model: Tag"
+  
+  init (name: String, documentId: String) {
+    self.name = name
+    self.documentId = documentId
+  }
 }
-
-

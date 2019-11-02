@@ -16,15 +16,13 @@ struct User: Identifiable {
   var major: String = ""
   var graduation_year: Int = 2020
   var points: Int = 0
+  var documentId: String = "It is a document for model: User"
   
-  init (first: String, last: String, major: String, graduation: Int) {
-    self.first_name = first
-    self.last_name = last
+  init (first_name: String, last_name: String, major: String, graduation_year: Int, documentId: String) {
+    self.first_name = first_name
+    self.last_name = last_name
     self.major = major
-    self.graduation_year = graduation
+    self.graduation_year = graduation_year
+    self.documentId = documentId
   }
-  
-  
 }
-
-
