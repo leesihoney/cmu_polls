@@ -13,7 +13,13 @@ struct Question: Identifiable {
   var id = UUID()
   var is_multiple_choice: Bool
   var title: String
-  var poll_id : UUID 
+  var poll_id : UUID
+  var documentId: String = "It is a document for model: Question"
+  
+  init (is_multiple_choice: Bool, title: String, poll_id: UUID, documentId: String) {
+    self.is_multiple_choice = is_multiple_choice
+    self.title = title
+    self.poll_id = poll_id
+    self.documentId = documentId
+  }  
 }
-
-

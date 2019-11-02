@@ -13,9 +13,11 @@ struct Like: Identifiable {
   var id = UUID()
   var user_id : UUID
   var poll_id : UUID
+  var documentId: String = "It is a document for model: Like"
   
-  init (user_id: UUID, poll_id: UUID){
+  init (user_id: UUID, poll_id: UUID, documentId: String){
     self.user_id = user_id
     self.poll_id = poll_id
+    self.documentId = documentId
   }
 }
