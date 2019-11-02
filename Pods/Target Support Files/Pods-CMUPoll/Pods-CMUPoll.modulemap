@@ -1,0 +1,6 @@
+framework module Pods_CMUPoll {
+  umbrella header "Pods-CMUPoll-umbrella.h"
+
+  export *
+  module * { export * }
+}
