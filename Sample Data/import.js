@@ -11,7 +11,7 @@ firebase.initializeApp({
 
 var db = firebase.firestore();
 
-var comments = [
+var comment = [
   {
     "id": 0,
     "user_id": 0,
@@ -94,7 +94,7 @@ var comments = [
   }
 ]
 
-var likes = [
+var like = [
   {
     "id": 0,
     "user_id": 0,
@@ -197,7 +197,7 @@ var likes = [
   }
 ]
 
-var polls = [
+var poll = [
   {
     "id": 0,
     "user_id": 0,
@@ -300,7 +300,7 @@ var polls = [
   }
 ]
 
-var questions = [
+var question = [
   {
     "id": 0,
     "poll_id": 0,
@@ -369,7 +369,7 @@ var questions = [
   }
 ]
 
-var options = [
+var option = [
   {
     "id": 0,
     "question_id": 0,
@@ -522,7 +522,7 @@ var options = [
   }
 ]
 
-var answers = [
+var answer = [
   {
     "id": 0,
     "user_id": 0,
@@ -645,7 +645,7 @@ var answers = [
   }
 ]
 
-var polltags = [
+var polltag = [
   {
     "id": 0,
     "poll_id": 0,
@@ -748,7 +748,7 @@ var polltags = [
   }
 ]
 
-var tags = [
+var tag = [
   {
     "id": 0,
     "name": "Life"
@@ -831,7 +831,7 @@ var tags = [
   }
 ]
 
-var users = [
+var user = [
   {
     "id": 0,
     "first_name": "Aiden",
@@ -882,8 +882,8 @@ var users = [
   }
 ]
 
-comments.forEach(function(obj) {
-    db.collection("comments").add({
+comment.forEach(function(obj) {
+    db.collection("comment").add({
         id: obj.id,
         user_id: obj.user_id,
         comment_id: obj.comment_id,
@@ -898,8 +898,8 @@ comments.forEach(function(obj) {
     });
 });
 
-likes.forEach(function(obj) {
-    db.collection("likes").add({
+like.forEach(function(obj) {
+    db.collection("like").add({
         id: obj.id,
         user_id: obj.user_id,
         poll_id: obj.poll_id,
@@ -911,8 +911,8 @@ likes.forEach(function(obj) {
     });
 });
 
-polls.forEach(function(obj) {
-    db.collection("polls").add({
+poll.forEach(function(obj) {
+    db.collection("poll").add({
         id: obj.id,
         user_id: obj.user_id,
         title: obj.title,
@@ -929,8 +929,8 @@ polls.forEach(function(obj) {
     });
 });
 
-questions.forEach(function(obj) {
-    db.collection("questions").add({
+question.forEach(function(obj) {
+    db.collection("question").add({
         id: obj.id,
         poll_id: obj.poll_id,
         is_multiple_choice: obj.is_multiple_choice,
@@ -943,8 +943,8 @@ questions.forEach(function(obj) {
     });
 });
 
-options.forEach(function(obj) {
-    db.collection("options").add({
+option.forEach(function(obj) {
+    db.collection("option").add({
         id: obj.id,
         question_id: obj.question_id,
         text: obj.text,
@@ -956,8 +956,8 @@ options.forEach(function(obj) {
     });
 });
 
-answers.forEach(function(obj) {
-    db.collection("answers").add({
+answer.forEach(function(obj) {
+    db.collection("answer").add({
         id: obj.id,
         user_id: obj.user_id,
         question_id: obj.question_id,
@@ -970,8 +970,8 @@ answers.forEach(function(obj) {
     });
 });
 
-polltags.forEach(function(obj) {
-    db.collection("polltags").add({
+polltag.forEach(function(obj) {
+    db.collection("polltag").add({
         id: obj.id,
         poll_id: obj.poll_id,
         tag_id: obj.tag_id,
@@ -983,8 +983,8 @@ polltags.forEach(function(obj) {
     });
 });
 
-tags.forEach(function(obj) {
-    db.collection("tags").add({
+tag.forEach(function(obj) {
+    db.collection("tag").add({
         id: obj.id,
         name: obj.name,
     }).then(function(docRef) {
@@ -995,8 +995,8 @@ tags.forEach(function(obj) {
     });
 });
 
-users.forEach(function(obj) {
-    db.collection("users").add({
+user.forEach(function(obj) {
+    db.collection("user").add({
         id: obj.id,
         first_name: obj.first_name,
         last_name: obj.last_name,

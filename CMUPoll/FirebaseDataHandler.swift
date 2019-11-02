@@ -13,7 +13,7 @@ typealias FirebaseData = [String:Any]
 class FirebaseDataHandler {
 
   static let db = Firestore.firestore()
-  static let collections = ["users", "polls", "questions", "likes", "comments", "tags", "options", "answers"]
+  static let collections = ["user", "poll", "question", "like", "comment", "tag", "option", "answer"]
 
   // CREATE
   static func addData(collection: String, data: FirebaseData) {
@@ -28,17 +28,19 @@ class FirebaseDataHandler {
   }
 
   // READ
-  static func getData(collection: String, documentId: String?) {
+  static func getData(collection: String, documentId: String?, completion: @escaping (FirebaseData) -> ()) {
+    var data: FirebaseData = [:]
     // Get a specific document for a collection
     if let id = documentId {
       let docRef = db.collection(collection).document(id)
       docRef.getDocument { (document, error) in
         if let document = document, document.exists {
-          print("\(document.documentID) => \(document.data()!)")
+          data[document.documentID] = document.data()!
         } else {
           print("Document does not exist")
         }
       }
+      completion(data)
     }
     // Get ALL documents for a collection
     else {
@@ -46,12 +48,11 @@ class FirebaseDataHandler {
         if let err = err {
           print("Error getting documents: \(err)")
         } else {
-          print("Displaying data for \(collection)")
           for document in querySnapshot!.documents {
-            print("\(document.documentID) => \(document.data())")
+            data[document.documentID] = document.data()
           }
-          print("\n")
         }
+        completion(data)
       }
     }
   }
