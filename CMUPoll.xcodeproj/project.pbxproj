@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B87FA49AF065C93995A49DC /* Pods_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E5DBA11E16AFB56AC1A5BE /* Pods_CMUPollUITests.framework */; };
+		A70E95B9236B011B00C38F2B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A70E95B8236B011A00C38F2B /* Podfile */; };
+		A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
+		A7C06048D6C855E66A1DDD37 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DD33ABB6ED706D71A62FF4 /* Pods_CMUPoll.framework */; };
+		DB23BBD2352ED6F96262348D /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3079E0D6E1ADCBA613C08C30 /* Pods_CMUPollTests.framework */; };
+		E8486D10236FA0B100B875AE /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D08236FA0B100B875AE /* TabbarView.swift */; };
+		E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D09236FA0B100B875AE /* SearchBarView.swift */; };
+		E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0A236FA0B100B875AE /* AllPollsView.swift */; };
+		E8486D13236FA0B100B875AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
+		E8486D14236FA0B100B875AE /* PollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0C236FA0B100B875AE /* PollsView.swift */; };
+		E8486D15236FA0B100B875AE /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0D236FA0B100B875AE /* TagsView.swift */; };
+		E8486D16236FA0B100B875AE /* PollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0E236FA0B100B875AE /* PollView.swift */; };
+		E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0F236FA0B100B875AE /* TagFilterView.swift */; };
 		E8746B60236E3AEC007D2960 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8746B5F236E3AEC007D2960 /* UserTests.swift */; };
 		E8746B62236E3AF9007D2960 /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8746B61236E3AF9007D2960 /* TagTests.swift */; };
 		E8746B64236E3B0B007D2960 /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8746B63236E3B0B007D2960 /* QuestionTests.swift */; };
@@ -15,11 +28,6 @@
 		E8746B6A236E3B2F007D2960 /* LikeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8746B69236E3B2F007D2960 /* LikeTests.swift */; };
 		E8746B6C236E3B38007D2960 /* CommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8746B6B236E3B38007D2960 /* CommentTests.swift */; };
 		E8746B6E236E3B41007D2960 /* AnswerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8746B6D236E3B41007D2960 /* AnswerTests.swift */; };
-		1B87FA49AF065C93995A49DC /* Pods_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E5DBA11E16AFB56AC1A5BE /* Pods_CMUPollUITests.framework */; };
-		A70E95B9236B011B00C38F2B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A70E95B8236B011A00C38F2B /* Podfile */; };
-		A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
-		A7C06048D6C855E66A1DDD37 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1DD33ABB6ED706D71A62FF4 /* Pods_CMUPoll.framework */; };
-		DB23BBD2352ED6F96262348D /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3079E0D6E1ADCBA613C08C30 /* Pods_CMUPollTests.framework */; };
 		E8D6E2D12366AFAF00F75AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
 		E8D6E2D32366AFAF00F75AA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */; };
 		E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
@@ -76,14 +84,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E8746B5F236E3AEC007D2960 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
-		E8746B61236E3AF9007D2960 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
-		E8746B63236E3B0B007D2960 /* QuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTests.swift; sourceTree = "<group>"; };
-		E8746B65236E3B14007D2960 /* PollTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollTests.swift; sourceTree = "<group>"; };
-		E8746B67236E3B27007D2960 /* OptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTests.swift; sourceTree = "<group>"; };
-		E8746B69236E3B2F007D2960 /* LikeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTests.swift; sourceTree = "<group>"; };
-		E8746B6B236E3B38007D2960 /* CommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTests.swift; sourceTree = "<group>"; };
-		E8746B6D236E3B41007D2960 /* AnswerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTests.swift; sourceTree = "<group>"; };
 		12A9EFCB15EA75F1D9E49AB6 /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
 		12E5DBA11E16AFB56AC1A5BE /* Pods_CMUPollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E35755FBB5D56436B95CD8 /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +95,22 @@
 		A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataHandler.swift; sourceTree = "<group>"; };
 		CAD1AB7BD6FC8FB47CD348E8 /* Pods-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollUITests/Pods-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D1DD33ABB6ED706D71A62FF4 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8486D08236FA0B100B875AE /* TabbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		E8486D09236FA0B100B875AE /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		E8486D0A236FA0B100B875AE /* AllPollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPollsView.swift; sourceTree = "<group>"; };
+		E8486D0B236FA0B100B875AE /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		E8486D0C236FA0B100B875AE /* PollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollsView.swift; sourceTree = "<group>"; };
+		E8486D0D236FA0B100B875AE /* TagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
+		E8486D0E236FA0B100B875AE /* PollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollView.swift; sourceTree = "<group>"; };
+		E8486D0F236FA0B100B875AE /* TagFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFilterView.swift; sourceTree = "<group>"; };
+		E8746B5F236E3AEC007D2960 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		E8746B61236E3AF9007D2960 /* TagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagTests.swift; sourceTree = "<group>"; };
+		E8746B63236E3B0B007D2960 /* QuestionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTests.swift; sourceTree = "<group>"; };
+		E8746B65236E3B14007D2960 /* PollTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollTests.swift; sourceTree = "<group>"; };
+		E8746B67236E3B27007D2960 /* OptionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTests.swift; sourceTree = "<group>"; };
+		E8746B69236E3B2F007D2960 /* LikeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeTests.swift; sourceTree = "<group>"; };
+		E8746B6B236E3B38007D2960 /* CommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTests.swift; sourceTree = "<group>"; };
+		E8746B6D236E3B41007D2960 /* AnswerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerTests.swift; sourceTree = "<group>"; };
 		E8D6E2CD2366AFAF00F75AA2 /* CMUPoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMUPoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -172,6 +188,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E8486D07236FA09200B875AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E8486D0A236FA0B100B875AE /* AllPollsView.swift */,
+				E8486D0C236FA0B100B875AE /* PollsView.swift */,
+				E8486D0E236FA0B100B875AE /* PollView.swift */,
+				E8486D09236FA0B100B875AE /* SearchBarView.swift */,
+				E8486D08236FA0B100B875AE /* TabbarView.swift */,
+				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
+				E8486D0D236FA0B100B875AE /* TagsView.swift */,
+				E8486D0B236FA0B100B875AE /* TagView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E8D6E2C42366AFAF00F75AA2 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +229,7 @@
 		E8D6E2CF2366AFAF00F75AA2 /* CMUPoll */ = {
 			isa = PBXGroup;
 			children = (
+				E8486D07236FA09200B875AE /* Views */,
 				E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */,
 				E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */,
 				E8D6E2D72366AFAF00F75AA2 /* ContentView.swift */,
@@ -533,17 +565,25 @@
 				E8D6E3092366B09800F75AA2 /* Like.swift in Sources */,
 				E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */,
+				E8486D10236FA0B100B875AE /* TabbarView.swift in Sources */,
+				E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */,
+				E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */,
+				E8486D14236FA0B100B875AE /* PollsView.swift in Sources */,
 				A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */,
 				E8D6E3212366B0E100F75AA2 /* Answer.swift in Sources */,
 				E8D6E3052366B08D00F75AA2 /* Poll.swift in Sources */,
+				E8486D16236FA0B100B875AE /* PollView.swift in Sources */,
 				E8D6E2D12366AFAF00F75AA2 /* AppDelegate.swift in Sources */,
+				E8486D15236FA0B100B875AE /* TagsView.swift in Sources */,
 				E8D6E3112366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E2D82366AFAF00F75AA2 /* ContentView.swift in Sources */,
 				E8D6E2D32366AFAF00F75AA2 /* SceneDelegate.swift in Sources */,
 				E8D6E31D2366B0D100F75AA2 /* Question.swift in Sources */,
+				E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */,
 				E8D6E30D2366B0A500F75AA2 /* User.swift in Sources */,
+				E8486D13236FA0B100B875AE /* TagView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
