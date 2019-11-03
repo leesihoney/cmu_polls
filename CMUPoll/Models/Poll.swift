@@ -12,22 +12,20 @@ import SwiftUI
 struct Poll: Identifiable {
   var id = UUID()
   var user_id : UUID
-  var title : String = ""
-  var description: String = ""
+  var title : String
+  var description: String
   var posted_at: Date = Date()
-  var link: String = ""
-  var is_private: Bool = false
+  var link: String
+  var is_private: Bool
   var is_closed: Bool = false
+  var documentId: String = "It is a document for model: Poll"
   
-  init (user_id: UUID, title: String, descrip: String, posted: Date, link: String, is_priv: Bool, is_clos: Bool) {
+  init (user_id: UUID, title: String, description: String, link: String, is_private: Bool, documentId: String) {
     self.user_id = user_id
     self.title = title
-    self.description = descrip
-    self.posted_at = posted
+    self.description = description
     self.link = link
-    self.is_private = is_priv
-    self.is_closed = is_clos
+    self.is_private = is_private
+    self.documentId = documentId
   }
 }
-
-
