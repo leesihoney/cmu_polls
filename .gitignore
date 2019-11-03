@@ -1,2 +1,4 @@
 CMUPoll/GoogleService-Info.plist
 *.DS_Store
+CMUPoll.xcworkspace/xcuserdata/
+Pods/*
