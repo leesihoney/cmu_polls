@@ -9,23 +9,29 @@
 import SwiftUI
 
 struct PollsView: View {
-    var body: some View {
-      NavigationView {
-          List {
-              Text("Hello World")
-                .navigationBarTitle(Text("Navigation Title"))
-                .navigationBarItems(trailing:
-                  Button("Add") {
-                    print("Help tapped!")
-                  }
-            )
-        } // Default to large title style
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      Text("All Polls")
+        .font(Font.system(size: 20, design: .default))
+        .fontWeight(.bold)
+        .foregroundColor(Color.gray)
+        .padding(.vertical, 10)
+      VStack(alignment: .leading) {
+        PollView()
+          .padding(.vertical, 10)
+        PollView()
+          .padding(.vertical, 10)
+        PollView()
+          .padding(.vertical, 10)
       }
     }
+
+  }
 }
 
 struct PollsView_Previews: PreviewProvider {
-    static var previews: some View {
-        PollsView()
-    }
+  static var previews: some View {
+    PollsView()
+  }
 }

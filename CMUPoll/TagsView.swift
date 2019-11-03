@@ -9,13 +9,27 @@
 import SwiftUI
 
 struct TagsView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
-    }
+  var body: some View {
+    VStack(alignment: .leading, spacing: 7) {
+      Text(verbatim: "POPULAR KEYWORDS")
+        .font(Font.system(size: 12, design: .default))
+        .fontWeight(.bold)
+        .foregroundColor(Color.gray)
+      ScrollView(.horizontal, content: {
+        HStack(spacing: CGFloat(7.0)) {
+          TagFilterView()
+          TagFilterView()
+          TagFilterView()
+          TagFilterView()
+          TagFilterView()
+          TagFilterView()
+        }
+      })
+    }    }
 }
 
 struct TagsView_Previews: PreviewProvider {
-    static var previews: some View {
-        TagsView()
-    }
+  static var previews: some View {
+    TagsView()
+  }
 }

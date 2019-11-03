@@ -6,16 +6,42 @@
 //  Copyright © 2019 Aiden Lee. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
 
-struct SearchBarView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello World!"/*@END_MENU_TOKEN@*/)
+struct SearchBarView: UIViewRepresentable {
+  
+  @Binding var text: String
+  
+  class Coordinator: NSObject, UISearchBarDelegate {
+    @Binding var text: String
+    
+    init(text: Binding<String>) {
+      _text = text
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+      text = searchText
+    }
+  }
+  
+  func makeCoordinator() -> SearchBarView.Coordinator {
+    return Coordinator(text: $text)
+  }
+  
+  func makeUIView(context: UIViewRepresentableContext<SearchBarView>) -> UISearchBar {
+    let searchBar = UISearchBar(frame: .zero)
+    searchBar.delegate = context.coordinator
+    return searchBar
+  }
+  
+  func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBarView>) {
+    uiView.text = text
+  }
 }
 
-struct SearchBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchBarView()
-    }
-}
+//struct SearchBarView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    SearchBarView(text: )
+//  }
+//}
