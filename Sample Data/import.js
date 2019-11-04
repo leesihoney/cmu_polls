@@ -882,16 +882,66 @@ var user = [
   }
 ]
 
+function deleteCollection(db, collectionPath, batchSize) {
+  let collectionRef = db.collection(collectionPath);
+  let query = collectionRef.orderBy('__name__').limit(batchSize);
+
+  return new Promise((resolve, reject) => {
+    deleteQueryBatch(db, query, batchSize, resolve, reject);
+  });
+}
+
+function deleteQueryBatch(db, query, batchSize, resolve, reject) {
+  query.get()
+    .then((snapshot) => {
+      // When there are no documents left, we are done
+      if (snapshot.size == 0) {
+        return 0;
+      }
+
+      // Delete documents in a batch
+      let batch = db.batch();
+      snapshot.docs.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+
+      return batch.commit().then(() => {
+        return snapshot.size;
+      });
+    }).then((numDeleted) => {
+      if (numDeleted === 0) {
+        resolve();
+        return;
+      }
+
+      // Recurse on the next process tick, to avoid
+      // exploding the stack.
+      process.nextTick(() => {
+        deleteQueryBatch(db, query, batchSize, resolve, reject);
+      });
+    })
+    .catch(reject);
+}
+
+// deleteCollection(db, "poll", 100);
+// deleteCollection(db, "like", 100);
+// deleteCollection(db, "user", 100);
+// deleteCollection(db, "comment", 100);
+// deleteCollection(db, "polltag", 100);
+// deleteCollection(db, "tag", 100);
+// deleteCollection(db, "question", 100);
+// deleteCollection(db, "answer", 100);
+// deleteCollection(db, "option", 100);
+
 comment.forEach(function(obj) {
-    db.collection("comment").add({
-        id: obj.id,
-        user_id: obj.user_id,
-        comment_id: obj.comment_id,
-        poll_id: obj.poll_id,
+    db.collection("comment").doc(obj.id.toString()).set({
+        user_id: obj.user_id.toString(),
+        comment_id: obj.comment_id.toString(),
+        poll_id: obj.poll_id.toString(),
         content: obj.content,
         posted_at: obj.posted_at,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -899,12 +949,12 @@ comment.forEach(function(obj) {
 });
 
 like.forEach(function(obj) {
-    db.collection("like").add({
-        id: obj.id,
-        user_id: obj.user_id,
-        poll_id: obj.poll_id,
+    db.collection("like").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        poll_id: obj.poll_id.toString(),
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -912,9 +962,9 @@ like.forEach(function(obj) {
 });
 
 poll.forEach(function(obj) {
-    db.collection("poll").add({
-        id: obj.id,
-        user_id: obj.user_id,
+    db.collection("poll").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
         title: obj.title,
         posted_at: obj.posted_at,
         link: obj.link,
@@ -922,7 +972,7 @@ poll.forEach(function(obj) {
         closed: obj.closed,
         description: obj.description,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -930,13 +980,13 @@ poll.forEach(function(obj) {
 });
 
 question.forEach(function(obj) {
-    db.collection("question").add({
-        id: obj.id,
-        poll_id: obj.poll_id,
+    db.collection("question").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        poll_id: obj.poll_id.toString(),
         is_multiple_choice: obj.is_multiple_choice,
         title: obj.title,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -944,12 +994,12 @@ question.forEach(function(obj) {
 });
 
 option.forEach(function(obj) {
-    db.collection("option").add({
-        id: obj.id,
-        question_id: obj.question_id,
+    db.collection("option").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        question_id: obj.question_id.toString(),
         text: obj.text,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -957,13 +1007,13 @@ option.forEach(function(obj) {
 });
 
 answer.forEach(function(obj) {
-    db.collection("answer").add({
-        id: obj.id,
-        user_id: obj.user_id,
-        question_id: obj.question_id,
-        option_id: obj.option_id,
+    db.collection("answer").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        question_id: obj.question_id.toString(),
+        option_id: obj.option_id.toString(),
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -971,12 +1021,12 @@ answer.forEach(function(obj) {
 });
 
 polltag.forEach(function(obj) {
-    db.collection("polltag").add({
-        id: obj.id,
-        poll_id: obj.poll_id,
-        tag_id: obj.tag_id,
+    db.collection("polltag").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        poll_id: obj.poll_id.toString(),
+        tag_id: obj.tag_id.toString(),
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -984,11 +1034,11 @@ polltag.forEach(function(obj) {
 });
 
 tag.forEach(function(obj) {
-    db.collection("tag").add({
-        id: obj.id,
+    db.collection("tag").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
         name: obj.name,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
@@ -996,15 +1046,15 @@ tag.forEach(function(obj) {
 });
 
 user.forEach(function(obj) {
-    db.collection("user").add({
-        id: obj.id,
+    db.collection("user").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
         first_name: obj.first_name,
         last_name: obj.last_name,
         major: obj.major,
         points: obj.points,
         graduation_year: obj["graduation year"],
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);

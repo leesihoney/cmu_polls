@@ -10,14 +10,13 @@ import Foundation
 import SwiftUI
 
 struct PollTag: Identifiable {
-  var id = UUID()
-  var poll_id : UUID
-  var tag_id: UUID
-  var documentId: String = "It is a document for model: PollTag"
+  var id: String
+  var poll_id: String
+  var tag_id: String
   
-  init (poll_id: UUID, tag_id: UUID, documentId: String) {
+  init (id: String, poll_id: String, tag_id: String) {
+    self.id = id
     self.poll_id = poll_id
     self.tag_id = tag_id
-    self.documentId = documentId
   }  
 }

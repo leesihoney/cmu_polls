@@ -42,16 +42,16 @@ class UserTests: XCTestCase {
   func testFuncUser() {    
     
     XCTAssertEqual(aiden.points, 0)
-    aiden.addpoints(type: "Upload")
+    aiden.addpoints(type: .upload)
     XCTAssertEqual(aiden.points, 10)
-    aiden.addpoints(type: "Answer")
+    aiden.addpoints(type: .answer)
     XCTAssertEqual(aiden.points, 15)
     
-    aiden.addpoints(type: "Comment")
+    aiden.addpoints(type: .comment)
     XCTAssertEqual(aiden.points, 20)
     
     XCTAssertEqual(sungho.points, 0)
-    sungho.addpoints(type: "Comment")
+    sungho.addpoints(type: .comment)
     XCTAssertEqual(aiden.points, 5)
     
     aiden.createPoll()
