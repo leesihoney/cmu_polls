@@ -10,14 +10,13 @@ import Foundation
 import SwiftUI
 
 struct Like: Identifiable {
-  var id = UUID()
-  var user_id : UUID
-  var poll_id : UUID
-  var documentId: String = "It is a document for model: Like"
+  var id: String
+  var user_id: String
+  var poll_id: String
   
-  init (user_id: UUID, poll_id: UUID, documentId: String){
+  init (id: String, user_id: String, poll_id: String) {
+    self.id = id
     self.user_id = user_id
     self.poll_id = poll_id
-    self.documentId = documentId
   }
 }

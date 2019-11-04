@@ -12,10 +12,10 @@ import XCTest
 
 
 class PollTests: XCTestCase {
-  let aiden = User(first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
+  let aiden = User(id: "1", first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020)
   
   func testInitializePoll() {
-    let Poll1 = Poll(user_id: aiden.id, title: "who is your favorite IS Professor", description: "It is for research study", link: "not available yet", is_private: false, documentId: "It is a document for model: Poll")
+    let Poll1 = Poll(id: "1", user_id: aiden.id, title: "who is your favorite IS Professor", description: "It is for research study", link: "not available yet", is_private: false)
         
     XCTAssertEqual(Poll1.user_id, aiden.id)
     XCTAssertEqual(Poll1.is_private, false)
@@ -24,21 +24,21 @@ class PollTests: XCTestCase {
   }
   
   func testFuncPoll() {
-    let Poll1 = Poll(user_id: aiden.id, title: "who is your favorite IS Professor", description: "It is for research study", link: "not available yet", is_private: false, documentId: "It is a document for model: Poll")
-    let Poll2 = Poll(user_id: aiden.id, title: "what is your favorite place to eat in CMU?", description: "It is for research study", link: "not available yet", is_private: false, documentId: "It is a document for model: Poll")
+    let Poll1 = Poll(id: "1", user_id: aiden.id, title: "who is your favorite IS Professor", description: "It is for research study", link: "not available yet", is_private: false)
+    let Poll2 = Poll(id: "2", user_id: aiden.id, title: "what is your favorite place to eat in CMU?", description: "It is for research study", link: "not available yet", is_private: false)
         
-    let Question1 = Question(is_multiple_choice: true, title : "what is your major?", poll_id: Poll1.id, documentId: "It is a document for model: Question")
-    let Question2 = Question(is_multiple_choice: false, title : "what is your gpa?", poll_id: Poll1.id, documentId: "It is a document for model: Question")
+    let Question1 = Question(id: "1", is_multiple_choice: true, title : "what is your major?", poll_id: Poll1.id)
+    let Question2 = Question(id: "2", is_multiple_choice: false, title : "what is your gpa?", poll_id: Poll1.id)
     
-    let TagIS = Tag(name: "IS", documentId: "It is a document for model: Tag")
-    let TagLife = Tag(name: "Life", documentId: "It is a document for model: Tag")
-    let TagFood = Tag(name: "Food", documentId: "It is a document for model: Tag")
+    let TagIS = Tag(id: "1", name: "IS")
+    let TagLife = Tag(id: "2", name: "Life")
+    let TagFood = Tag(id: "3", name: "Food")
   
-    let PollTag1 = PollTag(poll_id: Poll1.id, tag_id: TagIS.id, documentId: "It is a document for model: PollTag")
-    let PollTag2 = PollTag(poll_id: Poll2.id, tag_id: TagLife.id, documentId: "It is a document for model: PollTag")
-    let PollTag3 = PollTag(poll_id: Poll2.id, tag_id: TagFood.id, documentId: "It is a document for model: PollTag")
+    let PollTag1 = PollTag(id: "1", poll_id: Poll1.id, tag_id: TagIS.id)
+    let PollTag2 = PollTag(id: "2", poll_id: Poll2.id, tag_id: TagLife.id)
+    let PollTag3 = PollTag(id: "3", poll_id: Poll2.id, tag_id: TagFood.id)
             
-    let like1 = Like(user_id: aiden.id, poll_id: Poll1.id, documentId: "It is a document for model: Like")
+    let like1 = Like(id: "1", user_id: aiden.id, poll_id: Poll1.id)
          
     XCTAssertEqual(Poll1.countAllQuestion(), 2)
     XCTAssertEqual(Poll2.countAllQuestion(), 0)
