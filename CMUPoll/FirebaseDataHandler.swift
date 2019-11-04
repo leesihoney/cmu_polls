@@ -34,6 +34,18 @@ class FirebaseDataHandler {
   }
   
   // READ
+//  Usage(1): Normal get
+//  let colRef = FirebaseDataHandler.colRef(collection: .poll)
+//    FirebaseDataHandler.get(colRef: colRef, completion: { data in
+//    print(data)
+//  })
+  
+//  Usage(2): Conditional get
+//  let query = FirebaseDataHandler.colRef(collection: .like).whereField("poll_id", isEqualTo: id)
+//  FirebaseDataHandler.get(query: query, completion: { data in
+//    let instances = ModelParser.parse(collection: .like, data: data)
+//    print(instances.count)
+//  })
   static func get(colRef: CollectionReference, completion: @escaping (FirebaseData) -> ()) {
     var data: FirebaseData = [:]
     
