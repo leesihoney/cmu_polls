@@ -11,7 +11,7 @@ firebase.initializeApp({
 
 var db = firebase.firestore();
 
-var comments = [
+var comment = [
   {
     "id": 0,
     "user_id": 0,
@@ -94,7 +94,7 @@ var comments = [
   }
 ]
 
-var likes = [
+var like = [
   {
     "id": 0,
     "user_id": 0,
@@ -197,7 +197,7 @@ var likes = [
   }
 ]
 
-var polls = [
+var poll = [
   {
     "id": 0,
     "user_id": 0,
@@ -300,7 +300,7 @@ var polls = [
   }
 ]
 
-var questions = [
+var question = [
   {
     "id": 0,
     "poll_id": 0,
@@ -369,7 +369,7 @@ var questions = [
   }
 ]
 
-var options = [
+var option = [
   {
     "id": 0,
     "question_id": 0,
@@ -522,7 +522,7 @@ var options = [
   }
 ]
 
-var answers = [
+var answer = [
   {
     "id": 0,
     "user_id": 0,
@@ -645,7 +645,7 @@ var answers = [
   }
 ]
 
-var polltags = [
+var polltag = [
   {
     "id": 0,
     "poll_id": 0,
@@ -748,7 +748,7 @@ var polltags = [
   }
 ]
 
-var tags = [
+var tag = [
   {
     "id": 0,
     "name": "Life"
@@ -831,7 +831,7 @@ var tags = [
   }
 ]
 
-var users = [
+var user = [
   {
     "id": 0,
     "first_name": "Aiden",
@@ -882,39 +882,89 @@ var users = [
   }
 ]
 
-comments.forEach(function(obj) {
-    db.collection("comments").add({
-        id: obj.id,
-        user_id: obj.user_id,
-        comment_id: obj.comment_id,
-        poll_id: obj.poll_id,
+function deleteCollection(db, collectionPath, batchSize) {
+  let collectionRef = db.collection(collectionPath);
+  let query = collectionRef.orderBy('__name__').limit(batchSize);
+
+  return new Promise((resolve, reject) => {
+    deleteQueryBatch(db, query, batchSize, resolve, reject);
+  });
+}
+
+function deleteQueryBatch(db, query, batchSize, resolve, reject) {
+  query.get()
+    .then((snapshot) => {
+      // When there are no documents left, we are done
+      if (snapshot.size == 0) {
+        return 0;
+      }
+
+      // Delete documents in a batch
+      let batch = db.batch();
+      snapshot.docs.forEach((doc) => {
+        batch.delete(doc.ref);
+      });
+
+      return batch.commit().then(() => {
+        return snapshot.size;
+      });
+    }).then((numDeleted) => {
+      if (numDeleted === 0) {
+        resolve();
+        return;
+      }
+
+      // Recurse on the next process tick, to avoid
+      // exploding the stack.
+      process.nextTick(() => {
+        deleteQueryBatch(db, query, batchSize, resolve, reject);
+      });
+    })
+    .catch(reject);
+}
+
+// deleteCollection(db, "poll", 100);
+// deleteCollection(db, "like", 100);
+// deleteCollection(db, "user", 100);
+// deleteCollection(db, "comment", 100);
+// deleteCollection(db, "polltag", 100);
+// deleteCollection(db, "tag", 100);
+// deleteCollection(db, "question", 100);
+// deleteCollection(db, "answer", 100);
+// deleteCollection(db, "option", 100);
+
+comment.forEach(function(obj) {
+    db.collection("comment").doc(obj.id.toString()).set({
+        user_id: obj.user_id.toString(),
+        comment_id: obj.comment_id.toString(),
+        poll_id: obj.poll_id.toString(),
         content: obj.content,
         posted_at: obj.posted_at,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-likes.forEach(function(obj) {
-    db.collection("likes").add({
-        id: obj.id,
-        user_id: obj.user_id,
-        poll_id: obj.poll_id,
+like.forEach(function(obj) {
+    db.collection("like").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        poll_id: obj.poll_id.toString(),
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-polls.forEach(function(obj) {
-    db.collection("polls").add({
-        id: obj.id,
-        user_id: obj.user_id,
+poll.forEach(function(obj) {
+    db.collection("poll").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
         title: obj.title,
         posted_at: obj.posted_at,
         link: obj.link,
@@ -922,89 +972,89 @@ polls.forEach(function(obj) {
         closed: obj.closed,
         description: obj.description,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-questions.forEach(function(obj) {
-    db.collection("questions").add({
-        id: obj.id,
-        poll_id: obj.poll_id,
+question.forEach(function(obj) {
+    db.collection("question").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        poll_id: obj.poll_id.toString(),
         is_multiple_choice: obj.is_multiple_choice,
         title: obj.title,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-options.forEach(function(obj) {
-    db.collection("options").add({
-        id: obj.id,
-        question_id: obj.question_id,
+option.forEach(function(obj) {
+    db.collection("option").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        question_id: obj.question_id.toString(),
         text: obj.text,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-answers.forEach(function(obj) {
-    db.collection("answers").add({
-        id: obj.id,
-        user_id: obj.user_id,
-        question_id: obj.question_id,
-        option_id: obj.option_id,
+answer.forEach(function(obj) {
+    db.collection("answer").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        question_id: obj.question_id.toString(),
+        option_id: obj.option_id.toString(),
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-polltags.forEach(function(obj) {
-    db.collection("polltags").add({
-        id: obj.id,
-        poll_id: obj.poll_id,
-        tag_id: obj.tag_id,
+polltag.forEach(function(obj) {
+    db.collection("polltag").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
+        poll_id: obj.poll_id.toString(),
+        tag_id: obj.tag_id.toString(),
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-tags.forEach(function(obj) {
-    db.collection("tags").add({
-        id: obj.id,
+tag.forEach(function(obj) {
+    db.collection("tag").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
         name: obj.name,
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);
     });
 });
 
-users.forEach(function(obj) {
-    db.collection("users").add({
-        id: obj.id,
+user.forEach(function(obj) {
+    db.collection("user").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
         first_name: obj.first_name,
         last_name: obj.last_name,
         major: obj.major,
         points: obj.points,
         graduation_year: obj["graduation year"],
     }).then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
+        // console.log("Document written with ID: ", docRef.id);
     })
     .catch(function(error) {
         console.error("Error adding document: ", error);

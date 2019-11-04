@@ -10,9 +10,13 @@ import Foundation
 import SwiftUI
 
 struct Option: Identifiable {
-  var id = UUID()
+  var id: String
   var text: String
-  var question_id: UUID
+  var question_id: String
+  
+  init (id: String, text: String, question_id: String) {
+    self.id = id
+    self.text = text
+    self.question_id = question_id
+  }
 }
-
-
