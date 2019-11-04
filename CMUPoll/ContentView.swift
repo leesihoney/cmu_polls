@@ -9,50 +9,40 @@
 import SwiftUI
 
 struct ContentView: View {
+  let googleLogo = UIImage(named: "btn_google_dark_focus_ios")
+  let robotoFont = UIFont(name: "Roboto-Medium", size: UIFont.labelFontSize)
   
-  @State private var username: String = ""
-  @State private var password: String = ""
-  
-    var body: some View {
+  var body: some View {
+    VStack(alignment: .leading, spacing: 10) {
+      HStack(alignment: .center) {
+        Image("Logo").resizable()
+          .frame(width: 360, height: 100)
+      }
       
-
-      VStack(alignment: .leading, spacing: 10) {
-        
-        HStack(alignment: .center) {
-          Image("Logo").resizable()
-            .frame(width: 360, height: 100)
-        }
-        
-        Text("Username").font(.headline).padding(5)
-        TextField("", text: $username)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        
-        
-        
-        Text("Password").font(.headline).padding(5)
-        SecureField("", text: $password)
-        .textFieldStyle(RoundedBorderTextFieldStyle())
-        
-        Button(action: {
-          print("username is \(self.username) \n" +
-            "password is \(self.password)")
-        })
-          {
-          HStack(alignment: .center, spacing: 10) {
-            Spacer()
-            Text("Login").shadow(radius: 10)
-            Spacer()
-            }
-          }
-        
-      }
-      }
-  
+      Button(
+        action: {
+          print("Hit Login")
+      },
+        label: {
+          HStack {
+            Image(uiImage: googleLogo!)
+              .resizable()
+              .frame(width: 18, height: 18)
+            Text("SIGN IN WITH GOOGLE")}
+            .font(Font.custom("robotoFont", size: 14))
+      })
+        .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+        .background(Color.white)
+        .cornerRadius(8.0)
+        .shadow(radius: 4.0)
+    }.padding()
   }
+  
+}
 
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+  static var previews: some View {
+    ContentView()
+  }
 }
