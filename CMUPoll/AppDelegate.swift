@@ -16,16 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     FirebaseApp.configure()
-    
-    let colRef = FirebaseDataHandler.colRef(collection: .poll)
-    FirebaseDataHandler.get(colRef: colRef, completion: { data in
-      let instances = ModelParser.parse(collection: .poll, data: data) as! [Poll]
-      for instance in instances {
-        print(instance)
-        instance.countAllTag()
-        instance.countAllLike()
-      }
-    })
     return true
   }
 
