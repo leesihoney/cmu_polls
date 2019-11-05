@@ -1,16 +1,15 @@
 //
-//  PollView.swift
+//  PollDetailView.swift
 //  CMUPoll
 //
-//  Created by 이시헌 on 2019/11/01.
+//  Created by 이시헌 on 2019/11/04.
 //  Copyright © 2019 Aiden Lee. All rights reserved.
 //
 
 import SwiftUI
 
-struct PollView: View {
+struct PollDetailView: View {
   let profile = Image("user_pic")
-  
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
       HStack(alignment: .center, spacing: 7) {
@@ -36,35 +35,30 @@ struct PollView: View {
         .multilineTextAlignment(.leading)
         .font(Font.system(size: 20, design: .default))
         .lineSpacing(10)
-        .lineLimit(2)
-      HStack(alignment: .firstTextBaseline, spacing: 115) {
-        HStack(alignment: .firstTextBaseline, spacing: 5) {
-          TagView()
-          TagView()
-        }
-        HStack(alignment: .firstTextBaseline, spacing: 13) {
-          Text("300.2k votes")
-            .fontWeight(.regular)
-            .foregroundColor(Color.gray)
-          HStack(alignment: .firstTextBaseline) {
-            Image(systemName: "message.fill")
-              .foregroundColor(.gray)
-              .frame(width: CGFloat(27.0), height: CGFloat(27.0), alignment: .bottomLeading)
-            Text("3")
-              .fontWeight(.regular)
-              .foregroundColor(Color.gray)
-          }
-        }
+      HStack(alignment: .firstTextBaseline, spacing: 5) {
+        TagView()
+        TagView()
+      }
+      PollDetailDescriptionView()
+      Text(verbatim: "You will get 2 point per questions that you answered")
+        .font(Font.system(size: 12, design: .default))
+        .fontWeight(.semibold)
+        .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
+      List {
+        AnswerBoxView()
+        AnswerBoxView()
       }
     }
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
     .padding(.vertical, 25)
+    .padding(.horizontal, 15)
+    
   }
   
 }
 
-struct PollView_Previews: PreviewProvider {
+struct PollDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    PollView()
+    PollDetailView()
   }
 }
