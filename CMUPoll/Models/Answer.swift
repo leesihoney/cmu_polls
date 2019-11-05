@@ -33,6 +33,14 @@ struct Answer: Identifiable {
     })
   }
   
+  static func withId(id: String, completion: @escaping (Answer) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .answer).whereField("id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      completion(answers[0])
+    })
+  }
+  
   func question(completion: @escaping (Question) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .question).whereField("id", isEqualTo: question_id)
     FirebaseDataHandler.get(query: query, completion: { data in

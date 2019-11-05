@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import Firebase
 
-struct Poll: Identifiable {
+class Poll: Identifiable {
   var id: String
   var user_id: String
   var title : String
@@ -19,6 +19,10 @@ struct Poll: Identifiable {
   var link: String
   var is_private: Bool
   var is_closed: Bool = false
+  
+  // Used for double query
+  var tagsFound: [Tag] = []
+  var numTags: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
   init (id: String, user_id: String, title: String, description: String, link: String, is_private: Bool) {
@@ -40,6 +44,14 @@ struct Poll: Identifiable {
     })
   }
   
+  static func withId(id: String, completion: @escaping (Poll) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+      completion(polls[0])
+    })
+  }
+  
   func questions(completion: @escaping ([Question]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .question).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
@@ -48,19 +60,26 @@ struct Poll: Identifiable {
     })
   }
   
+  private func accumulateTags(tag: Tag, completion: @escaping ([Tag]) -> ()) {
+    tagsFound.append(tag)
+    if tagsFound.count == numTags! {
+      completion(tagsFound)
+    }
+  }
+  
   func tags(completion: @escaping ([Tag]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
       let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
-      var tags: [Tag] = []
+      self.numTags = polltags.count
+      self.tagsFound = []
       for polltag in polltags {
         let tagQuery = FirebaseDataHandler.colRef(collection: .tag).whereField("id", isEqualTo: polltag.tag_id)
         FirebaseDataHandler.get(query: tagQuery, completion: { data in
-          let tagsFound: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
-          tags.append(tagsFound[0]) // Assuming there's only one tag for 'polltag.tag_id'
+          let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+          self.accumulateTags(tag: singleTag[0], completion: completion)
         })
       }
-      completion(tags)
     })
   }
   
@@ -88,7 +107,7 @@ struct Poll: Identifiable {
     })
   }
   
-  mutating func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?) {
+  func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?) {
     let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: id)
     var data: [String:Any] = [:]
     if let user_id = user_id {

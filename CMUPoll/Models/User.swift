@@ -39,6 +39,14 @@ struct User: Identifiable {
     })
   }
   
+  static func withId(id: String, completion: @escaping (User) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .user).whereField("id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
+      completion(users[0])
+    })
+  }
+  
   private func reward(type: RewardType) -> Int {
     switch type {
     case .upload:

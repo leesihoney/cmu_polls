@@ -12,9 +12,9 @@ import XCTest
 
 
 class UserTests: XCTestCase {
-  let aiden = User(first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
-  let sungho = User(first_name: "Sungho", last_name: "Cho", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
-  let andrew = User(first_name: "Andrew", last_name: "Lee", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
+  let aiden = User(first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020)
+  let sungho = User(first_name: "Sungho", last_name: "Cho", major: "IS", graduation_year: 2020)
+  let andrew = User(first_name: "Andrew", last_name: "Lee", major: "IS", graduation_year: 2020)
     
   func testInitializeUser() {
     

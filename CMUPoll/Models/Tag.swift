@@ -9,9 +9,13 @@
 import Foundation
 import SwiftUI
 
-struct Tag: Identifiable {
+class Tag: Identifiable {
   var id: String
   var name: String
+  
+  // Used for double query
+  var pollsFound: [Poll] = []
+  var numPolls: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
   init (id: String, name: String) {
@@ -29,19 +33,34 @@ struct Tag: Identifiable {
     })
   }
   
+  static func withId(id: String, completion: @escaping (Tag) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .tag).whereField("id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let tags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+      completion(tags[0])
+    })
+  }
+  
+  private func accumulatePolls(poll: Poll, completion: @escaping ([Poll]) -> ()) {
+    pollsFound.append(poll)
+    if pollsFound.count == numPolls! {
+      completion(pollsFound)
+    }
+  }
+  
   func polls(completion: @escaping ([Poll]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("tag_id", isEqualTo: id)
+    let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
       let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
-      var polls: [Poll] = []
+      self.numPolls = polltags.count
+      self.pollsFound = []
       for polltag in polltags {
         let pollQuery = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: polltag.poll_id)
         FirebaseDataHandler.get(query: pollQuery, completion: { data in
-          let pollsFound: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
-          polls.append(pollsFound[0]) // Assuming there's only one poll for 'polltag.poll_id'
+          let singlePoll: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+          self.accumulatePolls(poll: singlePoll[0], completion: completion)
         })
       }
-      completion(polls)
     })
   }
 }
