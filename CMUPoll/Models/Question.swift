@@ -15,6 +15,7 @@ struct Question: Identifiable {
   var title: String
   var poll_id: String
   
+  // NOTE: Used to initialize an instance that's already up on Firebase
   init (id: String, is_multiple_choice: Bool, title: String, poll_id: String) {
     self.id = id
     self.is_multiple_choice = is_multiple_choice
@@ -22,11 +23,60 @@ struct Question: Identifiable {
     self.poll_id = poll_id
   }
   
-  func countAllOption() {
+  // NOTE: Used to initialize a completely new instance and to upload to Firebase
+  static func create(is_multiple_choice: Bool, title: String, poll_id: String, completion: @escaping (Question) -> ()) {
+    let colRef = FirebaseDataHandler.colRef(collection: .question)
+    let data: [String:Any] = ["is_multiple_choice": is_multiple_choice, "title": title, "poll_id": poll_id]
+    FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
+      let question = Question(id: documentId, is_multiple_choice: is_multiple_choice, title: title, poll_id: poll_id)
+      completion(question)
+    })
+  }
+  
+  func options(completion: @escaping ([Option]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .option).whereField("question_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let instances = ModelParser.parse(collection: .option, data: data)
-      print(instances.count)
+      let options: [Option] = ModelParser.parse(collection: .option, data: data) as! [Option]
+      completion(options)
     })
+  }
+  
+  func answers(completion: @escaping ([Answer]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .answer).whereField("question_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      completion(answers)
+    })
+  }
+  
+  func poll(completion: @escaping (Poll) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: poll_id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+      completion(polls[0])
+    })
+  }
+  
+  mutating func update(is_multiple_choice: Bool?, title: String?, poll_id: String?) {
+    let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: id)
+    var data: [String:Any] = [:]
+    if let is_multiple_choice = is_multiple_choice {
+      data["is_multiple_choice"] = is_multiple_choice
+      self.is_multiple_choice = is_multiple_choice
+    }
+    if let title = title {
+      data["title"] = title
+      self.title = title
+    }
+    if let poll_id = poll_id {
+      data["poll_id"] = poll_id
+      self.poll_id = poll_id
+    }
+    FirebaseDataHandler.update(docRef: docRef, data: data)
+  }
+  
+  func delete() {
+    let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef)
   }
 }
