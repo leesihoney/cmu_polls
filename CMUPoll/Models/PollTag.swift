@@ -10,9 +10,13 @@ import Foundation
 import SwiftUI
 
 struct PollTag: Identifiable {
-  var id = UUID()
-  var poll_id : UUID
-  var tag_id: UUID
+  var id: String
+  var poll_id: String
+  var tag_id: String
+  
+  init (id: String, poll_id: String, tag_id: String) {
+    self.id = id
+    self.poll_id = poll_id
+    self.tag_id = tag_id
+  }  
 }
-
-

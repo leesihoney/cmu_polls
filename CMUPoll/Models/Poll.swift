@@ -8,26 +8,48 @@
 
 import Foundation
 import SwiftUI
+import Firebase
 
 struct Poll: Identifiable {
-  var id = UUID()
-  var user_id : UUID
-  var title : String = ""
-  var description: String = ""
+  var id: String
+  var user_id: String
+  var title : String
+  var description: String
   var posted_at: Date = Date()
-  var link: String = ""
-  var is_private: Bool = false
+  var link: String
+  var is_private: Bool
   var is_closed: Bool = false
   
-  init (user_id: UUID, title: String, descrip: String, posted: Date, link: String, is_priv: Bool, is_clos: Bool) {
+  init (id: String, user_id: String, title: String, description: String, link: String, is_private: Bool) {
+    self.id = id
     self.user_id = user_id
     self.title = title
-    self.description = descrip
-    self.posted_at = posted
+    self.description = description
     self.link = link
-    self.is_private = is_priv
-    self.is_closed = is_clos
+    self.is_private = is_private
+  }
+  
+  func countAllQuestion() {
+    let query = FirebaseDataHandler.colRef(collection: .question).whereField("poll_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let instances = ModelParser.parse(collection: .question, data: data)
+      print(instances.count)
+    })
+  }
+  
+  func countAllTag() {
+    let query = FirebaseDataHandler.colRef(collection: .tag).whereField("poll_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let instances = ModelParser.parse(collection: .tag, data: data)
+      print(instances.count)
+    })
+  }
+  
+  func countAllLike() {
+    let query = FirebaseDataHandler.colRef(collection: .like).whereField("poll_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let instances = ModelParser.parse(collection: .like, data: data)
+      print(instances.count)
+    })
   }
 }
-
-

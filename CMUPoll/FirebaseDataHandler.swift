@@ -11,14 +11,20 @@ import Firebase
 typealias FirebaseData = [String:Any]
 
 class FirebaseDataHandler {
-
   static let db = Firestore.firestore()
-  static let collections = ["users", "polls", "questions", "likes", "comments", "tags", "options", "answers"]
+  
+  static func colRef(collection: Collection) -> CollectionReference {
+    return FirebaseDataHandler.db.collection(collection.rawValue)
+  }
+  
+  static func docRef(collection: Collection, documentId: String) -> DocumentReference {
+    return colRef(collection: collection).document(documentId)
+  }
 
   // CREATE
-  static func addData(collection: String, data: FirebaseData) {
+  static func add(colRef: CollectionReference, data: FirebaseData) {
     var ref: DocumentReference? = nil
-    ref = db.collection(collection).addDocument(data: data) { err in
+    ref = colRef.addDocument(data: data) { err in
       if let err = err {
         print("Error adding document: \(err)")
       } else {
@@ -26,39 +32,52 @@ class FirebaseDataHandler {
       }
     }
   }
-
+  
   // READ
-  static func getData(collection: String, documentId: String?) {
-    // Get a specific document for a collection
-    if let id = documentId {
-      let docRef = db.collection(collection).document(id)
-      docRef.getDocument { (document, error) in
-        if let document = document, document.exists {
-          print("\(document.documentID) => \(document.data()!)")
-        } else {
-          print("Document does not exist")
+//  Usage(1): Normal get
+//  let colRef = FirebaseDataHandler.colRef(collection: .poll)
+//    FirebaseDataHandler.get(colRef: colRef, completion: { data in
+//    print(data)
+//  })
+  
+//  Usage(2): Conditional get
+//  let query = FirebaseDataHandler.colRef(collection: .like).whereField("poll_id", isEqualTo: id)
+//  FirebaseDataHandler.get(query: query, completion: { data in
+//    let instances = ModelParser.parse(collection: .like, data: data)
+//    print(instances.count)
+//  })
+  static func get(colRef: CollectionReference, completion: @escaping (FirebaseData) -> ()) {
+    var data: FirebaseData = [:]
+    
+    colRef.getDocuments() { (querySnapshot, err) in
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        for document in querySnapshot!.documents {
+          data[document.documentID] = document.data()
         }
       }
+      completion(data)
     }
-    // Get ALL documents for a collection
-    else {
-      db.collection(collection).getDocuments() { (querySnapshot, err) in
-        if let err = err {
-          print("Error getting documents: \(err)")
-        } else {
-          print("Displaying data for \(collection)")
-          for document in querySnapshot!.documents {
-            print("\(document.documentID) => \(document.data())")
-          }
-          print("\n")
+  }
+  
+  static func get(query: Query, completion: @escaping (FirebaseData) -> ()) {
+    var data: FirebaseData = [:]
+    
+    query.getDocuments() { (querySnapshot, err) in
+      if let err = err {
+        print("Error getting documents: \(err)")
+      } else {
+        for document in querySnapshot!.documents {
+          data[document.documentID] = document.data()
         }
       }
+      completion(data)
     }
   }
 
   // UPDATE
-  static func updateData(collection: String, documentId: String, data: FirebaseData) {
-    let docRef = db.collection(collection).document(documentId)
+  static func update(docRef: DocumentReference, data: FirebaseData) {
     docRef.updateData(data) { err in
       if let err = err {
         print("Error updating document: \(err)")
@@ -69,8 +88,7 @@ class FirebaseDataHandler {
   }
 
   // DELETE
-  static func removeData(collection: String, documentId: String) {
-    let docRef = db.collection(collection).document(documentId)
+  static func delete(docRef: DocumentReference, documentId: String) {
     docRef.delete() { err in
       if let err = err {
         print("Error removing document: \(err)")
