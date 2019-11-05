@@ -26,7 +26,6 @@ struct AllPollsView: View {
         PollsView()
       }
     }
-    .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0, opacity: 1.0))
   }
 }
 
