@@ -46,7 +46,8 @@ class ModelParser {
         let last_name: String = obj["last_name"] as! String
         let major: String = obj["major"] as! String
         let graduation_year: Int? = Int("\(String(describing: obj["graduation_year"]!))")
-        let user = User(id: id, first_name: first_name, last_name: last_name, major: major, graduation_year: graduation_year)
+        let points: Int? = Int("\(String(describing: obj["points"]!))")
+        let user = User(id: id, first_name: first_name, last_name: last_name, major: major, graduation_year: graduation_year, points: points)
         result.append(user)
         break
         

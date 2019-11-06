@@ -8,29 +8,107 @@
 
 import Foundation
 import XCTest
+import Firebase
 @testable import CMUPoll
 
-
 class QuestionTests: XCTestCase {
-  let Poll1 = Poll(user_id: UUID(), title: "who is your favorite IS Professor", description: "It is for research study", link: "not available yet", is_private: false, documentId: "It is a document for model: Poll")
+  var colRef: CollectionReference?
+  var Question0, Question1: Question?
   
-  func testInitializeQuestion() {
-    let Question1 = Question(is_multiple_choice: true, title : "what is your major?", poll_id: Poll1.id, documentId: "It is a document for model: Question")
-        
-    XCTAssertEqual(Question1.is_multiple_choice, true)
-    XCTAssertEqual(Question1.title, "what is your major?")
-    XCTAssertEqual(Question1.poll_id, Poll1.id)
+  func setQuestion0() {
+    let expectation = self.expectation(description: "Initialize questions")
+    Question.withId(id: "0", completion: { question in
+      self.Question0 = question
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
-  func testFuncQuestion() {
-    let Question1 = Question(is_multiple_choice: true, title : "what is your major?", poll_id: Poll1.id, documentId: "It is a document for model: Question")
-    let Question2 = Question(is_multiple_choice: false, title : "what is your gpa?", poll_id: Poll1.id, documentId: "It is a document for model: Question")
-               
-    let option1 = Option(text: "this is option text_1", question_id: Question1.id, documentId: "It is a document for model: Option")
-    let option2 = Option(text: "this is option text_2", question_id: Question1.id, documentId: "It is a document for model: Option")
-    let option3 = Option(text: "this is option text_3", question_id: Question1.id, documentId: "It is a document for model: Option")
-        
-    XCTAssertEqual(Question1.countAllOption(), 3)
-    XCTAssertEqual(Question2.countAllOption(), 0)
+  func setQuestion1() {
+    let expectation = self.expectation(description: "Initialize questions")
+    Question.withId(id: "1", completion: { question in
+      self.Question1 = question
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
   }
+  
+  override func setUp() {
+    super.setUp()
+    self.colRef = FirebaseDataHandler.colRef(collection: .question)
+    setQuestion0()
+    setQuestion1()
+  }
+  
+  func testInitializeQuestions() {
+    XCTAssertEqual(Question0!.id, "0")
+    XCTAssertEqual(Question0!.poll_id, "0")
+    XCTAssertEqual(Question0!.is_multiple_choice, true)
+    XCTAssertEqual(Question0!.title, "Where is the best place to eat in CMU?")
+    
+    XCTAssertEqual(Question1!.id, "1")
+    XCTAssertEqual(Question1!.poll_id, "0")
+    XCTAssertEqual(Question1!.is_multiple_choice, true)
+    XCTAssertEqual(Question1!.title, "Where is the best place to eat near CMU?")
+  }
+    
+  func testOptions0() {
+    let expectation = self.expectation(description: "Fetch options0")
+    Question0!.options(completion: { options in
+      XCTAssertEqual(3, options.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testOptions1() {
+    let expectation = self.expectation(description: "Fetch options1")
+    Question1!.options(completion: { options in
+      XCTAssertEqual(3, options.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testAnswers0() {
+    let expectation = self.expectation(description: "Fetch answers0")
+    Question0!.answers(completion: { answers in
+      XCTAssertEqual(2, answers.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testAnswers1() {
+    let expectation = self.expectation(description: "Fetch answers1")
+    Question1!.answers(completion: { answers in
+      XCTAssertEqual(2, answers.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testPolls0() {
+     let expectation = self.expectation(description: "Fetch poll0")
+     Question0!.poll(completion: { polls in
+       XCTAssertEqual("0", polls.id)
+       XCTAssertEqual("0", polls.user_id)
+       XCTAssertEqual("Where is the best place to eat in CMU?", polls.title)
+       expectation.fulfill()
+     })
+     self.waitForExpectations(timeout: 5.0, handler: nil)
+   }
+
+   func testPolls1() {
+     let expectation = self.expectation(description: "Fetch poll1")
+     Question1!.poll(completion: { polls in
+       XCTAssertEqual("0", polls.id)
+       XCTAssertEqual("0", polls.user_id)
+       XCTAssertEqual("Where is the best place to eat in CMU?", polls.title)
+       expectation.fulfill()
+     })
+     self.waitForExpectations(timeout: 5.0, handler: nil)
+   }
+
 }
+

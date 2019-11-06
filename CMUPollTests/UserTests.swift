@@ -8,58 +8,120 @@
 
 import Foundation
 import XCTest
+import Firebase
 @testable import CMUPoll
 
-
 class UserTests: XCTestCase {
-  let aiden = User(first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
-  let sungho = User(first_name: "Sungho", last_name: "Cho", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
-  let andrew = User(first_name: "Andrew", last_name: "Lee", major: "IS", graduation_year: 2020, documentId: "It is a document for model: User")
-    
-  func testInitializeUser() {
-    
-    XCTAssertEqual(aiden.major, "IS")
-    XCTAssertEqual(aiden.major, sungho.major)
-    XCTAssertEqual(aiden.major, andrew.major)
-    
-    XCTAssertEqual(aiden.graduation_year, 2020)
-    XCTAssertEqual(aiden.graduation_year, sungho.graduation_year)
-    XCTAssertEqual(aiden.graduation_year, andrew.graduation_year)
-
-    XCTAssertEqual(aiden.last_name, "Lee")
-    XCTAssertEqual(aiden.last_name, andrew.last_name)
-    XCTAssertNotEqual(aiden.last_name, sungho.last_name)
-    XCTAssertNotEqual(andrew.last_name, sungho.last_name)
-    
-    XCTAssertNotEqual(aiden.id, andrew.id)
-    XCTAssertNotEqual(andrew.id, sungho.id)
-        
-    XCTAssertEqual(aiden.points, 0)
-    XCTAssertEqual(aiden.points, andrew.points)
-    XCTAssertEqual(andrew.points, sungho.points)
+  var colRef: CollectionReference?
+  var users: [User]?
+  var User0, User1: User?
+  
+  func setUser0() {
+    let expectation = self.expectation(description: "Initialize users")
+    User.withId(id: "0", completion: { user in
+      self.User0 = user
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
-  func testFuncUser() {    
+  func setUser1() {
+    let expectation = self.expectation(description: "Initialize users")
+    User.withId(id: "1", completion: { user in
+      self.User1 = user
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  override func setUp() {
+    super.setUp()
+    self.colRef = FirebaseDataHandler.colRef(collection: .user)
+    setUser0()
+    setUser1()
+  }
+  
+  func testInitializeUsers() {
+    XCTAssertEqual(User0!.id, "0")
+    XCTAssertEqual(User0!.first_name, "Aiden")
+    XCTAssertEqual(User0!.last_name, "Lee")
+    XCTAssertEqual(User0!.major, "Information Systems")
+    XCTAssertEqual(User0!.graduation_year, 2020)
     
-    XCTAssertEqual(aiden.points, 0)
-    aiden.addpoints(type: .upload)
-    XCTAssertEqual(aiden.points, 10)
-    aiden.addpoints(type: .answer)
-    XCTAssertEqual(aiden.points, 15)
-    
-    aiden.addpoints(type: .comment)
-    XCTAssertEqual(aiden.points, 20)
-    
-    XCTAssertEqual(sungho.points, 0)
-    sungho.addpoints(type: .comment)
-    XCTAssertEqual(aiden.points, 5)
-    
-    aiden.createPoll()
-    aiden.createPoll()
-    aiden.createPoll()
-    aiden.createPoll()
-    XCTAssertEqual(aiden.countPoll(), 4)
-    XCTAssertEqual(sungho.countPoll(), 0)
-    XCTAssertEqual(andrew.countPoll(), 0)
-  }  
+    XCTAssertEqual(User1!.id, "1")
+    XCTAssertEqual(User1!.first_name, "Andrew")
+    XCTAssertEqual(User1!.last_name, "Lee")
+    XCTAssertEqual(User1!.major, "Information Systems")
+    XCTAssertEqual(User1!.graduation_year, 2020)
+  }
+  
+  func testAddPoints0() {
+    User0?.addPoints(type: .comment)
+    XCTAssertEqual(User0!.points, 1235)
+    User0?.addPoints(type: .upload)
+    XCTAssertEqual(User0!.points, 1245)
+  }
+  
+  func testAddPoints1() {
+    User1?.addPoints(type: .upload)
+    User1?.addPoints(type: .upload)
+    User1?.addPoints(type: .answer)
+    XCTAssertEqual(User1!.points, 4149)
+  }
+  
+  func testPolls0() {
+    let expectation = self.expectation(description: "Fetch polls0")
+    User0!.polls(completion: { polls in
+      XCTAssertEqual(2, polls.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testPolls1() {
+    let expectation = self.expectation(description: "Fetch polls1")
+    User1!.polls(completion: { polls in
+      XCTAssertEqual(3, polls.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+
+  func testLikes0() {
+    let expectation = self.expectation(description: "Fetch likes0")
+    User0!.likes(completion: { likes in
+      XCTAssertEqual(2, likes.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testLikes1() {
+    let expectation = self.expectation(description: "Fetch likes1")
+    User1!.likes(completion: { likes in
+      XCTAssertEqual(3, likes.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testComments0() {
+    let expectation = self.expectation(description: "Fetch comments0")
+    User0!.comments(completion: { comments in
+      XCTAssertEqual(5, comments.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
+  func testComments1() {
+    let expectation = self.expectation(description: "Fetch comments1")
+    User1!.comments(completion: { comments in
+      XCTAssertEqual(2, comments.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+
 }

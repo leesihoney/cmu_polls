@@ -935,6 +935,7 @@ function deleteQueryBatch(db, query, batchSize, resolve, reject) {
 
 comment.forEach(function(obj) {
     db.collection("comment").doc(obj.id.toString()).set({
+        id: obj.id.toString(),
         user_id: obj.user_id.toString(),
         comment_id: obj.comment_id.toString(),
         poll_id: obj.poll_id.toString(),
