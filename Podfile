@@ -6,6 +6,7 @@ def base_pods
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
+  pod 'RadioGroup', '~> 1.4'
 end
 
 target 'CMUPoll' do
@@ -14,7 +15,6 @@ target 'CMUPoll' do
 
   # Pods for CMUPoll
   base_pods
-
   target 'CMUPollTests' do
     inherit! :search_paths
   end

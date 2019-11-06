@@ -21,20 +21,23 @@ struct User: Identifiable {
   var points: Int = 0
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, first_name: String, last_name: String, major: String, graduation_year: Int?) {
+  init (id: String, first_name: String, last_name: String, major: String, graduation_year: Int?, points: Int?) {
     self.id = id
     self.first_name = first_name
     self.last_name = last_name
     self.major = major
     self.graduation_year = graduation_year
+    if let points = points {
+      self.points = points
+    }
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(first_name: String, last_name: String, major: String, graduation_year: Int?, completion: @escaping (User) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .user)
-    let data: [String:Any] = ["first_name": first_name, "last_name": last_name, "major": major, "graduation_year": graduation_year ?? "NULL"]
+    let data: [String:Any] = ["first_name": first_name, "last_name": last_name, "major": major, "graduation_year": graduation_year ?? "NULL", "points": 0]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let user = User(id: documentId, first_name: first_name, last_name: last_name, major: major, graduation_year: graduation_year)
+      let user = User(id: documentId, first_name: first_name, last_name: last_name, major: major, graduation_year: graduation_year, points: nil)
       completion(user)
     })
   }

@@ -16,17 +16,13 @@ struct PollsView: View {
         .font(Font.system(size: 20, design: .default))
         .fontWeight(.bold)
         .foregroundColor(Color.gray)
-        .padding(.vertical, 10)
-      VStack(alignment: .leading) {
+      VStack(alignment: .leading, spacing: 10) {
         PollView()
-          .padding(.vertical, 10)
         PollView()
-          .padding(.vertical, 10)
         PollView()
-          .padding(.vertical, 10)
       }
     }
-
+    
   }
 }
 

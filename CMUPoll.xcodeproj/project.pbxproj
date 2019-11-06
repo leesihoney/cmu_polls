@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21AA57522B6B3D993B5F884F /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58FA72800C3A03B8C83A8C61 /* Pods_CMUPollTests.framework */; };
 		2B483A4A76FFCF113466A878 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F46DCCFDAAC8E7A324CD7CB /* Pods_CMUPoll_CMUPollUITests.framework */; };
-		96DD72DCCEF847B42319D0BE /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E4A679F150CF90AE038369B /* Pods_CMUPoll.framework */; };
 		A70E95B9236B011B00C38F2B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A70E95B8236B011A00C38F2B /* Podfile */; };
 		A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
 		A7577B302370A5AF00FB055B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
@@ -68,6 +66,14 @@
 		E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
 		E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
 		E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
+		F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92C2370F41800C9AF6A /* PollDetailView.swift */; };
+		F056C92F2371028F00C9AF6A /* AnswerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */; };
+		F056C931237106FC00C9AF6A /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
+		F0BDB49523712FD200F855F6 /* PollResultBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49423712FD200F855F6 /* PollResultBoxView.swift */; };
+		F0BDB4972371300100F855F6 /* RadioButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB4962371300100F855F6 /* RadioButtonView.swift */; };
+		F0BDB4992371308600F855F6 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB4982371308600F855F6 /* ButtonView.swift */; };
+		F0BDB49B2371358C00F855F6 /* AnswerGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */; };
+		F0BDB49D2371372E00F855F6 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49C2371372E00F855F6 /* BarGraphView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +97,6 @@
 		244F7104CBD35AAFEF5FDC05 /* Pods-CMUPoll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.release.xcconfig"; sourceTree = "<group>"; };
 		3C865DC2E9843342F430EC36 /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
 		58FA72800C3A03B8C83A8C61 /* Pods_CMUPollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5E4A679F150CF90AE038369B /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		791FF8C3AB573FDC1CC630E5 /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
 		9F46DCCFDAAC8E7A324CD7CB /* Pods_CMUPoll_CMUPollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll_CMUPollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A70E95B8236B011A00C38F2B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
@@ -102,6 +107,8 @@
 		A7A95879236E3E4E009F2DF1 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		C228D95DE0C7B7AA64E6C24C /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D459E67EAA9BACCC46901759 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CAD1AB7BD6FC8FB47CD348E8 /* Pods-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollUITests/Pods-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D1DD33ABB6ED706D71A62FF4 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8486D08236FA0B100B875AE /* TabbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		E8486D09236FA0B100B875AE /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E8486D0A236FA0B100B875AE /* AllPollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPollsView.swift; sourceTree = "<group>"; };
@@ -140,7 +147,14 @@
 		E8D6E31C2366B0D100F75AA2 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		E8D6E3202366B0E100F75AA2 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		E8D6E3242366B0EA00F75AA2 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
-		FD645CA1B750A3FD3E639FF6 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F056C92C2370F41800C9AF6A /* PollDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailView.swift; sourceTree = "<group>"; };
+		F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoxView.swift; sourceTree = "<group>"; };
+		F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailDescriptionView.swift; sourceTree = "<group>"; };
+		F0BDB49423712FD200F855F6 /* PollResultBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollResultBoxView.swift; sourceTree = "<group>"; };
+		F0BDB4962371300100F855F6 /* RadioButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonView.swift; sourceTree = "<group>"; };
+		F0BDB4982371308600F855F6 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerGraphView.swift; sourceTree = "<group>"; };
+		F0BDB49C2371372E00F855F6 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +221,14 @@
 				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
 				E8486D0D236FA0B100B875AE /* TagsView.swift */,
 				E8486D0B236FA0B100B875AE /* TagView.swift */,
+				F056C92C2370F41800C9AF6A /* PollDetailView.swift */,
+				F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */,
+				F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */,
+				F0BDB4982371308600F855F6 /* ButtonView.swift */,
+				F0BDB4962371300100F855F6 /* RadioButtonView.swift */,
+				F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */,
+				F0BDB49423712FD200F855F6 /* PollResultBoxView.swift */,
+				F0BDB49C2371372E00F855F6 /* BarGraphView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -533,16 +555,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CMUPollTests-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -580,8 +597,13 @@
 			files = (
 				E8D6E3092366B09800F75AA2 /* Like.swift in Sources */,
 				E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */,
+				F0BDB4972371300100F855F6 /* RadioButtonView.swift in Sources */,
 				E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */,
 				E8486D10236FA0B100B875AE /* TabbarView.swift in Sources */,
+				F0BDB4992371308600F855F6 /* ButtonView.swift in Sources */,
+				F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */,
+				F0BDB49B2371358C00F855F6 /* AnswerGraphView.swift in Sources */,
+				F0BDB49D2371372E00F855F6 /* BarGraphView.swift in Sources */,
 				E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */,
 				E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */,
 				E8486D14236FA0B100B875AE /* PollsView.swift in Sources */,
@@ -591,14 +613,17 @@
 				A7A9587A236E3E4E009F2DF1 /* ModelParser.swift in Sources */,
 				E8486D16236FA0B100B875AE /* PollView.swift in Sources */,
 				E8D6E2D12366AFAF00F75AA2 /* AppDelegate.swift in Sources */,
+				F0BDB49523712FD200F855F6 /* PollResultBoxView.swift in Sources */,
 				E8486D15236FA0B100B875AE /* TagsView.swift in Sources */,
 				E8D6E3112366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */,
+				F056C931237106FC00C9AF6A /* PollDetailDescriptionView.swift in Sources */,
 				E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E2D82366AFAF00F75AA2 /* ContentView.swift in Sources */,
 				E8D6E2D32366AFAF00F75AA2 /* SceneDelegate.swift in Sources */,
 				E8D6E31D2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */,
+				F056C92F2371028F00C9AF6A /* AnswerBoxView.swift in Sources */,
 				E8D6E30D2366B0A500F75AA2 /* User.swift in Sources */,
 				E8486D13236FA0B100B875AE /* TagView.swift in Sources */,
 			);
