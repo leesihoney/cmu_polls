@@ -22,13 +22,14 @@ class FirebaseDataHandler {
   }
 
   // CREATE
-  static func add(colRef: CollectionReference, data: FirebaseData) {
+  static func add(colRef: CollectionReference, data: FirebaseData, completion: @escaping (String) -> ()) {
     var ref: DocumentReference? = nil
     ref = colRef.addDocument(data: data) { err in
       if let err = err {
         print("Error adding document: \(err)")
       } else {
         print("Document added with ID: \(ref!.documentID)")
+        completion(ref!.documentID)
       }
     }
   }
@@ -88,7 +89,7 @@ class FirebaseDataHandler {
   }
 
   // DELETE
-  static func delete(docRef: DocumentReference, documentId: String) {
+  static func delete(docRef: DocumentReference) {
     docRef.delete() { err in
       if let err = err {
         print("Error removing document: \(err)")
