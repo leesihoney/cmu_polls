@@ -836,6 +836,7 @@ var user = [
     "id": 0,
     "first_name": "Aiden",
     "last_name": "Lee",
+    "email": "yonghool@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 1230,
     "graduation year": 2020
@@ -844,6 +845,7 @@ var user = [
     "id": 1,
     "first_name": "Andrew",
     "last_name": "Lee",
+    "email": "siheonl@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 4124,
     "graduation year": 2020
@@ -852,6 +854,7 @@ var user = [
     "id": 2,
     "first_name": "Sungho",
     "last_name": "Cho",
+    "email": "sunghoch@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 1231,
     "graduation year": 2020
@@ -860,6 +863,7 @@ var user = [
     "id": 3,
     "first_name": "Anna",
     "last_name": "Yuan",
+    "email": "xinrany@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 214,
     "graduation year": 2020
@@ -868,6 +872,7 @@ var user = [
     "id": 4,
     "first_name": "Heimann",
     "last_name": "Larry",
+    "email": "profh@cmu.edu",
     "major": "NULL",
     "points": 4124,
     "graduation year": "NULL"
@@ -876,6 +881,7 @@ var user = [
     "id": 5,
     "first_name": "Andy",
     "last_name": "Kim",
+    "email": "andykim@andrew.cmu.edu",
     "major": "Sociology",
     "points": 2,
     "graduation year": 2024
@@ -1051,6 +1057,7 @@ user.forEach(function(obj) {
         id: obj.id.toString(),
         first_name: obj.first_name,
         last_name: obj.last_name,
+        email: obj.email,
         major: obj.major,
         points: obj.points,
         graduation_year: obj["graduation year"],

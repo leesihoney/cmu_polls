@@ -264,6 +264,7 @@
 				E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */,
 				E8D6E2D72366AFAF00F75AA2 /* ContentView.swift */,
 				A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */,
+				A7A95879236E3E4E009F2DF1 /* ModelParser.swift */,
 				E8D6E3032366AFDD00F75AA2 /* Models */,
 				E8D6E2D92366AFB100F75AA2 /* Assets.xcassets */,
 				E8D6E2DE2366AFB100F75AA2 /* LaunchScreen.storyboard */,
@@ -271,7 +272,6 @@
 				A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */,
 				E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */,
 				E8D6E2DB2366AFB100F75AA2 /* Preview Content */,
-				A7A95879236E3E4E009F2DF1 /* ModelParser.swift */,
 			);
 			path = CMUPoll;
 			sourceTree = "<group>";

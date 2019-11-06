@@ -45,12 +45,14 @@ class UserTests: XCTestCase {
     XCTAssertEqual(User0!.id, "0")
     XCTAssertEqual(User0!.first_name, "Aiden")
     XCTAssertEqual(User0!.last_name, "Lee")
+    XCTAssertEqual(User0!.email, "yonghool@andrew.cmu.edu")
     XCTAssertEqual(User0!.major, "Information Systems")
     XCTAssertEqual(User0!.graduation_year, 2020)
     
     XCTAssertEqual(User1!.id, "1")
     XCTAssertEqual(User1!.first_name, "Andrew")
     XCTAssertEqual(User1!.last_name, "Lee")
+    XCTAssertEqual(User1!.email, "siheonl@andrew.cmu.edu")
     XCTAssertEqual(User1!.major, "Information Systems")
     XCTAssertEqual(User1!.graduation_year, 2020)
   }
