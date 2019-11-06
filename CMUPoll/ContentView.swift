@@ -7,11 +7,14 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 struct ContentView: View {
   let googleLogo = UIImage(named: "btn_google_dark_focus_ios")
   let robotoFont = UIFont(name: "Roboto-Medium", size: UIFont.labelFontSize)
   
+  private let andrewLogin = AndrewLogin()
+    
   var body: some View {
     VStack(alignment: .leading, spacing: 10) {
       HStack(alignment: .center) {
@@ -22,6 +25,7 @@ struct ContentView: View {
       Button(
         action: {
           print("Hit Login")
+          self.login()
       },
         label: {
           HStack {
@@ -38,6 +42,24 @@ struct ContentView: View {
     }.padding()
   }
   
+  func login() {
+    andrewLogin.attemptLogin()
+  }
+}
+
+struct AndrewLogin: UIViewRepresentable {
+  func makeUIView(context: UIViewRepresentableContext<AndrewLogin>) -> UIView {
+      return UIView()
+  }
+
+  func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AndrewLogin>) {
+  }
+
+  func attemptLogin() {
+    GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
+//    GIDSignIn.sharedInstance()?.restorePreviousSignIn() // Automatically sign in the user.
+    GIDSignIn.sharedInstance()?.signIn()
+  }
 }
 
 

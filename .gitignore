@@ -3,3 +3,4 @@ CMUPoll/GoogleService-Info.plist
 CMUPoll.xcworkspace/xcuserdata/
 CMUPoll.xcodeproj/xcuserdata/
 Pods/*
+*.lock
