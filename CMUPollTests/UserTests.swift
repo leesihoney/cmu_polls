@@ -57,16 +57,16 @@ class UserTests: XCTestCase {
   
   func testAddPoints0() {
     User0?.addPoints(type: .comment)
-    XCTAssertEqual(User0!.points, 5)
+    XCTAssertEqual(User0!.points, 1235)
     User0?.addPoints(type: .upload)
-    XCTAssertEqual(User0!.points, 15)
+    XCTAssertEqual(User0!.points, 1245)
   }
   
   func testAddPoints1() {
     User1?.addPoints(type: .upload)
     User1?.addPoints(type: .upload)
     User1?.addPoints(type: .answer)
-    XCTAssertEqual(User1!.points, 25)
+    XCTAssertEqual(User1!.points, 4149)
   }
   
   func testPolls0() {
