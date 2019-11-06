@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct PollView: View {
+  let poll: Poll
   let profile = Image("user_pic")
   
   var body: some View {
@@ -31,7 +32,7 @@ struct PollView: View {
             .foregroundColor(Color.gray)
         }
       }
-      Text("Who is your favorite Information Systems professor?")
+      Text(poll.title)
         .fontWeight(.semibold)
         .multilineTextAlignment(.leading)
         .font(Font.system(size: 20, design: .default))
@@ -57,7 +58,7 @@ struct PollView: View {
         }
       }
     }
-    .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
+    .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 188.0, alignment: .center)
     .padding(.vertical, 25)
   }
   
@@ -65,6 +66,6 @@ struct PollView: View {
 
 struct PollView_Previews: PreviewProvider {
   static var previews: some View {
-    PollView()
+    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professr?", description: "Nyo", link: "", is_private: false))
   }
 }
