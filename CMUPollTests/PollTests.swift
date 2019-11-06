@@ -15,7 +15,7 @@ class PollTests: XCTestCase {
   var aiden: User = User(id: "1", first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020)
   var colRef: CollectionReference?
   var polls: [Poll]?
-  var Poll0, Poll1, Poll2: Poll?
+  var Poll0, Poll1: Poll?
   
   func setPoll0() {
     let expectation = self.expectation(description: "Initialize polls")
@@ -42,7 +42,7 @@ class PollTests: XCTestCase {
     setPoll1()
   }
   
-  func testInitializePoll() {
+  func testInitializePolls() {
     XCTAssertEqual(Poll0!.user_id, "0")
     XCTAssertEqual(Poll0!.is_private, false)
     XCTAssertEqual(Poll0!.is_closed, false)
@@ -143,5 +143,5 @@ class PollTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
-}
   
+}

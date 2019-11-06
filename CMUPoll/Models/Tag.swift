@@ -49,7 +49,7 @@ class Tag: Identifiable {
   }
   
   func polls(completion: @escaping ([Poll]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("poll_id", isEqualTo: id)
+    let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("tag_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
       let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
       self.numPolls = polltags.count

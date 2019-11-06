@@ -60,6 +60,15 @@ class Poll: Identifiable {
     })
   }
   
+  func all_polls(completion: @escaping ([Poll]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .poll)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let all_polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+      completion(all_polls)
+    })
+  }
+  
+  
   private func accumulateTags(tag: Tag, completion: @escaping ([Tag]) -> ()) {
     tagsFound.append(tag)
     if tagsFound.count == numTags! {

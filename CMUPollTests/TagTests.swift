@@ -6,38 +6,64 @@
 //  Copyright © 2019 67442. All rights reserved.
 //
 
-
 import Foundation
 import XCTest
+import Firebase
 @testable import CMUPoll
 
-
 class TagTests: XCTestCase {
-  let TagIS = Tag(name: "IS", documentId: "It is a document for model: Tag")
-  let TagLife = Tag(name: "Life", documentId: "It is a document for model: Tag")
-  let TagFood = Tag(name: "Food", documentId: "It is a document for model: Tag")
+  var colRef: CollectionReference?
+  var Tag0, Tag1: Tag?
+  
+  func setTag0() {
+    let expectation = self.expectation(description: "Initialize tags")
+    Tag.withId(id: "0", completion: { tag in
+      self.Tag0 = tag
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func setTag1() {
+    let expectation = self.expectation(description: "Initialize tags")
+    Tag.withId(id: "1", completion: { tag in
+      self.Tag1 = tag
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  override func setUp() {
+    super.setUp()
+    self.colRef = FirebaseDataHandler.colRef(collection: .tag)
+    setTag0()
+    setTag1()
+  }
+  
+  func testInitializeTags() {
+    XCTAssertEqual(Tag0!.id, "0")
+    XCTAssertEqual(Tag0!.name, "Life")
+    
+    XCTAssertEqual(Tag1!.id, "1")
+    XCTAssertEqual(Tag1!.name, "Food")
+  }
+      
+  func testPolls0() {
+    let expectation = self.expectation(description: "Fetch polls0")
+    Tag0!.polls(completion: { polls in
+      XCTAssertEqual(1, polls.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
 
-  func testInitializeTag() {
-    
-    XCTAssertNotEqual(TagIS.documentId, "It is a document for model: Tag")
-    XCTAssertNotEqual(TagIS.id, TagLife.id)
-    XCTAssertNotEqual(TagIS.name, TagLife.name)
-    XCTAssertNotEqual(TagLife.name, TagFood.name)
+  func testPolls1() {
+    let expectation = self.expectation(description: "Fetch polls1")
+    Tag1!.polls(completion: { polls in
+      XCTAssertEqual(1, polls.count)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
-  func testFuncTag() {
-    
-    let Poll1 = Poll(user_id: UUID(), title: "who is your favorite IS Professor", description: "It is for research study", link: "not available yet", is_private: false, documentId: "It is a document for model: Poll")
-    
-    let Poll2 = Poll(user_id: UUID(), title: "what is your favorite place to eat in CMU?",  description: "It is for research study", link: "not available yet", is_private: false, documentId: "It is a document for model: Poll")
-    
-    let PollTag1 = PollTag(poll_id: Poll1.id, tag_id: TagIS.id, documentId: "It is a document for model: PollTag")
-    let PollTag2 = PollTag(poll_id: Poll2.id, tag_id: TagLife.id, documentId: "It is a document for model: PollTag")
-    let PollTag3 = PollTag(poll_id: Poll2.id, tag_id: TagFood.id, documentId: "It is a document for model: PollTag")
-    
-    XCTAssertEqual(TagIS.countAllPolls(), 1)
-    XCTAssertEqual(TagLife.countAllPolls(), 1)
-    XCTAssertEqual(TagFood.countAllPolls(), 1)       
-  }
 }
-  
