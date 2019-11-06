@@ -21,12 +21,10 @@ struct PollView: View {
               .bold()
               .font(Font.system(size: 12, design: .default))
             Text("Information Systems • Class of 2020")
-              //              .color(.secondary)
               .font(Font.system(size: 10, design: .default))
               .foregroundColor(Color.gray)
           }
           Text("updated 29 days ago")
-            //            .color(.secondary)
             .font(Font.system(size: 10, design: .default))
             .foregroundColor(Color.gray)
         }
@@ -39,8 +37,8 @@ struct PollView: View {
         .lineLimit(2)
       HStack(alignment: .firstTextBaseline, spacing: 115) {
         HStack(alignment: .firstTextBaseline, spacing: 5) {
-          TagView()
-          TagView()
+          TagView(tagText: "IS")
+          TagView(tagText: "Academic")
         }
         HStack(alignment: .firstTextBaseline, spacing: 13) {
           Text("300.2k votes")

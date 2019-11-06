@@ -17,12 +17,12 @@ struct TagsView: View {
         .foregroundColor(Color.gray)
       ScrollView(.horizontal, content: {
         HStack(spacing: CGFloat(7.0)) {
-          TagFilterView()
-          TagFilterView()
-          TagFilterView()
-          TagFilterView()
-          TagFilterView()
-          TagFilterView()
+          TagFilterView(tagText: "IS")
+          TagFilterView(tagText: "CS")
+          TagFilterView(tagText: "Life")
+          TagFilterView(tagText: "Academic")
+          TagFilterView(tagText: "Food")
+          
         }
       })
     }

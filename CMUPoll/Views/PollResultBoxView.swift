@@ -36,8 +36,8 @@ struct PollResultBoxView: View {
         .font(Font.system(size: 20, design: .default))
         .lineSpacing(10)
       HStack(alignment: .firstTextBaseline, spacing: 5) {
-        TagView()
-        TagView()
+        TagView(tagText: "IS")
+        TagView(tagText: "Academic")
       }
       PollDetailDescriptionView()
         .padding(.bottom, 14)
