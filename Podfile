@@ -15,6 +15,8 @@ target 'CMUPoll' do
   pod 'Firebase/Firestore'
 
   pod 'GoogleSignIn'
+  pod 'RadioGroup', '~> 1.4'
+
 
   target 'CMUPollTests' do
     inherit! :search_paths

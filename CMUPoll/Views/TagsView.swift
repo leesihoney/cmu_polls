@@ -25,7 +25,9 @@ struct TagsView: View {
           TagFilterView()
         }
       })
-    }    }
+    }
+    
+  }
 }
 
 struct TagsView_Previews: PreviewProvider {
