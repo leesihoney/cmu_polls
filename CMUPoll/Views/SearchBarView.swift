@@ -42,6 +42,6 @@ struct SearchBarView: UIViewRepresentable {
 
 //struct SearchBarView_Previews: PreviewProvider {
 //  static var previews: some View {
-//    SearchBarView(text: )
+//    SearchBarView(text: Binding("nyo")
 //  }
 //}
