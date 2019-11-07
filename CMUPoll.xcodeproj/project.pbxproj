@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,6 @@
 		A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		A7CEA1582373CD6600455C50 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1572373CD6600455C50 /* LoginView.swift */; };
 		D5681360AB0E3B1DDD2ABF30 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108AAB5E1144CBB6F137C8D4 /* Pods_CMUPoll.framework */; };
-		E8486D10236FA0B100B875AE /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D08236FA0B100B875AE /* TabbarView.swift */; };
 		E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D09236FA0B100B875AE /* SearchBarView.swift */; };
 		E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0A236FA0B100B875AE /* AllPollsView.swift */; };
 		E8486D13236FA0B100B875AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
@@ -121,7 +120,6 @@
 		ACD6B2CB5677FDBBA8F923F2 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AF6B20A7053C286AE028166A /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D9ED8AAECFCC03F35F2A5519 /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
-		E8486D08236FA0B100B875AE /* TabbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		E8486D09236FA0B100B875AE /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E8486D0A236FA0B100B875AE /* AllPollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPollsView.swift; sourceTree = "<group>"; };
 		E8486D0B236FA0B100B875AE /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 				E8CA4E0C23729D0400AD3B72 /* RadioButtonQuestionView.swift */,
 				F0BDB4962371300100F855F6 /* RadioButtonView.swift */,
 				E8486D09236FA0B100B875AE /* SearchBarView.swift */,
-				E8486D08236FA0B100B875AE /* TabbarView.swift */,
 				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
 				E8486D0D236FA0B100B875AE /* TagsView.swift */,
 				E8486D0B236FA0B100B875AE /* TagView.swift */,
@@ -540,7 +537,7 @@
 				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -548,7 +545,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B44D08B508FB7F79D3C3BAC5 /* [CP] Check Pods Manifest.lock */ = {
@@ -557,12 +554,9 @@
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -570,7 +564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B8E8D45C548CDDFCBEC640DA /* [CP] Embed Pods Frameworks */ = {
@@ -695,7 +689,6 @@
 				E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				F0BDB4972371300100F855F6 /* RadioButtonView.swift in Sources */,
 				E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */,
-				E8486D10236FA0B100B875AE /* TabbarView.swift in Sources */,
 				F0BDB4992371308600F855F6 /* ButtonView.swift in Sources */,
 				A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */,
 				F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */,
@@ -1145,7 +1138,7 @@
 		E8D6E2FF2366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D9ED8AAECFCC03F35F2A5519 /* Pods-CMUPollTests.release.xcconfig */;
-			buildSettings = {
+      buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
