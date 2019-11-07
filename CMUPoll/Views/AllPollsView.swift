@@ -12,13 +12,7 @@ struct AllPollsView: View {
   let user = User.current
   @State var polls = [Poll]()
   
-  let tags = [
-    Tag(id: "1", name: "IS"),
-    Tag(id: "3", name: "CS"),
-    Tag(id: "4", name: "Life"),
-    Tag(id: "5", name: "Academic"),
-    Tag(id: "8", name: "Food"),
-  ]
+  @State var tags = [Tag]()
   
   @State private var searchTerm: String = ""
   
@@ -27,6 +21,7 @@ struct AllPollsView: View {
       List {
         SearchBarView(text: $searchTerm)
         TagsView(tags: tags)
+        
         ForEach(self.polls) { poll in
           NavigationLink(destination: PollDetailView(poll: poll)) {
             PollView(poll: poll)
@@ -44,17 +39,22 @@ struct AllPollsView: View {
     }
     .onAppear {
       self.getUserPolls()
+      self.getAllTags()
     }
   }
   
   func getUserPolls() {
-    guard let user = self.user else {
-      print("ERROR! Cannot Bring user")
-      return
-    }
-    user.polls(completion: { polls in
+    Poll.allPolls(completion: { polls in
       DispatchQueue.main.async {
         self.polls = polls
+      }
+    })
+  }
+  
+  func getAllTags() {
+    Tag.allTags(completion: { tags in
+      DispatchQueue.main.async {
+        self.tags = tags
       }
     })
   }

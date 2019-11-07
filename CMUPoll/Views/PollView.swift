@@ -13,14 +13,10 @@ struct PollView: View {
   let profile = Image("user_pic")
   let uploaderName = "Aiden Lee"
   let uploaderMajor = "Information Systems"
-  let uploaderGraduationYear = "2020"
+  let uploaderGraduationYear = 2020
   let uploadedDaysAgo = "29"
-  let tags = [
-    Tag(id: "1", name: "IS"),
-    Tag(id: "2", name: "School Work")
-    
-  ]
-  
+  @State var tags = [Tag]()
+
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
       PollUploaderProfileView(uploaderName: uploaderName, uploaderMajor: uploaderMajor, uploaderGraduationYear: uploaderGraduationYear, uploadedDaysAgo: uploadedDaysAgo)
@@ -30,12 +26,13 @@ struct PollView: View {
         .font(Font.system(size: 20, design: .default))
         .lineSpacing(10)
         .lineLimit(2)
-      HStack(alignment: .firstTextBaseline, spacing: 115) {
+      HStack(alignment: .firstTextBaseline) {
         HStack(alignment: .firstTextBaseline, spacing: 5) {
           ForEach(tags) { tag in
             TagView(tagText: tag.name)
           }
         }
+        Spacer()
         HStack(alignment: .firstTextBaseline, spacing: 13) {
           Text("300.2k votes")
             .fontWeight(.regular)
@@ -53,7 +50,21 @@ struct PollView: View {
     }
     .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 188.0, alignment: .center)
     .padding(.vertical, 25)
+    .onAppear {
+      self.getPollTags()
+    }
+    
   }
+  
+  
+  func getPollTags() {
+    self.poll.tags(completion: { tags in
+      DispatchQueue.main.async {
+        self.tags = tags
+      }
+    })
+  }
+  
   
 }
 
