@@ -56,19 +56,19 @@ class Poll: Identifiable {
     })
   }
   
+  static func allPolls(completion: @escaping ([Poll]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .poll)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allPolls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+      completion(allPolls)
+    })
+  }
+  
   func questions(completion: @escaping ([Question]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .question).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
       let questions: [Question] = ModelParser.parse(collection: .question, data: data) as! [Question]
       completion(questions)
-    })
-  }
-  
-  func all_polls(completion: @escaping ([Poll]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .poll)
-    FirebaseDataHandler.get(query: query, completion: { data in
-      let all_polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
-      completion(all_polls)
     })
   }
   
@@ -94,6 +94,29 @@ class Poll: Identifiable {
         })
       }
     })
+  }
+  
+  func addTags(tagNames: [String]) {
+    // SECURITY: If Poll's owner is not current user, Do NOT let pass
+    if User.current?.id != self.user_id {
+      print("Current user is not the poll's owner!")
+      return
+    }
+    
+    for tagName in tagNames {
+      let query = FirebaseDataHandler.colRef(collection: .tag).whereField("name", isEqualTo: tagName)
+      FirebaseDataHandler.get(query: query, completion: { data in
+        let tags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+        // Add a new tag when no tag is found with the name
+        if tags.isEmpty {
+          Tag.create(name: tagName, completion: { tag in
+            PollTag.create(poll_id: self.id, tag_id: tag.id, completion: { polltag in
+              // There's nothing more to do after creating Tag and PollTag instances
+            })
+          })
+        }
+      })
+    }
   }
   
   func likes(completion: @escaping ([Like]) -> ()) {

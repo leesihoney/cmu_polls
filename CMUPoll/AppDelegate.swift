@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   
   var uponExistingUser: AfterSignIn?
   var uponNewUser: AfterSignIn?
+  var uponInvalidInput: AfterSignIn?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -122,19 +123,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     guard let givenName = signedGivenName else {
       print("User's given name is not found!")
+      self.uponInvalidInput!()
       return
     }
     guard let familyName = signedFamilyName else {
       print("User's family name is not found!")
+      self.uponInvalidInput!()
       return
     }
     guard let email = signedEmail else {
       print("User's email is not found!")
+      self.uponInvalidInput!()
       return
     }
     
     // Validate email
     if (!validateEmail(email)) {
+      print("User's email is not valid!")
+      self.uponInvalidInput!()
       return
     }
     

@@ -45,6 +45,14 @@ struct Answer: Identifiable {
     })
   }
   
+  static func allAnswers(completion: @escaping ([Answer]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .answer)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allAnswers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      completion(allAnswers)
+    })
+  }
+  
   func question(completion: @escaping (Question) -> ()) {
     let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: question_id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in

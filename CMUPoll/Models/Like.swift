@@ -43,6 +43,14 @@ struct Like: Identifiable {
     })
   }
   
+  static func allLikes(completion: @escaping ([Like]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .like)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allLikes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
+      completion(allLikes)
+    })
+  }
+  
   func user(completion: @escaping (User) -> ()) {
     let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: user_id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in

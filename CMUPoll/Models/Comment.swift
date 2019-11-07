@@ -48,6 +48,14 @@ struct Comment: Identifiable {
     })
   }
   
+  static func allComments(completion: @escaping ([Comment]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .comment)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allComments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
+      completion(allComments)
+    })
+  }
+  
   func user(completion: @escaping (User) -> ()) {
     let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: user_id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in
