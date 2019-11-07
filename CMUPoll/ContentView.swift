@@ -12,6 +12,7 @@ import CoreData
 
 struct ContentView: View {
   @State var loggedIn: Bool?
+  @State var showEmailAlert: Bool = false
   @State var delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
   @State var email: String?
   @State var givenName: String?
@@ -48,7 +49,11 @@ struct ContentView: View {
           self.email = self.delegate.signedEmail!
           self.givenName = self.delegate.signedGivenName!
           self.familyName = self.delegate.signedFamilyName!
-        })
+        }, uponInvalidInput: {
+          self.showEmailAlert = true
+        }).alert(isPresented: $showEmailAlert) {
+          Alert(title: Text("Invalid Email!"), message: Text("Your email address must end with 'cmu.edu'"), dismissButton: .default(Text("Try Again")))
+        }
       } else if loggedIn! {
         TabbarView()
       } else {

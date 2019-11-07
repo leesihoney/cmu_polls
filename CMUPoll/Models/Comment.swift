@@ -27,11 +27,15 @@ struct Comment: Identifiable {
   }
     
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(content: String, user_id: String, comment_id: String?, poll_id: String, completion: @escaping (Comment) -> ()) {
+  static func create(content: String, comment_id: String?, poll_id: String, completion: @escaping (Comment) -> ()) {
+    guard let user = User.current else {
+      print("No user is logged in!")
+      return
+    }
     let colRef = FirebaseDataHandler.colRef(collection: .comment)
-    let data: [String:Any] = ["content": content, "user_id": user_id, "comment_id": comment_id as Any, "poll_id": poll_id]
+    let data: [String:Any] = ["content": content, "user_id": user.id, "comment_id": comment_id as Any, "poll_id": poll_id]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let comment = Comment(id: documentId, content: content, user_id: user_id, comment_id: comment_id, poll_id: poll_id)
+      let comment = Comment(id: documentId, content: content, user_id: user.id, comment_id: comment_id, poll_id: poll_id)
       completion(comment)
     })
   }
@@ -45,6 +49,14 @@ struct Comment: Identifiable {
         let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
         completion(comments[0])
       }
+    })
+  }
+  
+  static func allComments(completion: @escaping ([Comment]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .comment)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allComments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
+      completion(allComments)
     })
   }
   

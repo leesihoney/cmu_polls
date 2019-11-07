@@ -43,6 +43,14 @@ struct PollTag: Identifiable {
     })
   }
   
+  static func allPollTags(completion: @escaping ([PollTag]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .polltag)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allPollTags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
+      completion(allPollTags)
+    })
+  }
+  
   func poll(completion: @escaping (Poll) -> ()) {
     let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: poll_id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in

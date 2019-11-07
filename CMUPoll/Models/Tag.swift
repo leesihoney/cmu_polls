@@ -9,7 +9,8 @@
 import Foundation
 import SwiftUI
 
-class Tag: Identifiable {
+class Tag: Identifiable, Hashable {
+  
   var id: String
   var name: String
   
@@ -17,11 +18,26 @@ class Tag: Identifiable {
   var pollsFound: [Poll] = []
   var numPolls: Int?
   
+  static var tagPopularity: [Tag:Int] = [:]
+  static var numTags: Int?
+  
+  func hash(into hasher: inout Hasher) {
+     hasher.combine(id)
+     hasher.combine(name)
+  }
+  static func == (lhs: Tag, rhs: Tag) -> Bool {
+    return lhs.id == rhs.id
+  }
+  static func < (lhs: Tag, rhs: Tag) -> Bool {
+    return lhs.id.hashValue < rhs.id.hashValue
+  }
+  
   // NOTE: Used to initialize an instance that's already up on Firebase
   init (id: String, name: String) {
     self.id = id
     self.name = name
   }
+  
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(name: String, completion: @escaping (Tag) -> ()) {
@@ -41,6 +57,38 @@ class Tag: Identifiable {
       } else {
         let tags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
         completion(tags[0])
+      }
+    })
+  }
+  
+  private static func accumulateTagPopularity(tag: Tag, count: Int, completion: @escaping ([Tag]) -> ()) {
+    tagPopularity[tag] = count
+    
+    if tagPopularity.count == numTags {
+      // sort and call completion
+      let sortedTagPopularity = tagPopularity.sorted(by: { $0.value > $1.value })
+      var sortedTags: [Tag] = []
+      for popularity in sortedTagPopularity {
+        sortedTags.append(popularity.key)
+      }
+      completion(sortedTags)
+    }
+  }
+  
+  static func allTags(completion: @escaping ([Tag]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .tag)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allTags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+      
+      // Sort tags in popular order
+      self.numTags = allTags.count
+      for tag in allTags {
+        let polltagQuery = FirebaseDataHandler.colRef(collection: .polltag).whereField("tag_id", isEqualTo: tag.id)
+        FirebaseDataHandler.get(query: polltagQuery, completion: { data in
+          let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
+          
+          accumulateTagPopularity(tag: tag, count: polltags.count, completion: completion)
+        })
       }
     })
   }
