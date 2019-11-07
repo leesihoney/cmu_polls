@@ -36,6 +36,7 @@
 		E8CA4E0F23729D0400AD3B72 /* RadioButtonQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA4E0C23729D0400AD3B72 /* RadioButtonQuestionView.swift */; };
 		E8CA4E1023729D0400AD3B72 /* QuestionBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA4E0D23729D0400AD3B72 /* QuestionBoxView.swift */; };
 		E8CA4E1123729D0400AD3B72 /* PollCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA4E0E23729D0400AD3B72 /* PollCreateView.swift */; };
+		E8CA4E192373CAB400AD3B72 /* InitializeUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8CA4E182373CAB400AD3B72 /* InitializeUserView.swift */; };
 		E8D6E2D12366AFAF00F75AA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
 		E8D6E2D32366AFAF00F75AA2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */; };
 		E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
@@ -133,6 +134,7 @@
 		E8CA4E0C23729D0400AD3B72 /* RadioButtonQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtonQuestionView.swift; sourceTree = "<group>"; };
 		E8CA4E0D23729D0400AD3B72 /* QuestionBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionBoxView.swift; sourceTree = "<group>"; };
 		E8CA4E0E23729D0400AD3B72 /* PollCreateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollCreateView.swift; sourceTree = "<group>"; };
+		E8CA4E182373CAB400AD3B72 /* InitializeUserView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitializeUserView.swift; sourceTree = "<group>"; };
 		E8D6E2CD2366AFAF00F75AA2 /* CMUPoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CMUPoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
 				E8486D0D236FA0B100B875AE /* TagsView.swift */,
 				E8486D0B236FA0B100B875AE /* TagView.swift */,
+				E8CA4E182373CAB400AD3B72 /* InitializeUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -629,6 +632,7 @@
 				F0BDB49D2371372E00F855F6 /* BarGraphView.swift in Sources */,
 				E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */,
 				F0C9C4E4237350A200C55D90 /* PollUploaderProfileView.swift in Sources */,
+				E8CA4E192373CAB400AD3B72 /* InitializeUserView.swift in Sources */,
 				E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */,
 				E8486D14236FA0B100B875AE /* PollsView.swift in Sources */,
 				A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */,
