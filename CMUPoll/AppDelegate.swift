@@ -11,11 +11,15 @@ import CoreData
 import Firebase
 import GoogleSignIn
 
+typealias AfterSignIn = () -> Void
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var signedGivenName: String?
   var signedFamilyName: String?
   var signedEmail: String?
+  
+  var uponExistingUser: AfterSignIn?
+  var uponNewUser: AfterSignIn?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -133,18 +137,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     if (!validateEmail(email)) {
       return
     }
+    
     User.withEmail(email: email, completion: { user in
       User.current = user
       
-      // Save new user info to CoreData
-      let context = self.persistentContainer.viewContext
-      let newLogin = Login(context: context)
-      newLogin.user_id = user?.id
-      do {
-          try context.save()
-      } catch {
-          let saveError = error as NSError
-          print(saveError)
+      if let user = user {
+        // Change ContentView's @State variable here
+          self.uponExistingUser!()
+        
+          // Save new user info to CoreData
+          let context = self.persistentContainer.viewContext
+          let newLogin = Login(context: context)
+          newLogin.user_id = user.id
+          do {
+            try context.save()
+          } catch {
+            let saveError = error as NSError
+            print(saveError)
+          }
+      } else {
+        // Change ContentView's @State variable here
+        self.uponNewUser!()
       }
     })
     
