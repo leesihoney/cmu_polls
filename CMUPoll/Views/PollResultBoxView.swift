@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PollResultBoxView: View {
   let profile = Image("user_pic")
+  let poll: Poll
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
       HStack(alignment: .center, spacing: 7) {
@@ -36,10 +37,10 @@ struct PollResultBoxView: View {
         .font(Font.system(size: 20, design: .default))
         .lineSpacing(10)
       HStack(alignment: .firstTextBaseline, spacing: 5) {
-        TagView()
-        TagView()
+        TagView(tagText: "IS")
+        TagView(tagText: "Academic")
       }
-      PollDetailDescriptionView()
+      PollDetailDescriptionView(description: self.poll.description)
         .padding(.bottom, 14)
       Text(verbatim: "You will get 2 point per questions that you answered")
         .font(Font.system(size: 12, design: .default))
@@ -59,6 +60,6 @@ struct PollResultBoxView: View {
 
 struct PollResultBoxView_Previews: PreviewProvider {
   static var previews: some View {
-    PollResultBoxView()
+    PollResultBoxView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false))
   }
 }

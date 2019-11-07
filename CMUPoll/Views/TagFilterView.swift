@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct TagFilterView: View {
+  let tagText: String
   var body: some View {
     Group {
-      Text("IS")
+      Text(self.tagText)
         .font(Font.system(size: 14, design: .default))
         .fontWeight(.bold)
         .foregroundColor(Color(red: 191 / 255.0, green: 191 / 255.0, blue: 191 / 255.0))
@@ -20,10 +21,10 @@ struct TagFilterView: View {
     }.background(Color(red: 235 / 255.0, green: 235 / 255.0, blue: 235 / 255.0))
       .cornerRadius(250.0)
   }
-  
 }
 struct TagFilterView_Previews: PreviewProvider {
   static var previews: some View {
-    TagFilterView()
+    TagFilterView(tagText: "IS")
+    
   }
 }

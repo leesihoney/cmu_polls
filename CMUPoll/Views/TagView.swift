@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct TagView: View {
+  let tagText: String
   var body: some View {
     Group {
-      Text("IS")
+      Text(self.tagText)
         .font(Font.system(size: 8, design: .default))
         .fontWeight(.bold)
         .foregroundColor(Color(red: 0.0, green: 0.47843137254, blue: 1.0))
@@ -24,6 +25,6 @@ struct TagView: View {
 
 struct TagView_Previews: PreviewProvider {
   static var previews: some View {
-    TagView()
+    TagView(tagText: "IS")
   }
 }
