@@ -148,18 +148,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       
       if let user = user {
         // Change ContentView's @State variable here
-          self.uponExistingUser!()
+        self.uponExistingUser!()
         
-          // Save new user info to CoreData
-          let context = self.persistentContainer.viewContext
+        // Save new user info to CoreData
+        let context = self.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+        request.returnsObjectsAsFaults = false
+        do {
+          let result = try context.fetch(request)
+          for data in result as! [Login] {
+              context.delete(data)
+          }
           let newLogin = Login(context: context)
           newLogin.user_id = user.id
-          do {
-            try context.save()
-          } catch {
-            let saveError = error as NSError
-            print(saveError)
-          }
+          try context.save()
+        } catch {
+          let saveError = error as NSError
+          print(saveError)
+        }
       } else {
         // Change ContentView's @State variable here
         self.uponNewUser!()

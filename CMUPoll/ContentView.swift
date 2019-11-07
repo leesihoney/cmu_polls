@@ -18,28 +18,8 @@ struct ContentView: View {
   @State var givenName: String?
   @State var familyName: String?
   
-  
-  init() {
-    let context = self.delegate.persistentContainer.viewContext
-    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
-    request.returnsObjectsAsFaults = false
-    do {
-      let result = try context.fetch(request)
-      for login in result as! [Login] {
-        if let id = login.user_id {
-          User.withId(id: id, completion: { user in
-            User.current = user
-          })
-          loggedIn = true
-        }
-      }
-    } catch {
-      print("CoreData Access failed")
-    }
-  }
-  
   var body: some View {
-    Group {
+    return Group {
       if loggedIn == nil {
         LoginView(
           uponExistingUser: {
@@ -59,6 +39,28 @@ struct ContentView: View {
       } else {
         InitializeUserView(first_name: self.givenName!, last_name: self.familyName!, email: self.email!)
       }
+    }.onAppear() {
+      self.restoreLogin()
+    }
+  }
+  
+  func restoreLogin() {
+    let context = self.delegate.persistentContainer.viewContext
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+    request.returnsObjectsAsFaults = false
+    do {
+      let result = try context.fetch(request)
+      for login in result as! [Login] {
+        if let id = login.user_id {
+          User.withId(id: id, completion: { user in
+            User.current = user
+          })
+          print("Restore log in")
+          self.loggedIn = true
+        }
+      }
+    } catch {
+      print("CoreData Access failed")
     }
   }
 }
