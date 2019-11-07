@@ -12,7 +12,7 @@ struct PollDetailView: View {
   let profile = Image("user_pic")
   let uploaderName = "Aiden Lee"
   let uploaderMajor = "Information Systems"
-  let uploaderGraduationYear = "2020"
+  let uploaderGraduationYear = 2020
   let uploadedDaysAgo = "29"
   let poll: Poll
   
