@@ -21,7 +21,6 @@ struct TagFilterView: View {
     }.background(Color(red: 235 / 255.0, green: 235 / 255.0, blue: 235 / 255.0))
       .cornerRadius(250.0)
   }
-  
 }
 struct TagFilterView_Previews: PreviewProvider {
   static var previews: some View {

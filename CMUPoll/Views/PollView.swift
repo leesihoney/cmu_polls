@@ -11,26 +11,20 @@ import SwiftUI
 struct PollView: View {
   let poll: Poll
   let profile = Image("user_pic")
+  let uploaderName = "Aiden Lee"
+  let uploaderMajor = "Information Systems"
+  let uploaderGraduationYear = "2020"
+  let uploadedDaysAgo = "29"
+  let tags = [
+    Tag(id: "1", name: "IS"),
+    Tag(id: "2", name: "School Work")
+    
+  ]
   
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
-      HStack(alignment: .center, spacing: 7) {
-        profile
-        VStack(alignment: .leading, spacing: 6) {
-          HStack(alignment: .firstTextBaseline, spacing: 7) {
-            Text("Aiden Lee")
-              .bold()
-              .font(Font.system(size: 12, design: .default))
-            Text("Information Systems • Class of 2020")
-              .font(Font.system(size: 10, design: .default))
-              .foregroundColor(Color.gray)
-          }
-          Text("updated 29 days ago")
-            .font(Font.system(size: 10, design: .default))
-            .foregroundColor(Color.gray)
-        }
-      }
-      Text(poll.title)
+      PollUploaderProfileView(uploaderName: uploaderName, uploaderMajor: uploaderMajor, uploaderGraduationYear: uploaderGraduationYear, uploadedDaysAgo: uploadedDaysAgo)
+      Text(self.poll.title)
         .fontWeight(.semibold)
         .multilineTextAlignment(.leading)
         .font(Font.system(size: 20, design: .default))
@@ -38,8 +32,9 @@ struct PollView: View {
         .lineLimit(2)
       HStack(alignment: .firstTextBaseline, spacing: 115) {
         HStack(alignment: .firstTextBaseline, spacing: 5) {
-          TagView(tagText: "IS")
-          TagView(tagText: "Academic")
+          ForEach(tags) { tag in
+            TagView(tagText: tag.name)
+          }
         }
         HStack(alignment: .firstTextBaseline, spacing: 13) {
           Text("300.2k votes")
@@ -64,6 +59,6 @@ struct PollView: View {
 
 struct PollView_Previews: PreviewProvider {
   static var previews: some View {
-    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professr?", description: "Nyo", link: "", is_private: false))
+    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false))
   }
 }
