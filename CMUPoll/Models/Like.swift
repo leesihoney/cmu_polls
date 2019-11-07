@@ -22,11 +22,15 @@ struct Like: Identifiable {
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(user_id: String, poll_id: String, completion: @escaping (Like) -> ()) {
+  static func create(poll_id: String, completion: @escaping (Like) -> ()) {
+    guard let user = User.current else {
+      print("No user is logged in!")
+      return
+    }
+    let data: [String:Any] = ["user_id": user.id, "poll_id": poll_id]
     let colRef = FirebaseDataHandler.colRef(collection: .like)
-    let data: [String:Any] = ["user_id": user_id, "poll_id": poll_id]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let like = Like(id: documentId, user_id: user_id, poll_id: poll_id)
+      let like = Like(id: documentId, user_id: user.id, poll_id: poll_id)
       completion(like)
     })
   }
@@ -40,6 +44,14 @@ struct Like: Identifiable {
         let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
         completion(likes[0])
       }
+    })
+  }
+  
+  static func allLikes(completion: @escaping ([Like]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .like)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allLikes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
+      completion(allLikes)
     })
   }
   

@@ -43,6 +43,14 @@ struct Option: Identifiable {
     })
   }
   
+  static func allOptions(completion: @escaping ([Option]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .option)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allOptions: [Option] = ModelParser.parse(collection: .option, data: data) as! [Option]
+      completion(allOptions)
+    })
+  }
+  
   func question(completion: @escaping (Question) -> ()) {
     let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: question_id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in

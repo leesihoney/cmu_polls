@@ -70,6 +70,14 @@ struct User: Identifiable {
     })
   }
   
+  static func allUsers(completion: @escaping ([User]) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .user)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let allUsers: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
+      completion(allUsers)
+    })
+  }
+  
   private func reward(type: RewardType) -> Int {
     switch type {
     case .upload:
