@@ -15,6 +15,9 @@ struct PollDetailView: View {
   let uploaderGraduationYear = 2020
   let uploadedDaysAgo = "29"
   let poll: Poll
+  @State var tags = [Tag]()
+  
+
   
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
@@ -25,8 +28,9 @@ struct PollDetailView: View {
         .font(Font.system(size: 20, design: .default))
         .lineSpacing(10)
       HStack(alignment: .firstTextBaseline, spacing: 5) {
-        TagView(tagText: "IS")
-        TagView(tagText: "Academic")
+        ForEach(self.tags) { tag in
+          TagView(tagText: tag.name)
+        }
       }
       PollDetailDescriptionView(description: poll.description)
       Text(verbatim: "You will get 2 point per questions that you answered")
@@ -41,6 +45,17 @@ struct PollDetailView: View {
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
     .padding(.vertical, 25)
     .padding(.horizontal, 15)
+    .onAppear {
+      self.getPollTags()
+    }
+  }
+  
+  func getPollTags() {
+    self.poll.tags(completion: { tags in
+      DispatchQueue.main.async {
+        self.tags = tags
+      }
+    })
   }
 }
 
