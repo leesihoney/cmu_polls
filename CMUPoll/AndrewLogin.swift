@@ -21,11 +21,11 @@ struct AndrewLogin: UIViewRepresentable {
   }
   
   func attemptLogin(uponExistingUser: @escaping () -> Void, uponNewUser: @escaping () -> Void) {
-    GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
-    GIDSignIn.sharedInstance()?.signIn()
-    
     let delegate = UIApplication.shared.delegate as! AppDelegate
     delegate.uponExistingUser = uponExistingUser
     delegate.uponNewUser = uponNewUser
+    
+    GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
+    GIDSignIn.sharedInstance()?.signIn()
   }
 }
