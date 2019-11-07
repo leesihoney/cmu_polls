@@ -20,17 +20,18 @@ struct AndrewLogin: UIViewRepresentable {
     // This functin is needed to conform to UIViewRepresentable protocol
   }
   
-  func attemptLogin(completion: @escaping () -> Void, fail: @escaping () -> Void) {
+  func attemptLogin(uponExistingUser: @escaping () -> Void, uponNewUser: @escaping () -> Void) {
     GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
     GIDSignIn.sharedInstance()?.signIn()
+    
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    delegate.uponExistingUser = uponExistingUser
+    delegate.uponNewUser = uponNewUser
+    
     DispatchQueue(label: "SignIn Check", qos: DispatchQoS.background).async(execute: { () -> Void in
       while true {
         if (GIDSignIn.sharedInstance()?.currentUser != nil) {
-          if (User.current != nil) {
-            completion()
-          } else {
-            fail()
-          }
+          
           break
         }
       }

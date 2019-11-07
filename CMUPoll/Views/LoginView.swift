@@ -45,6 +45,6 @@ struct LoginView: View {
   }
   
   func login() {
-    andrewLogin.attemptLogin(completion: uponExistingUser, fail: uponNewUser)
+    andrewLogin.attemptLogin(uponExistingUser: uponExistingUser, uponNewUser: uponNewUser)
   }
 }

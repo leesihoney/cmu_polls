@@ -55,7 +55,10 @@ class FirebaseDataHandler {
         print("Error getting documents: \(err)")
       } else {
         for document in querySnapshot!.documents {
-          data[document.documentID] = document.data()
+          // Include document ID as "id" in document data
+          var documentData: FirebaseData = document.data()
+          documentData["id"] = document.documentID
+          data[document.documentID] = documentData
         }
       }
       completion(data)
@@ -67,7 +70,10 @@ class FirebaseDataHandler {
     
     docRef.getDocument { (document, error) in
       if let document = document, document.exists {
-        data[document.documentID] = document.data()
+        // Include document ID as "id" in document data
+        var documentData: FirebaseData = document.data()!
+        documentData["id"] = document.documentID
+        data[document.documentID] = documentData
       } else {
         print("Document does not exist")
       }
@@ -83,7 +89,10 @@ class FirebaseDataHandler {
         print("Error getting documents: \(err)")
       } else {
         for document in querySnapshot!.documents {
-          data[document.documentID] = document.data()
+          // Include document ID as "id" in document data
+          var documentData: FirebaseData = document.data()
+          documentData["id"] = document.documentID
+          data[document.documentID] = documentData
         }
       }
       completion(data)
