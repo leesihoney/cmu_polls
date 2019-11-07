@@ -31,25 +31,29 @@ struct Like: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (Like) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .like).whereField("id", isEqualTo: id)
-    FirebaseDataHandler.get(query: query, completion: { data in
-      let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
-      completion(likes[0])
+  static func withId(id: String, completion: @escaping (Like?) -> ()) {
+    let docRef = FirebaseDataHandler.docRef(collection: .like, documentId: id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
+        completion(likes[0])
+      }
     })
   }
   
   func user(completion: @escaping (User) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .user).whereField("id", isEqualTo: user_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: user_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
       completion(users[0])
     })
   }
   
   func poll(completion: @escaping (Poll) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: poll_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: poll_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(polls[0])
     })

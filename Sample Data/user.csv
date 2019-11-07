@@ -1,7 +1,7 @@
-﻿id,first_name,last_name,major,points,graduation year
-0,Aiden,Lee,Information Systems,1230,2020
-1,Andrew,Lee,Information Systems,4124,2020
-2,Sungho,Cho,Information Systems,1231,2020
-3,Anna,Yuan,Information Systems,214,2020
-4,Heimann,Larry,NULL,4124,NULL
-5,Andy,Kim,Sociology ,2,2024
+﻿id,first_name,last_name,email,major,points,graduation year
+0,Aiden,Lee,yonghoo@andrew.cmu.edu,Information Systems,1230,2020
+1,Andrew,Lee,siheon@andrew.cmu.edu,Information Systems,4124,2020
+2,Sungho,Cho,sunghocho@andrew.cmu.edu,Information Systems,1231,2020
+3,Anna,Yuan,xinrany@andrew.cmu.edu,Information Systems,214,2020
+4,Heimann,Larry,profh@cmu.edu,NULL,4124,NULL
+5,Andy,Kim,andykim@andrew.cmu.edu,Sociology ,2,2024

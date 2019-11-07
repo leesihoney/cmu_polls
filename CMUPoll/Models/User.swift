@@ -16,15 +16,19 @@ struct User: Identifiable {
   var id: String
   var first_name: String
   var last_name: String
+  var email: String
   var major: String
   var graduation_year: Int? = 2020
   var points: Int = 0
   
+  static var current: User?
+  
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, first_name: String, last_name: String, major: String, graduation_year: Int?, points: Int?) {
+  init (id: String, first_name: String, last_name: String, email: String, major: String, graduation_year: Int?, points: Int?) {
     self.id = id
     self.first_name = first_name
     self.last_name = last_name
+    self.email = email
     self.major = major
     self.graduation_year = graduation_year
     if let points = points {
@@ -33,20 +37,36 @@ struct User: Identifiable {
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(first_name: String, last_name: String, major: String, graduation_year: Int?, completion: @escaping (User) -> ()) {
+  static func create(first_name: String, last_name: String, email: String, major: String, graduation_year: Int?, completion: @escaping (User) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .user)
-    let data: [String:Any] = ["first_name": first_name, "last_name": last_name, "major": major, "graduation_year": graduation_year ?? "NULL", "points": 0]
+    let data: [String:Any] = ["first_name": first_name, "last_name": last_name, "email": email, "major": major, "graduation_year": graduation_year ?? "NULL", "points": 0]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let user = User(id: documentId, first_name: first_name, last_name: last_name, major: major, graduation_year: graduation_year, points: nil)
+      let user = User(id: documentId, first_name: first_name, last_name: last_name, email: email, major: major, graduation_year: graduation_year, points: nil)
       completion(user)
     })
   }
   
-  static func withId(id: String, completion: @escaping (User) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .user).whereField("id", isEqualTo: id)
+  static func withId(id: String, completion: @escaping (User?) -> ()) {
+    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
+        completion(users[0])
+      }
+    })
+  }
+  
+  static func withEmail(email: String, completion: @escaping (User?) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .user).whereField("email", isEqualTo: email)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
-      completion(users[0])
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
+        completion(users[0])
+      }
     })
   }
   

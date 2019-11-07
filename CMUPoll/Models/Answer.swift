@@ -33,33 +33,37 @@ struct Answer: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (Answer) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .answer).whereField("id", isEqualTo: id)
-    FirebaseDataHandler.get(query: query, completion: { data in
-      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
-      completion(answers[0])
+  static func withId(id: String, completion: @escaping (Answer?) -> ()) {
+    let docRef = FirebaseDataHandler.docRef(collection: .answer, documentId: id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+        completion(answers[0])
+      }
     })
   }
   
   func question(completion: @escaping (Question) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .question).whereField("id", isEqualTo: question_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: question_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let questions: [Question] = ModelParser.parse(collection: .question, data: data) as! [Question]
       completion(questions[0])
     })
   }
   
   func option(completion: @escaping (Option) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .option).whereField("id", isEqualTo: option_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .option, documentId: option_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let options: [Option] = ModelParser.parse(collection: .option, data: data) as! [Option]
       completion(options[0])
     })
   }
   
   func user(completion: @escaping (User) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .user).whereField("id", isEqualTo: user_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: user_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
       completion(users[0])
     })

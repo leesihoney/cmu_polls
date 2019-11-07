@@ -12,7 +12,7 @@ import Firebase
 @testable import CMUPoll
 
 class PollTests: XCTestCase {
-  var aiden: User = User(id: "1", first_name: "Aiden", last_name: "Lee", major: "IS", graduation_year: 2020, points: nil)
+  var aiden: User = User(id: "1", first_name: "Aiden", last_name: "Lee", email: "yonghool@andrew.cmu.edu", major: "IS", graduation_year: 2020, points: nil)
   var colRef: CollectionReference?
   var polls: [Poll]?
   var Poll0, Poll1: Poll?

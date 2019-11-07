@@ -62,6 +62,19 @@ class FirebaseDataHandler {
     }
   }
   
+  static func get(docRef: DocumentReference, completion: @escaping (FirebaseData) -> ()) {
+    var data: FirebaseData = [:]
+    
+    docRef.getDocument { (document, error) in
+      if let document = document, document.exists {
+        data[document.documentID] = document.data()
+      } else {
+        print("Document does not exist")
+      }
+      completion(data)
+    }
+  }
+  
   static func get(query: Query, completion: @escaping (FirebaseData) -> ()) {
     var data: FirebaseData = [:]
     
