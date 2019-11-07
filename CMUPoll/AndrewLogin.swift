@@ -27,14 +27,5 @@ struct AndrewLogin: UIViewRepresentable {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     delegate.uponExistingUser = uponExistingUser
     delegate.uponNewUser = uponNewUser
-    
-    DispatchQueue(label: "SignIn Check", qos: DispatchQoS.background).async(execute: { () -> Void in
-      while true {
-        if (GIDSignIn.sharedInstance()?.currentUser != nil) {
-          
-          break
-        }
-      }
-    })
   }
 }
