@@ -29,16 +29,18 @@ struct QuestionBoxView: View {
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 10))
       
       VStack(alignment: .leading, spacing: 16) {
-      Stepper(value: $quantity, in: 1...10, label:
-      {
-        Text(verbatim: "Number of Questions: \(quantity)")
-          .font(Font.system(size: 15, design: .default))
-          .foregroundColor(Color.gray)}
-      )
+        Stepper(value: $quantity, in: 1...10, label:
+          {
+            Text(verbatim: "Number of Questions: \(quantity)")
+              .font(Font.system(size: 15, design: .default))
+              .foregroundColor(Color.gray)}
+        )
       }
-            
-//      QuestionBoxTextView(question: question)
-      RadioButtonQuestionView()
+      
+      //      QuestionBoxTextView(question: question)
+      ForEach (0 ..< quantity) { number in
+        RadioButtonQuestionView()
+      }
       
     }
     .padding(30)
@@ -52,9 +54,9 @@ struct QuestionBoxTextView: View {
   
   var body: some View {
     Text(self.question)
-    .font(Font.system(size: 20, design: .default))
-    .fontWeight(.semibold)
-    .foregroundColor(Color.gray)
+      .font(Font.system(size: 20, design: .default))
+      .fontWeight(.semibold)
+      .foregroundColor(Color.gray)
   }
 }
 
