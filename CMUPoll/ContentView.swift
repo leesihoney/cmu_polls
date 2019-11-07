@@ -12,19 +12,25 @@ import CoreData
 
 struct ContentView: View {
   @State var loggedIn: Bool?
+  @State var delegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+  @State var email: String?
+  @State var givenName: String?
+  @State var familyName: String?
+  
   
   init() {
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let context = appDelegate.persistentContainer.viewContext
+    let context = self.delegate.persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
     request.returnsObjectsAsFaults = false
     do {
       let result = try context.fetch(request)
       for login in result as! [Login] {
-        User.withId(id: login.user_id!, completion: { user in
-          User.current = user
-        })
-        self.loggedIn = true
+        if let id = login.user_id {
+          User.withId(id: id, completion: { user in
+            User.current = user
+          })
+          loggedIn = true
+        }
       }
     } catch {
       print("CoreData Access failed")
@@ -39,12 +45,14 @@ struct ContentView: View {
           self.loggedIn = true
         }, uponNewUser: {
           self.loggedIn = false
+          self.email = self.delegate.signedEmail!
+          self.givenName = self.delegate.signedGivenName!
+          self.familyName = self.delegate.signedFamilyName!
         })
       } else if loggedIn! {
         TabbarView()
       } else {
-        // View where users put their major and graduation year
-        
+        InitializeUserView(first_name: self.givenName!, last_name: self.familyName!, email: self.email!)
       }
     }
   }
@@ -55,3 +63,5 @@ struct ContentView_Previews: PreviewProvider {
     ContentView()
   }
 }
+
+

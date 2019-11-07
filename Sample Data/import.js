@@ -836,7 +836,7 @@ var user = [
     "id": 0,
     "first_name": "Aiden",
     "last_name": "Lee",
-    "email": "yonghool@andrew.cmu.edu",
+    "email": "yonghoo@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 1230,
     "graduation year": 2020
@@ -845,7 +845,7 @@ var user = [
     "id": 1,
     "first_name": "Andrew",
     "last_name": "Lee",
-    "email": "siheonl@andrew.cmu.edu",
+    "email": "siheon@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 4124,
     "graduation year": 2020
@@ -854,7 +854,7 @@ var user = [
     "id": 2,
     "first_name": "Sungho",
     "last_name": "Cho",
-    "email": "sunghoch@andrew.cmu.edu",
+    "email": "sunghocho@andrew.cmu.edu",
     "major": "Information Systems",
     "points": 1231,
     "graduation year": 2020
