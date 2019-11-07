@@ -16,6 +16,7 @@ struct PollDetailView: View {
   let uploadedDaysAgo = "29"
   let poll: Poll
   @State var tags = [Tag]()
+  @State var questions = [Question]()
   
 
   
@@ -38,8 +39,9 @@ struct PollDetailView: View {
         .fontWeight(.semibold)
         .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
       List {
-        AnswerBoxView()
-        AnswerBoxView()
+        ForEach(self.questions) { question in
+          AnswerBoxView()
+        }
       }
     }
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
@@ -47,6 +49,7 @@ struct PollDetailView: View {
     .padding(.horizontal, 15)
     .onAppear {
       self.getPollTags()
+      self.getPollQuestions()
     }
   }
   
@@ -54,6 +57,14 @@ struct PollDetailView: View {
     self.poll.tags(completion: { tags in
       DispatchQueue.main.async {
         self.tags = tags
+      }
+    })
+  }
+  
+  func getPollQuestions() {
+    self.poll.questions(completion: { questions in
+      DispatchQueue.main.async {
+        self.questions = questions
       }
     })
   }
