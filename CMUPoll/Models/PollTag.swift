@@ -31,11 +31,15 @@ struct PollTag: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (PollTag) -> ()) {
+  static func withId(id: String, completion: @escaping (PollTag?) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
-      completion(polltags[0])
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
+        completion(polltags[0])
+      }
     })
   }
   

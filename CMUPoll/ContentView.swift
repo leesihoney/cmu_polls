@@ -8,60 +8,47 @@
 
 import SwiftUI
 import GoogleSignIn
+import CoreData
 
 struct ContentView: View {
-  let googleLogo = UIImage(named: "btn_google_dark_focus_ios")
-  let robotoFont = UIFont(name: "Roboto-Medium", size: UIFont.labelFontSize)
+  @State var loggedIn: Bool?
   
-  private let andrewLogin = AndrewLogin()
-    
-  var body: some View {
-    VStack(alignment: .leading, spacing: 10) {
-      HStack(alignment: .center) {
-        Image("Logo").resizable()
-          .frame(width: 360, height: 100)
+  init() {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let context = appDelegate.persistentContainer.viewContext
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+    request.returnsObjectsAsFaults = false
+    do {
+      let result = try context.fetch(request)
+      for login in result as! [Login] {
+        User.withId(id: login.user_id!, completion: { user in
+          User.current = user
+        })
+        self.loggedIn = true
       }
-      
-      Button(
-        action: {
-          print("Hit Login")
-          self.login()
-      },
-        label: {
-          HStack {
-            Image(uiImage: googleLogo!)
-              .resizable()
-              .frame(width: 18, height: 18)
-            Text("SIGN IN WITH GOOGLE")}
-            .font(Font.custom("robotoFont", size: 14))
-      })
-        .padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-        .background(Color.white)
-        .cornerRadius(8.0)
-        .shadow(radius: 4.0)
-    }.padding()
+    } catch {
+      print("CoreData Access failed")
+    }
   }
   
-  func login() {
-    andrewLogin.attemptLogin()
+  var body: some View {
+    Group {
+      if loggedIn == nil {
+        LoginView(
+          uponExistingUser: {
+          self.loggedIn = true
+        }, uponNewUser: {
+          self.loggedIn = false
+        })
+      } else if loggedIn! {
+        TabbarView()
+      } else {
+        // View where users put their major and graduation year
+        
+      }
+    }
   }
 }
-
-struct AndrewLogin: UIViewRepresentable {
-  func makeUIView(context: UIViewRepresentableContext<AndrewLogin>) -> UIView {
-      return UIView()
-  }
-
-  func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AndrewLogin>) {
-  }
-
-  func attemptLogin() {
-    GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
-//    GIDSignIn.sharedInstance()?.restorePreviousSignIn() // Automatically sign in the user.
-    GIDSignIn.sharedInstance()?.signIn()
-  }
-}
-
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum Collection: String, CaseIterable {
     case user, poll, question, like, comment, polltag, tag, option, answer

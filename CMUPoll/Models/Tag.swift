@@ -33,11 +33,15 @@ class Tag: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (Tag) -> ()) {
+  static func withId(id: String, completion: @escaping (Tag?) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .tag).whereField("id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let tags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
-      completion(tags[0])
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let tags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+        completion(tags[0])
+      }
     })
   }
   

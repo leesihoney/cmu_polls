@@ -31,11 +31,15 @@ struct Like: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (Like) -> ()) {
+  static func withId(id: String, completion: @escaping (Like?) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .like).whereField("id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
-      completion(likes[0])
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
+        completion(likes[0])
+      }
     })
   }
   

@@ -13,6 +13,9 @@ import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+  var signedGivenName: String?
+  var signedFamilyName: String?
+  var signedEmail: String?
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -93,9 +96,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                    open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
     return GIDSignIn.sharedInstance().handle(url)
   }
+  
+  func validateEmail(_ email: String) -> Bool {
+    let emailRegex = "[A-Z0-9a-z._%+-]+@(andrew\\.)?cmu\\.edu"
+    return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluate(with: email)
+  }
 
-  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-            withError error: Error!) {
+  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
     if let error = error {
       if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
         print("The user has not signed in before or they have since signed out.")
@@ -105,18 +112,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       return
     }
     // Perform any operations on signed in user here.
-    let userId = user.userID                  // For client-side use only!
-    _ = user.authentication.idToken // Safe to send to the server
-    let fullName = user.profile.name
-    _ = user.profile.givenName
-    _ = user.profile.familyName
-    let email = user.profile.email
-    // ...
-
-    print("Successfully Logged in!")
-    print("User ID: \(String(describing: userId))")
-    print("Full Name: \(String(describing: fullName))")
-    print("Email: \(String(describing: email))")
+    signedGivenName = user.profile.givenName
+    signedFamilyName = user.profile.familyName
+    signedEmail = user.profile.email
+    
+    guard let givenName = signedGivenName else {
+      print("User's given name is not found!")
+      return
+    }
+    guard let familyName = signedFamilyName else {
+      print("User's family name is not found!")
+      return
+    }
+    guard let email = signedEmail else {
+      print("User's email is not found!")
+      return
+    }
+    
+    // Validate email
+    if (!validateEmail(email)) {
+      return
+    }
+    User.withEmail(email: email, completion: { user in
+      User.current = user
+    })
+    
   }
 
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,

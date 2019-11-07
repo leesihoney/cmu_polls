@@ -44,11 +44,15 @@ class Poll: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (Poll) -> ()) {
+  static func withId(id: String, completion: @escaping (Poll?) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
-      completion(polls[0])
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+        completion(polls[0])
+      }
     })
   }
   

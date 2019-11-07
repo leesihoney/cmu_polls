@@ -36,11 +36,15 @@ struct Comment: Identifiable {
     })
   }
   
-  static func withId(id: String, completion: @escaping (Comment) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .comment).whereField("id", isEqualTo: id)
+  static func withId(id: String, completion: @escaping (Comment?) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .user).whereField("id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-      let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
-      completion(comments[0])
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
+        completion(comments[0])
+      }
     })
   }
   
