@@ -35,11 +35,15 @@ class Poll: Identifiable {
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(user_id: String, title: String, description: String, link: String, is_private: Bool, completion: @escaping (Poll) -> ()) {
+  static func create(title: String, description: String, link: String, is_private: Bool, completion: @escaping (Poll) -> ()) {
+    guard let user = User.current else {
+      print("No user is logged in!")
+      return
+    }
+    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "link": link, "private": is_private]
     let colRef = FirebaseDataHandler.colRef(collection: .poll)
-    let data: [String:Any] = ["user_id": user_id, "title": title, "description": description, "link": link, "private": is_private]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let poll = Poll(id: documentId, user_id: user_id, title: title, description: description, link: link, is_private: is_private)
+      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, link: link, is_private: is_private)
       completion(poll)
     })
   }

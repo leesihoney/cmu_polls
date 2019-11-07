@@ -24,11 +24,15 @@ struct Answer: Identifiable {
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(user_id: String, question_id: String, option_id: String, completion: @escaping (Answer) -> ()) {
+  static func create(question_id: String, option_id: String, completion: @escaping (Answer) -> ()) {
+    guard let user = User.current else {
+      print("No user is logged in!")
+      return
+    }
     let colRef = FirebaseDataHandler.colRef(collection: .answer)
-    let data: [String:Any] = ["user_id": user_id, "question_id": question_id, "option_id": option_id]
+    let data: [String:Any] = ["user_id": user.id, "question_id": question_id, "option_id": option_id]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let answer = Answer(id: documentId, user_id: user_id, question_id: question_id, option_id: option_id)
+      let answer = Answer(id: documentId, user_id: user.id, question_id: question_id, option_id: option_id)
       completion(answer)
     })
   }
