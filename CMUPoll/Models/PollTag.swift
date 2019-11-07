@@ -32,8 +32,8 @@ struct PollTag: Identifiable {
   }
   
   static func withId(id: String, completion: @escaping (PollTag?) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("id", isEqualTo: id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .polltag, documentId: id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       if data.isEmpty {
         completion(nil)
       } else {
@@ -44,16 +44,16 @@ struct PollTag: Identifiable {
   }
   
   func poll(completion: @escaping (Poll) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: poll_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: poll_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let polls: [Poll] = ModelParser.parse(collection: .user, data: data) as! [Poll]
       completion(polls[0])
     })
   }
   
   func tag(completion: @escaping (Tag) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .tag).whereField("id", isEqualTo: tag_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .tag, documentId: tag_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let tags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
       completion(tags[0])
     })

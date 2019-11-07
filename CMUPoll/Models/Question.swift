@@ -34,8 +34,8 @@ struct Question: Identifiable {
   }
   
   static func withId(id: String, completion: @escaping (Question?) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .question).whereField("id", isEqualTo: id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       if data.isEmpty {
         completion(nil)
       } else {
@@ -62,8 +62,8 @@ struct Question: Identifiable {
   }
   
   func poll(completion: @escaping (Poll) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .poll).whereField("id", isEqualTo: poll_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: poll_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(polls[0])
     })

@@ -32,8 +32,8 @@ struct Option: Identifiable {
   }
   
   static func withId(id: String, completion: @escaping (Option?) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .option).whereField("id", isEqualTo: id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .option, documentId: id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       if data.isEmpty {
         completion(nil)
       } else {
@@ -44,8 +44,8 @@ struct Option: Identifiable {
   }
   
   func question(completion: @escaping (Question) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .question).whereField("id", isEqualTo: question_id)
-    FirebaseDataHandler.get(query: query, completion: { data in
+    let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: question_id)
+    FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let questions: [Question] = ModelParser.parse(collection: .question, data: data) as! [Question]
       completion(questions[0])
     })
