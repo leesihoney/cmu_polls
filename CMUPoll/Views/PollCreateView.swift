@@ -83,6 +83,15 @@ struct PollCreateView: View {
     .navigationBarItems(trailing:
       // TODO: should connect to a form view
       Button("Save") {
+        guard let me = User.current else {
+          print("it is not a valid user!")
+          return
+        }
+        Poll.create(user_id: me.id, title: self.title, description: self.description,
+                    link: "", is_private: false,
+                    completion: { poll in
+                      print("the poll has been created!")
+        })
         print("Save")
       }
     )

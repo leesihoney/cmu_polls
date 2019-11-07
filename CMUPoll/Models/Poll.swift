@@ -113,7 +113,7 @@ class Poll: Identifiable {
   }
   
   func user(completion: @escaping (User) -> ()) {
-    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: : user.id)
+    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
       completion(users[0])
