@@ -17,7 +17,7 @@ struct AndrewLogin: UIViewRepresentable {
   }
   
   func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<AndrewLogin>) {
-    
+    // This functin is needed to conform to UIViewRepresentable protocol
   }
   
   func attemptLogin(completion: @escaping () -> Void, fail: @escaping () -> Void) {
