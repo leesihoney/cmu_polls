@@ -38,10 +38,8 @@ struct PollDetailView: View {
         .font(Font.system(size: 12, design: .default))
         .fontWeight(.semibold)
         .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
-      List {
-        ForEach(self.questions) { question in
-          AnswerBoxView()
-        }
+      ForEach(self.questions) { question in
+        AnswerBoxView(question: question)
       }
     }
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
