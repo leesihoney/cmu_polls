@@ -30,12 +30,11 @@ struct AllPollsView: View {
             PollView(poll: poll)
           }
         }
-        
       }
       .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
       .navigationBarItems(trailing:
         // TODO: should connect to a form view
-        NavigationLink(destination: PollCreateView()) {
+        NavigationLink(destination: PollCreateView(refresh: self.getUserPolls)) {
           Text("Add")
         }
       )

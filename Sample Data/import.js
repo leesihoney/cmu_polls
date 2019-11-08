@@ -975,8 +975,8 @@ poll.forEach(function(obj) {
         title: obj.title,
         posted_at: obj.posted_at,
         link: obj.link,
-        private: obj.private,
-        closed: obj.closed,
+        private: obj.private == "TRUE" ? true : false,
+        closed: obj.closed == "TRUE" ? true : false,
         description: obj.description,
     }).then(function(docRef) {
         // console.log("Document written with ID: ", docRef.id);
@@ -990,7 +990,7 @@ question.forEach(function(obj) {
     db.collection("question").doc(obj.id.toString()).set({
         // id: obj.id.toString(),
         poll_id: obj.poll_id.toString(),
-        is_multiple_choice: obj.is_multiple_choice,
+        is_multiple_choice: obj.is_multiple_choice == "TRUE" ? true : false,
         title: obj.title,
     }).then(function(docRef) {
         // console.log("Document written with ID: ", docRef.id);
