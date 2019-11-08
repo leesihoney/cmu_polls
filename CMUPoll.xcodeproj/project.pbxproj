@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CB081FEABF791CD7DAD479C /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88B52E65F7CBFEA0253FE535 /* Pods_CMUPollTests.framework */; };
-		4C029C3CE48879D514CFD24C /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEBDF33D605F86DA2AAF8E94 /* Pods_CMUPoll.framework */; };
-		5DB696979E775142F4C00719 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52A7DE57D24B7D7014D398B0 /* Pods_CMUPoll_CMUPollUITests.framework */; };
+		4E1CEED136AB02C90041F061 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58066635386C677E0A3F6B1E /* Pods_CMUPoll_CMUPollUITests.framework */; };
+		79264667B912633363FF16B7 /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C33BB32B02646F9B45FFD4B /* Pods_CMUPollTests.framework */; };
 		A70E95B9236B011B00C38F2B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A70E95B8236B011A00C38F2B /* Podfile */; };
 		A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
 		A73F2A3F23726A2200F50FA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */; };
@@ -21,6 +20,7 @@
 		A7A9587A236E3E4E009F2DF1 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		A7CEA1582373CD6600455C50 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1572373CD6600455C50 /* LoginView.swift */; };
+		B8F7F3825DD5C7A8D0AE1FD6 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D946BEDD662C575E13D5B066 /* Pods_CMUPoll.framework */; };
 		E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D09236FA0B100B875AE /* SearchBarView.swift */; };
 		E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0A236FA0B100B875AE /* AllPollsView.swift */; };
 		E8486D13236FA0B100B875AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
@@ -104,12 +104,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		21674587B9CEE7823531CC0E /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3742BE7A318FA7BCDEE8904C /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
-		52A7DE57D24B7D7014D398B0 /* Pods_CMUPoll_CMUPollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll_CMUPollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59627362C43F9E58D58E6468 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		72C2C5DE159AE7E3B25ECF26 /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
-		88B52E65F7CBFEA0253FE535 /* Pods_CMUPollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C33BB32B02646F9B45FFD4B /* Pods_CMUPollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CA6352E20CA4BB0C617A93A /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
+		58066635386C677E0A3F6B1E /* Pods_CMUPoll_CMUPollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll_CMUPollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E2267682CA9778829239BAC /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
 		A70E95B8236B011A00C38F2B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataHandler.swift; sourceTree = "<group>"; };
 		A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -117,8 +115,11 @@
 		A7A95879236E3E4E009F2DF1 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		A7CEA1552373CD3800455C50 /* AndrewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndrewLogin.swift; sourceTree = "<group>"; };
 		A7CEA1572373CD6600455C50 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		AEBDF33D605F86DA2AAF8E94 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BFFBA44D0F274808103E34DD /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
+		A9143C0D4088D5F0753B7D22 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CEFA4713A45F08D250C1F42B /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D946BEDD662C575E13D5B066 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEE09D13A2610536E590711E /* Pods-CMUPoll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.release.xcconfig"; sourceTree = "<group>"; };
+		E245155F9E8BFF8045723D7F /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E8486D09236FA0B100B875AE /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E8486D0A236FA0B100B875AE /* AllPollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPollsView.swift; sourceTree = "<group>"; };
 		E8486D0B236FA0B100B875AE /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
@@ -170,7 +171,6 @@
 		F0BDB49C2371372E00F855F6 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderProfileView.swift; sourceTree = "<group>"; };
 		F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollUploaderProfileView.swift; sourceTree = "<group>"; };
-		F743DEEB50CECC14FA86AA66 /* Pods-CMUPoll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C029C3CE48879D514CFD24C /* Pods_CMUPoll.framework in Frameworks */,
+				B8F7F3825DD5C7A8D0AE1FD6 /* Pods_CMUPoll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,7 +186,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CB081FEABF791CD7DAD479C /* Pods_CMUPollTests.framework in Frameworks */,
+				79264667B912633363FF16B7 /* Pods_CMUPollTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,34 +194,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5DB696979E775142F4C00719 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */,
+				4E1CEED136AB02C90041F061 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1277B994BFC5573CD6FC2762 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D946BEDD662C575E13D5B066 /* Pods_CMUPoll.framework */,
+				58066635386C677E0A3F6B1E /* Pods_CMUPoll_CMUPollUITests.framework */,
+				2C33BB32B02646F9B45FFD4B /* Pods_CMUPollTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4210E7FB3A4DD4676D9FC967 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				72C2C5DE159AE7E3B25ECF26 /* Pods-CMUPoll.debug.xcconfig */,
-				F743DEEB50CECC14FA86AA66 /* Pods-CMUPoll.release.xcconfig */,
-				59627362C43F9E58D58E6468 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */,
-				3742BE7A318FA7BCDEE8904C /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */,
-				21674587B9CEE7823531CC0E /* Pods-CMUPollTests.debug.xcconfig */,
-				BFFBA44D0F274808103E34DD /* Pods-CMUPollTests.release.xcconfig */,
+				7E2267682CA9778829239BAC /* Pods-CMUPoll.debug.xcconfig */,
+				DEE09D13A2610536E590711E /* Pods-CMUPoll.release.xcconfig */,
+				CEFA4713A45F08D250C1F42B /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */,
+				A9143C0D4088D5F0753B7D22 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */,
+				E245155F9E8BFF8045723D7F /* Pods-CMUPollTests.debug.xcconfig */,
+				3CA6352E20CA4BB0C617A93A /* Pods-CMUPollTests.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		98085BAB78E1DA01DFB772AE /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AEBDF33D605F86DA2AAF8E94 /* Pods_CMUPoll.framework */,
-				52A7DE57D24B7D7014D398B0 /* Pods_CMUPoll_CMUPollUITests.framework */,
-				88B52E65F7CBFEA0253FE535 /* Pods_CMUPollTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E8486D07236FA09200B875AE /* Views */ = {
@@ -262,7 +262,7 @@
 				E8D6E2F42366AFB100F75AA2 /* CMUPollUITests */,
 				E8D6E2CE2366AFAF00F75AA2 /* Products */,
 				4210E7FB3A4DD4676D9FC967 /* Pods */,
-				98085BAB78E1DA01DFB772AE /* Frameworks */,
+				1277B994BFC5573CD6FC2762 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -353,12 +353,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D6E2FA2366AFB100F75AA2 /* Build configuration list for PBXNativeTarget "CMUPoll" */;
 			buildPhases = (
-				509F28F76DBC412516DCB9D0 /* [CP] Check Pods Manifest.lock */,
+				8763E22097FFE265B791E24D /* [CP] Check Pods Manifest.lock */,
 				E8D6E2C92366AFAF00F75AA2 /* Sources */,
 				E8D6E2CA2366AFAF00F75AA2 /* Frameworks */,
 				E8D6E2CB2366AFAF00F75AA2 /* Resources */,
-				EB5A03F469ADDCACC4AE1CE5 /* [CP] Embed Pods Frameworks */,
-				3829A0F8D409B27FD8611DBD /* [CP] Copy Pods Resources */,
+				64A4D1ABCD3B91F3A35829E5 /* [CP] Embed Pods Frameworks */,
+				B88A7E366A24993F1374011A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -373,7 +373,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D6E2FD2366AFB100F75AA2 /* Build configuration list for PBXNativeTarget "CMUPollTests" */;
 			buildPhases = (
-				6999219153A19F65A89F121B /* [CP] Check Pods Manifest.lock */,
+				DBDA5F5865AB8C01AB837A8D /* [CP] Check Pods Manifest.lock */,
 				E8D6E2E22366AFB100F75AA2 /* Sources */,
 				E8D6E2E32366AFB100F75AA2 /* Frameworks */,
 				E8D6E2E42366AFB100F75AA2 /* Resources */,
@@ -392,12 +392,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D6E3002366AFB100F75AA2 /* Build configuration list for PBXNativeTarget "CMUPollUITests" */;
 			buildPhases = (
-				020075DB0C17D40300BA92DF /* [CP] Check Pods Manifest.lock */,
+				8AA8A5FB626CA9EDF6A59EE8 /* [CP] Check Pods Manifest.lock */,
 				E8D6E2ED2366AFB100F75AA2 /* Sources */,
 				E8D6E2EE2366AFB100F75AA2 /* Frameworks */,
 				E8D6E2EF2366AFB100F75AA2 /* Resources */,
-				FD8AACB8434997796DD2C1F2 /* [CP] Embed Pods Frameworks */,
-				1F0F5B07DBBE2BF1F698835D /* [CP] Copy Pods Resources */,
+				17550C07A53AF8040B25378A /* [CP] Embed Pods Frameworks */,
+				A06297ACFD6095836D03470D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -482,7 +482,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		020075DB0C17D40300BA92DF /* [CP] Check Pods Manifest.lock */ = {
+		17550C07A53AF8040B25378A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -490,55 +490,87 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RadioGroup/RadioGroup.framework",
+				"${BUILT_PRODUCTS_DIR}/SweeterSwift/SweeterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CMUPoll-CMUPollUITests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioGroup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SweeterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		1F0F5B07DBBE2BF1F698835D /* [CP] Copy Pods Resources */ = {
+		64A4D1ABCD3B91F3A35829E5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/RadioGroup/RadioGroup.framework",
+				"${BUILT_PRODUCTS_DIR}/SweeterSwift/SweeterSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioGroup.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SweeterSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3829A0F8D409B27FD8611DBD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		509F28F76DBC412516DCB9D0 /* [CP] Check Pods Manifest.lock */ = {
+		8763E22097FFE265B791E24D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,7 +592,73 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6999219153A19F65A89F121B /* [CP] Check Pods Manifest.lock */ = {
+		8AA8A5FB626CA9EDF6A59EE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CMUPoll-CMUPollUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A06297ACFD6095836D03470D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B88A7E366A24993F1374011A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBDA5F5865AB8C01AB837A8D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -580,40 +678,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EB5A03F469ADDCACC4AE1CE5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FD8AACB8434997796DD2C1F2 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -854,7 +918,7 @@
 		};
 		E8D6E2FB2366AFB100F75AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72C2C5DE159AE7E3B25ECF26 /* Pods-CMUPoll.debug.xcconfig */;
+			baseConfigurationReference = 7E2267682CA9778829239BAC /* Pods-CMUPoll.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -954,7 +1018,7 @@
 		};
 		E8D6E2FC2366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F743DEEB50CECC14FA86AA66 /* Pods-CMUPoll.release.xcconfig */;
+			baseConfigurationReference = DEE09D13A2610536E590711E /* Pods-CMUPoll.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1054,7 +1118,7 @@
 		};
 		E8D6E2FE2366AFB100F75AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 21674587B9CEE7823531CC0E /* Pods-CMUPollTests.debug.xcconfig */;
+			baseConfigurationReference = E245155F9E8BFF8045723D7F /* Pods-CMUPollTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1076,7 +1140,7 @@
 		};
 		E8D6E2FF2366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BFFBA44D0F274808103E34DD /* Pods-CMUPollTests.release.xcconfig */;
+			baseConfigurationReference = 3CA6352E20CA4BB0C617A93A /* Pods-CMUPollTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1098,7 +1162,7 @@
 		};
 		E8D6E3012366AFB100F75AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59627362C43F9E58D58E6468 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */;
+			baseConfigurationReference = CEFA4713A45F08D250C1F42B /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -1120,7 +1184,7 @@
 		};
 		E8D6E3022366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3742BE7A318FA7BCDEE8904C /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */;
+			baseConfigurationReference = A9143C0D4088D5F0753B7D22 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
