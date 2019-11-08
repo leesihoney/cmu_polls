@@ -929,142 +929,142 @@ function deleteQueryBatch(db, query, batchSize, resolve, reject) {
     .catch(reject);
 }
 
-deleteCollection(db, "poll", 100);
-deleteCollection(db, "like", 100);
-deleteCollection(db, "user", 100);
-deleteCollection(db, "comment", 100);
-deleteCollection(db, "polltag", 100);
-deleteCollection(db, "tag", 100);
-deleteCollection(db, "question", 100);
-deleteCollection(db, "answer", 100);
-deleteCollection(db, "option", 100);
+// deleteCollection(db, "poll", 100);
+// deleteCollection(db, "like", 100);
+// deleteCollection(db, "user", 100);
+// deleteCollection(db, "comment", 100);
+// deleteCollection(db, "polltag", 100);
+// deleteCollection(db, "tag", 100);
+// deleteCollection(db, "question", 100);
+// deleteCollection(db, "answer", 100);
+// deleteCollection(db, "option", 100);
 
-// comment.forEach(function(obj) {
-//     db.collection("comment").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         user_id: obj.user_id.toString(),
-//         comment_id: obj.comment_id.toString(),
-//         poll_id: obj.poll_id.toString(),
-//         content: obj.content,
-//         posted_at: obj.posted_at,
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// like.forEach(function(obj) {
-//     db.collection("like").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         user_id: obj.user_id.toString(),
-//         poll_id: obj.poll_id.toString(),
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// poll.forEach(function(obj) {
-//     db.collection("poll").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         user_id: obj.user_id.toString(),
-//         title: obj.title,
-//         posted_at: obj.posted_at,
-//         link: obj.link,
-//         private: obj.private,
-//         closed: obj.closed,
-//         description: obj.description,
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// question.forEach(function(obj) {
-//     db.collection("question").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         poll_id: obj.poll_id.toString(),
-//         is_multiple_choice: obj.is_multiple_choice,
-//         title: obj.title,
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// option.forEach(function(obj) {
-//     db.collection("option").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         question_id: obj.question_id.toString(),
-//         text: obj.text,
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// answer.forEach(function(obj) {
-//     db.collection("answer").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         user_id: obj.user_id.toString(),
-//         question_id: obj.question_id.toString(),
-//         option_id: obj.option_id.toString(),
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// polltag.forEach(function(obj) {
-//     db.collection("polltag").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         poll_id: obj.poll_id.toString(),
-//         tag_id: obj.tag_id.toString(),
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// tag.forEach(function(obj) {
-//     db.collection("tag").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         name: obj.name,
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
-//
-// user.forEach(function(obj) {
-//     db.collection("user").doc(obj.id.toString()).set({
-//         // id: obj.id.toString(),
-//         first_name: obj.first_name,
-//         last_name: obj.last_name,
-//         email: obj.email,
-//         major: obj.major,
-//         points: obj.points,
-//         graduation_year: obj["graduation year"],
-//     }).then(function(docRef) {
-//         // console.log("Document written with ID: ", docRef.id);
-//     })
-//     .catch(function(error) {
-//         console.error("Error adding document: ", error);
-//     });
-// });
+comment.forEach(function(obj) {
+    db.collection("comment").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        comment_id: obj.comment_id.toString(),
+        poll_id: obj.poll_id.toString(),
+        content: obj.content,
+        posted_at: obj.posted_at,
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+like.forEach(function(obj) {
+    db.collection("like").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        poll_id: obj.poll_id.toString(),
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+poll.forEach(function(obj) {
+    db.collection("poll").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        title: obj.title,
+        posted_at: obj.posted_at,
+        link: obj.link,
+        private: obj.private,
+        closed: obj.closed,
+        description: obj.description,
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+question.forEach(function(obj) {
+    db.collection("question").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        poll_id: obj.poll_id.toString(),
+        is_multiple_choice: obj.is_multiple_choice,
+        title: obj.title,
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+option.forEach(function(obj) {
+    db.collection("option").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        question_id: obj.question_id.toString(),
+        text: obj.text,
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+answer.forEach(function(obj) {
+    db.collection("answer").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        user_id: obj.user_id.toString(),
+        question_id: obj.question_id.toString(),
+        option_id: obj.option_id.toString(),
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+polltag.forEach(function(obj) {
+    db.collection("polltag").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        poll_id: obj.poll_id.toString(),
+        tag_id: obj.tag_id.toString(),
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+tag.forEach(function(obj) {
+    db.collection("tag").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        name: obj.name,
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
+
+user.forEach(function(obj) {
+    db.collection("user").doc(obj.id.toString()).set({
+        // id: obj.id.toString(),
+        first_name: obj.first_name,
+        last_name: obj.last_name,
+        email: obj.email,
+        major: obj.major,
+        points: obj.points,
+        graduation_year: obj["graduation year"],
+    }).then(function(docRef) {
+        // console.log("Document written with ID: ", docRef.id);
+    })
+    .catch(function(error) {
+        console.error("Error adding document: ", error);
+    });
+});
