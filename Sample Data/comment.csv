@@ -1,0 +1,11 @@
+﻿id,user_id,comment_id,poll_id,content,posted_at
+0,0,NULL,0,"""I agree with you! I love underground!""","""2019-10-12"""
+1,0,0,0,"""Well, I like iNoodle the most""","""2019-10-13"""
+2,0,0,0,"""Actually, you guys should try Chipotle!""","""2019-10-13"""
+3,2,NULL,1,"""I think that Prof.H is the best professor. He is cool and awesome!","""2019-10-14"""
+4,0,3,1,"""I think so too""","""2019-10-15"""
+5,1,NULL,1,I think that Prof.Z is also amazing. She is nice to everyone!,"""2019-10-15"""
+6,4,3,1,"""You guys will get As! Haha Qapla! ""","""2019-10-16"""
+7,0,NULL,4,"""I just wanna graduate guys""","""2019-10-15"""
+8,1,7,4,"""Same here""","""2019-10-17"""
+9,3,7,4,"""Me too..""","""2019-10-17"""

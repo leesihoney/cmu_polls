@@ -1,0 +1,6 @@
+CMUPoll/GoogleService-Info.plist
+*.DS_Store
+CMUPoll.xcworkspace/xcuserdata/
+CMUPoll.xcodeproj/xcuserdata/
+Pods/*
+*.lock

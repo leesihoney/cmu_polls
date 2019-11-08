@@ -1,0 +1,12 @@
+﻿id,poll_id,is_multiple_choice,title
+0,0,"""TRUE""","""Where is the best place to eat in CMU?"""
+1,0,"""TRUE""","""Where is the best place to eat near CMU?"""
+2,1,"""TRUE""","""Who is your favorite Information Systems professor?"""
+3,2,"""TRUE""","""Where do you find the most productive while studying for exams?"""
+4,3,"""TRUE""","""What is your favorite Information Systems course?"""
+5,4,"""TRUE""","""Do you want to go to Graduate school?"""
+6,5,"""FALSE""","""Do you find TOC useful?"""
+7,6,"""TRUE""","""How many hours do you normally sleep?"""
+8,7,"""TRUE""","""Have you ever felt discrimated in CMU?"""
+9,8,"""TRUE""","""What is your favorite thing about CMU?"""
+10,9,"""TRUE""","""Any advice for incoming freshman?"""

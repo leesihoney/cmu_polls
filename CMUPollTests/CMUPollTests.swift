@@ -2,8 +2,8 @@
 //  CMUPollTests.swift
 //  CMUPollTests
 //
-//  Created by Sung on 10/23/19.
-//  Copyright © 2019 67442. All rights reserved.
+//  Created by Aiden Lee on 10/28/19.
+//  Copyright © 2019 Aiden Lee. All rights reserved.
 //
 
 import XCTest
