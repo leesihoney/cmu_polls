@@ -10,12 +10,12 @@ import SwiftUI
 import RadioGroup
 
 struct RadioButtonView: View {
-  var options = ["Prof. H", "Prof. Z", "Prof. K"]
+  var options: [Option]
   @State private var selectedAnswer = 0
   var body: some View {
     RadioGroupPicker(
       selectedIndex: $selectedAnswer,
-      titles: options,
+      titles: options.map{ $0.text },
       selectedColor: UIColor(red: 57 / 255.0, green: 57 / 255.0, blue: 57 / 255.0, alpha: 0.6),
       isVertical: true,
       buttonSize: 18.0,
@@ -33,6 +33,10 @@ struct RadioButtonView: View {
 
 struct RadioButtonView_Previews: PreviewProvider {
   static var previews: some View {
-    RadioButtonView()
+    RadioButtonView(options: [
+      Option(id: "1", text: "Hunt Library", question_id: "1"),
+      Option(id: "2", text: "Sorrells Library", question_id: "1"),
+      Option(id: "3", text: "Au Bon Pain", question_id: "1"),
+    ])
   }
 }

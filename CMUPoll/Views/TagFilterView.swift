@@ -22,6 +22,7 @@ struct TagFilterView: View {
       .cornerRadius(250.0)
   }
 }
+
 struct TagFilterView_Previews: PreviewProvider {
   static var previews: some View {
     TagFilterView(tagText: "IS")

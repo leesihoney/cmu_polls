@@ -20,7 +20,10 @@ struct AllPollsView: View {
     NavigationView {
       List {
         SearchBarView(text: $searchTerm)
+          .padding(.vertical, CGFloat(8))
         TagsView(tags: tags)
+          .padding(.vertical, CGFloat(10))
+
         
         ForEach(self.polls) { poll in
           NavigationLink(destination: PollDetailView(poll: poll)) {
