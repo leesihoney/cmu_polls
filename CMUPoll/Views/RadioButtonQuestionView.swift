@@ -10,13 +10,17 @@ import SwiftUI
 import RadioGroup
 
 struct RadioButtonQuestionView: View {
-  @State var choice1 = ""
+  @State var choice = ""
   
   @State private var selectedAnswer = -1
+  
+  @State var onOption: (String) -> Void
   var body: some View {
     
     VStack(alignment: .center, spacing: 7) {
-      TextField("Choice", text: $choice1)
+      TextField("Choice", text: $choice, onEditingChanged: { changed in
+        self.onOption(self.choice)
+      })
         .frame(width: nil, height: 20)
         .font(Font.system(size: 15, design: .default))
         .textFieldStyle(PlainTextFieldStyle())
@@ -30,8 +34,8 @@ struct RadioButtonQuestionView: View {
   }
   
 }
-struct RadioButtonQuestionView_Previews: PreviewProvider {
-  static var previews: some View {
-    RadioButtonQuestionView()
-  }
-}
+//struct RadioButtonQuestionView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    RadioButtonQuestionView()
+//  }
+//}

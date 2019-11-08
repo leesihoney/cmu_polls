@@ -27,9 +27,9 @@ class ModelParser {
         let user_id: String = "\(String(describing: obj["user_id"]!))"
         let title: String = obj["title"] as! String
         let description: String = obj["description"] as! String
-        let link: String = obj["link"] as! String
-        let is_private: Bool = (obj["private"] as! String) == "TRUE" ? true : false
-        let is_closed: Bool = (obj["closed"] as! String) == "TRUE" ? true : false
+        let link: String = (obj["link"] ?? "") as! String
+        let is_private: Bool = obj["private"] as! Bool
+        let is_closed: Bool = obj["closed"] as! Bool
         let poll = Poll(id: id, user_id: user_id, title: title, description: description, link: link, is_private: is_private, is_closed: is_closed)
         result.append(poll)
         break
@@ -81,7 +81,7 @@ class ModelParser {
         
       case .question:
         let id: String = "\(String(describing: obj["id"]!))"
-        let is_multiple_choice: Bool = (obj["is_multiple_choice"] as! String) == "TRUE" ? true : false
+        let is_multiple_choice: Bool = obj["is_multiple_choice"] as! Bool
         let title: String = obj["title"] as! String
         let poll_id: String = "\(String(describing: obj["poll_id"]!))"
         let question = Question(id: id, is_multiple_choice: is_multiple_choice, title: title, poll_id: poll_id)

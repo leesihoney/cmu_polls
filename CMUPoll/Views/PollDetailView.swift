@@ -23,7 +23,7 @@ struct PollDetailView: View {
   
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 13) {
+    List {
       if (pollUser != nil) {
         PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
       }

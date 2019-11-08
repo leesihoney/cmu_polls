@@ -14,11 +14,16 @@ struct QuestionBoxView: View {
   @State var title = ""
   @State var quantity: Int = 3
   
+  @State var onQuestion: (String) -> Void
+  @State var onOption: (Int, String) -> Void
+  @State var addOption: () -> Void
+  @State var removeOption: () -> Void
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      TextField("Question #"
-        , text: $title)
+      TextField("Question", text: $title, onEditingChanged: { changed in
+        self.onQuestion(self.title)
+      })
         .font(Font.system(size: 20, design: .default))
         .foregroundColor(Color.gray)
         .textFieldStyle(PlainTextFieldStyle())
@@ -29,17 +34,28 @@ struct QuestionBoxView: View {
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 10))
       
       VStack(alignment: .leading, spacing: 16) {
-        Stepper(value: $quantity, in: 1...10, label:
+        Stepper(onIncrement: {
+          if (self.quantity < 10) {
+            self.quantity += 1
+            self.addOption()
+          }
+        }, onDecrement: {
+          if (self.quantity > 1) {
+            self.quantity -= 1
+            self.removeOption()
+          }
+        }, label:
           {
-            Text(verbatim: "Number of Questions: \(quantity)")
+            Text(verbatim: "Number of Choices: \(quantity)")
               .font(Font.system(size: 15, design: .default))
               .foregroundColor(Color.gray)}
         )
       }
       
-      //      QuestionBoxTextView(question: question)
-      ForEach (0 ..< quantity) { number in
-        RadioButtonQuestionView()
+      ForEach (0 ..< quantity, id: \.self) { number in
+        RadioButtonQuestionView(onOption: { optionString in
+          self.onOption(number, optionString)
+        })
       }
       
     }
@@ -60,8 +76,8 @@ struct QuestionBoxTextView: View {
   }
 }
 
-struct QuestionBoxView_Previews: PreviewProvider {
-  static var previews: some View {
-    QuestionBoxView()
-  }
-}
+//struct QuestionBoxView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    QuestionBoxView()
+//  }
+//}
