@@ -12,17 +12,21 @@ struct PollDetailView: View {
   let profile = Image("user_pic")
   let uploaderName = "Aiden Lee"
   let uploaderMajor = "Information Systems"
-  let uploaderGraduationYear = 2020
+  let uploaderGraduationYear: String = "2020"
   let uploadedDaysAgo = "29"
   let poll: Poll
   @State var tags = [Tag]()
   @State var questions = [Question]()
+  @State var pollUser: User?
+  @State var questionAnswered = [String: Bool]()
+  @State var accumulatedQuestionAnswered = [String: Bool]()
   
-
   
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
-      PollUploaderProfileView(uploaderName: uploaderName, uploaderMajor: uploaderMajor, uploaderGraduationYear: uploaderGraduationYear, uploadedDaysAgo: uploadedDaysAgo)
+      if (pollUser != nil) {
+        PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+      }
       Text(poll.title)
         .fontWeight(.semibold)
         .multilineTextAlignment(.leading)
@@ -38,8 +42,18 @@ struct PollDetailView: View {
         .font(Font.system(size: 12, design: .default))
         .fontWeight(.semibold)
         .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
-      ForEach(self.questions) { question in
-        AnswerBoxView(question: question)
+      if !self.questionAnswered.isEmpty {
+        ForEach(self.questions) { question in
+          if self.questionAnswered[question.id] == true {
+            AnswerGraphView(question: question, onEditedAnswer: {
+              self.questionAnswered[question.id] = false
+            })
+          } else {
+            AnswerBoxView(question: question, onNewAnswer: {
+              self.questionAnswered[question.id] = true
+            })
+          }
+        }
       }
     }
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
@@ -48,6 +62,7 @@ struct PollDetailView: View {
     .onAppear {
       self.getPollTags()
       self.getPollQuestions()
+      self.getPollUser()
     }
   }
   
@@ -63,13 +78,40 @@ struct PollDetailView: View {
     self.poll.questions(completion: { questions in
       DispatchQueue.main.async {
         self.questions = questions
+        self.getQuestionAnswered()
       }
     })
+  }
+  
+  func getPollUser() {
+    self.poll.user(completion: { user in
+      DispatchQueue.main.async {
+        self.pollUser = user
+      }
+    })
+  }
+  
+  func accumulateQuestionAnswered(question_id: String, hasAnswer: Bool) {
+    accumulatedQuestionAnswered[question_id] = hasAnswer
+    if (accumulatedQuestionAnswered.count >= self.questions.count) {
+      self.questionAnswered = self.accumulatedQuestionAnswered
+    }
+  }
+  
+  func getQuestionAnswered() {
+    self.accumulatedQuestionAnswered = [:]
+    for question in self.questions {
+      question.userHasAnswer(completion: { hasAnswer in
+        DispatchQueue.main.async {
+          self.accumulateQuestionAnswered(question_id: question.id, hasAnswer: hasAnswer)
+        }
+      })
+    }
   }
 }
 
 struct PollDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false))
+    PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false, is_closed: false))
   }
 }

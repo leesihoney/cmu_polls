@@ -77,7 +77,21 @@ struct Question: Identifiable {
     })
   }
   
-  mutating func update(is_multiple_choice: Bool?, title: String?, poll_id: String?) {
+  func userHasAnswer(completion: @escaping (Bool) -> ()) {
+    guard let user = User.current else {
+      print("No user is logged in!")
+      return
+    }
+    let query = FirebaseDataHandler.colRef(collection: .answer)
+      .whereField("user_id", isEqualTo: user.id)
+      .whereField("question_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      completion(answers.count > 0)
+    })
+  }
+  
+  mutating func update(is_multiple_choice: Bool?, title: String?, poll_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: id)
     var data: [String:Any] = [:]
     if let is_multiple_choice = is_multiple_choice {
@@ -92,11 +106,11 @@ struct Question: Identifiable {
       data["poll_id"] = poll_id
       self.poll_id = poll_id
     }
-    FirebaseDataHandler.update(docRef: docRef, data: data)
+    FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
   
-  func delete() {
+  func delete(completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: id)
-    FirebaseDataHandler.delete(docRef: docRef)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
   }
 }

@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     // Initialize sign-in
     GIDSignIn.sharedInstance().clientID = "685453916541-sp6f7qgr1tpe2opchrapi4u88g2c52dk.apps.googleusercontent.com"
     GIDSignIn.sharedInstance().delegate = self
+    
     return true
   }
   
@@ -157,7 +158,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         do {
           let result = try context.fetch(request)
           for data in result as! [Login] {
-              context.delete(data)
+            context.delete(data)
           }
           let newLogin = Login(context: context)
           newLogin.user_id = user.id

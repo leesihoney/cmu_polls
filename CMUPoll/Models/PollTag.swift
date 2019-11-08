@@ -67,8 +67,8 @@ struct PollTag: Identifiable {
     })
   }
   
-  func delete() {
+  func delete(completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .like, documentId: id)
-    FirebaseDataHandler.delete(docRef: docRef)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
   }
 }

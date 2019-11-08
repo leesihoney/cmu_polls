@@ -53,10 +53,11 @@ struct ContentView: View {
       for login in result as! [Login] {
         if let id = login.user_id {
           User.withId(id: id, completion: { user in
-            User.current = user
+            if user != nil {
+              User.current = user
+              self.loggedIn = true // Restore Log in
+            }
           })
-          print("Restore log in")
-          self.loggedIn = true
         }
       }
     } catch {

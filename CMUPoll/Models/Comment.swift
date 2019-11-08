@@ -76,7 +76,7 @@ struct Comment: Identifiable {
     })
   }
   
-  mutating func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?) {
+  mutating func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .comment, documentId: id)
     var data: [String:Any] = [:]
     if let content = content {
@@ -95,11 +95,11 @@ struct Comment: Identifiable {
       data["poll_id"] = poll_id
       self.poll_id = poll_id
     }
-    FirebaseDataHandler.update(docRef: docRef, data: data)
+    FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
   
-  func delete() {
+  func delete(completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .comment, documentId: id)
-    FirebaseDataHandler.delete(docRef: docRef)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
   }
 }

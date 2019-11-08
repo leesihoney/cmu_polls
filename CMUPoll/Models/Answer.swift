@@ -49,6 +49,21 @@ struct Answer: Identifiable {
     })
   }
   
+  static func withQuestionUser(question_id: String, user_id: String, completion: @escaping (Answer?) -> ()) {
+    let query = FirebaseDataHandler.colRef(collection: .answer)
+      .whereField("question_id", isEqualTo: question_id)
+      .whereField("user_id", isEqualTo: user_id)
+    
+    FirebaseDataHandler.get(query: query, completion: { data in
+      if data.isEmpty {
+        completion(nil)
+      } else {
+        let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+        completion(answers[0])
+      }
+    })
+  }
+  
   static func allAnswers(completion: @escaping ([Answer]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .answer)
     FirebaseDataHandler.get(query: query, completion: { data in
@@ -81,7 +96,7 @@ struct Answer: Identifiable {
     })
   }
   
-  mutating func update(user_id: String?, question_id: String?, option_id: String?) {
+  mutating func update(user_id: String?, question_id: String?, option_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .answer, documentId: id)
     var data: [String:Any] = [:]
     if let user_id = user_id {
@@ -96,6 +111,6 @@ struct Answer: Identifiable {
       data["option_id"] = option_id
       self.option_id = option_id
     }
-    FirebaseDataHandler.update(docRef: docRef, data: data)
+    FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
 }
