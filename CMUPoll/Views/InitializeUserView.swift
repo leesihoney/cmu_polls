@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct InitializeUserView: View {
   
@@ -134,6 +135,24 @@ struct InitializeUserView: View {
   func signUp() {
     User.create(first_name: first_name, last_name: last_name, email: email, major: major, graduation_year: Int(graduation), completion: { user in
       User.current = user
+      
+      // Save new user info to CoreData
+      let delegate = UIApplication.shared.delegate as! AppDelegate
+      let context = delegate.persistentContainer.viewContext
+      let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+      request.returnsObjectsAsFaults = false
+      do {
+        let result = try context.fetch(request)
+        for data in result as! [Login] {
+          context.delete(data)
+        }
+        let newLogin = Login(context: context)
+        newLogin.user_id = user.id
+        try context.save()
+      } catch {
+        let saveError = error as NSError
+        print(saveError)
+      }
     })
   }
 }

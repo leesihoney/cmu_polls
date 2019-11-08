@@ -14,7 +14,7 @@ class FirebaseDataHandler {
   static let db = Firestore.firestore()
   
   static func colRef(collection: Collection) -> CollectionReference {
-    return FirebaseDataHandler.db.collection(collection.rawValue)
+    return db.collection(collection.rawValue)
   }
   
   static func docRef(collection: Collection, documentId: String) -> DocumentReference {
@@ -100,23 +100,25 @@ class FirebaseDataHandler {
   }
 
   // UPDATE
-  static func update(docRef: DocumentReference, data: FirebaseData) {
+  static func update(docRef: DocumentReference, data: FirebaseData, completion: @escaping () -> Void) {
     docRef.updateData(data) { err in
       if let err = err {
         print("Error updating document: \(err)")
       } else {
         print("Document successfully updated")
+        completion()
       }
     }
   }
 
   // DELETE
-  static func delete(docRef: DocumentReference) {
+  static func delete(docRef: DocumentReference, completion: @escaping () -> Void) {
     docRef.delete() { err in
       if let err = err {
         print("Error removing document: \(err)")
       } else {
         print("Document successfully removed!")
+        completion()
       }
     }
   }

@@ -16,10 +16,14 @@ struct PollView: View {
   let uploaderGraduationYear = 2020
   let uploadedDaysAgo = "29"
   @State var tags = [Tag]()
+  @State var pollUser: User?
 
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
-      PollUploaderProfileView(uploaderName: uploaderName, uploaderMajor: uploaderMajor, uploaderGraduationYear: uploaderGraduationYear, uploadedDaysAgo: uploadedDaysAgo)
+      if (pollUser != nil) {
+        PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+      }
+      
       Text(self.poll.title)
         .fontWeight(.semibold)
         .multilineTextAlignment(.leading)
@@ -52,6 +56,7 @@ struct PollView: View {
     .padding(.vertical, 25)
     .onAppear {
       self.getPollTags()
+      self.getPollUser()
     }
     
   }
@@ -65,11 +70,19 @@ struct PollView: View {
     })
   }
   
+  func getPollUser() {
+    self.poll.user(completion: { user in
+      DispatchQueue.main.async {
+        self.pollUser = user
+      }
+    })
+  }
+  
   
 }
 
 struct PollView_Previews: PreviewProvider {
   static var previews: some View {
-    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false))
+    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false, is_closed: false))
   }
 }

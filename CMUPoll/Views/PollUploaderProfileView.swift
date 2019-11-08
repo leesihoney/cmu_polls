@@ -12,7 +12,7 @@ struct PollUploaderProfileView: View {
   let profile = Image("user_pic")
   let uploaderName: String
   let uploaderMajor: String
-  let uploaderGraduationYear: Int
+  let uploaderGraduationYear: String
   let uploadedDaysAgo: String
   
   var body: some View {
@@ -38,6 +38,6 @@ struct PollUploaderProfileView: View {
 
 struct PollUploaderProfileView_Previews: PreviewProvider {
   static var previews: some View {
-    PollUploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: 2020, uploadedDaysAgo: "29")
+    PollUploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: "2020", uploadedDaysAgo: "29")
   }
 }

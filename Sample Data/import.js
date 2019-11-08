@@ -533,7 +533,7 @@ var answer = [
     "id": 1,
     "user_id": 0,
     "question_id": 1,
-    "option_id": 0
+    "option_id": 3
   },
   {
     "id": 2,
@@ -545,91 +545,91 @@ var answer = [
     "id": 3,
     "user_id": 0,
     "question_id": 5,
-    "option_id": 0
+    "option_id": 15
   },
   {
     "id": 4,
     "user_id": 1,
     "question_id": 2,
-    "option_id": 0
+    "option_id": 6
   },
   {
     "id": 5,
     "user_id": 1,
     "question_id": 3,
-    "option_id": 0
+    "option_id": 9
   },
   {
     "id": 6,
     "user_id": 1,
     "question_id": 4,
-    "option_id": 0
+    "option_id": 12
   },
   {
     "id": 7,
     "user_id": 1,
     "question_id": 5,
-    "option_id": 0
+    "option_id": 16
   },
   {
     "id": 8,
     "user_id": 1,
     "question_id": 6,
-    "option_id": 0
+    "option_id": 17
   },
   {
     "id": 9,
     "user_id": 1,
     "question_id": 7,
-    "option_id": 0
+    "option_id": 19
   },
   {
     "id": 10,
     "user_id": 1,
     "question_id": 8,
-    "option_id": 0
+    "option_id": 22
   },
   {
     "id": 11,
     "user_id": 2,
     "question_id": 3,
-    "option_id": 0
+    "option_id": 10
   },
   {
     "id": 12,
     "user_id": 2,
     "question_id": 9,
-    "option_id": 0
+    "option_id": 24
   },
   {
     "id": 13,
     "user_id": 2,
     "question_id": 10,
-    "option_id": 0
+    "option_id": 27
   },
   {
     "id": 14,
     "user_id": 3,
     "question_id": 1,
-    "option_id": 0
+    "option_id": 4
   },
   {
     "id": 15,
     "user_id": 3,
     "question_id": 4,
-    "option_id": 0
+    "option_id": 13
   },
   {
     "id": 16,
     "user_id": 3,
     "question_id": 7,
-    "option_id": 0
+    "option_id": 20
   },
   {
     "id": 17,
     "user_id": 3,
     "question_id": 10,
-    "option_id": 0
+    "option_id": 28
   },
   {
     "id": 18,
@@ -641,7 +641,7 @@ var answer = [
     "id": 19,
     "user_id": 4,
     "question_id": 8,
-    "option_id": 0
+    "option_id": 23
   }
 ]
 

@@ -15,10 +15,10 @@ class PollTests: XCTestCase {
   var aiden: User = User(id: "1", first_name: "Aiden", last_name: "Lee", email: "yonghool@andrew.cmu.edu", major: "IS", graduation_year: 2020, points: nil)
   var colRef: CollectionReference?
   var polls: [Poll]?
-  var Poll0, Poll1: Poll?
+  var Poll0, Poll1, Poll6: Poll?
   
   func setPoll0() {
-    let expectation = self.expectation(description: "Initialize polls")
+    let expectation = self.expectation(description: "Initialize polls0")
     Poll.withId(id: "0", completion: { poll in
       self.Poll0 = poll
       expectation.fulfill()
@@ -27,9 +27,18 @@ class PollTests: XCTestCase {
   }
   
   func setPoll1() {
-    let expectation = self.expectation(description: "Initialize polls")
+    let expectation = self.expectation(description: "Initialize polls1")
     Poll.withId(id: "1", completion: { poll in
       self.Poll1 = poll
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func setPoll6() {
+    let expectation = self.expectation(description: "Initialize polls6")
+    Poll.withId(id: "6", completion: { poll in
+      self.Poll6 = poll
       expectation.fulfill()
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
@@ -40,6 +49,7 @@ class PollTests: XCTestCase {
     self.colRef = FirebaseDataHandler.colRef(collection: .poll)
     setPoll0()
     setPoll1()
+    setPoll6()
   }
   
   func testInitializePolls() {
@@ -52,6 +62,12 @@ class PollTests: XCTestCase {
     XCTAssertEqual(Poll1!.is_private, false)
     XCTAssertEqual(Poll1!.is_closed, false)
     XCTAssertEqual(Poll1!.title, "Who is your favorite Information Systems professor?")
+    
+    XCTAssertEqual(Poll6!.user_id, "2")
+    XCTAssertEqual(Poll6!.is_private, true)
+    XCTAssertEqual(Poll6!.is_closed, true)
+    XCTAssertEqual(Poll6!.description, "I'm researching on the average sleep hours of CMU students for my sociology class.")
+    XCTAssertEqual(Poll6!.title, "How many hours do you normally sleep?")
   }
   
   func testQuestions0() {
@@ -129,7 +145,7 @@ class PollTests: XCTestCase {
   func testUser0() {
     let expectation = self.expectation(description: "Fetch user0")
     Poll0!.user(completion: { user in
-      XCTAssertEqual("0", user.id)
+      XCTAssertEqual("yonghoo@andrew.cmu.edu", user?.email)
       expectation.fulfill()
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
@@ -138,7 +154,17 @@ class PollTests: XCTestCase {
   func testUser1() {
     let expectation = self.expectation(description: "Fetch user1")
     Poll1!.user(completion: { user in
-      XCTAssertEqual("0", user.id)
+      XCTAssertEqual("yonghoo@andrew.cmu.edu", user?.email)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testUser6() {
+    let expectation = self.expectation(description: "Fetch user6")
+    XCTAssertEqual("2", Poll6!.user_id)
+    Poll6!.user(completion: { user in
+      XCTAssertEqual("sunghocho@andrew.cmu.edu", user?.email)
       expectation.fulfill()
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)

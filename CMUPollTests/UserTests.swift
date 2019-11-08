@@ -14,7 +14,7 @@ import Firebase
 class UserTests: XCTestCase {
   var colRef: CollectionReference?
   var users: [User]?
-  var User0, User1: User?
+  var User0, User1, User2: User?
   
   func setUser0() {
     let expectation = self.expectation(description: "Initialize users")
@@ -34,27 +34,44 @@ class UserTests: XCTestCase {
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
+  func setUser2() {
+    let expectation = self.expectation(description: "Initialize users")
+    User.withId(id: "2", completion: { user in
+      self.User2 = user
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
   override func setUp() {
     super.setUp()
     self.colRef = FirebaseDataHandler.colRef(collection: .user)
     setUser0()
     setUser1()
+    setUser2()
   }
   
   func testInitializeUsers() {
     XCTAssertEqual(User0!.id, "0")
     XCTAssertEqual(User0!.first_name, "Aiden")
     XCTAssertEqual(User0!.last_name, "Lee")
-    XCTAssertEqual(User0!.email, "yonghool@andrew.cmu.edu")
+    XCTAssertEqual(User0!.email, "yonghoo@andrew.cmu.edu")
     XCTAssertEqual(User0!.major, "Information Systems")
     XCTAssertEqual(User0!.graduation_year, 2020)
     
     XCTAssertEqual(User1!.id, "1")
     XCTAssertEqual(User1!.first_name, "Andrew")
     XCTAssertEqual(User1!.last_name, "Lee")
-    XCTAssertEqual(User1!.email, "siheonl@andrew.cmu.edu")
+    XCTAssertEqual(User1!.email, "siheon@andrew.cmu.edu")
     XCTAssertEqual(User1!.major, "Information Systems")
     XCTAssertEqual(User1!.graduation_year, 2020)
+    
+    XCTAssertEqual(User2!.id, "2")
+    XCTAssertEqual(User2!.first_name, "Sungho")
+    XCTAssertEqual(User2!.last_name, "Cho")
+    XCTAssertEqual(User2!.email, "sunghocho@andrew.cmu.edu")
+    XCTAssertEqual(User2!.major, "Information Systems")
+    XCTAssertEqual(User2!.graduation_year, 2020)
   }
   
   func testAddPoints0() {

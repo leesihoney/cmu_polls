@@ -18,32 +18,33 @@ class Poll: Identifiable {
   var posted_at: Date = Date()
   var link: String
   var is_private: Bool
-  var is_closed: Bool = false
+  var is_closed: Bool
   
   // Used for double query
   var tagsFound: [Tag] = []
   var numTags: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, user_id: String, title: String, description: String, link: String, is_private: Bool) {
+  init (id: String, user_id: String, title: String, description: String, link: String, is_private: Bool, is_closed: Bool) {
     self.id = id
     self.user_id = user_id
     self.title = title
     self.description = description
     self.link = link
     self.is_private = is_private
+    self.is_closed = is_closed
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(title: String, description: String, link: String, is_private: Bool, completion: @escaping (Poll) -> ()) {
+  static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, completion: @escaping (Poll) -> ()) {
     guard let user = User.current else {
       print("No user is logged in!")
       return
     }
-    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "link": link, "private": is_private]
+    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "link": link, "private": is_private, "closed": is_closed]
     let colRef = FirebaseDataHandler.colRef(collection: .poll)
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, link: link, is_private: is_private)
+      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, link: link, is_private: is_private, is_closed: is_closed)
       completion(poll)
     })
   }
@@ -139,15 +140,20 @@ class Poll: Identifiable {
     })
   }
   
-  func user(completion: @escaping (User) -> ()) {
-    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
+  func user(completion: @escaping (User?) -> ()) {
+    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: user_id)
     FirebaseDataHandler.get(docRef: docRef, completion: { data in
       let users: [User] = ModelParser.parse(collection: .user, data: data) as! [User]
-      completion(users[0])
+      if (users.count > 0) {
+        completion(users[0])
+      } else {
+        completion(nil)
+      }
+      
     })
   }
   
-  func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?) {
+  func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: id)
     var data: [String:Any] = [:]
     if let user_id = user_id {
@@ -170,11 +176,11 @@ class Poll: Identifiable {
       data["private"] = is_private
       self.is_private = is_private
     }
-    FirebaseDataHandler.update(docRef: docRef, data: data)
+    FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
   
-  func delete() {
+  func delete(completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: id)
-    FirebaseDataHandler.delete(docRef: docRef)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
   }
 }
