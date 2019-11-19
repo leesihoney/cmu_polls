@@ -12,18 +12,26 @@ import SwiftUI
 struct Comment: Identifiable {
   var id: String
   var content: String
-  var posted_at: Date = Date()
+  var posted_at: String
   var user_id: String
   var comment_id: String?
   var poll_id: String
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, content: String, user_id: String, comment_id: String?, poll_id: String) {
+  init (id: String, content: String, posted_at: String, user_id: String, comment_id: String?, poll_id: String) {
     self.id = id
     self.content = content
+    self.posted_at = posted_at
     self.user_id = user_id
     self.comment_id = comment_id
     self.poll_id = poll_id
+  }
+  
+  private static func getDateString() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return dateFormatter.string(from: date)
   }
     
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
@@ -32,10 +40,11 @@ struct Comment: Identifiable {
       print("No user is logged in!")
       return
     }
+    let posted_at: String = getDateString()
     let colRef = FirebaseDataHandler.colRef(collection: .comment)
-    let data: [String:Any] = ["content": content, "user_id": user.id, "comment_id": comment_id as Any, "poll_id": poll_id]
+    let data: [String:Any] = ["content": content, "posted_at": posted_at, "user_id": user.id, "comment_id": comment_id as Any, "poll_id": poll_id]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let comment = Comment(id: documentId, content: content, user_id: user.id, comment_id: comment_id, poll_id: poll_id)
+      let comment = Comment(id: documentId, content: content, posted_at: posted_at, user_id: user.id, comment_id: comment_id, poll_id: poll_id)
       completion(comment)
     })
   }
@@ -54,6 +63,7 @@ struct Comment: Identifiable {
   
   static func allComments(completion: @escaping ([Comment]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .comment)
+      .order(by: "posted_at", descending: true)
     FirebaseDataHandler.get(query: query, completion: { data in
       let allComments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
       completion(allComments)

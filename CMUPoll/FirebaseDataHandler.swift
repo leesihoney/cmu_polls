@@ -47,8 +47,8 @@ class FirebaseDataHandler {
 //    let instances = ModelParser.parse(collection: .like, data: data)
 //    print(instances.count)
 //  })
-  static func get(colRef: CollectionReference, completion: @escaping (FirebaseData) -> ()) {
-    var data: FirebaseData = [:]
+  static func get(colRef: CollectionReference, completion: @escaping ([FirebaseData]) -> ()) {
+    var data: [FirebaseData] = []
     
     colRef.getDocuments() { (querySnapshot, err) in
       if let err = err {
@@ -58,22 +58,22 @@ class FirebaseDataHandler {
           // Include document ID as "id" in document data
           var documentData: FirebaseData = document.data()
           documentData["id"] = document.documentID
-          data[document.documentID] = documentData
+          data.append(documentData)
         }
       }
       completion(data)
     }
   }
   
-  static func get(docRef: DocumentReference, completion: @escaping (FirebaseData) -> ()) {
-    var data: FirebaseData = [:]
+  static func get(docRef: DocumentReference, completion: @escaping ([FirebaseData]) -> ()) {
+    var data: [FirebaseData] = []
     
     docRef.getDocument { (document, error) in
       if let document = document, document.exists {
         // Include document ID as "id" in document data
         var documentData: FirebaseData = document.data()!
         documentData["id"] = document.documentID
-        data[document.documentID] = documentData
+        data.append(documentData)
       } else {
         print("Document does not exist")
       }
@@ -81,8 +81,8 @@ class FirebaseDataHandler {
     }
   }
   
-  static func get(query: Query, completion: @escaping (FirebaseData) -> ()) {
-    var data: FirebaseData = [:]
+  static func get(query: Query, completion: @escaping ([FirebaseData]) -> ()) {
+    var data: [FirebaseData] = []
     
     query.getDocuments() { (querySnapshot, err) in
       if let err = err {
@@ -92,7 +92,7 @@ class FirebaseDataHandler {
           // Include document ID as "id" in document data
           var documentData: FirebaseData = document.data()
           documentData["id"] = document.documentID
-          data[document.documentID] = documentData
+          data.append(documentData)
         }
       }
       completion(data)
