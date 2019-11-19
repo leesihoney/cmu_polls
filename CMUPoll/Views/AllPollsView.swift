@@ -25,7 +25,9 @@ struct AllPollsView: View {
           .padding(.vertical, CGFloat(10))
 
         
-        ForEach(self.polls) { poll in
+        ForEach(self.polls.filter {
+          self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
+        }) { poll in
           NavigationLink(destination: PollDetailView(poll: poll)) {
             PollView(poll: poll)
           }
