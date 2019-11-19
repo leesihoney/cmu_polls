@@ -24,7 +24,10 @@ struct AllPollsView: View {
         TagsView(tags: tags)
           .padding(.vertical, CGFloat(10))
 
-        
+        Text("All Polls")
+        .font(Font.system(size: 20, design: .default))
+        .fontWeight(.bold)
+        .foregroundColor(Color.gray)
         ForEach(self.polls) { poll in
           NavigationLink(destination: PollDetailView(poll: poll)) {
             PollView(poll: poll)
