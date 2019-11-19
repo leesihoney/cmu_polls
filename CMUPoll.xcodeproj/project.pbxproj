@@ -79,7 +79,6 @@
 		F056C92F2371028F00C9AF6A /* AnswerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */; };
 		F056C931237106FC00C9AF6A /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
 		F06DFC472383809000E72269 /* MyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DFC462383808F00E72269 /* MyActivityView.swift */; };
-		F0713714237DE13700788B1B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0713713237DE13700788B1B /* GoogleService-Info.plist */; };
 		F0BDB49B2371358C00F855F6 /* AnswerGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */; };
 		F0BDB49D2371372E00F855F6 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49C2371372E00F855F6 /* BarGraphView.swift */; };
 		F0C9C4E223734C7D00C55D90 /* UploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */; };
@@ -462,7 +461,6 @@
 				A73F2A3F23726A2200F50FA2 /* GoogleService-Info.plist in Resources */,
 				A70E95B9236B011B00C38F2B /* Podfile in Resources */,
 				E8D6E2DA2366AFB100F75AA2 /* Assets.xcassets in Resources */,
-				F0713714237DE13700788B1B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

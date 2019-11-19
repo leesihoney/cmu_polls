@@ -46,7 +46,7 @@ struct Question: Identifiable {
   }
   
   static func allQuestions(completion: @escaping ([Question]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .question)
+    let query = FirebaseDataHandler.colRef(collection: .question).order(by: "id")
     FirebaseDataHandler.get(query: query, completion: { data in
       let allQuestions: [Question] = ModelParser.parse(collection: .question, data: data) as! [Question]
       completion(allQuestions)

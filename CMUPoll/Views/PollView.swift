@@ -83,6 +83,6 @@ struct PollView: View {
 
 struct PollView_Previews: PreviewProvider {
   static var previews: some View {
-    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", link: "", is_private: false, is_closed: false))
+    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
   }
 }

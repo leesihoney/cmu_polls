@@ -76,7 +76,7 @@ class Tag: Identifiable, Hashable {
   }
   
   static func allTags(completion: @escaping ([Tag]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .tag)
+    let query = FirebaseDataHandler.colRef(collection: .tag).order(by: "name")
     FirebaseDataHandler.get(query: query, completion: { data in
       let allTags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
       

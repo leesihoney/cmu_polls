@@ -109,7 +109,7 @@ struct InitializeUserView: View {
             
             VStack (alignment: .leading) {
               HStack {
-                Text("Year")
+                Text("Graduation Year")
               }
               
               HStack {

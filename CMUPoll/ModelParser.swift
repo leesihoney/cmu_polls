@@ -15,22 +15,21 @@ enum Collection: String, CaseIterable {
 
 class ModelParser {
   
-  static func parse(collection: Collection, data: FirebaseData) -> [Any] {
+  static func parse(collection: Collection, data: [FirebaseData]) -> [Any] {
     var result: [Any] = []
     
-    for documentId in data.keys {
-      let obj: [String: Any] = data[documentId] as! [String:Any]
-      
+    for obj in data {      
       switch collection {
       case .poll:
         let id: String = "\(String(describing: obj["id"]!))"
         let user_id: String = "\(String(describing: obj["user_id"]!))"
         let title: String = obj["title"] as! String
         let description: String = obj["description"] as! String
+        let posted_at: String = obj["posted_at"] as! String
         let link: String = (obj["link"] ?? "") as! String
         let is_private: Bool = obj["private"] as! Bool
         let is_closed: Bool = obj["closed"] as! Bool
-        let poll = Poll(id: id, user_id: user_id, title: title, description: description, link: link, is_private: is_private, is_closed: is_closed)
+        let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed)
         result.append(poll)
         break
         
@@ -57,10 +56,11 @@ class ModelParser {
       case .comment:
         let id: String = "\(String(describing: obj["id"]!))"
         let content: String = obj["content"] as! String
+        let posted_at: String = obj["posted_at"] as! String
         let user_id: String = "\(String(describing: obj["user_id"]!))"
         let comment_id: String? = "\(String(describing: obj["comment_id"]!))"
         let poll_id: String = "\(String(describing: obj["poll_id"]!))"
-        let comment = Comment(id: id, content: content, user_id: user_id, comment_id: comment_id, poll_id: poll_id)
+        let comment = Comment(id: id, content: content, posted_at: posted_at, user_id: user_id, comment_id: comment_id, poll_id: poll_id)
         result.append(comment)
         break
         

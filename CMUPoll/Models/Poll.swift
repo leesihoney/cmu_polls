@@ -15,7 +15,7 @@ class Poll: Identifiable {
   var user_id: String
   var title : String
   var description: String
-  var posted_at: Date = Date()
+  var posted_at: String
   var link: String
   var is_private: Bool
   var is_closed: Bool
@@ -25,14 +25,22 @@ class Poll: Identifiable {
   var numTags: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, user_id: String, title: String, description: String, link: String, is_private: Bool, is_closed: Bool) {
+  init (id: String, user_id: String, title: String, description: String, posted_at: String, link: String, is_private: Bool, is_closed: Bool) {
     self.id = id
     self.user_id = user_id
     self.title = title
     self.description = description
+    self.posted_at = posted_at
     self.link = link
     self.is_private = is_private
     self.is_closed = is_closed
+  }
+  
+  private static func getDateString() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return dateFormatter.string(from: date)
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
@@ -41,10 +49,11 @@ class Poll: Identifiable {
       print("No user is logged in!")
       return
     }
-    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "link": link, "private": is_private, "closed": is_closed]
+    let posted_at: String = getDateString()
+    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "posted_at": posted_at, "link": link, "private": is_private, "closed": is_closed]
     let colRef = FirebaseDataHandler.colRef(collection: .poll)
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, link: link, is_private: is_private, is_closed: is_closed)
+      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed)
       completion(poll)
     })
   }
@@ -63,6 +72,9 @@ class Poll: Identifiable {
   
   static func allPolls(completion: @escaping ([Poll]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll)
+      .order(by: "posted_at", descending: true)
+      .whereField("private", isEqualTo: false)
+      .whereField("closed", isEqualTo: false)
     FirebaseDataHandler.get(query: query, completion: { data in
       let allPolls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(allPolls)
