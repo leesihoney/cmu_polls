@@ -44,17 +44,19 @@ struct AnswerBoxView: View {
           print("No user is logged in!")
           return
         }
-        Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in
-          // To add points for answering a poll
-          User.current?.addPoints(type: .answer)
-          print("\(self.user!.first_name) just earned 5 points!")
-          self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
-            print("5 points has been added into Firebase!")
-          })
-          
+        // To add points for answering a poll
+        self.question.userHasAnswer(completion: { bool in
+          if !bool {
+            User.current?.addPoints(type: .answer)
+            print("\(self.user!.first_name) just earned 5 points!")
+            self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+              print("5 points has been added into Firebase!")
+            })
+          }
+        })
+        Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in                   
           if var answer = answer {
             answer.update(user_id: user.id, question_id: self.question.id, option_id: option.id, completion: {
-              
               self.onNewAnswer()
             })
           } else {
@@ -63,9 +65,7 @@ struct AnswerBoxView: View {
             })
           }
         })
-        
       }
-        
         
       ) {
         Text("Submit")

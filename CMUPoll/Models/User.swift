@@ -94,15 +94,11 @@ struct User: Identifiable {
     self.points += reward(type: type)
   }
   
-  mutating func subtractPoints(type: RewardType) {
-    print("we are subtracting points \(self.points) AND \(reward(type: type))")
-    self.points -= reward(type: type)
-  }
   
   func polls(completion: @escaping ([Poll]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll).whereField("user_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-    let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+      let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(polls)
     })
   }
@@ -110,7 +106,7 @@ struct User: Identifiable {
   func likes(completion: @escaping ([Like]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .like).whereField("user_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-    let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
+      let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
       completion(likes)
     })
   }
@@ -118,7 +114,7 @@ struct User: Identifiable {
   func comments(completion: @escaping ([Comment]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .comment).whereField("user_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-    let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
+      let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
       completion(comments)
     })
   }
