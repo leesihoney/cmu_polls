@@ -117,7 +117,7 @@ struct User: Identifiable {
     })
   }
   
-  mutating func update(major: String?, graduation_year: Int?, completion: @escaping () -> Void) {
+  mutating func update(major: String?, graduation_year: Int?, points: Int?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
     var data: [String:Any] = [:]
     if let major = major {
@@ -128,6 +128,11 @@ struct User: Identifiable {
       data["graduation_year"] = graduation_year
       self.graduation_year = graduation_year
     }
+    if let points = points {
+      data["points"] = points
+      self.points = points
+    }
+    
     FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
 }

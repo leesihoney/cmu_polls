@@ -40,9 +40,10 @@ struct PollCreateView: View {
   @State var description = ""
   @State var quantity: Int = 1
   @State var questions: [QuestionInput] = [QuestionInput()]
-  
+    
   @Environment(\.presentationMode) var presentationMode
   
+
   
   var body: some View {
     List {
@@ -136,6 +137,12 @@ struct PollCreateView: View {
               }
             })
           }
+          self.refresh()
+        })
+        User.current?.addPoints(type: .upload)
+        print("\(self.user!.first_name) just earned 10 points!")
+        self.user!.update(major: User.current?.major, graduation_year: User.current?.graduation_year, points: User.current?.points, completion: {
+          print("the points has been updated into Firebase!")
           self.refresh()
         })
       }
