@@ -4,3 +4,4 @@ CMUPoll.xcworkspace/xcuserdata/
 CMUPoll.xcodeproj/xcuserdata/
 Pods/*
 *.lock
+Sample Data/node_modules
