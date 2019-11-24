@@ -165,7 +165,6 @@
 		F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoxView.swift; sourceTree = "<group>"; };
 		F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailDescriptionView.swift; sourceTree = "<group>"; };
 		F06DFC462383808F00E72269 /* MyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityView.swift; sourceTree = "<group>"; };
-		F0713713237DE13700788B1B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerGraphView.swift; sourceTree = "<group>"; };
 		F0BDB49C2371372E00F855F6 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderProfileView.swift; sourceTree = "<group>"; };
@@ -289,7 +288,6 @@
 				E8D6E2DE2366AFB100F75AA2 /* LaunchScreen.storyboard */,
 				E8D6E2E12366AFB100F75AA2 /* Info.plist */,
 				A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */,
-				F0713713237DE13700788B1B /* GoogleService-Info.plist */,
 				E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */,
 				E8D6E2DB2366AFB100F75AA2 /* Preview Content */,
 			);
@@ -944,7 +942,7 @@
 					"-weak_framework",
 					"\"SwiftUI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AndrewLee.CMUPoll;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1046,7 +1044,7 @@
 					"-weak_framework",
 					"\"SwiftUI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AndrewLee.CMUPoll;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

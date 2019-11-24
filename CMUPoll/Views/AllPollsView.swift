@@ -16,10 +16,13 @@ struct AllPollsView: View {
 
   var body: some View {
     NavigationView {
+//      print(searchTerm)
       VStack(alignment: .leading, spacing: 10) {
+//        List {
         SearchBarView(text: $searchTerm)
           .padding(.vertical, CGFloat(8))
           .padding(.horizontal, 16)
+        
 
         TagsView(tags: tags)
           .padding(.vertical, CGFloat(10))
@@ -31,13 +34,15 @@ struct AllPollsView: View {
           .foregroundColor(Color.gray)
           .padding(.horizontal, 16)
 
+//        }
         List {
           ForEach(self.polls.filter {
             self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
           }) { poll in
-            NavigationLink(destination: PollDetailView(poll: poll)) {
+//            NavigationLink(destination: PollDetailView(poll: poll)) {
+              
               PollView(poll: poll)
-            }
+//            }
           }
         }
       }
