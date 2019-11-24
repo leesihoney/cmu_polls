@@ -34,7 +34,7 @@ struct PollCreateView: View {
   
   let refresh: () -> Void
   
-//  @State var user_input = User.current?
+  //  @State var user_input = User.current?
   
   @State var user: User? = User.current
   @State var title = ""
@@ -42,10 +42,10 @@ struct PollCreateView: View {
   @State var description = ""
   @State var quantity: Int = 1
   @State var questions: [QuestionInput] = [QuestionInput()]
-    
+  
   @Environment(\.presentationMode) var presentationMode
   
-
+  
   
   var body: some View {
     
@@ -107,9 +107,9 @@ struct PollCreateView: View {
           self.questions.removeLast()
         }
       }, label: {
-          Text(verbatim: "Number of Questions: \(quantity)")
-            .font(Font.system(size: 15, design: .default))
-            .foregroundColor(Color.gray)
+        Text(verbatim: "Number of Questions: \(quantity)")
+          .font(Font.system(size: 15, design: .default))
+          .foregroundColor(Color.gray)
       }
       )
       

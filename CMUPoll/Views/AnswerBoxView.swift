@@ -66,9 +66,9 @@ struct AnswerBoxView: View {
         
       }
         
-      
+        
       ) {
-          Text("Submit")
+        Text("Submit")
       }.buttonStyle(PollButtonStyle())
     }
     .padding(30)

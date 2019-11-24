@@ -42,11 +42,11 @@ struct AnswerGraphView: View {
         self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
           print("5 points has been subtracted from Firebase!")
         })
-
+        
         
         self.onEditedAnswer()
       }) {
-          Text("Edit Response")
+        Text("Edit Response")
       }.buttonStyle(OutlineButtonStyle())
       
     }
