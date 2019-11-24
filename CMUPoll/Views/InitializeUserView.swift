@@ -166,8 +166,7 @@ struct TabbarView: View {
           Text("All Polls")
         })
         .tag(0)
-      Text("Second View")
-        .font(.title)
+      MyActivityView()
         .tabItem({
           Image(systemName: "chart.bar.fill")
           Text("My Activity")
