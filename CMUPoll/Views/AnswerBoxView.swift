@@ -27,7 +27,7 @@ struct AnswerBoxView: View {
           selectedColor: UIColor(red: 57 / 255.0, green: 57 / 255.0, blue: 57 / 255.0, alpha: 0.6),
           isVertical: true,
           buttonSize: 18.0,
-          spacing: 17,
+          spacing: 6,
           itemSpacing: 21,
           isButtonAfterTitle: false,
           titleColor: UIColor(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0, alpha: 0.6),
@@ -54,7 +54,7 @@ struct AnswerBoxView: View {
             })
           }
         })
-        Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in                   
+        Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in
           if var answer = answer {
             answer.update(user_id: user.id, question_id: self.question.id, option_id: option.id, completion: {
               self.onNewAnswer()
