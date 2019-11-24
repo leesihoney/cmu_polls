@@ -48,6 +48,7 @@ struct PollCreateView: View {
 
   
   var body: some View {
+    
     List {
       
       if (user != nil) {
@@ -141,10 +142,11 @@ struct PollCreateView: View {
           }
           self.refresh()
         })
-        self.user?.addPoints(type: .upload)
+        // To add points for uploading a poll
+        User.current?.addPoints(type: .upload)
         print("\(self.user!.first_name) just earned 10 points!")
-        self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: self.user?.points, completion: {
-          print("the points has been updated into Firebase!")
+        self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+          print("10 points has been added into Firebase!")
           self.refresh()
         })
       }

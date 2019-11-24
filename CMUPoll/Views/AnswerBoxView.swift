@@ -15,6 +15,8 @@ struct AnswerBoxView: View {
   let onNewAnswer: () -> Void
   @State var options = [Option]()
   @State private var selectedAnswer = 0
+  @State var user: User? = User.current
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AnswerBoxTextView(question: question.title)
@@ -43,8 +45,16 @@ struct AnswerBoxView: View {
           return
         }
         Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in
+          // To add points for answering a poll
+          User.current?.addPoints(type: .answer)
+          print("\(self.user!.first_name) just earned 5 points!")
+          self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+            print("5 points has been added into Firebase!")
+          })
+          
           if var answer = answer {
             answer.update(user_id: user.id, question_id: self.question.id, option_id: option.id, completion: {
+              
               self.onNewAnswer()
             })
           } else {
@@ -53,7 +63,11 @@ struct AnswerBoxView: View {
             })
           }
         })
-      }) {
+        
+      }
+        
+      
+      ) {
           Text("Submit")
       }.buttonStyle(PollButtonStyle())
     }

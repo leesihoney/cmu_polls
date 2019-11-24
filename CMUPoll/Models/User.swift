@@ -90,7 +90,13 @@ struct User: Identifiable {
   }
   
   mutating func addPoints(type: RewardType) {
+    print("we are adding points \(self.points) AND \(reward(type: type))")
     self.points += reward(type: type)
+  }
+  
+  mutating func subtractPoints(type: RewardType) {
+    print("we are subtracting points \(self.points) AND \(reward(type: type))")
+    self.points -= reward(type: type)
   }
   
   func polls(completion: @escaping ([Poll]) -> ()) {
