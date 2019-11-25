@@ -91,6 +91,24 @@ struct Question: Identifiable {
     })
   }
   
+  func userAnswer(completion: @escaping (Answer?) -> ()) {
+    guard let user = User.current else {
+      print("No user is logged in!")
+      return
+    }
+    let query = FirebaseDataHandler.colRef(collection: .answer)
+      .whereField("user_id", isEqualTo: user.id)
+      .whereField("question_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      if (answers.count > 0) {
+        completion(answers[0])
+      } else {
+        completion(nil)
+      }
+    })
+  }
+  
   mutating func update(is_multiple_choice: Bool?, title: String?, poll_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: id)
     var data: [String:Any] = [:]

@@ -19,6 +19,8 @@ struct AnswerGraphView: View {
   @State var user: User? = User.current
   @State var accumulatedBars: [Bar]?
   @State var numBars: Int?
+  @State var initialized: Bool = false
+  @State var userAnswer: String = ""
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
@@ -28,10 +30,10 @@ struct AnswerGraphView: View {
           .padding(.top, -8)
           .padding(.bottom, 7)
       }
-      if (!self.bars.isEmpty) {
-        BarGraphView(bars: self.bars)
+      if (self.initialized) {
+        BarGraphView(bars: self.bars, userAnswer: self.userAnswer)
       } else {
-        Text("There is no data to display chart...")
+        Text("Loading data for chart display...")
       }
       
       Button(action: {
@@ -45,8 +47,8 @@ struct AnswerGraphView: View {
     .border(Color(red: 235 / 255.0, green: 234 / 255.0, blue: 234 / 255.0, opacity: 0.6))
     .cornerRadius(8)
     .onAppear {
+      self.initialized = false
       self.getNumViews()
-      self.getOptions()
     }
   }
   
@@ -54,7 +56,17 @@ struct AnswerGraphView: View {
     self.question.answers(completion: { answers in
       DispatchQueue.main.async {
         self.numViews = answers.count
+        self.getUserAnswer()
       }
+    })
+  }
+  
+  func getUserAnswer() {
+    self.question.userAnswer(completion: { answer in
+      if (answer != nil) {
+        self.userAnswer = answer!.option_id
+      }
+      self.getOptions()
     })
   }
   
@@ -71,6 +83,7 @@ struct AnswerGraphView: View {
     accumulatedBars!.append(bar)
     if (accumulatedBars!.count >= numBars!) {
       self.bars = accumulatedBars!
+      self.initialized = true
       print(self.bars.map { "\($0.label): \($0.value)" })
     }
   }
@@ -82,7 +95,7 @@ struct AnswerGraphView: View {
     for option in self.options {
       option.answers(completion: { answers in
         DispatchQueue.main.async {
-          let bar = Bar(id: UUID(), value: answers.count, label: option.text)
+          let bar = Bar(id: option.id, value: answers.count, label: option.text)
           self.accumulateBars(bar: bar)
         }
       })
