@@ -20,6 +20,7 @@ struct PollDetailView: View {
   @State var pollUser: User?
   @State var questionAnswered = [String: Bool]()
   @State var accumulatedQuestionAnswered = [String: Bool]()
+  @State var initialized: Bool = false
   
   
   var body: some View {
@@ -42,7 +43,7 @@ struct PollDetailView: View {
         .font(Font.system(size: 12, design: .default))
         .fontWeight(.semibold)
         .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
-      if !self.questionAnswered.isEmpty {
+      if self.initialized {
         ForEach(self.questions) { question in
           if self.questionAnswered[question.id] == true {
             AnswerGraphView(question: question, onEditedAnswer: {
@@ -60,16 +61,25 @@ struct PollDetailView: View {
     .padding(.vertical, 25)
     .padding(.horizontal, 15)
     .onAppear {
-      self.getPollTags()
-      self.getPollQuestions()
+      self.initialized = false
       self.getPollUser()
     }
+  }
+  
+  func getPollUser() {
+    self.poll.user(completion: { user in
+      DispatchQueue.main.async {
+        self.pollUser = user
+        self.getPollTags()
+      }
+    })
   }
   
   func getPollTags() {
     self.poll.tags(completion: { tags in
       DispatchQueue.main.async {
         self.tags = tags
+        self.getPollQuestions()
       }
     })
   }
@@ -83,18 +93,11 @@ struct PollDetailView: View {
     })
   }
   
-  func getPollUser() {
-    self.poll.user(completion: { user in
-      DispatchQueue.main.async {
-        self.pollUser = user
-      }
-    })
-  }
-  
   func accumulateQuestionAnswered(question_id: String, hasAnswer: Bool) {
     accumulatedQuestionAnswered[question_id] = hasAnswer
     if (accumulatedQuestionAnswered.count >= self.questions.count) {
       self.questionAnswered = self.accumulatedQuestionAnswered
+      self.initialized = true
     }
   }
   
