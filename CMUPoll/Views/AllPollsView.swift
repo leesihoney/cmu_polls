@@ -23,7 +23,6 @@ struct AllPollsView: View {
           .padding(.vertical, CGFloat(8))
           .padding(.horizontal, 16)
         
-        
         TagsView(tags: tags)
           .padding(.vertical, CGFloat(10))
           .padding(.horizontal, 16)
@@ -34,22 +33,20 @@ struct AllPollsView: View {
           .foregroundColor(Color.gray)
           .padding(.horizontal, 16)
         
-        List {
-          ForEach(self.polls.filter {
-            self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
-          }) { poll in
-            NavigationLink(destination: PollDetailView(poll: poll)) {
-              PollView(poll: poll)
-            }
+        List(self.polls.filter {
+          self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
+        }) { poll in
+          NavigationLink(destination: PollDetailView(poll: poll)) {
+            PollView(poll: poll)
           }
         }
+        .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+        .navigationBarItems(trailing:
+          NavigationLink(destination: PollCreateView(refresh: self.getUserPolls)) {
+            Text("Add")
+          }
+        )
       }
-      .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-      .navigationBarItems(trailing:
-        NavigationLink(destination: PollCreateView(refresh: self.getUserPolls)) {
-          Text("Add")
-        }
-      )
     }
     .onAppear {
       self.getUserPolls()
@@ -73,6 +70,7 @@ struct AllPollsView: View {
     })
   }
 }
+
 
 struct AllPollsView_Previews: PreviewProvider {
   static var previews: some View {
