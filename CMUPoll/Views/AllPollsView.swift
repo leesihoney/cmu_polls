@@ -14,10 +14,11 @@ struct AllPollsView: View {
   @State var tags = [Tag]()
   @State private var searchTerm: String = ""
   
-  
   var body: some View {
     NavigationView {
+      
       VStack(alignment: .leading, spacing: 10) {
+        
         SearchBarView(text: $searchTerm)
           .padding(.vertical, CGFloat(8))
           .padding(.horizontal, 16)
@@ -39,20 +40,19 @@ struct AllPollsView: View {
             PollView(poll: poll)
           }
         }
+        .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+        .navigationBarItems(trailing:
+          NavigationLink(destination: PollCreateView(refresh: self.getUserPolls)) {
+            Text("Add")
+          }
+        )
       }
-      .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-      .navigationBarItems(trailing:
-        NavigationLink(destination: PollCreateView(refresh: self.getUserPolls)) {
-          Text("Add")
-        }
-      )
     }
     .onAppear {
       self.getUserPolls()
       self.getAllTags()
     }
   }
-  
   
   func getUserPolls() {
     Poll.allPolls(completion: { polls in
@@ -70,6 +70,7 @@ struct AllPollsView: View {
     })
   }
 }
+
 
 struct AllPollsView_Previews: PreviewProvider {
   static var previews: some View {

@@ -38,7 +38,7 @@ struct PollDetailView: View {
         }
       }
       PollDetailDescriptionView(description: poll.description)
-      Text(verbatim: "You will get 2 point per questions that you answered")
+      Text(verbatim: "You will get 5 point per questions that you answered")
         .font(Font.system(size: 12, design: .default))
         .fontWeight(.semibold)
         .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))

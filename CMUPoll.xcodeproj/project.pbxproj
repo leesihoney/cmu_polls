@@ -946,7 +946,7 @@
 					"-weak_framework",
 					"\"SwiftUI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AndrewLee.CMUPoll;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1048,7 +1048,7 @@
 					"-weak_framework",
 					"\"SwiftUI\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = AndrewLee.CMUPoll;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

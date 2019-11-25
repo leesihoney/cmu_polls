@@ -16,7 +16,7 @@ struct AnswerGraphView: View {
   let onEditedAnswer: () -> Void
   
   @State var numViews: Int?
-  
+  @State var user: User? = User.current
   @State var accumulatedBars: [Bar]?
   @State var numBars: Int?
   
@@ -37,7 +37,7 @@ struct AnswerGraphView: View {
       Button(action: {
         self.onEditedAnswer()
       }) {
-          Text("Edit Response")
+        Text("Edit Response")
       }.buttonStyle(OutlineButtonStyle())
       
     }
