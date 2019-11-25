@@ -90,13 +90,15 @@ struct User: Identifiable {
   }
   
   mutating func addPoints(type: RewardType) {
+    print("we are adding points \(self.points) AND \(reward(type: type))")
     self.points += reward(type: type)
   }
+  
   
   func polls(completion: @escaping ([Poll]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll).whereField("user_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-    let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+      let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(polls)
     })
   }
@@ -104,7 +106,7 @@ struct User: Identifiable {
   func likes(completion: @escaping ([Like]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .like).whereField("user_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-    let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
+      let likes: [Like] = ModelParser.parse(collection: .like, data: data) as! [Like]
       completion(likes)
     })
   }
@@ -112,12 +114,12 @@ struct User: Identifiable {
   func comments(completion: @escaping ([Comment]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .comment).whereField("user_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
-    let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
+      let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
       completion(comments)
     })
   }
   
-  mutating func update(major: String?, graduation_year: Int?, completion: @escaping () -> Void) {
+  mutating func update(major: String?, graduation_year: Int?, points: Int?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
     var data: [String:Any] = [:]
     if let major = major {
@@ -128,6 +130,11 @@ struct User: Identifiable {
       data["graduation_year"] = graduation_year
       self.graduation_year = graduation_year
     }
+    if let points = points {
+      data["points"] = points
+      self.points = points
+    }
+    
     FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
 }

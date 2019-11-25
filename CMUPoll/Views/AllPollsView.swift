@@ -13,24 +13,27 @@ struct AllPollsView: View {
   @State var polls = [Poll]()
   @State var tags = [Tag]()
   @State private var searchTerm: String = ""
-
+  
   var body: some View {
     NavigationView {
+      
       VStack(alignment: .leading, spacing: 10) {
+        
         SearchBarView(text: $searchTerm)
           .padding(.vertical, CGFloat(8))
           .padding(.horizontal, 16)
-
+        
+        
         TagsView(tags: tags)
           .padding(.vertical, CGFloat(10))
           .padding(.horizontal, 16)
-
+        
         Text("All Polls")
           .font(Font.system(size: 20, design: .default))
           .fontWeight(.bold)
           .foregroundColor(Color.gray)
           .padding(.horizontal, 16)
-
+        
         List {
           ForEach(self.polls.filter {
             self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
@@ -48,12 +51,12 @@ struct AllPollsView: View {
         }
       )
     }
-      .onAppear {
-        self.getUserPolls()
-        self.getAllTags()
+    .onAppear {
+      self.getUserPolls()
+      self.getAllTags()
     }
   }
-
+  
   func getUserPolls() {
     Poll.allPolls(completion: { polls in
       DispatchQueue.main.async {
@@ -61,7 +64,7 @@ struct AllPollsView: View {
       }
     })
   }
-
+  
   func getAllTags() {
     Tag.allTags(completion: { tags in
       DispatchQueue.main.async {

@@ -34,6 +34,8 @@ struct PollCreateView: View {
   
   let refresh: () -> Void
   
+  //  @State var user_input = User.current?
+  
   @State var user: User? = User.current
   @State var title = ""
   @State var tag = ""
@@ -44,7 +46,9 @@ struct PollCreateView: View {
   @Environment(\.presentationMode) var presentationMode
   
   
+  
   var body: some View {
+    
     List {
       
       if (user != nil) {
@@ -103,9 +107,9 @@ struct PollCreateView: View {
           self.questions.removeLast()
         }
       }, label: {
-          Text(verbatim: "Number of Questions: \(quantity)")
-            .font(Font.system(size: 15, design: .default))
-            .foregroundColor(Color.gray)
+        Text(verbatim: "Number of Questions: \(quantity)")
+          .font(Font.system(size: 15, design: .default))
+          .foregroundColor(Color.gray)
       }
       )
       
@@ -136,6 +140,13 @@ struct PollCreateView: View {
               }
             })
           }
+          self.refresh()
+        })
+        // To add points for uploading a poll
+        User.current?.addPoints(type: .upload)
+        print("\(self.user!.first_name) just earned 10 points!")
+        self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+          print("10 points has been added into Firebase!")
           self.refresh()
         })
       }

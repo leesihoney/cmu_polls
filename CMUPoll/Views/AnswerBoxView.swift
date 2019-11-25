@@ -15,6 +15,8 @@ struct AnswerBoxView: View {
   let onNewAnswer: () -> Void
   @State var options = [Option]()
   @State private var selectedAnswer = 0
+  @State var user: User? = User.current
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AnswerBoxTextView(question: question.title)
@@ -25,7 +27,7 @@ struct AnswerBoxView: View {
           selectedColor: UIColor(red: 57 / 255.0, green: 57 / 255.0, blue: 57 / 255.0, alpha: 0.6),
           isVertical: true,
           buttonSize: 18.0,
-          spacing: 17,
+          spacing: 6,
           itemSpacing: 21,
           isButtonAfterTitle: false,
           titleColor: UIColor(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0, alpha: 0.6),
@@ -42,6 +44,16 @@ struct AnswerBoxView: View {
           print("No user is logged in!")
           return
         }
+        // To add points for answering a poll
+        self.question.userHasAnswer(completion: { bool in
+          if !bool {
+            User.current?.addPoints(type: .answer)
+            print("\(self.user!.first_name) just earned 5 points!")
+            self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+              print("5 points has been added into Firebase!")
+            })
+          }
+        })
         Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in
           if var answer = answer {
             answer.update(user_id: user.id, question_id: self.question.id, option_id: option.id, completion: {
@@ -53,8 +65,10 @@ struct AnswerBoxView: View {
             })
           }
         })
-      }) {
-          Text("Submit")
+      }
+        
+      ) {
+        Text("Submit")
       }.buttonStyle(PollButtonStyle())
     }
     .padding(30)
