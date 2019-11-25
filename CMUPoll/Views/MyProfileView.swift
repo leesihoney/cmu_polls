@@ -78,7 +78,7 @@ struct MyProfileComponentView: View {
         Text("\(self.user.major)")
           .font(Font.system(size: 10, design: .default))
           .foregroundColor(.gray)
-        Text("Class of \(self.user.graduation_year ?? 2109)")
+        Text("Class of \(String(self.user.graduation_year ?? 3000))")
           .font(Font.system(size: 10, design: .default))
           .foregroundColor(.gray)
       }

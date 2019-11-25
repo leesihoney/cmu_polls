@@ -133,7 +133,7 @@ struct InitializeUserView: View {
     }
   }
   func signUp() {
-    User.create(first_name: first_name, last_name: last_name, email: email, major: major, graduation_year: Int(graduation), completion: { user in
+    User.create(first_name: first_name, last_name: last_name, email: email, major: major, graduation_year: Int(years[yearsIndex]), completion: { user in
       User.current = user
       
       // Save new user info to CoreData
