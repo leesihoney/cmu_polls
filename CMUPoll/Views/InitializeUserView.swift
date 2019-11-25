@@ -172,7 +172,7 @@ struct TabbarView: View {
           Text("My Activity")
         })
         .tag(1)
-      Text("Third View")
+      MyProfileView()
         .font(.title)
         .tabItem({
           Image(systemName: "person.fill")
