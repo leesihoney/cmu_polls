@@ -108,9 +108,12 @@ struct InitializeUserView: View {
             }
             
             VStack (alignment: .leading) {
-              HStack {
-                Text("Graduation Year")
-              }
+              Text("Graduation Year")
+              .font(Font.system(size: 12, design: .default))
+              .fontWeight(.bold)
+              .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
+              .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+              
               
               HStack {
                 Picker(selection: $yearsIndex, label: Text("")) {

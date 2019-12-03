@@ -25,7 +25,7 @@ struct MyActivityView: View {
         }.pickerStyle(SegmentedPickerStyle())
           .padding(.vertical, 10)
           .padding(.horizontal, 16)
-          
+        
         
         
         Text("My Activity")
@@ -34,21 +34,35 @@ struct MyActivityView: View {
           .foregroundColor(Color.gray)
           .padding(.horizontal, 16)
         
-        List {
-          
-          ForEach(self.polls) { poll in
-            NavigationLink(destination: PollDetailView(poll: poll)) {
-              PollView(poll: poll)
+        if self.polls.count > 0 {
+          List {
+            ForEach(self.polls) { poll in
+              NavigationLink(destination: PollDetailView(poll: poll)) {
+                PollView(poll: poll)
+              }
             }
           }
-        }
-        .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-        .navigationBarItems(trailing:
-          // TODO: should connect to a form view
-          NavigationLink(destination: PollCreateView(refresh: self.getUploadedPolls)) {
-            Text("Add")
+          .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+            .navigationBarItems(trailing:
+              // TODO: should connect to a form view
+              NavigationLink(destination: PollCreateView(refresh: self.getUploadedPolls)) {
+                Text("Add")
+              }
+          )
+        } else {
+          List {
+            NoEntryBoxView(keyword: "uploaded")
           }
-        )
+          .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+          .navigationBarItems(trailing:
+            // TODO: should connect to a form view
+            NavigationLink(destination: PollCreateView(refresh: self.getUploadedPolls)) {
+              Text("Add")
+              
+            }
+          )
+          .listStyle(GroupedListStyle())
+        }
       }
       
     }
@@ -61,15 +75,30 @@ struct MyActivityView: View {
   func getUploadedPolls() {
     if let user = self.user {
       user.polls(completion: { polls in
-      DispatchQueue.main.async {
-        self.polls = polls
-      }
-    })
+        DispatchQueue.main.async {
+          self.polls = polls
+        }
+      })
     }
   }
-
+  
 }
 
+struct NoEntryBoxView: View {
+  let keyword: String
+  var body: some View {
+    HStack(alignment: .center) {
+      Spacer()
+      Text("You have not \(self.keyword) any polls!")
+        .font(Font.system(size: 16, design: .default))
+        .fontWeight(.semibold)
+        .foregroundColor(Color.gray)
+      Spacer()
+    }
+    .padding(.vertical, 30)
+  }
+  
+}
 struct MyActivityView_Previews: PreviewProvider {
   static var previews: some View {
     MyActivityView()
