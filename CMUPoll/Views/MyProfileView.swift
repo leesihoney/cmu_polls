@@ -44,9 +44,7 @@ struct MyProfileView: View {
             Text("Help")
               .font(Font.system(size: 17, design: .default))
               .foregroundColor(Color.accentColor)
-//            NavigationLink(destination: ContentView()) {
-              SignOutButtonView()
-//            }
+            SignOutButtonView()
           }
           .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
         }
