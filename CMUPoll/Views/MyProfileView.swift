@@ -44,9 +44,9 @@ struct MyProfileView: View {
             Text("Help")
               .font(Font.system(size: 17, design: .default))
               .foregroundColor(Color.accentColor)
-            NavigationLink(destination: ContentView()) {
+//            NavigationLink(destination: ContentView()) {
               SignOutButtonView()
-            }
+//            }
           }
           .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
         }
@@ -92,6 +92,7 @@ struct SignOutButtonView: View {
   var body: some View {
     Button(action: {
       print("Logout")
+      User.logout()
     }, label: {
       Text("Sign Out")
         .font(Font.system(size: 17, design: .default))
