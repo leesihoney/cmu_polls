@@ -16,11 +16,12 @@ struct AnswerBoxView: View {
   @State var options = [Option]()
   @State private var selectedAnswer = 0
   @State var user: User? = User.current
+  @State var initialized: Bool = false
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AnswerBoxTextView(question: question.title)
-      if (!options.isEmpty) {
+      if (self.initialized) {
         RadioGroupPicker(
           selectedIndex: $selectedAnswer,
           titles: options.map{ $0.text },
@@ -75,6 +76,7 @@ struct AnswerBoxView: View {
     .border(Color(red: 235 / 255.0, green: 234 / 255.0, blue: 234 / 255.0, opacity: 0.6))
     .cornerRadius(8)
     .onAppear {
+      self.initialized = false
       self.getQuestionOptions()
     }
   }
@@ -83,6 +85,7 @@ struct AnswerBoxView: View {
     self.question.options(completion: { options in
       DispatchQueue.main.async {
         self.options = options
+        self.initialized = true
       }
     })
   }
