@@ -84,7 +84,6 @@ struct AnswerGraphView: View {
     if (accumulatedBars!.count >= numBars!) {
       self.bars = accumulatedBars!
       self.initialized = true
-      print(self.bars.map { "\($0.label): \($0.value)" })
     }
   }
   

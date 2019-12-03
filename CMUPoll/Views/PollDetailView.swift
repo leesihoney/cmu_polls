@@ -26,80 +26,88 @@ struct PollDetailView: View {
   
   
   var body: some View {
-    List {
-      if (pollUser != nil) {
-        PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
-      }
-      HStack(alignment: .firstTextBaseline) {
-        Text(poll.title)
+    ScrollView() {
+      VStack(alignment: .leading) {
+        if (pollUser != nil) {
+          PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+        }
+        
+        HStack(alignment: .firstTextBaseline) {
+          Text(poll.title)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.leading)
+            .font(Font.system(size: 20, design: .default))
+            .lineSpacing(10)
+          
+          Spacer()
+          
+          if !self.userAlreadyLiked {
+            Button(action: {
+              print("like button is clicked!")
+              print("here, likes: \(self.likes)")
+              self.addLike()
+              self.getPollLikes()
+            }) {
+              Image(systemName: "hand.thumbsup")
+                .foregroundColor(.gray)
+                .frame(width: CGFloat(20.0), height: CGFloat(20.0)
+                  ,alignment: .bottomLeading)
+              Text("Like")
+                .fontWeight(.regular)
+                .foregroundColor(Color.gray)
+                .font(Font.system(size: 10, design: .default))
+            }
+          }
+          else {
+            Button(action: {
+              print("like button is unclicked!")
+              print("here, likes: \(self.likes)")
+              self.deleteLike()
+              self.getPollLikes()
+            }) {
+              Image(systemName: "hand.thumbsup.fill")
+                .foregroundColor(.gray)
+                .frame(width: CGFloat(20.0), height: CGFloat(20.0)
+                  ,alignment: .bottomLeading)
+              Text("Unlike")
+                .fontWeight(.regular)
+                .foregroundColor(Color.gray)
+                .font(Font.system(size: 10, design: .default))
+            }
+          }
+        }
+        
+        HStack(alignment: .firstTextBaseline, spacing: 5) {
+          ForEach(self.tags) { tag in
+            TagView(tagText: tag.name)
+            }
+        }
+        .padding(.vertical, 14)
+        
+        PollDetailDescriptionView(description: poll.description)
+        Text(verbatim: "You will get 5 point per questions that you answered")
+          .font(Font.system(size: 12, design: .default))
           .fontWeight(.semibold)
-          .multilineTextAlignment(.leading)
-          .font(Font.system(size: 20, design: .default))
-          .lineSpacing(10)
+          .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
+          .padding(.vertical, 24)
         
-        Spacer()
-        
-        if !self.userAlreadyLiked {
-          Button(action: {
-            print("like button is clicked!")
-            print("here, likes: \(self.likes)")
-            self.addLike()
-            self.getPollLikes()
-          }) {
-            Image(systemName: "hand.thumbsup")
-              .foregroundColor(.gray)
-              .frame(width: CGFloat(20.0), height: CGFloat(20.0)
-                ,alignment: .bottomLeading)
-            Text("Like")
-              .fontWeight(.regular)
-              .foregroundColor(Color.gray)
-              .font(Font.system(size: 10, design: .default))
-          }
-        }
-        else {
-          Button(action: {
-            print("like button is unclicked!")
-            print("here, likes: \(self.likes)")
-            self.deleteLike()
-            self.getPollLikes()
-          }) {
-            Image(systemName: "hand.thumbsup.fill")
-              .foregroundColor(.gray)
-              .frame(width: CGFloat(20.0), height: CGFloat(20.0)
-                ,alignment: .bottomLeading)
-            Text("Unlike")
-              .fontWeight(.regular)
-              .foregroundColor(Color.gray)
-              .font(Font.system(size: 10, design: .default))
-          }
-        }
-      }
-      
-      HStack(alignment: .firstTextBaseline, spacing: 5) {
-        ForEach(self.tags) { tag in
-          TagView(tagText: tag.name)
-        }
-      }
-      PollDetailDescriptionView(description: poll.description)
-      Text(verbatim: "You will get 5 point per questions that you answered")
-        .font(Font.system(size: 12, design: .default))
-        .fontWeight(.semibold)
-        .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
-      if self.initialized {
-        ForEach(self.questions) { question in
-          if self.questionAnswered[question.id] == true {
-            AnswerGraphView(question: question, onEditedAnswer: {
-              self.questionAnswered[question.id] = false
-            })
-          } else {
-            AnswerBoxView(question: question, onNewAnswer: {
-              self.questionAnswered[question.id] = true
-            })
+        if self.initialized {
+          ForEach(self.questions) { question in
+            if self.questionAnswered[question.id] == true {
+              AnswerGraphView(question: question, onEditedAnswer: {
+                self.questionAnswered[question.id] = false
+              })
+            } else {
+              AnswerBoxView(question: question, onNewAnswer: {
+                self.questionAnswered[question.id] = true
+              })
+            }
           }
         }
       }
     }
-    .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .center)
+    .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .topLeading)
+    .multilineTextAlignment(.leading)
     .padding(.vertical, 25)
     .padding(.horizontal, 15)
     .onAppear {
