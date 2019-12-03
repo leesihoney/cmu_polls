@@ -17,10 +17,12 @@ struct PollDetailView: View {
   let poll: Poll
   @State var tags = [Tag]()
   @State var questions = [Question]()
+  @State var likes = [Like]()
   @State var pollUser: User?
   @State var questionAnswered = [String: Bool]()
   @State var accumulatedQuestionAnswered = [String: Bool]()
   @State var initialized: Bool = false
+  @State var userAlreadyLiked: Bool = false
   
   
   var body: some View {
@@ -30,19 +32,55 @@ struct PollDetailView: View {
           PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
         }
         
-        Text(poll.title)
-        .fontWeight(.semibold)
-        .multilineTextAlignment(.leading)
-        .font(Font.system(size: 20, design: .default))
-        .lineSpacing(10)
-        .padding(.top, 13)
-        
-        
+        HStack(alignment: .firstTextBaseline) {
+          Text(poll.title)
+            .fontWeight(.semibold)
+            .multilineTextAlignment(.leading)
+            .font(Font.system(size: 20, design: .default))
+            .lineSpacing(10)
+          
+          Spacer()
+          
+          if !self.userAlreadyLiked {
+            Button(action: {
+              print("like button is clicked!")
+              print("here, likes: \(self.likes)")
+              self.addLike()
+              self.getPollLikes()
+            }) {
+              Image(systemName: "hand.thumbsup")
+                .foregroundColor(.gray)
+                .frame(width: CGFloat(20.0), height: CGFloat(20.0)
+                  ,alignment: .bottomLeading)
+              Text("Like")
+                .fontWeight(.regular)
+                .foregroundColor(Color.gray)
+                .font(Font.system(size: 10, design: .default))
+            }
+          }
+          else {
+            Button(action: {
+              print("like button is unclicked!")
+              print("here, likes: \(self.likes)")
+              self.deleteLike()
+              self.getPollLikes()
+            }) {
+              Image(systemName: "hand.thumbsup.fill")
+                .foregroundColor(.gray)
+                .frame(width: CGFloat(20.0), height: CGFloat(20.0)
+                  ,alignment: .bottomLeading)
+              Text("Unlike")
+                .fontWeight(.regular)
+                .foregroundColor(Color.gray)
+                .font(Font.system(size: 10, design: .default))
+            }
+          }
+        }
         
         HStack(alignment: .firstTextBaseline, spacing: 5) {
           ForEach(self.tags) { tag in
             TagView(tagText: tag.name)
-          }
+            }
         }
         .padding(.vertical, 14)
         
@@ -75,6 +113,7 @@ struct PollDetailView: View {
     .onAppear {
       self.initialized = false
       self.getPollUser()
+      self.getPollLikes()
     }
   }
   
@@ -104,6 +143,40 @@ struct PollDetailView: View {
       }
     })
   }
+  
+  func getPollLikes() {
+    self.poll.likes(completion: { likes in
+      DispatchQueue.main.async {
+        self.likes = likes
+        print("currently, self likes is \(self.likes)")
+        let temp = self.likes.filter {$0.user_id == User.current?.id}
+        if temp.isEmpty {
+          self.userAlreadyLiked = false
+        }
+        else {
+          self.userAlreadyLiked = true
+        }
+      }
+    })
+  }
+  
+  func addLike() {
+    Like.create(poll_id: self.poll.id, completion: { like in })
+  }
+  
+  func deleteLike() {
+    let temp = self.likes.filter {$0.user_id == User.current?.id}
+    if temp.isEmpty {
+      print("current user did not like this poll yet!")
+    }
+    else {
+      print("the like has been deleted!")
+      temp[0].delete(completion: { () in }
+      )
+    }
+  }
+  
+  
   
   func accumulateQuestionAnswered(question_id: String, hasAnswer: Bool) {
     accumulatedQuestionAnswered[question_id] = hasAnswer
