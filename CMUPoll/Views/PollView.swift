@@ -17,7 +17,10 @@ struct PollView: View {
   let uploadedDaysAgo = "29"
   @State var tags = [Tag]()
   @State var pollUser: User?
-
+  @State var likes = [Like]()
+  
+  
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
       if (pollUser != nil) {
@@ -37,17 +40,28 @@ struct PollView: View {
           }
         }
         Spacer()
-        HStack(alignment: .firstTextBaseline, spacing: 13) {
-          Text("300.2k votes")
-            .fontWeight(.regular)
-            .foregroundColor(Color.gray)
+        HStack(alignment: .firstTextBaseline, spacing: 30) {
+          HStack(alignment: .firstTextBaseline) {
+            Image(systemName: "hand.thumbsup.fill")
+              .foregroundColor(.gray)
+              .frame(width: CGFloat(27.0), height: CGFloat(27.0), alignment: .bottomLeading)
+            
+            Text("\(self.likes.count)")
+              .fontWeight(.regular)
+              .foregroundColor(Color.gray)
+              .padding(.horizontal, -CGFloat(5))
+          }
+          
           HStack(alignment: .firstTextBaseline) {
             Image(systemName: "message.fill")
               .foregroundColor(.gray)
               .frame(width: CGFloat(27.0), height: CGFloat(27.0), alignment: .bottomLeading)
+            
             Text("3")
               .fontWeight(.regular)
               .foregroundColor(Color.gray)
+              .padding(.horizontal, -CGFloat(5))
+            
           }
         }
       }
@@ -57,8 +71,16 @@ struct PollView: View {
     .onAppear {
       self.getPollTags()
       self.getPollUser()
+      self.getPollLikes()
     }
-    
+  }
+  
+  func getPollLikes() {
+    self.poll.likes(completion: { likes in
+      DispatchQueue.main.async {
+        self.likes = likes
+      }
+    })
   }
   
   
