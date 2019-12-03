@@ -23,6 +23,8 @@ class Poll: Identifiable {
   // Used for double query
   var tagsFound: [Tag] = []
   var numTags: Int?
+  static var pollsFound: [Poll] = []
+  static var numPolls: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
   init (id: String, user_id: String, title: String, description: String, posted_at: String, link: String, is_private: Bool, is_closed: Bool) {
@@ -41,6 +43,14 @@ class Poll: Identifiable {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd"
     return dateFormatter.string(from: date)
+  }
+  
+  private static func getDate(_ dateString: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.timeZone = TimeZone.current
+    dateFormatter.locale = Locale.current
+    return dateFormatter.date(from: dateString)!
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
@@ -70,10 +80,50 @@ class Poll: Identifiable {
     })
   }
   
+  private static func accumulatePolls(poll: Poll, completion: @escaping ([Poll]) -> ()) {
+    pollsFound.append(poll)
+    if pollsFound.count == numPolls! {
+      pollsFound.sort(by: { p1, p2 in
+        return getDate(p1.posted_at) < getDate(p2.posted_at)
+      })
+      completion(pollsFound)
+    }
+  }
+  
+  static func withTag(name: String, completion: @escaping ([Poll]) -> ()) {
+    // Find a Tag with a given name
+    let tagQuery = FirebaseDataHandler.colRef(collection: .tag)
+      .whereField("name", isEqualTo: name)
+    FirebaseDataHandler.get(query: tagQuery, completion: { data in
+      if data.isEmpty {
+        completion([])
+      }
+      let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+      // Find PollTags associated with found Tag
+      let polltagQuery = FirebaseDataHandler.colRef(collection: .polltag)
+        .whereField("tag_id", isEqualTo: singleTag[0].id)
+      FirebaseDataHandler.get(query: polltagQuery, completion: { data in
+        if data.isEmpty {
+          completion([])
+        }
+        // Find Polls associated with found polltags
+        let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
+        self.numPolls = polltags.count
+        self.pollsFound = []
+        for polltag in polltags {
+          let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: polltag.poll_id)
+          FirebaseDataHandler.get(docRef: docRef, completion: { data in
+            let singlePoll: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+            self.accumulatePolls(poll: singlePoll[0], completion: completion)
+          })
+        }
+      })
+    })
+  }
+  
   static func allPolls(completion: @escaping ([Poll]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll)
       .order(by: "posted_at", descending: true)
-      .whereField("private", isEqualTo: false)
       .whereField("closed", isEqualTo: false)
     FirebaseDataHandler.get(query: query, completion: { data in
       let allPolls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
