@@ -17,6 +17,7 @@ struct PollDetailView: View {
   let poll: Poll
   @State var tags = [Tag]()
   @State var questions = [Question]()
+  @State var comments = [Comment]()
   @State var pollUser: User?
   @State var questionAnswered = [String: Bool]()
   @State var accumulatedQuestionAnswered = [String: Bool]()
@@ -66,6 +67,8 @@ struct PollDetailView: View {
             }
           }
         }
+        
+        PollDetailCommentsView(comments: self.comments)
       }
     }
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .topLeading)
@@ -75,6 +78,7 @@ struct PollDetailView: View {
     .onAppear {
       self.initialized = false
       self.getPollUser()
+      self.getPollComments()
     }
   }
   
@@ -105,6 +109,14 @@ struct PollDetailView: View {
     })
   }
   
+  func getPollComments() {
+    self.poll.comments(completion: { comments in
+      DispatchQueue.main.async {
+        self.comments = comments
+      }
+    })
+  }
+  
   func accumulateQuestionAnswered(question_id: String, hasAnswer: Bool) {
     accumulatedQuestionAnswered[question_id] = hasAnswer
     if (accumulatedQuestionAnswered.count >= self.questions.count) {
@@ -125,6 +137,18 @@ struct PollDetailView: View {
   }
 }
 
+struct PollDetailCommentsView: View {
+  let comments: [Comment]
+  
+  var body: some View {
+    VStack(alignment: .leading) {
+      Text("Comments \(comments.count)")
+      .font(Font.system(size: 18, design: .default))
+      .fontWeight(.semibold)
+      .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
+    }
+  }
+}
 struct PollDetailView_Previews: PreviewProvider {
   static var previews: some View {
     PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
