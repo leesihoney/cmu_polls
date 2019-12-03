@@ -30,7 +30,7 @@ struct Comment: Identifiable {
   private static func getDateString() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.dateFormat = "yyyy-MM-dd HH-mm:ss"
     return dateFormatter.string(from: date)
   }
     
