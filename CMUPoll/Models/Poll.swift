@@ -41,13 +41,13 @@ class Poll: Identifiable {
   private static func getDateString() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     return dateFormatter.string(from: date)
   }
   
   private static func getDate(_ dateString: String) -> Date {
     let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd"
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     dateFormatter.timeZone = TimeZone.current
     dateFormatter.locale = Locale.current
     return dateFormatter.date(from: dateString)!
