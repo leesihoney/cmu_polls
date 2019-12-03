@@ -54,7 +54,9 @@ struct PollView: View {
     }
     .frame(minWidth: 0, maxWidth: .infinity, maxHeight: 188.0, alignment: .center)
     .padding(.vertical, 25)
-    .onAppear {
+    .padding(.horizontal, 15)
+    .background(Color.white)
+    .onAppear { 
       self.getPollTags()
       self.getPollUser()
     }
@@ -83,6 +85,15 @@ struct PollView: View {
 
 struct PollView_Previews: PreviewProvider {
   static var previews: some View {
-    PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
+    NavigationView {
+      ScrollView {
+        VStack(alignment: .leading, spacing: 8) {
+          PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
+          PollView(poll: Poll(id: "2", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
+        }
+      }
+      .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+    }
+    .background(Color.gray)
   }
 }
