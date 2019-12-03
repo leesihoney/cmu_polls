@@ -15,15 +15,14 @@ struct PollDetailView: View {
   let uploaderGraduationYear: String = "2020"
   let uploadedDaysAgo = "29"
   let poll: Poll
-  
   @State var tags = [Tag]()
   @State var questions = [Question]()
   @State var likes = [Like]()
   @State var pollUser: User?
   @State var questionAnswered = [String: Bool]()
   @State var accumulatedQuestionAnswered = [String: Bool]()
+  @State var initialized: Bool = false
   @State var userAlreadyLiked: Bool = false
-  
   
   
   var body: some View {
@@ -31,7 +30,6 @@ struct PollDetailView: View {
       if (pollUser != nil) {
         PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
       }
-      
       HStack(alignment: .firstTextBaseline) {
         Text(poll.title)
           .fontWeight(.semibold)
@@ -41,13 +39,10 @@ struct PollDetailView: View {
         
         Spacer()
         
-        
-        
         if !self.userAlreadyLiked {
           Button(action: {
             print("like button is clicked!")
             print("here, likes: \(self.likes)")
-            
             self.addLike()
             self.getPollLikes()
           }) {
@@ -55,8 +50,6 @@ struct PollDetailView: View {
               .foregroundColor(.gray)
               .frame(width: CGFloat(20.0), height: CGFloat(20.0)
                 ,alignment: .bottomLeading)
-            
-            
             Text("Like")
               .fontWeight(.regular)
               .foregroundColor(Color.gray)
@@ -67,7 +60,6 @@ struct PollDetailView: View {
           Button(action: {
             print("like button is unclicked!")
             print("here, likes: \(self.likes)")
-            
             self.deleteLike()
             self.getPollLikes()
           }) {
@@ -75,17 +67,14 @@ struct PollDetailView: View {
               .foregroundColor(.gray)
               .frame(width: CGFloat(20.0), height: CGFloat(20.0)
                 ,alignment: .bottomLeading)
-            
             Text("Unlike")
               .fontWeight(.regular)
               .foregroundColor(Color.gray)
               .font(Font.system(size: 10, design: .default))
           }
         }
-        
-        
-        
       }
+      
       HStack(alignment: .firstTextBaseline, spacing: 5) {
         ForEach(self.tags) { tag in
           TagView(tagText: tag.name)
@@ -96,7 +85,7 @@ struct PollDetailView: View {
         .font(Font.system(size: 12, design: .default))
         .fontWeight(.semibold)
         .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
-      if !self.questionAnswered.isEmpty {
+      if self.initialized {
         ForEach(self.questions) { question in
           if self.questionAnswered[question.id] == true {
             AnswerGraphView(question: question, onEditedAnswer: {
@@ -114,18 +103,26 @@ struct PollDetailView: View {
     .padding(.vertical, 25)
     .padding(.horizontal, 15)
     .onAppear {
-      self.getPollTags()
-      self.getPollQuestions()
+      self.initialized = false
       self.getPollUser()
       self.getPollLikes()
-      
     }
+  }
+  
+  func getPollUser() {
+    self.poll.user(completion: { user in
+      DispatchQueue.main.async {
+        self.pollUser = user
+        self.getPollTags()
+      }
+    })
   }
   
   func getPollTags() {
     self.poll.tags(completion: { tags in
       DispatchQueue.main.async {
         self.tags = tags
+        self.getPollQuestions()
       }
     })
   }
@@ -138,15 +135,6 @@ struct PollDetailView: View {
       }
     })
   }
-  
-  func getPollUser() {
-    self.poll.user(completion: { user in
-      DispatchQueue.main.async {
-        self.pollUser = user
-      }
-    })
-  }
-  
   
   func getPollLikes() {
     self.poll.likes(completion: { likes in
@@ -182,13 +170,11 @@ struct PollDetailView: View {
   
   
   
-  
-  
-  
   func accumulateQuestionAnswered(question_id: String, hasAnswer: Bool) {
     accumulatedQuestionAnswered[question_id] = hasAnswer
     if (accumulatedQuestionAnswered.count >= self.questions.count) {
       self.questionAnswered = self.accumulatedQuestionAnswered
+      self.initialized = true
     }
   }
   
@@ -209,5 +195,3 @@ struct PollDetailView_Previews: PreviewProvider {
     PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
   }
 }
-
-
