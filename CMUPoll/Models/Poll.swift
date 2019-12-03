@@ -53,6 +53,14 @@ class Poll: Identifiable {
     return dateFormatter.date(from: dateString)!
   }
   
+  func getDateDisplayString() -> String {
+    let date = Poll.getDate(self.posted_at)
+    
+    let formatter = RelativeDateTimeFormatter()
+    formatter.dateTimeStyle = .named
+    return formatter.localizedString(for: date, relativeTo: Date())
+  }
+  
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, completion: @escaping (Poll) -> ()) {
     guard let user = User.current else {
