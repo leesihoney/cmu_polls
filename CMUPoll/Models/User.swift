@@ -90,7 +90,6 @@ struct User: Identifiable {
   }
   
   mutating func addPoints(type: RewardType) {
-    print("we are adding points \(self.points) AND \(reward(type: type))")
     self.points += reward(type: type)
   }
   

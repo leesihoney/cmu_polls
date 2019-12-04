@@ -49,9 +49,7 @@ struct AnswerBoxView: View {
         self.question.userHasAnswer(completion: { bool in
           if !bool {
             User.current?.addPoints(type: .answer)
-            print("\(self.user!.first_name) just earned 5 points!")
             self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
-              print("5 points has been added into Firebase!")
             })
           }
         })
