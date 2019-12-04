@@ -160,34 +160,6 @@ struct InitializeUserView: View {
   }
 }
 
-struct TabbarView: View {
-  var body: some View {
-    TabView {
-      AllPollsView()
-        .tabItem({
-          Image(systemName: "list.dash")
-          Text("All Polls")
-        })
-        .tag(0)
-      MyActivityView()
-        .tabItem({
-          Image(systemName: "chart.bar.fill")
-          Text("My Activity")
-        })
-        .tag(1)
-      MyProfileView()
-        .font(.title)
-        .tabItem({
-          Image(systemName: "person.fill")
-          Text("My Profile")
-        })
-        .tag(2)
-    }
-  }
-}
-
-
-
 struct InitializeUserView_Previews: PreviewProvider {
   static var previews: some View {
     InitializeUserView(first_name: "Aiden", last_name: "Lee", email: "siheonl@andrew.cmu.edu")
