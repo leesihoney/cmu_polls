@@ -9,10 +9,33 @@
 import SwiftUI
 
 struct TabbarView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @State var selectedView = 0
+
+  var body: some View {
+    TabView(selection: $selectedView) {
+      AllPollsView()
+        .tabItem({
+          Image(systemName: "list.dash")
+          Text("All Polls")
+        })
+        .tag(0)
+      MyActivityView()
+        .tabItem({
+          Image(systemName: "chart.bar.fill")
+          Text("My Activity")
+        })
+        .tag(1)
+      MyProfileView()
+        .font(.title)
+        .tabItem({
+          Image(systemName: "person.fill")
+          Text("My Profile")
+        })
+        .tag(2)
     }
+  }
 }
+
 
 struct TabbarView_Previews: PreviewProvider {
     static var previews: some View {
