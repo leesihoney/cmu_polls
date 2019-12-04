@@ -35,32 +35,22 @@ struct MyActivityView: View {
           .padding(.horizontal, 16)
         
         if self.polls.count > 0 {
-          List {
-            ForEach(self.polls) { poll in
-              NavigationLink(destination: PollDetailView(poll: poll)) {
-                PollView(poll: poll)
+          ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+              ForEach(self.polls) { poll in
+                NavigationLink(destination: PollDetailView(poll: poll)) {
+                  PollView(poll: poll)
+                }
+                .buttonStyle(PlainButtonStyle())
               }
             }
           }
           .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-            .navigationBarItems(trailing:
-              // TODO: should connect to a form view
-              NavigationLink(destination: PollCreateView(refresh: self.getUploadedPolls)) {
-                Text("Add")
-              }
-          )
         } else {
           List {
             NoEntryBoxView(keyword: "uploaded")
           }
           .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-          .navigationBarItems(trailing:
-            // TODO: should connect to a form view
-            NavigationLink(destination: PollCreateView(refresh: self.getUploadedPolls)) {
-              Text("Add")
-              
-            }
-          )
           .listStyle(GroupedListStyle())
         }
       }
