@@ -9,13 +9,15 @@
 import SwiftUI
 
 struct BackButtonView: View {
+  let label: String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+      Text("\(self.label)")
+        .foregroundColor(Color.accentColor)
     }
 }
 
 struct BackButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        BackButtonView()
+      BackButtonView(label: "Back")
     }
 }
