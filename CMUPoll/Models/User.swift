@@ -8,6 +8,8 @@
 
 import Foundation
 import SwiftUI
+import CoreData
+import GoogleSignIn
 
 struct User: Identifiable {
   enum RewardType {
@@ -116,6 +118,27 @@ struct User: Identifiable {
       let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
       completion(comments)
     })
+  }
+  
+  static func logout() {
+    let delegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // Get CoreData context
+    let context = delegate.persistentContainer.viewContext
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
+    // Clear CoreData
+    do {
+      let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+      try context.execute(batchDeleteRequest)
+    } catch {
+      print("Detele all data error :", error)
+    }
+    
+    User.current = nil
+    GIDSignIn.sharedInstance()?.delegate = nil
+    GIDSignIn.sharedInstance()?.signOut()
+    GIDSignIn.sharedInstance()?.disconnect()
+    delegate.uponLogOut!()
   }
   
   mutating func update(major: String?, graduation_year: Int?, points: Int?, completion: @escaping () -> Void) {

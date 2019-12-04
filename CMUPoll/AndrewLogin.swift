@@ -20,12 +20,7 @@ struct AndrewLogin: UIViewRepresentable {
     // This functin is needed to conform to UIViewRepresentable protocol
   }
   
-  func attemptLogin(uponExistingUser: @escaping AfterSignIn, uponNewUser: @escaping AfterSignIn, uponInvalidInput: @escaping AfterSignIn) {
-    let delegate = UIApplication.shared.delegate as! AppDelegate
-    delegate.uponExistingUser = uponExistingUser
-    delegate.uponNewUser = uponNewUser
-    delegate.uponInvalidInput = uponInvalidInput
-    
+  func attemptLogin() {    
     GIDSignIn.sharedInstance()?.presentingViewController = UIApplication.shared.windows.last?.rootViewController
     GIDSignIn.sharedInstance()?.signIn()
   }

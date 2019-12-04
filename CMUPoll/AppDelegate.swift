@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   var uponExistingUser: AfterSignIn?
   var uponNewUser: AfterSignIn?
   var uponInvalidInput: AfterSignIn?
+  var uponLogOut: AfterSignIn?
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -141,6 +142,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     if (!validateEmail(email)) {
       print("User's email is not valid!")
       self.uponInvalidInput!()
+      signIn.disconnect()
       return
     }
     
@@ -150,16 +152,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
       if let user = user {
         // Change ContentView's @State variable here
         self.uponExistingUser!()
-        
-        // Save new user info to CoreData
+        // Get CoreData context
         let context = self.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Login")
         request.returnsObjectsAsFaults = false
+        // Clear CoreData
         do {
-          let result = try context.fetch(request)
-          for data in result as! [Login] {
-            context.delete(data)
-          }
+          let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+          try context.execute(batchDeleteRequest)
+        } catch {
+          print("Detele all data error :", error)
+        }
+        
+        // Save new user info to CoreData
+        do {
           let newLogin = Login(context: context)
           newLogin.user_id = user.id
           try context.save()
@@ -178,6 +184,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
             withError error: Error!) {
     // Perform any operations when the user disconnects from app here.
+    print("DISCONNECTED")
+//    signIn.delegate = nil
+//    signIn.presentingViewController = nil
+//    signIn.signOut()
   }
   
 }
