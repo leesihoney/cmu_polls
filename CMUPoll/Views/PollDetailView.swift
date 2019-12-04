@@ -22,6 +22,8 @@ struct PollDetailView: View {
   @State var questionAnswered = [String: Bool]()
   @State var accumulatedQuestionAnswered = [String: Bool]()
   @State var initialized: Bool = false
+  @Environment(\.presentationMode) var presentation
+
   
   
   var body: some View {
@@ -70,6 +72,13 @@ struct PollDetailView: View {
         
         PollDetailCommentsView(comments: self.comments)
       }
+      .navigationBarItems(leading: Button (
+        action: {
+          DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+              self.presentation.wrappedValue.dismiss()
+          }
+      }, label: { Text("Back") }
+      ))
     }
     .frame(minWidth: 0, maxWidth: .infinity, idealHeight: 188.0, alignment: .topLeading)
     .multilineTextAlignment(.leading)
@@ -81,6 +90,7 @@ struct PollDetailView: View {
       self.getPollComments()
     }
   }
+
   
   func getPollUser() {
     self.poll.user(completion: { user in
