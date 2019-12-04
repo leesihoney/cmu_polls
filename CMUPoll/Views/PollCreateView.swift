@@ -43,8 +43,8 @@ struct PollCreateView: View {
   @State var quantity: Int = 1
   @State var questions: [QuestionInput] = [QuestionInput()]
   
-  @Environment(\.presentationMode) var presentationMode
-  
+  @Environment(\.presentationMode) var presentation
+
   
   
   var body: some View {
@@ -126,7 +126,14 @@ struct PollCreateView: View {
     }
       
     .navigationBarTitle(Text("Add Poll"), displayMode: .inline)
-    .navigationBarItems(trailing:
+    .navigationBarItems(leading: Button (
+      action: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.presentation.wrappedValue.dismiss()
+            self.refresh()
+        }
+    }, label: { Text("Back") }
+    ), trailing:
       // TODO: should connect to a form view
       Button("Save") {
         Poll.create(title: self.title, description: self.description, link: "", is_private: false, is_closed: false, completion: { poll in
@@ -135,7 +142,7 @@ struct PollCreateView: View {
             Question.create(is_multiple_choice: false, title: questionInput.title, poll_id: poll.id, completion: { question in
               for optionInput in questionInput.optionInputs {
                 Option.create(text: optionInput, question_id: question.id, completion: { option in
-                  self.presentationMode.wrappedValue.dismiss()
+                  self.presentation.wrappedValue.dismiss()
                 })
               }
             })
@@ -144,9 +151,7 @@ struct PollCreateView: View {
         })
         // To add points for uploading a poll
         User.current?.addPoints(type: .upload)
-        print("\(self.user!.first_name) just earned 10 points!")
         self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
-          print("10 points has been added into Firebase!")
           self.refresh()
         })
       }
