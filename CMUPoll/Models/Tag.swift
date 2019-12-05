@@ -61,7 +61,7 @@ class Tag: Identifiable, Hashable {
       }
       // If a tag exists with the given name, don't create a new tag
       else {
-        let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data)
+        let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
         completion(singleTag[0])
       }
     })
