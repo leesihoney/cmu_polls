@@ -26,7 +26,7 @@ struct PollView: View {
       ZStack (alignment: .topTrailing) {
         HStack {
           if (pollUser != nil) {
-            PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+            PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: poll.getDateDisplayString())
           }
           
           if self.poll.is_closed {
