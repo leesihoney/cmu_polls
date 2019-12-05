@@ -13,6 +13,7 @@ struct MyActivityView: View {
   
   let user = User.current
   @State var polls = [Poll]()
+  @State var answeredPolls = [Poll]()
   
   @State private var chosenView = 0
   
@@ -34,24 +35,10 @@ struct MyActivityView: View {
           .foregroundColor(Color.gray)
           .padding(.horizontal, 16)
         
-        if self.polls.count > 0 {
-          ScrollView {
-            VStack(alignment: .leading, spacing: 8) {
-              ForEach(self.polls) { poll in
-                NavigationLink(destination: PollDetailView(poll: poll)) {
-                  PollView(poll: poll)
-                }
-                .buttonStyle(PlainButtonStyle())
-              }
-            }
-          }
-          .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+        if self.chosenView == 0 {
+          MyActivityPollsView(keyword: "uploaded", polls: self.polls)
         } else {
-          List {
-            NoEntryBoxView(keyword: "uploaded")
-          }
-          .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-          .listStyle(GroupedListStyle())
+          MyActivityPollsView(keyword: "answered", polls: self.answeredPolls)
         }
       }
       .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
@@ -59,6 +46,7 @@ struct MyActivityView: View {
     }
     .onAppear {
       self.getUploadedPolls()
+      self.getAnsweredPolls()
     }
   }
   
@@ -73,8 +61,47 @@ struct MyActivityView: View {
     }
   }
   
+  func getAnsweredPolls() {
+    if let user = self.user {
+      user.answeredPolls(completion: { polls in
+        DispatchQueue.main.async {
+          self.answeredPolls = polls
+        }
+      })
+    }
+  }
+  
 }
 
+struct MyActivityPollsView: View {
+  let keyword: String
+  let polls: [Poll]
+  
+  var body: some View {
+    Group {
+      if self.polls.count > 0 {
+        ScrollView {
+          VStack(alignment: .leading, spacing: 8) {
+            ForEach(self.polls) { poll in
+              NavigationLink(destination: PollDetailView(poll: poll)) {
+                PollView(poll: poll)
+              }
+              .buttonStyle(PlainButtonStyle())
+            }
+          }
+        }
+        .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+      } else {
+        List {
+          NoEntryBoxView(keyword: self.keyword)
+        }
+        .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+        .listStyle(GroupedListStyle())
+      }
+    }
+  }
+  
+}
 struct NoEntryBoxView: View {
   let keyword: String
   var body: some View {

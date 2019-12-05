@@ -43,6 +43,7 @@ struct PollCreateView: View {
   @State var quantity: Int = 1
   @State var questions: [QuestionInput] = [QuestionInput()]
   @State var is_private = false
+  @State private var showingAlert = false
   
   @Environment(\.presentationMode) var presentation
   
@@ -194,6 +195,10 @@ struct PollCreateView: View {
           self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
             self.refresh()
           })
+          self.showingAlert = true
+        }
+        .alert(isPresented: $showingAlert) {
+        Alert(title: Text("Congratualations, you earned 10 points"), message: Text("You can use points to transfer into your bank"), dismissButton: .default(Text("OK")))
         }
       )
     }

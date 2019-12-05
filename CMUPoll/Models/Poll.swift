@@ -220,7 +220,7 @@ class Poll: Identifiable {
     let query = FirebaseDataHandler.colRef(collection: .comment).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
     let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
-      completion(comments)
+      completion(Comment.sort(comments))
     })
   }
   

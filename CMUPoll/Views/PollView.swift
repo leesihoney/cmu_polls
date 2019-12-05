@@ -14,10 +14,10 @@ struct PollView: View {
   let uploaderName = "Aiden Lee"
   let uploaderMajor = "Information Systems"
   let uploaderGraduationYear = 2020
-  let uploadedDaysAgo = "29"
   @State var tags = [Tag]()
   @State var pollUser: User?
   @State var likes = [Like]()
+  @State var comments = [Comment]()
   
   
   
@@ -26,7 +26,7 @@ struct PollView: View {
       ZStack (alignment: .topTrailing) {
         HStack {
           if (pollUser != nil) {
-            PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+            PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: poll.getDateDisplayString())
           }
           
           if self.poll.is_closed {
@@ -82,11 +82,10 @@ struct PollView: View {
               .foregroundColor(.gray)
               .frame(width: CGFloat(27.0), height: CGFloat(27.0), alignment: .bottomLeading)
             
-            Text("3")
-              .fontWeight(.regular)
-              .foregroundColor(Color.gray)
-              .padding(.horizontal, -CGFloat(5))
-            
+            Text("\(self.comments.count)")
+            .fontWeight(.regular)
+            .foregroundColor(Color.gray)
+            .padding(.horizontal, -CGFloat(5))
           }
         }
       }
@@ -99,6 +98,7 @@ struct PollView: View {
       self.getPollTags()
       self.getPollUser()
       self.getPollLikes()
+      self.getPollComments()
     }
   }
   
@@ -123,6 +123,14 @@ struct PollView: View {
     self.poll.user(completion: { user in
       DispatchQueue.main.async {
         self.pollUser = user
+      }
+    })
+  }
+  
+  func getPollComments() {
+    self.poll.comments(completion: { comments in
+      DispatchQueue.main.async {
+        self.comments = comments
       }
     })
   }
