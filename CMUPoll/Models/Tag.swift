@@ -9,6 +9,12 @@
 import Foundation
 import SwiftUI
 
+extension StringProtocol {
+    var firstUppercased: String {
+        return prefix(1).uppercased() + dropFirst()
+    }
+}
+
 class Tag: Identifiable, Hashable {
   
   var id: String
@@ -41,11 +47,22 @@ class Tag: Identifiable, Hashable {
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(name: String, completion: @escaping (Tag) -> ()) {
+    let tagName = name.lowercased().firstUppercased
     let colRef = FirebaseDataHandler.colRef(collection: .tag)
-    let data: [String:Any] = ["name": name]
-    FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let tag = Tag(id: documentId, name: name)
-      completion(tag)
+    let query = colRef.whereField("name", isEqualTo: tagName)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      // If no tag is found with the given name, create a new tag
+      if data.isEmpty {
+        let tagData: [String:Any] = ["name": tagName]
+        FirebaseDataHandler.add(colRef: colRef, data: tagData, completion: { documentId in
+          let tag = Tag(id: documentId, name: tagName)
+          completion(tag)
+        })
+      }
+      // If a tag exists with the given name, don't create a new tag
+      else {
+        return
+      }
     })
   }
   

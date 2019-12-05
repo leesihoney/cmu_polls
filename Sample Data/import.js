@@ -679,72 +679,72 @@ var polltag = [
   {
     "id": 6,
     "poll_id": 2,
-    "tag_id": 6
+    "tag_id": 2
   },
   {
     "id": 7,
     "poll_id": 3,
-    "tag_id": 7
+    "tag_id": 6
   },
   {
     "id": 8,
     "poll_id": 3,
-    "tag_id": 8
+    "tag_id": 3
   },
   {
     "id": 9,
     "poll_id": 4,
-    "tag_id": 9
+    "tag_id": 3
   },
   {
     "id": 10,
     "poll_id": 5,
-    "tag_id": 10
+    "tag_id": 7
   },
   {
     "id": 11,
     "poll_id": 6,
-    "tag_id": 11
+    "tag_id": 8
   },
   {
     "id": 12,
     "poll_id": 6,
-    "tag_id": 12
+    "tag_id": 9
   },
   {
     "id": 13,
     "poll_id": 7,
-    "tag_id": 13
+    "tag_id": 9
   },
   {
     "id": 14,
     "poll_id": 7,
-    "tag_id": 14
+    "tag_id": 10
   },
   {
     "id": 15,
     "poll_id": 8,
-    "tag_id": 15
+    "tag_id": 0
   },
   {
     "id": 16,
     "poll_id": 8,
-    "tag_id": 16
+    "tag_id": 11
   },
   {
     "id": 17,
     "poll_id": 9,
-    "tag_id": 17
+    "tag_id": 12
   },
   {
     "id": 18,
     "poll_id": 9,
-    "tag_id": 18
+    "tag_id": 0
   },
   {
     "id": 19,
     "poll_id": 9,
-    "tag_id": 19
+    "tag_id": 13
   }
 ]
 
@@ -775,58 +775,34 @@ var tag = [
   },
   {
     "id": 6,
-    "name": "place"
-  },
-  {
-    "id": 7,
     "name": "Course"
   },
   {
-    "id": 8,
-    "name": "Academic"
-  },
-  {
-    "id": 9,
-    "name": "Academic"
-  },
-  {
-    "id": 10,
+    "id": 7,
     "name": "Career"
   },
   {
-    "id": 11,
+    "id": 8,
     "name": "Time"
   },
   {
-    "id": 12,
+    "id": 9,
     "name": "Research"
   },
   {
-    "id": 13,
-    "name": "Research"
-  },
-  {
-    "id": 14,
+    "id": 10,
     "name": "Discrimination"
   },
   {
-    "id": 15,
-    "name": "Life"
-  },
-  {
-    "id": 16,
+    "id": 11,
     "name": "Favorite"
   },
   {
-    "id": 17,
+    "id": 12,
     "name": "Freshman"
   },
   {
-    "id": 18,
-    "name": "life"
-  },
-  {
-    "id": 19,
+    "id": 13,
     "name": "Recommendation"
   }
 ]
