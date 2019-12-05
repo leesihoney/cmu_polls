@@ -82,7 +82,7 @@ struct AnswerBoxView: View {
   func getQuestionOptions() {
     self.question.options(completion: { options in
       DispatchQueue.main.async {
-        self.options = options
+        self.options = Option.sort(options)
         self.initialized = true
       }
     })
