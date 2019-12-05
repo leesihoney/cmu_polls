@@ -14,11 +14,11 @@ struct AllPollsView: View {
   @State var tags = [Tag]()
   @State private var searchTerm: String = ""
   @State private var showingAddView: Bool = false
+  @State var initialized = false
   
   
   var body: some View {
     NavigationView {
-      
       VStack(alignment: .leading, spacing: 10) {
         //HACK (iOS version hack)
         HiddenNavigationLink(destination: PollCreateView(refresh: self.getUserPolls), isActive: self.$showingAddView)
@@ -36,28 +36,30 @@ struct AllPollsView: View {
           .foregroundColor(Color.gray)
           .padding(.horizontal, 16)
         
-        ScrollView {
-          VStack(alignment: .leading, spacing: 8) {
-            ForEach(self.polls.filter {
-              self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
-            }) { poll in
-              NavigationLink(destination: PollDetailView(poll: poll)) {
-                PollView(poll: poll)
+        if self.initialized {
+          ScrollView {
+            VStack(alignment: .leading, spacing: 8) {
+              ForEach(self.polls.filter {
+                self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
+              }) { poll in
+                NavigationLink(destination: PollDetailView(poll: poll)) {
+                  PollView(poll: poll)
+                }
+                .buttonStyle(PlainButtonStyle())
               }
-              .buttonStyle(PlainButtonStyle())
             }
           }
+          .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
+          .navigationBarItems(trailing:
+            Button("Add") { self.showingAddView = true }
+          )
         }
-        .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
-        .navigationBarItems(trailing:
-          Button("Add") { self.showingAddView = true }
-        )
       }
       .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
     }
     .onAppear {
+      self.initialized = false
       self.getUserPolls()
-      self.getAllTags()
     }
   }
   
@@ -65,6 +67,7 @@ struct AllPollsView: View {
     Poll.allPolls(completion: { polls in
       DispatchQueue.main.async {
         self.polls = polls
+        self.getAllTags()
       }
     })
   }
@@ -73,6 +76,7 @@ struct AllPollsView: View {
     Tag.allTags(completion: { tags in
       DispatchQueue.main.async {
         self.tags = tags
+        self.initialized = true
       }
     })
   }
