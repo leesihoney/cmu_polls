@@ -77,6 +77,12 @@
 		F00539002396ECD10088F2E3 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00538FF2396ECD10088F2E3 /* BackButtonView.swift */; };
 		F005390223974C310088F2E3 /* HiddenNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005390123974C310088F2E3 /* HiddenNavigationLink.swift */; };
 		F0053904239765560088F2E3 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0053903239765560088F2E3 /* TabbarView.swift */; };
+		F0053906239828BC0088F2E3 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0053905239828BC0088F2E3 /* CommentView.swift */; };
+		F005390723982AC20088F2E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
+		F005390823982ACB0088F2E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
+		F0053909239832240088F2E3 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */; };
+		F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
+		F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		F03B89DE238A09B5002645E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */; };
 		F03B89E0238A1CC8002645E0 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B89DF238A1CC8002645E0 /* MyProfileView.swift */; };
 		F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92C2370F41800C9AF6A /* PollDetailView.swift */; };
@@ -167,6 +173,7 @@
 		F00538FF2396ECD10088F2E3 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
 		F005390123974C310088F2E3 /* HiddenNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenNavigationLink.swift; sourceTree = "<group>"; };
 		F0053903239765560088F2E3 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		F0053905239828BC0088F2E3 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
 		F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F03B89DF238A1CC8002645E0 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		F056C92C2370F41800C9AF6A /* PollDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailView.swift; sourceTree = "<group>"; };
@@ -245,6 +252,7 @@
 				E8486D0E236FA0B100B875AE /* PollView.swift */,
 				E8CA4E0E23729D0400AD3B72 /* PollCreateView.swift */,
 				F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */,
+				F0053905239828BC0088F2E3 /* CommentView.swift */,
 				F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */,
 				E8CA4E0D23729D0400AD3B72 /* QuestionBoxView.swift */,
 				E8CA4E0C23729D0400AD3B72 /* RadioButtonQuestionView.swift */,
@@ -644,6 +652,7 @@
 				E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */,
 				F0C9C4E4237350A200C55D90 /* PollUploaderProfileView.swift in Sources */,
 				E8CA4E192373CAB400AD3B72 /* InitializeUserView.swift in Sources */,
+				F0053906239828BC0088F2E3 /* CommentView.swift in Sources */,
 				E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */,
 				E8486D14236FA0B100B875AE /* PollsView.swift in Sources */,
 				A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */,
@@ -680,6 +689,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */,
+				F005390723982AC20088F2E3 /* AppDelegate.swift in Sources */,
 				A73F2A4123726C5500F50FA2 /* ModelParser.swift in Sources */,
 				A73F2A4023726C4D00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8B6CBFA2371454B0056E18B /* UserTests.swift in Sources */,
@@ -706,6 +717,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */,
+				F0053909239832240088F2E3 /* GoogleService-Info.plist in Sources */,
+				F005390823982ACB0088F2E3 /* AppDelegate.swift in Sources */,
 				A73F2A4323726C6500F50FA2 /* ModelParser.swift in Sources */,
 				A73F2A4223726C5B00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */,

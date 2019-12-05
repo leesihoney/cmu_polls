@@ -108,6 +108,8 @@ struct PollDetailView: View {
         }
         
         PollDetailCommentsView(comments: self.comments)
+        .padding(.top, 33)
+
       }
       .navigationBarItems(leading: Button (
         action: {
@@ -162,7 +164,7 @@ struct PollDetailView: View {
       DispatchQueue.main.async {
         self.comments = comments
       }
-    }
+    })
   }
   func getPollLikes() {
     self.poll.likes(completion: { likes in
@@ -223,7 +225,7 @@ struct PollDetailCommentsView: View {
       Text("Comments \(comments.count)")
       .font(Font.system(size: 18, design: .default))
       .fontWeight(.semibold)
-      .foregroundColor(Color(red: 236 / 255.0, green: 0 / 255.0, blue: 0 / 255.0))
+      .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
     }
   }
 }

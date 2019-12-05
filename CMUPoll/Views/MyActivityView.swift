@@ -54,6 +54,7 @@ struct MyActivityView: View {
           .listStyle(GroupedListStyle())
         }
       }
+      .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
       
     }
     .onAppear {
