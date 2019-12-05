@@ -1,11 +1,11 @@
-﻿id,user_id,title,posted_at,link,private,closed,description
-0,0,"""Where is the best place to eat in CMU?""","""2019-10-12""",www.cmupoll.com/poll0,"""FALSE""","""FALSE""","""I'm a freshman, and I want to know the best place to eat!"""
-1,0,"""Who is your favorite Information Systems professor?""","""2019-10-13""",www.cmupoll.com/poll1,"""FALSE""","""FALSE""","""I want to take the best professor's course!"""
-2,1,"""Where do you find the most productive while studying for exams?""","""2019-10-13""",www.cmupoll.com/poll2,"""FALSE""","""FALSE""","""For me, hunt library is too packed to study hard. Are there any good places to study?"""
-3,1,"""What is your favorite Information Systems course?""","""2019-10-14""",www.cmupoll.com/poll3,"""FALSE""","""FALSE""","""I'm a freshman IS student. Next week is course registration week, and I want to know which courses to take!"""
-4,1,"""Do you want to go to Graduate school?""","""2019-10-15""",www.cmupoll.com/poll4,"""FALSE""","""TRUE""","""My parents want me to go a graduate school, but I'm not sure if I want to. So I want to ask you guys how you guys feel about it."""
-5,2,"""Do you find TOC useful?""","""2019-10-15""",www.cmupoll.com/poll5,"""FALSE""","""FALSE""","""I'm a Senior, but I think that TOC is not very useful. I want to hear your thoughts."""
-6,2,"""How many hours do you normally sleep?""","""2019-10-16""",www.cmupoll.com/poll6,"""TRUE""","""TRUE""","""I'm researching on the average sleep hours of CMU students for my sociology class."""
-7,3,"""Have you ever felt discrimated in CMU?""","""2019-10-15""",www.cmupoll.com/poll7,"""TRUE""","""TRUE""","""I'm taking Psychology class. I'm writing a paper about the discrimination. So I wanted to see the occurrence of discrimation happened in CMU"""
-8,3,What is your favorite thing about CMU?,"""2019-10-17""",www.cmupoll.com/poll8,"""FALSE""","""FALSE""","""My favorite thing is the people! How about you?"""
-9,5,Any advice for incoming freshman?,"""2019-10-17""",www.cmupoll.com/poll9,"""FALSE""","""FALSE""","""I'm a incoming freshman. Do you recommend dining plans or housing to live? Thanks a lot!"""
+﻿id,user_id,title,posted_at,link,private,closed,description,passcode
+0,0,"""Where is the best place to eat in CMU?""","""2019-10-12""",www.cmupoll.com/poll0,"""FALSE""","""FALSE""","""I'm a freshman, and I want to know the best place to eat!""",1234
+1,0,"""Who is your favorite Information Systems professor?""","""2019-10-13""",www.cmupoll.com/poll1,"""FALSE""","""FALSE""","""I want to take the best professor's course!""",0
+2,1,"""Where do you find the most productive while studying for exams?""","""2019-10-13""",www.cmupoll.com/poll2,"""FALSE""","""FALSE""","""For me, hunt library is too packed to study hard. Are there any good places to study?""",NULL
+3,1,"""What is your favorite Information Systems course?""","""2019-10-14""",www.cmupoll.com/poll3,"""FALSE""","""FALSE""","""I'm a freshman IS student. Next week is course registration week, and I want to know which courses to take!""",NULL
+4,1,"""Do you want to go to Graduate school?""","""2019-10-15""",www.cmupoll.com/poll4,"""FALSE""","""TRUE""","""My parents want me to go a graduate school, but I'm not sure if I want to. So I want to ask you guys how you guys feel about it.""",NULL
+5,2,"""Do you find TOC useful?""","""2019-10-15""",www.cmupoll.com/poll5,"""FALSE""","""FALSE""","""I'm a Senior, but I think that TOC is not very useful. I want to hear your thoughts.""",NULL
+6,2,"""How many hours do you normally sleep?""","""2019-10-16""",www.cmupoll.com/poll6,"""TRUE""","""TRUE""","""I'm researching on the average sleep hours of CMU students for my sociology class.""",NULL
+7,3,"""Have you ever felt discrimated in CMU?""","""2019-10-15""",www.cmupoll.com/poll7,"""TRUE""","""TRUE""","""I'm taking Psychology class. I'm writing a paper about the discrimination. So I wanted to see the occurrence of discrimation happened in CMU""",NULL
+8,3,What is your favorite thing about CMU?,"""2019-10-17""",www.cmupoll.com/poll8,"""FALSE""","""FALSE""","""My favorite thing is the people! How about you?""",NULL
+9,5,Any advice for incoming freshman?,"""2019-10-17""",www.cmupoll.com/poll9,"""FALSE""","""FALSE""","""I'm a incoming freshman. Do you recommend dining plans or housing to live? Thanks a lot!""",NULL

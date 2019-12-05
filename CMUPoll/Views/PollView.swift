@@ -110,8 +110,8 @@ struct PollView_Previews: PreviewProvider {
     NavigationView {
       ScrollView {
         VStack(alignment: .leading, spacing: 8) {
-          PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
-          PollView(poll: Poll(id: "2", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false))
+          PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "0"))
+          PollView(poll: Poll(id: "2", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "NULL"))
         }
       }
       .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)

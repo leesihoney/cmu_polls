@@ -11,11 +11,14 @@ import SwiftUI
 struct AllPollsView: View {
   let user = User.current
   @State var polls = [Poll]()
+  @State var all_polls = [Poll]()
   @State var tags = [Tag]()
+  @State var tag_polls = [Poll]()
   @State private var searchTerm: String = ""
   @State private var showingAddView: Bool = false
   @State var initialized = false
-  
+  @State var tagTapped = false
+
   
   var body: some View {
     NavigationView {
@@ -26,9 +29,23 @@ struct AllPollsView: View {
         SearchBarView(text: $searchTerm)        .padding(.vertical, CGFloat(8))
           .padding(.horizontal, 16)
         
-        TagsView(tags: tags)
+        TagsView(tags: tags
+          , uponTagTap: { tag_polls in
+            // Function body
+            self.tag_polls = tag_polls
+            if self.tagTapped == false {
+                self.all_polls = self.tag_polls
+              self.tagTapped = true
+            }
+            else {
+              self.all_polls = self.polls
+              self.tagTapped = false
+            }
+        }
+        )
           .padding(.vertical, CGFloat(10))
           .padding(.horizontal, 16)
+        
         
         Text("All Polls")
           .font(Font.system(size: 20, design: .default))
@@ -39,7 +56,7 @@ struct AllPollsView: View {
         if self.initialized {
           ScrollView {
             VStack(alignment: .leading, spacing: 8) {
-              ForEach(self.polls.filter {
+              ForEach(self.all_polls.filter {
                 self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
               }) { poll in
                 NavigationLink(destination: PollDetailView(poll: poll)) {
@@ -67,6 +84,7 @@ struct AllPollsView: View {
     Poll.allPolls(completion: { polls in
       DispatchQueue.main.async {
         self.polls = polls
+        self.all_polls = polls
         self.getAllTags()
       }
     })

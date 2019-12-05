@@ -136,7 +136,7 @@ struct PollCreateView: View {
     ), trailing:
       // TODO: should connect to a form view
       Button("Save") {
-        Poll.create(title: self.title, description: self.description, link: "", is_private: false, is_closed: false, completion: { poll in
+        Poll.create(title: self.title, description: self.description, link: "", is_private: false, is_closed: false, passcode: "NULL", completion: { poll in
           print("the poll has been created!")
           for questionInput in self.questions {
             Question.create(is_multiple_choice: false, title: questionInput.title, poll_id: poll.id, completion: { question in
