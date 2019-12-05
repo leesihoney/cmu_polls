@@ -83,6 +83,8 @@
 		F0053909239832240088F2E3 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */; };
 		F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
+		F005390C239889480088F2E3 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
+		F005390D239889490088F2E3 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
 		F03B89DE238A09B5002645E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */; };
 		F03B89E0238A1CC8002645E0 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B89DF238A1CC8002645E0 /* MyProfileView.swift */; };
 		F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92C2370F41800C9AF6A /* PollDetailView.swift */; };
@@ -689,6 +691,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F005390C239889480088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
 				F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */,
 				F005390723982AC20088F2E3 /* AppDelegate.swift in Sources */,
 				A73F2A4123726C5500F50FA2 /* ModelParser.swift in Sources */,
@@ -725,6 +728,7 @@
 				E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E31F2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */,
+				F005390D239889490088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E3172366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				E8D6E3232366B0E100F75AA2 /* Answer.swift in Sources */,
 				E8D6E30F2366B0A500F75AA2 /* User.swift in Sources */,
