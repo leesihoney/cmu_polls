@@ -67,7 +67,7 @@ struct PollCreateView: View {
       }
       
       VStack(alignment: .leading, spacing: 13) {
-        Text(verbatim: "Tags")
+        Text(verbatim: "Tags (comma-separated)")
           .font(Font.system(size: 15, design: .default))
           .foregroundColor(Color.gray)
         TextField("", text: $tag)
@@ -146,6 +146,12 @@ struct PollCreateView: View {
                 })
               }
             })
+          }
+          let tagNames: [String] = Tag.parse(self.tag)
+          for tagName in tagNames {
+            Tag.create(name: tagName) { tag in
+              PollTag.create(poll_id: poll.id, tag_id: tag.id, completion: { polltag in })
+            }
           }
           self.refresh()
         })

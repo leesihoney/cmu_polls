@@ -47,6 +47,9 @@ class Tag: Identifiable, Hashable {
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(name: String, completion: @escaping (Tag) -> ()) {
+    if name.isEmpty {
+      return
+    }
     let tagName = name.lowercased().firstUppercased
     let colRef = FirebaseDataHandler.colRef(collection: .tag)
     let query = colRef.whereField("name", isEqualTo: tagName)
@@ -65,6 +68,14 @@ class Tag: Identifiable, Hashable {
         completion(singleTag[0])
       }
     })
+  }
+  
+  static func parse(_ tagNames: String) -> [String] {
+    var tagArray = tagNames.components(separatedBy: ",")
+    for i in 0..<tagArray.count {
+      tagArray[i] = tagArray[i].trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    return tagArray
   }
   
   static func withId(id: String, completion: @escaping (Tag?) -> ()) {
