@@ -19,6 +19,7 @@ class Poll: Identifiable {
   var link: String
   var is_private: Bool
   var is_closed: Bool
+  var passcode: String?
   
   // Used for double query
   var tagsFound: [Tag] = []
@@ -27,7 +28,7 @@ class Poll: Identifiable {
   static var numPolls: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, user_id: String, title: String, description: String, posted_at: String, link: String, is_private: Bool, is_closed: Bool) {
+  init (id: String, user_id: String, title: String, description: String, posted_at: String, link: String, is_private: Bool, is_closed: Bool, passcode: String?) {
     self.id = id
     self.user_id = user_id
     self.title = title
@@ -36,6 +37,7 @@ class Poll: Identifiable {
     self.link = link
     self.is_private = is_private
     self.is_closed = is_closed
+    self.passcode = passcode
   }
   
   static func sort(_ polls: [Poll]) -> [Poll] {
@@ -70,16 +72,16 @@ class Poll: Identifiable {
   }
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, completion: @escaping (Poll) -> ()) {
+  static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, passcode: String?, completion: @escaping (Poll) -> ()) {
     guard let user = User.current else {
       print("No user is logged in!")
       return
     }
     let posted_at: String = getDateString()
-    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "posted_at": posted_at, "link": link, "private": is_private, "closed": is_closed]
+    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "posted_at": posted_at, "link": link, "private": is_private, "closed": is_closed, "passcode": passcode ?? "NULL"]
     let colRef = FirebaseDataHandler.colRef(collection: .poll)
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed)
+      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed, passcode: passcode)
       completion(poll)
     })
   }
@@ -232,7 +234,7 @@ class Poll: Identifiable {
     })
   }
   
-  func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?, completion: @escaping () -> Void) {
+  func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?, passcode: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: id)
     var data: [String:Any] = [:]
     if let user_id = user_id {
@@ -254,6 +256,10 @@ class Poll: Identifiable {
     if let is_private = is_private {
       data["private"] = is_private
       self.is_private = is_private
+    }
+    if let passcode = passcode {
+      data["passcode"] = passcode
+      self.passcode = passcode
     }
     FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
