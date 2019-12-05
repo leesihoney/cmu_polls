@@ -23,16 +23,41 @@ struct PollView: View {
   
   var body: some View {
     VStack(alignment: .leading, spacing: 13) {
-      if (pollUser != nil) {
-        PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+      ZStack (alignment: .topTrailing) {
+        HStack {
+          if (pollUser != nil) {
+            PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: uploadedDaysAgo)
+          }
+          
+          if self.poll.is_closed {
+            Spacer()
+            Text("Closed")
+              .font(Font.system(size: 12, design: .default))
+              .fontWeight(.bold)
+              .foregroundColor(Color(red: 32 / 255.0, green: 32 / 255.0, blue: 32 / 255.0))
+              .padding(.horizontal, 15)
+              .padding(.vertical, 6)
+              .background(Color(red: 192 / 255.0, green: 192 / 255.0, blue: 192 / 255.0))
+              .cornerRadius(250.0)
+          }
+        }
+      }
+      HStack(alignment: .firstTextBaseline) {
+        if self.poll.is_private {
+          Image(systemName: "lock.fill")
+            .foregroundColor(.gray)
+            .font(.system(size: 20))
+        }
+        
+        Text(self.poll.title)
+          .fontWeight(.semibold)
+          .multilineTextAlignment(.leading)
+          .font(Font.system(size: 20, design: .default))
+          .lineSpacing(10)
+          .lineLimit(2)
+          .fixedSize(horizontal: false, vertical: true)
       }
       
-      Text(self.poll.title)
-        .fontWeight(.semibold)
-        .multilineTextAlignment(.leading)
-        .font(Font.system(size: 20, design: .default))
-        .lineSpacing(10)
-        .lineLimit(2)
       HStack(alignment: .firstTextBaseline) {
         HStack(alignment: .firstTextBaseline, spacing: 5) {
           ForEach(tags) { tag in
@@ -70,7 +95,7 @@ struct PollView: View {
     .padding(.vertical, 25)
     .padding(.horizontal, 15)
     .background(Color.white)
-    .onAppear { 
+    .onAppear {
       self.getPollTags()
       self.getPollUser()
       self.getPollLikes()
@@ -110,8 +135,8 @@ struct PollView_Previews: PreviewProvider {
     NavigationView {
       ScrollView {
         VStack(alignment: .leading, spacing: 8) {
-          PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "0"))
-          PollView(poll: Poll(id: "2", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "NULL"))
+          PollView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: true, is_closed: true, passcode: "0"))
+          PollView(poll: Poll(id: "2", user_id: "1", title: "This is second poll!", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: true, passcode: "NULL"))
         }
       }
       .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)

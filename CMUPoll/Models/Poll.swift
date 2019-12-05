@@ -140,7 +140,7 @@ class Poll: Identifiable {
   static func allPolls(completion: @escaping ([Poll]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll)
       .order(by: "posted_at", descending: true)
-      .whereField("closed", isEqualTo: false)
+//      .whereField("closed", isEqualTo: false)
     FirebaseDataHandler.get(query: query, completion: { data in
       let allPolls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(allPolls)
