@@ -96,22 +96,30 @@ struct PollCreateView: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 10))
         }
         
-        Stepper(onIncrement: {
-          if (self.quantity < 10) {
-            self.quantity += 1
-            self.questions.append(QuestionInput())
-          }
-        }, onDecrement: {
-          if (self.quantity > 1) {
-            self.quantity -= 1
-            self.questions.removeLast()
-          }
-        }, label: {
+        HStack {
           Text(verbatim: "Number of Questions: \(quantity)")
             .font(Font.system(size: 15, design: .default))
             .foregroundColor(Color.gray)
+          Spacer()
+          Image(systemName: "minus.rectangle")
+            .foregroundColor(.gray)
+            .font(.system(size: 32))
+            .onTapGesture {
+              if (self.quantity > 1) {
+                self.quantity -= 1
+                self.questions.removeLast()
+              }
+          }
+          Image(systemName: "plus.rectangle")
+            .foregroundColor(.gray)
+            .font(.system(size: 32))
+            .onTapGesture {
+              if (self.quantity < 10) {
+                self.quantity += 1
+                self.questions.append(QuestionInput())
+              }
+          }
         }
-        )
         
         VStack(alignment: .leading, spacing: 13) {
           ForEach (0 ..< quantity, id: \.self) { number in
@@ -123,7 +131,6 @@ struct PollCreateView: View {
               .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
           }
         }
-        //      Spacer(minLength: 100)
       }
         
       .navigationBarTitle(Text("Add Poll"), displayMode: .inline)
