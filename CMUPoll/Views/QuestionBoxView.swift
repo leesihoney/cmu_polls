@@ -34,22 +34,30 @@ struct QuestionBoxView: View {
         .padding(EdgeInsets(top: 0, leading: 0, bottom: 3, trailing: 10))
       
       VStack(alignment: .leading, spacing: 16) {
-        Stepper(onIncrement: {
-          if (self.quantity < 10) {
-            self.quantity += 1
-            self.addOption()
+        HStack {
+          Text(verbatim: "Number of Questions: \(quantity)")
+            .font(Font.system(size: 15, design: .default))
+            .foregroundColor(Color.gray)
+          Spacer()
+          Image(systemName: "minus.rectangle")
+            .foregroundColor(.gray)
+            .font(.system(size: 32))
+            .onTapGesture {
+              if (self.quantity > 1) {
+                self.quantity -= 1
+                self.removeOption()
+              }
           }
-        }, onDecrement: {
-          if (self.quantity > 1) {
-            self.quantity -= 1
-            self.removeOption()
+          Image(systemName: "plus.rectangle")
+            .foregroundColor(.gray)
+            .font(.system(size: 32))
+            .onTapGesture {
+              if (self.quantity < 10) {
+                self.quantity += 1
+                self.addOption()
+              }
           }
-        }, label:
-          {
-            Text(verbatim: "Number of Choices: \(quantity)")
-              .font(Font.system(size: 15, design: .default))
-              .foregroundColor(Color.gray)}
-        )
+        }
       }
       
       ForEach (0 ..< quantity, id: \.self) { number in

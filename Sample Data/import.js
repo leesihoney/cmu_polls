@@ -204,9 +204,10 @@ var poll = [
     "title": "Where is the best place to eat in CMU?",
     "posted_at": "2019-10-12 13:15:19",
     "link": "www.cmupoll.com/poll0",
-    "private": "FALSE",
-    "closed": "FALSE",
-    "description": "I'm a freshman, and I want to know the best place to eat!"
+    "private": "TRUE",
+    "closed": "TRUE",
+    "description": "I'm a freshman, and I want to know the best place to eat!",
+    "passcode": "1234"
   },
   {
     "id": 1,
@@ -214,9 +215,10 @@ var poll = [
     "title": "Who is your favorite Information Systems professor?",
     "posted_at": "2019-10-13 08:08:08",
     "link": "www.cmupoll.com/poll1",
-    "private": "FALSE",
+    "private": "TRUE",
     "closed": "FALSE",
-    "description": "I want to take the best professor's course!"
+    "description": "I want to take the best professor's course!",
+    "passcode": "0"
   },
   {
     "id": 2,
@@ -225,8 +227,9 @@ var poll = [
     "posted_at": "2019-10-13 01:00:00",
     "link": "www.cmupoll.com/poll2",
     "private": "FALSE",
-    "closed": "FALSE",
-    "description": "For me, hunt library is too packed to study hard. Are there any good places to study?"
+    "closed": "TRUE",
+    "description": "For me, hunt library is too packed to study hard. Are there any good places to study?",
+    "passcode": "NULL"
   },
   {
     "id": 3,
@@ -235,8 +238,9 @@ var poll = [
     "posted_at": "2019-10-14 23:23:23",
     "link": "www.cmupoll.com/poll3",
     "private": "FALSE",
-    "closed": "FALSE",
-    "description": "I'm a freshman IS student. Next week is course registration week, and I want to know which courses to take!"
+    "closed": "TRUE",
+    "description": "I'm a freshman IS student. Next week is course registration week, and I want to know which courses to take!",
+    "passcode": "NULL"
   },
   {
     "id": 4,
@@ -245,8 +249,9 @@ var poll = [
     "posted_at": "2019-10-15 23:59:59",
     "link": "www.cmupoll.com/poll4",
     "private": "FALSE",
-    "closed": "TRUE",
-    "description": "My parents want me to go a graduate school, but I'm not sure if I want to. So I want to ask you guys how you guys feel about it."
+    "closed": "FALSE",
+    "description": "My parents want me to go a graduate school, but I'm not sure if I want to. So I want to ask you guys how you guys feel about it.",
+    "passcode": "NULL"
   },
   {
     "id": 5,
@@ -256,7 +261,8 @@ var poll = [
     "link": "www.cmupoll.com/poll5",
     "private": "FALSE",
     "closed": "FALSE",
-    "description": "I'm a Senior, but I think that TOC is not very useful. I want to hear your thoughts."
+    "description": "I'm a Senior, but I think that TOC is not very useful. I want to hear your thoughts.",
+    "passcode": "NULL"
   },
   {
     "id": 6,
@@ -264,9 +270,10 @@ var poll = [
     "title": "How many hours do you normally sleep?",
     "posted_at": "2019-10-16 13:49:12",
     "link": "www.cmupoll.com/poll6",
-    "private": "TRUE",
-    "closed": "TRUE",
-    "description": "I'm researching on the average sleep hours of CMU students for my sociology class."
+    "private": "FALSE",
+    "closed": "FALSE",
+    "description": "I'm researching on the average sleep hours of CMU students for my sociology class.",
+    "passcode": "NULL"
   },
   {
     "id": 7,
@@ -274,9 +281,10 @@ var poll = [
     "title": "Have you ever felt discrimated in CMU?",
     "posted_at": "2019-10-15 11:18:17",
     "link": "www.cmupoll.com/poll7",
-    "private": "TRUE",
-    "closed": "TRUE",
-    "description": "I'm taking Psychology class. I'm writing a paper about the discrimination. So I wanted to see the occurrence of discrimation happened in CMU"
+    "private": "FALSE",
+    "closed": "FALSE",
+    "description": "I'm taking Psychology class. I'm writing a paper about the discrimination. So I wanted to see the occurrence of discrimation happened in CMU",
+    "passcode": "NULL"
   },
   {
     "id": 8,
@@ -286,7 +294,8 @@ var poll = [
     "link": "www.cmupoll.com/poll8",
     "private": "FALSE",
     "closed": "FALSE",
-    "description": "My favorite thing is the people! How about you?"
+    "description": "My favorite thing is the people! How about you?",
+    "passcode": "NULL"
   },
   {
     "id": 9,
@@ -296,7 +305,8 @@ var poll = [
     "link": "www.cmupoll.com/poll9",
     "private": "FALSE",
     "closed": "FALSE",
-    "description": "I'm a incoming freshman. Do you recommend dining plans or housing to live? Thanks a lot!"
+    "description": "I'm a incoming freshman. Do you recommend dining plans or housing to live? Thanks a lot!",
+    "passcode": "NULL"
   }
 ]
 
@@ -679,72 +689,72 @@ var polltag = [
   {
     "id": 6,
     "poll_id": 2,
-    "tag_id": 6
+    "tag_id": 2
   },
   {
     "id": 7,
     "poll_id": 3,
-    "tag_id": 7
+    "tag_id": 6
   },
   {
     "id": 8,
     "poll_id": 3,
-    "tag_id": 8
+    "tag_id": 3
   },
   {
     "id": 9,
     "poll_id": 4,
-    "tag_id": 9
+    "tag_id": 3
   },
   {
     "id": 10,
     "poll_id": 5,
-    "tag_id": 10
+    "tag_id": 7
   },
   {
     "id": 11,
     "poll_id": 6,
-    "tag_id": 11
+    "tag_id": 8
   },
   {
     "id": 12,
     "poll_id": 6,
-    "tag_id": 12
+    "tag_id": 9
   },
   {
     "id": 13,
     "poll_id": 7,
-    "tag_id": 13
+    "tag_id": 9
   },
   {
     "id": 14,
     "poll_id": 7,
-    "tag_id": 14
+    "tag_id": 10
   },
   {
     "id": 15,
     "poll_id": 8,
-    "tag_id": 15
+    "tag_id": 0
   },
   {
     "id": 16,
     "poll_id": 8,
-    "tag_id": 16
+    "tag_id": 11
   },
   {
     "id": 17,
     "poll_id": 9,
-    "tag_id": 17
+    "tag_id": 12
   },
   {
     "id": 18,
     "poll_id": 9,
-    "tag_id": 18
+    "tag_id": 0
   },
   {
     "id": 19,
     "poll_id": 9,
-    "tag_id": 19
+    "tag_id": 13
   }
 ]
 
@@ -775,58 +785,34 @@ var tag = [
   },
   {
     "id": 6,
-    "name": "place"
-  },
-  {
-    "id": 7,
     "name": "Course"
   },
   {
-    "id": 8,
-    "name": "Academic"
-  },
-  {
-    "id": 9,
-    "name": "Academic"
-  },
-  {
-    "id": 10,
+    "id": 7,
     "name": "Career"
   },
   {
-    "id": 11,
+    "id": 8,
     "name": "Time"
   },
   {
-    "id": 12,
+    "id": 9,
     "name": "Research"
   },
   {
-    "id": 13,
-    "name": "Research"
-  },
-  {
-    "id": 14,
+    "id": 10,
     "name": "Discrimination"
   },
   {
-    "id": 15,
-    "name": "Life"
-  },
-  {
-    "id": 16,
+    "id": 11,
     "name": "Favorite"
   },
   {
-    "id": 17,
+    "id": 12,
     "name": "Freshman"
   },
   {
-    "id": 18,
-    "name": "life"
-  },
-  {
-    "id": 19,
+    "id": 13,
     "name": "Recommendation"
   }
 ]
@@ -978,6 +964,7 @@ deleteCollection(db, "option", 100);
 //         private: obj.private == "TRUE" ? true : false,
 //         closed: obj.closed == "TRUE" ? true : false,
 //         description: obj.description,
+//         passcode: obj["passcode"],
 //     }).then(function(docRef) {
 //         // console.log("Document written with ID: ", docRef.id);
 //     })

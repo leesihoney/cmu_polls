@@ -14,6 +14,7 @@
 		A73F2A4223726C5B00F50FA2 /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
 		A73F2A4323726C6500F50FA2 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A7577B3523710EC500FB055B /* PollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7577B3423710EC500FB055B /* PollTests.swift */; };
+		A775417B2398CA9200E36F79 /* KeyboardHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775417A2398CA9200E36F79 /* KeyboardHost.swift */; };
 		A7949F8F23752C3C009536D8 /* PollButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */; };
 		A7A9587A236E3E4E009F2DF1 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
@@ -123,6 +124,7 @@
 		A70E95B8236B011A00C38F2B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataHandler.swift; sourceTree = "<group>"; };
 		A7577B3423710EC500FB055B /* PollTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollTests.swift; sourceTree = "<group>"; };
+		A775417A2398CA9200E36F79 /* KeyboardHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHost.swift; sourceTree = "<group>"; };
 		A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollButtonStyle.swift; sourceTree = "<group>"; };
 		A7A95879236E3E4E009F2DF1 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		A7CEA1552373CD3800455C50 /* AndrewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndrewLogin.swift; sourceTree = "<group>"; };
@@ -259,8 +261,9 @@
 				E8CA4E0D23729D0400AD3B72 /* QuestionBoxView.swift */,
 				E8CA4E0C23729D0400AD3B72 /* RadioButtonQuestionView.swift */,
 				E8486D09236FA0B100B875AE /* SearchBarView.swift */,
-				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
 				E8486D0D236FA0B100B875AE /* TagsView.swift */,
+				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
+				E8486D0B236FA0B100B875AE /* TagView.swift */,
 				A7CEA1572373CD6600455C50 /* LoginView.swift */,
 				E8CA4E182373CAB400AD3B72 /* InitializeUserView.swift */,
 				F0053903239765560088F2E3 /* TabbarView.swift */,
@@ -268,6 +271,7 @@
 				A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */,
 				F06DFC462383808F00E72269 /* MyActivityView.swift */,
 				F03B89DF238A1CC8002645E0 /* MyProfileView.swift */,
+				A775417A2398CA9200E36F79 /* KeyboardHost.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -647,6 +651,7 @@
 				F00539002396ECD10088F2E3 /* BackButtonView.swift in Sources */,
 				E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */,
+				A775417B2398CA9200E36F79 /* KeyboardHost.swift in Sources */,
 				A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */,
 				F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */,
 				F0BDB49B2371358C00F855F6 /* AnswerGraphView.swift in Sources */,

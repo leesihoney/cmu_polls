@@ -23,6 +23,14 @@ struct Question: Identifiable {
     self.poll_id = poll_id
   }
   
+  static func sort(_ questions: [Question]) -> [Question] {
+    var questions = questions
+    questions.sort(by: { q1, q2 in
+      return q1.title.lowercased() < q2.title.lowercased()
+    })
+    return questions
+  }
+  
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(is_multiple_choice: Bool, title: String, poll_id: String, completion: @escaping (Question) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .question)
