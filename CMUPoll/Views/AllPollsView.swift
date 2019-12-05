@@ -61,7 +61,7 @@ struct AllPollsView: View {
               }) { poll in
                 NavigationLink(destination: PollDetailView(poll: poll)) {
                   PollView(poll: poll)
-                }
+                }.disabled(poll.is_closed)
                 .buttonStyle(PlainButtonStyle())
               }
             }

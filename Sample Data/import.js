@@ -204,8 +204,8 @@ var poll = [
     "title": "Where is the best place to eat in CMU?",
     "posted_at": "2019-10-12 13:15:19",
     "link": "www.cmupoll.com/poll0",
-    "private": "FALSE",
-    "closed": "FALSE",
+    "private": "TRUE",
+    "closed": "TRUE",
     "description": "I'm a freshman, and I want to know the best place to eat!",
     "passcode": "1234"
   },
@@ -215,7 +215,7 @@ var poll = [
     "title": "Who is your favorite Information Systems professor?",
     "posted_at": "2019-10-13 08:08:08",
     "link": "www.cmupoll.com/poll1",
-    "private": "FALSE",
+    "private": "TRUE",
     "closed": "FALSE",
     "description": "I want to take the best professor's course!",
     "passcode": "0"
@@ -227,7 +227,7 @@ var poll = [
     "posted_at": "2019-10-13 01:00:00",
     "link": "www.cmupoll.com/poll2",
     "private": "FALSE",
-    "closed": "FALSE",
+    "closed": "TRUE",
     "description": "For me, hunt library is too packed to study hard. Are there any good places to study?",
     "passcode": "NULL"
   },
@@ -238,7 +238,7 @@ var poll = [
     "posted_at": "2019-10-14 23:23:23",
     "link": "www.cmupoll.com/poll3",
     "private": "FALSE",
-    "closed": "FALSE",
+    "closed": "TRUE",
     "description": "I'm a freshman IS student. Next week is course registration week, and I want to know which courses to take!",
     "passcode": "NULL"
   },
@@ -249,7 +249,7 @@ var poll = [
     "posted_at": "2019-10-15 23:59:59",
     "link": "www.cmupoll.com/poll4",
     "private": "FALSE",
-    "closed": "TRUE",
+    "closed": "FALSE",
     "description": "My parents want me to go a graduate school, but I'm not sure if I want to. So I want to ask you guys how you guys feel about it.",
     "passcode": "NULL"
   },
@@ -270,8 +270,8 @@ var poll = [
     "title": "How many hours do you normally sleep?",
     "posted_at": "2019-10-16 13:49:12",
     "link": "www.cmupoll.com/poll6",
-    "private": "TRUE",
-    "closed": "TRUE",
+    "private": "FALSE",
+    "closed": "FALSE",
     "description": "I'm researching on the average sleep hours of CMU students for my sociology class.",
     "passcode": "NULL"
   },
@@ -281,8 +281,8 @@ var poll = [
     "title": "Have you ever felt discrimated in CMU?",
     "posted_at": "2019-10-15 11:18:17",
     "link": "www.cmupoll.com/poll7",
-    "private": "TRUE",
-    "closed": "TRUE",
+    "private": "FALSE",
+    "closed": "FALSE",
     "description": "I'm taking Psychology class. I'm writing a paper about the discrimination. So I wanted to see the occurrence of discrimation happened in CMU",
     "passcode": "NULL"
   },
