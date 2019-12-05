@@ -27,7 +27,7 @@ struct PollUploaderProfileView: View {
             .font(Font.system(size: 10, design: .default))
             .foregroundColor(Color.gray)
         }
-        Text("updated \(self.uploadedDaysAgo) days ago")
+        Text("updated \(self.uploadedDaysAgo)")
           .font(Font.system(size: 10, design: .default))
           .foregroundColor(Color.gray)
       }
