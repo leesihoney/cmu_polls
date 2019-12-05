@@ -11,6 +11,7 @@ import UIKit
 
 struct PollDetailView: View {
   let poll: Poll
+  @State var user: User? = User.current
   @State var tags = [Tag]()
   @State var questions = [Question]()
   @State var comments = [Comment]()
@@ -25,7 +26,9 @@ struct PollDetailView: View {
   @State var replyingCommentUser: User?
   @State var commentContent: String = ""
   @State var commentsLoaded = false
-
+  @State private var showingAlert = false
+  
+  
   
   
   var body: some View {
@@ -177,7 +180,7 @@ struct PollDetailView: View {
                   .fontWeight(.regular)
                   .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
                   .lineLimit(1)
-
+                
               }
               Spacer()
               Button (
@@ -186,13 +189,13 @@ struct PollDetailView: View {
                   self.replyingComment = nil
               }, label: {
                 Image(systemName: "xmark.circle.fill")
-                .font(.system(size: 24))
-
+                  .font(.system(size: 24))
+                
                 
               }
               )
             }
-          .padding()
+            .padding()
             
           }
           HStack {
@@ -209,11 +212,19 @@ struct PollDetailView: View {
                     self.replyingComment = nil
                     self.getPollComments()
                     self.resetCommentsLoaded()
+                    // To add points for uploading a poll
+                    User.current?.addPoints(type: .comment)
+                    self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+                    })
+                    self.showingAlert = true
                   })
                 }
                 
-            }, label: { Text("Post") }
-            )
+            }) { Text("Post") }
+              .alert(isPresented: $showingAlert) {
+                Alert(title: Text("Congratualations, you earned 5 points"), message: Text("You can use points to transfer into your bank"), dismissButton: .default(Text("OK")))
+            }
+            
           }
           .padding()
         }
@@ -226,7 +237,7 @@ struct PollDetailView: View {
     self.commentsLoaded = false
     self.commentsLoaded = true
   }
-
+  
   
   func getPollUser() {
     self.poll.user(completion: { user in

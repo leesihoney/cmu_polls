@@ -17,6 +17,8 @@ struct AnswerBoxView: View {
   @State private var selectedAnswer = 0
   @State var user: User? = User.current
   @State var initialized: Bool = false
+  @State private var showingAlert = false
+
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
@@ -62,13 +64,18 @@ struct AnswerBoxView: View {
             Answer.create(question_id: self.question.id, option_id: option.id, completion: { answer in
               self.onNewAnswer()
             })
+            self.showingAlert = true
           }
         })
       }
         
       ) {
         Text("Submit")
-      }.buttonStyle(PollButtonStyle())
+      }
+      .buttonStyle(PollButtonStyle())
+      .alert(isPresented: $showingAlert) {
+      Alert(title: Text("Congratualations, you earned 5 points"), message: Text("You can use points to transfer into your bank"), dismissButton: .default(Text("OK")))
+      }
     }
     .padding(30)
     .border(Color(red: 235 / 255.0, green: 234 / 255.0, blue: 234 / 255.0, opacity: 0.6))
