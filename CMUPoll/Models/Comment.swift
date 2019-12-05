@@ -27,6 +27,14 @@ struct Comment: Identifiable {
     self.poll_id = poll_id
   }
   
+  static func sort(_ comments: [Comment]) -> [Comment] {
+    var comments = comments
+    comments.sort(by: { c1, c2 in
+      return getDate(c1.posted_at) < getDate(c2.posted_at)
+    })
+    return comments
+  }
+  
   private static func getDate(_ dateString: String) -> Date {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
