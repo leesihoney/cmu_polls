@@ -40,6 +40,6 @@ struct TagsView: View {
 //      Tag(id: "4", name: "Life"),
 //      Tag(id: "5", name: "Academic"),
 //      Tag(id: "8", name: "Food"),
-//    ])
+//    ], uponTagTap: {})
 //  }
 //}

@@ -57,7 +57,6 @@ struct TagFilterView: View {
 
 //struct TagFilterView_Previews: PreviewProvider {
 //  static var previews: some View {
-//    TagFilterView(tagText: "IS")
-//
+//    TagFilterView(tagText: "IS", userClickedTag: false, uponTagTap: {})
 //  }
 //}

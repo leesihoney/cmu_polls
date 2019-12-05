@@ -18,7 +18,7 @@ struct AllPollsView: View {
   @State private var showingAddView: Bool = false
   @State var initialized = false
   @State var tagTapped = false
-  @State var tagTappedCounter = 0
+
   
   var body: some View {
     NavigationView {
@@ -34,14 +34,10 @@ struct AllPollsView: View {
             // Function body
             self.tag_polls = tag_polls
             if self.tagTapped == false {
-              if self.tagTappedCounter == 0 {
                 self.all_polls = self.tag_polls
-              }
-              self.tagTappedCounter += 1
               self.tagTapped = true
             }
             else {
-              self.tagTappedCounter -= 1
               self.all_polls = self.polls
               self.tagTapped = false
             }
