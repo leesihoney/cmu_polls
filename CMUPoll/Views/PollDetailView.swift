@@ -153,7 +153,7 @@ struct PollDetailView: View {
   func getPollQuestions() {
     self.poll.questions(completion: { questions in
       DispatchQueue.main.async {
-        self.questions = questions
+        self.questions = Question.sort(questions)
         self.getQuestionAnswered()
       }
     })

@@ -38,6 +38,14 @@ class Poll: Identifiable {
     self.is_closed = is_closed
   }
   
+  static func sort(_ polls: [Poll]) -> [Poll] {
+    var polls = polls
+    polls.sort(by: { p1, p2 in
+      return getDate(p1.posted_at) < getDate(p2.posted_at)
+    })
+    return polls
+  }
+  
   private static func getDateString() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()
@@ -86,14 +94,6 @@ class Poll: Identifiable {
         completion(polls[0])
       }
     })
-  }
-  
-  static func sort(_ polls: [Poll]) -> [Poll] {
-    var polls = polls
-    polls.sort(by: { p1, p2 in
-      return getDate(p1.posted_at) < getDate(p2.posted_at)
-    })
-    return polls
   }
   
   private static func accumulatePolls(poll: Poll, completion: @escaping ([Poll]) -> ()) {
@@ -164,6 +164,9 @@ class Poll: Identifiable {
   func tags(completion: @escaping ([Tag]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
+      if data.isEmpty {
+        completion([])
+      }
       let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
       self.numTags = polltags.count
       self.tagsFound = []

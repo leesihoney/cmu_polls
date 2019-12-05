@@ -73,7 +73,7 @@ struct AnswerGraphView: View {
   func getOptions() {
     self.question.options(completion: { options in
       DispatchQueue.main.async {
-        self.options = options
+        self.options = Option.sort(options)
         self.getBars()
       }
     })
