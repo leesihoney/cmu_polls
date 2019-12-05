@@ -27,12 +27,37 @@ struct Comment: Identifiable {
     self.poll_id = poll_id
   }
   
+  static func sort(_ comments: [Comment]) -> [Comment] {
+    var comments = comments
+    comments.sort(by: { c1, c2 in
+      return getDate(c1.posted_at) < getDate(c2.posted_at)
+    })
+    return comments
+  }
+  
+  private static func getDate(_ dateString: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.timeZone = TimeZone.current
+    dateFormatter.locale = Locale.current
+    return dateFormatter.date(from: dateString)!
+  }
+  
+  func getDateDisplayString() -> String {
+    let date = Comment.getDate(self.posted_at)
+    
+    let formatter = RelativeDateTimeFormatter()
+    formatter.dateTimeStyle = .named
+    return formatter.localizedString(for: date, relativeTo: Date())
+  }
+  
   private static func getDateString() -> String {
     let date = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH-mm:ss"
     return dateFormatter.string(from: date)
   }
+  
     
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(content: String, comment_id: String?, poll_id: String, completion: @escaping (Comment) -> ()) {

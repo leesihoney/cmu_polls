@@ -10,47 +10,59 @@ import SwiftUI
 import UIKit
 
 struct MyProfileView: View {
-  let user = User.current
+  @State private var user = User.current
+  @State private var points: Int = 0
+  @State private var initialized: Bool = false
+  
   var body: some View {
     
     NavigationView {
       if self.user != nil {
         VStack(alignment: .leading) {
-          MyProfileComponentView(user: self.user!)
-            .padding(.vertical, 16)
-            .frame(minWidth: 0, maxWidth: .infinity)
-            .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
-          
-          List {
-            HStack {
-              Spacer()
-              VStack(alignment: .center, spacing: 12) {
-                Text("Your Points".uppercased())
-                  .fontWeight(.regular)
-                  .font(Font.system(size: 10, design: .default))
-                  .foregroundColor(.gray)
-                if (self.user != nil) {
-                  Text(String(self.user?.points ?? 0))
-                    .fontWeight(.bold)
-                    .font(Font.system(size: 47, design: .default))
+          if self.initialized {
+            MyProfileComponentView(user: self.user!)
+              .padding(.vertical, 16)
+              .frame(minWidth: 0, maxWidth: .infinity)
+              .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
+            
+            List {
+              HStack {
+                Spacer()
+                VStack(alignment: .center, spacing: 12) {
+                  Text("Your Points".uppercased())
+                    .fontWeight(.regular)
+                    .font(Font.system(size: 10, design: .default))
+                    .foregroundColor(.gray)
+                  if (self.user != nil) {
+                    Text(String(self.user!.points))
+                      .fontWeight(.bold)
+                      .font(Font.system(size: 47, design: .default))
+                  }
                 }
+                .padding(.vertical, 18)
+                Spacer()
               }
-              .padding(.vertical, 18)
-              Spacer()
+              Text("Report a bug")
+                .font(Font.system(size: 17, design: .default))
+                .foregroundColor(Color.accentColor)
+              Text("Help")
+                .font(Font.system(size: 17, design: .default))
+                .foregroundColor(Color.accentColor)
+              SignOutButtonView()
             }
-            Text("Report a bug")
-              .font(Font.system(size: 17, design: .default))
-              .foregroundColor(Color.accentColor)
-            Text("Help")
-              .font(Font.system(size: 17, design: .default))
-              .foregroundColor(Color.accentColor)
-            SignOutButtonView()
+            .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
           }
-          .navigationBarTitle(Text("CMUPoll"), displayMode: .inline)
         }
       }
     }
-    
+    .onAppear {
+      self.initialized = false
+      self.user = User.current
+      if self.user != nil {
+        self.points = self.user!.points
+      }
+      self.initialized = true
+    }
   }
 }
 
@@ -78,8 +90,8 @@ struct MyProfileComponentView: View {
           .foregroundColor(.gray)
         if self.user.graduation_year != nil {
           Text("Class of \(String(self.user.graduation_year!))")
-          .font(Font.system(size: 10, design: .default))
-          .foregroundColor(.gray)
+            .font(Font.system(size: 10, design: .default))
+            .foregroundColor(.gray)
         }
       }
     }
