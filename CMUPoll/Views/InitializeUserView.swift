@@ -30,107 +30,109 @@ struct InitializeUserView: View {
   @State var isAuthenticated = false
   
   var body: some View {
-    VStack(alignment: .leading, spacing: 40) {
-      if self.isAuthenticated {
-        TabbarView()
-      } else {
-        NavigationView {
-          List {
-            HStack(alignment: .center, spacing: 7) {
-              VStack(alignment: .leading, spacing: 20) {
-                Text(verbatim: "First Name")
-                  .font(Font.system(size: 12, design: .default))
-                  .fontWeight(.bold)
-                  .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                
-                
-                TextField(first_name, text: $first_name_that_should_not_be_used)
-                  .frame(width: nil, height: 20)
-                  .font(Font.system(size: 15, design: .default))
-                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                  .disabled(true)
-              }
-              
-              VStack(alignment: .leading, spacing: 20) {
-                Text(verbatim: "Last Name")
-                  .font(Font.system(size: 12, design: .default))
-                  .fontWeight(.bold)
-                  .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                
-                TextField(last_name, text: $last_name_that_should_not_be_used)
-                  .frame(width: nil, height: 20)
-                  .font(Font.system(size: 15, design: .default))
-                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                  .disabled(true)
-              }
-            }
-            
-            Divider()
-            
-            HStack(alignment: .center, spacing: 7) {
-              
-              VStack(alignment: .leading, spacing: 20) {
-                Text(verbatim: "Major")
-                  .font(Font.system(size: 12, design: .default))
-                  .fontWeight(.bold)
-                  .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                
-                TextField("", text: $major)
-                  .frame(width: nil, height: 20)
-                  .font(Font.system(size: 15, design: .default))
-                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-              }
-            }
-            
-            Divider()
-            
-            HStack(alignment: .center, spacing: 7) {
-              VStack(alignment: .leading, spacing: 20) {
-                Text(verbatim: "Email")
-                  .font(Font.system(size: 12, design: .default))
-                  .fontWeight(.bold)
-                  .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                
-                TextField(email, text: $email_that_should_not_be_used)
-                  .frame(width: nil, height: 20)
-                  .font(Font.system(size: 15, design: .default))
-                  .textFieldStyle(RoundedBorderTextFieldStyle())
-                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                  .disabled(true)
-              }
-            }
-            
-            VStack (alignment: .leading) {
-              Text("Graduation Year")
-              .font(Font.system(size: 12, design: .default))
-              .fontWeight(.bold)
-              .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
-              .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-              
-              
-              HStack {
-                Picker(selection: $yearsIndex, label: Text("")) {
-                  ForEach(0..<years.count) {                Text(self.years[$0]).foregroundColor(.secondary)
-                  }
+    KeyboardHost {
+      VStack(alignment: .leading, spacing: 40) {
+        if self.isAuthenticated {
+          TabbarView()
+        } else {
+          NavigationView {
+            List {
+              HStack(alignment: .center, spacing: 7) {
+                VStack(alignment: .leading, spacing: 20) {
+                  Text(verbatim: "First Name")
+                    .font(Font.system(size: 12, design: .default))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                  
+                  
+                  TextField(first_name, text: $first_name_that_should_not_be_used)
+                    .frame(width: nil, height: 20)
+                    .font(Font.system(size: 15, design: .default))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .disabled(true)
                 }
-                .padding(EdgeInsets(top: -55, leading: 0, bottom: 0, trailing: 40))
+                
+                VStack(alignment: .leading, spacing: 20) {
+                  Text(verbatim: "Last Name")
+                    .font(Font.system(size: 12, design: .default))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                  
+                  TextField(last_name, text: $last_name_that_should_not_be_used)
+                    .frame(width: nil, height: 20)
+                    .font(Font.system(size: 15, design: .default))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .disabled(true)
+                }
+              }
+              
+              Divider()
+              
+              HStack(alignment: .center, spacing: 7) {
+                
+                VStack(alignment: .leading, spacing: 20) {
+                  Text(verbatim: "Major")
+                    .font(Font.system(size: 12, design: .default))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                  
+                  TextField("", text: $major)
+                    .frame(width: nil, height: 20)
+                    .font(Font.system(size: 15, design: .default))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                }
+              }
+              
+              Divider()
+              
+              HStack(alignment: .center, spacing: 7) {
+                VStack(alignment: .leading, spacing: 20) {
+                  Text(verbatim: "Email")
+                    .font(Font.system(size: 12, design: .default))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                  
+                  TextField(email, text: $email_that_should_not_be_used)
+                    .frame(width: nil, height: 20)
+                    .font(Font.system(size: 15, design: .default))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .disabled(true)
+                }
+              }
+              
+              VStack (alignment: .leading) {
+                Text("Graduation Year")
+                  .font(Font.system(size: 12, design: .default))
+                  .fontWeight(.bold)
+                  .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0))
+                  .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                
+                
+                HStack {
+                  Picker(selection: $yearsIndex, label: Text("")) {
+                    ForEach(0..<years.count) {                Text(self.years[$0]).foregroundColor(.secondary)
+                    }
+                  }
+                  .padding(EdgeInsets(top: -55, leading: 0, bottom: 0, trailing: 40))
+                }
               }
             }
+            .navigationBarTitle(Text("Register"), displayMode: .inline)
+            .navigationBarItems(
+              trailing: Button("Sign Up") {
+                self.signUp()
+                self.isAuthenticated = true
+              }
+            )
           }
-          .navigationBarTitle(Text("Register"), displayMode: .inline)
-          .navigationBarItems(
-            trailing: Button("Sign Up") {
-              self.signUp()
-              self.isAuthenticated = true
-            }
-          )
         }
       }
     }
