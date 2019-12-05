@@ -49,7 +49,7 @@ class AnswerTests: XCTestCase {
     XCTAssertEqual(Answer1!.id, "1")
     XCTAssertEqual(Answer1!.user_id, "0")
     XCTAssertEqual(Answer1!.question_id, "1")
-    XCTAssertEqual(Answer1!.option_id, "0")
+    XCTAssertEqual(Answer1!.option_id, "3")
   }
     
   func testQuestions0() {
@@ -90,9 +90,9 @@ class AnswerTests: XCTestCase {
   func testOptions1() {
     let expectation = self.expectation(description: "Fetch options1")
     Answer1!.option(completion: { options in
-      XCTAssertEqual("0", options.id)
-      XCTAssertEqual("0", options.question_id)
-      XCTAssertEqual("iNoodle", options.text)
+      XCTAssertEqual("3", options.id)
+      XCTAssertEqual("1", options.question_id)
+      XCTAssertEqual("Union Grill", options.text)
       expectation.fulfill()
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
