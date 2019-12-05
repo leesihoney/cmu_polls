@@ -29,7 +29,8 @@ class ModelParser {
         let link: String = (obj["link"] ?? "") as! String
         let is_private: Bool = obj["private"] as! Bool
         let is_closed: Bool = obj["closed"] as! Bool
-        let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed)
+        let passcode: String? = obj["passcode"] as? String
+        let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed, passcode: passcode)
         result.append(poll)
         break
         
