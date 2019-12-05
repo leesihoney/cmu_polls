@@ -88,13 +88,19 @@ class Poll: Identifiable {
     })
   }
   
+  static func sort(_ polls: [Poll]) -> [Poll] {
+    var polls = polls
+    polls.sort(by: { p1, p2 in
+      return getDate(p1.posted_at) < getDate(p2.posted_at)
+    })
+    return polls
+  }
+  
   private static func accumulatePolls(poll: Poll, completion: @escaping ([Poll]) -> ()) {
     pollsFound.append(poll)
     if pollsFound.count == numPolls! {
-      pollsFound.sort(by: { p1, p2 in
-        return getDate(p1.posted_at) < getDate(p2.posted_at)
-      })
-      completion(pollsFound)
+      let sorted = Poll.sort(pollsFound)
+      completion(sorted)
     }
   }
   

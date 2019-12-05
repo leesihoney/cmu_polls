@@ -11,7 +11,7 @@ import SwiftUI
 import CoreData
 import GoogleSignIn
 
-struct User: Identifiable {
+class User: Identifiable {
   enum RewardType {
     case upload, answer, comment
   }
@@ -22,6 +22,12 @@ struct User: Identifiable {
   var major: String
   var graduation_year: Int? = 2020
   var points: Int = 0
+  
+  // Used for double, triple query
+  var pollIDsFound: [String] = []
+  var numPollIDs: Int?
+  var pollsFound: [Poll] = []
+  var numPolls: Int?
   
   static var current: User?
   
@@ -91,7 +97,7 @@ struct User: Identifiable {
     }
   }
   
-  mutating func addPoints(type: RewardType) {
+  func addPoints(type: RewardType) {
     self.points += reward(type: type)
   }
   
@@ -102,6 +108,52 @@ struct User: Identifiable {
       let polls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(polls)
     })
+  }
+  
+  private func accumulatePolls(poll: Poll, completion: @escaping ([Poll]) -> ()) {
+    pollsFound.append(poll)
+    // When done accumulating polls, sort the array and pass it to completion handler
+    if pollsFound.count == numPolls! {
+      let sorted = Poll.sort(pollsFound)
+      completion(sorted)
+    }
+  }
+  
+  private func accumulatePollIDs(poll_id: String, completion: @escaping ([Poll]) -> ()) {
+    pollIDsFound.append(poll_id)
+    // When done accumulating poll_ids, start accumulating polls for each poll_id
+    if pollIDsFound.count == numPollIDs! {
+      let pollIDs = Set(pollIDsFound)
+      numPolls = pollIDs.count
+      pollsFound = []
+      for poll_id in pollIDs {
+        let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: poll_id)
+        FirebaseDataHandler.get(docRef: docRef) { data in
+          let singlePoll: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+          self.accumulatePolls(poll: singlePoll[0], completion: completion)
+        }
+      }
+    }
+  }
+  
+  func answeredPolls(completion: @escaping ([Poll]) -> ()) {
+    // Find all answers and their question_ids for the current user
+    let query = FirebaseDataHandler.colRef(collection: .answer).whereField("user_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query) { data in
+      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      let question_ids: [String] = answers.map { $0.question_id }
+      // Accumulate all poll_ids for found question_ids
+      self.numPollIDs = question_ids.count
+      self.pollIDsFound = []
+      for question_id in question_ids {
+        let docRef = FirebaseDataHandler.docRef(collection: .question, documentId: question_id)
+        FirebaseDataHandler.get(docRef: docRef) { data in
+          let singleQuestion: [Question] = ModelParser.parse(collection: .question, data: data) as! [Question]
+          let poll_id = singleQuestion[0].poll_id
+          self.accumulatePollIDs(poll_id: poll_id, completion: completion)
+        }
+      }
+    }
   }
   
   func likes(completion: @escaping ([Like]) -> ()) {
@@ -141,7 +193,7 @@ struct User: Identifiable {
     delegate.uponLogOut!()
   }
   
-  mutating func update(major: String?, graduation_year: Int?, points: Int?, completion: @escaping () -> Void) {
+  func update(major: String?, graduation_year: Int?, points: Int?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
     var data: [String:Any] = [:]
     if let major = major {
