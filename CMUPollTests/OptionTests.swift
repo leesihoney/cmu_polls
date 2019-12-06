@@ -50,6 +50,28 @@ class OptionTests: XCTestCase {
     XCTAssertEqual(Option1!.text, "Tartam Express")
   }
     
+  
+  func testSort() {
+    let expectation = self.expectation(description: "Test sort")
+    Option.allOptions() { options in
+      XCTAssertEqual(30, options.count)
+      let sorted = Option.sort(options)
+      XCTAssertEqual(30, options.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testAllOptions() {
+     let expectation = self.expectation(description: "Test allOptions")
+     Option.allOptions() { options in
+       XCTAssertEqual(30, options.count)
+       expectation.fulfill()
+     }
+     self.waitForExpectations(timeout: 5.0, handler: nil)
+   }
+  
+  
   func testQuestions0() {
     let expectation = self.expectation(description: "Fetch question0")
     Option0!.question(completion: { questions in
@@ -92,5 +114,15 @@ class OptionTests: XCTestCase {
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
+  func testCreateDelete() {
+    let expectation = self.expectation(description: "Test create delete")
+    Option.create(text: "Temp Option", question_id: "0") { option in
+      XCTAssertEqual("Temp Option", option.text)
+      XCTAssertEqual("0", option.question_id)
+      option.delete {
+        expectation.fulfill()
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
 }
-
