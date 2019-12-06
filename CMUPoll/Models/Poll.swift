@@ -78,7 +78,7 @@ class Poll: Identifiable {
       return
     }
     let posted_at: String = getDateString()
-    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "posted_at": posted_at, "link": link, "private": is_private, "closed": is_closed, "passcode": passcode ?? "NULL"]
+    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "posted_at": posted_at, "link": link, "private": is_private, "closed": is_closed, "passcode": passcode]
     let colRef = FirebaseDataHandler.colRef(collection: .poll)
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
       let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed, passcode: passcode)
