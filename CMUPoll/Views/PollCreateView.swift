@@ -37,6 +37,7 @@ struct PollCreateView: View {
   //  @State var user_input = User.current?
   
   @State var user: User? = User.current
+  @State var passcode = ""
   @State var title = ""
   @State var tag = ""
   @State var description = ""
@@ -78,6 +79,14 @@ struct PollCreateView: View {
                   self.is_private = true
               }
             }
+          }
+        }
+        if is_private {
+          VStack {
+            SecureField("Set Passcode", text: $passcode)
+                       .font(Font.system(size: 15, design: .default))
+                       .textFieldStyle(PlainTextFieldStyle())
+                       .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 10))
           }
         }
         
@@ -171,7 +180,7 @@ struct PollCreateView: View {
         ), trailing:
         // TODO: should connect to a form view
         Button("Save") {
-          Poll.create(title: self.title, description: self.description, link: "", is_private: self.is_private, is_closed: false, passcode: "NULL", completion: { poll in
+          Poll.create(title: self.title, description: self.description, link: "", is_private: self.is_private, is_closed: false, passcode: self.passcode, completion: { poll in
             print("the poll has been created!")
             for questionInput in self.questions {
               Question.create(is_multiple_choice: false, title: questionInput.title, poll_id: poll.id, completion: { question in

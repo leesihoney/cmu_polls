@@ -36,18 +36,26 @@ struct MyActivityView: View {
           .padding(.horizontal, 16)
         
         if self.chosenView == 0 {
-          MyActivityPollsView(keyword: "uploaded", polls: self.polls)
+          //          MyActivityPollsView(keyword: "uploaded", polls: self.polls)
+          MyActivityPollsView(keyword: "uploaded", polls: self.polls, callBack: self.combined)
         } else {
-          MyActivityPollsView(keyword: "answered", polls: self.answeredPolls)
+          //          MyActivityPollsView(keyword: "answered", polls: self.answeredPolls)
+          MyActivityPollsView(keyword: "answered", polls: self.answeredPolls, callBack: self.combined)
         }
       }
       .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
       
     }
     .onAppear {
-      self.getUploadedPolls()
-      self.getAnsweredPolls()
+      self.combined()
+      //      self.getUploadedPolls()
+      //      self.getAnsweredPolls()
     }
+  }
+  
+  func combined() {
+    self.getUploadedPolls()
+    self.getAnsweredPolls()
   }
   
   // need to get sorted polls (my answered polls)
@@ -76,6 +84,11 @@ struct MyActivityView: View {
 struct MyActivityPollsView: View {
   let keyword: String
   let polls: [Poll]
+  let user = User.current
+  @State var answeredPolls = [Poll]()
+  @State var anot_polls = [Poll]()
+  let callBack: () -> Void
+  
   
   var body: some View {
     Group {
@@ -83,10 +96,23 @@ struct MyActivityPollsView: View {
         ScrollView {
           VStack(alignment: .leading, spacing: 8) {
             ForEach(self.polls) { poll in
-              NavigationLink(destination: PollDetailView(poll: poll)) {
-                PollView(poll: poll)
+              if !poll.is_private {
+                //                  Text("current poll.is_closed \(poll.title) \(String(poll.is_closed))")
+                NavigationLink(destination:
+                PollDetailView(poll: poll, callBack: self.callBack)) {
+                  PollView(poll: poll)
+                }.disabled(poll.is_closed)
+                  .buttonStyle(PlainButtonStyle())
               }
-              .buttonStyle(PlainButtonStyle())
+                
+              else {
+                NavigationLink(destination:
+                PollCheckView(poll: poll, callBack: self.callBack)) {
+                  PollView(poll: poll)
+                }.disabled(poll.is_closed)
+                  .buttonStyle(PlainButtonStyle())
+              }
+              
             }
           }
         }
@@ -100,8 +126,12 @@ struct MyActivityPollsView: View {
       }
     }
   }
-  
 }
+
+//}
+
+
+
 struct NoEntryBoxView: View {
   let keyword: String
   var body: some View {
@@ -117,8 +147,8 @@ struct NoEntryBoxView: View {
   }
   
 }
-struct MyActivityView_Previews: PreviewProvider {
-  static var previews: some View {
-    MyActivityView()
-  }
-}
+//struct MyActivityView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    MyActivityView()
+//  }
+//}

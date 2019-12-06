@@ -27,7 +27,9 @@ struct PollDetailView: View {
   @State var commentContent: String = ""
   @State var commentsLoaded = false
   @State private var showingAlert = false
+  @State private var showingCloseAlert = false
   
+  let callBack: () -> Void
   
   
   
@@ -36,8 +38,37 @@ struct PollDetailView: View {
       VStack(alignment: .leading) {
         ScrollView() {
           VStack(alignment: .leading) {
-            if (pollUser != nil) {
-              PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: self.poll.getDateDisplayString())
+//            if (pollUser != nil) {
+//              PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: self.poll.getDateDisplayString())
+//            }
+            
+            ZStack (alignment: .topTrailing) {
+              HStack {
+                if (pollUser != nil) {
+                    PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: self.poll.getDateDisplayString())
+
+                }
+                
+                if user != nil && pollUser != nil && user!.id == pollUser!.id {
+                  Spacer()
+                  Button(action: {
+                    self.showingCloseAlert = true
+                  }) {
+                    Text("Close")
+                  }
+                  .alert(isPresented: $showingCloseAlert) { () -> Alert in
+                    Alert(title: Text("Are you sure you want to close this?"), message: Text("You cannot see the this poll again"), primaryButton: .destructive(Text("Close"), action: {
+                      print("Okay Click")
+                      self.poll.update(user_id: String(self.pollUser!.id), title: self.poll.title, description: self.poll.description, link: self.poll.link, is_closed: true, is_private: self.poll.is_private , passcode: self.poll.passcode, completion: {})
+                      
+                      self.callBack()
+                      
+                    }), secondaryButton: .default(Text("Cancel")))
+                  }
+                }
+                
+                
+              }
             }
             
             HStack(alignment: .firstTextBaseline) {
@@ -324,8 +355,8 @@ struct PollDetailView: View {
   }
 }
 
-struct PollDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "0"))
-  }
-}
+//struct PollDetailView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "0"))
+//  }
+//}
