@@ -9,6 +9,12 @@
 import Foundation
 import SwiftUI
 
+extension StringProtocol {
+    var firstUppercased: String {
+        return prefix(1).uppercased() + dropFirst()
+    }
+}
+
 class Tag: Identifiable, Hashable {
   
   var id: String
@@ -41,12 +47,35 @@ class Tag: Identifiable, Hashable {
   
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(name: String, completion: @escaping (Tag) -> ()) {
+    if name.isEmpty {
+      return
+    }
+    let tagName = name.lowercased().firstUppercased
     let colRef = FirebaseDataHandler.colRef(collection: .tag)
-    let data: [String:Any] = ["name": name]
-    FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let tag = Tag(id: documentId, name: name)
-      completion(tag)
+    let query = colRef.whereField("name", isEqualTo: tagName)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      // If no tag is found with the given name, create a new tag
+      if data.isEmpty {
+        let tagData: [String:Any] = ["name": tagName]
+        FirebaseDataHandler.add(colRef: colRef, data: tagData, completion: { documentId in
+          let tag = Tag(id: documentId, name: tagName)
+          completion(tag)
+        })
+      }
+      // If a tag exists with the given name, don't create a new tag
+      else {
+        let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+        completion(singleTag[0])
+      }
     })
+  }
+  
+  static func parse(_ tagNames: String) -> [String] {
+    var tagArray = tagNames.components(separatedBy: ",")
+    for i in 0..<tagArray.count {
+      tagArray[i] = tagArray[i].trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    return tagArray
   }
   
   static func withId(id: String, completion: @escaping (Tag?) -> ()) {
@@ -76,7 +105,7 @@ class Tag: Identifiable, Hashable {
   }
   
   static func allTags(completion: @escaping ([Tag]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .tag)
+    let query = FirebaseDataHandler.colRef(collection: .tag).order(by: "name")
     FirebaseDataHandler.get(query: query, completion: { data in
       let allTags: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
       
@@ -115,4 +144,10 @@ class Tag: Identifiable, Hashable {
       }
     })
   }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .tag, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
+  }
+  
 }

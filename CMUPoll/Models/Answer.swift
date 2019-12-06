@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct Answer: Identifiable {
+class Answer: Identifiable {
   var id: String
   var user_id: String
   var question_id: String
@@ -26,7 +26,6 @@ struct Answer: Identifiable {
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(question_id: String, option_id: String, completion: @escaping (Answer) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let colRef = FirebaseDataHandler.colRef(collection: .answer)
@@ -96,7 +95,7 @@ struct Answer: Identifiable {
     })
   }
   
-  mutating func update(user_id: String?, question_id: String?, option_id: String?, completion: @escaping () -> Void) {
+  func update(user_id: String?, question_id: String?, option_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .answer, documentId: id)
     var data: [String:Any] = [:]
     if let user_id = user_id {
@@ -112,5 +111,10 @@ struct Answer: Identifiable {
       self.option_id = option_id
     }
     FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
+  }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .answer, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
   }
 }

@@ -21,6 +21,14 @@ struct Option: Identifiable {
     self.question_id = question_id
   }
   
+  static func sort(_ options: [Option]) -> [Option] {
+    var options = options
+    options.sort(by: { o1, o2 in
+      return o1.text.lowercased() < o2.text.lowercased()
+    })
+    return options
+  }
+  
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(text: String, question_id: String, completion: @escaping (Option) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .option)
@@ -44,7 +52,7 @@ struct Option: Identifiable {
   }
   
   static func allOptions(completion: @escaping ([Option]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .option)
+    let query = FirebaseDataHandler.colRef(collection: .option).order(by: "text")
     FirebaseDataHandler.get(query: query, completion: { data in
       let allOptions: [Option] = ModelParser.parse(collection: .option, data: data) as! [Option]
       completion(allOptions)
@@ -66,4 +74,10 @@ struct Option: Identifiable {
       completion(answers)
     })
   }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .option, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
+  }
+  
 }

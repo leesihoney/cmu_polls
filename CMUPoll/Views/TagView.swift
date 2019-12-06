@@ -23,8 +23,20 @@ struct TagView: View {
   }
 }
 
-struct TagView_Previews: PreviewProvider {
-  static var previews: some View {
-    TagView(tagText: "IS")
+struct ClosedTagView: View {
+  var body: some View {
+    Text("Closed")
+      .font(Font.system(size: 12, design: .default))
+      .fontWeight(.bold)
+      .foregroundColor(Color(red: 32 / 255.0, green: 32 / 255.0, blue: 32 / 255.0))
+      .padding(.horizontal, 15)
+      .padding(.vertical, 6)
+      .background(Color(red: 192 / 255.0, green: 192 / 255.0, blue: 192 / 255.0))
+      .cornerRadius(250.0)
   }
 }
+//struct TagView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    TagView(tagText: "IS")
+//  }
+//}

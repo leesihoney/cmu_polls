@@ -13,10 +13,6 @@ struct LoginView: View {
   let googleLogo = UIImage(named: "btn_google_dark_focus_ios")
   let robotoFont = UIFont(name: "Roboto-Medium", size: UIFont.labelFontSize)
   
-  let uponExistingUser: AfterSignIn
-  let uponNewUser: AfterSignIn
-  let uponInvalidInput: AfterSignIn
-  
   private let andrewLogin = AndrewLogin()
   
   var body: some View {
@@ -46,6 +42,6 @@ struct LoginView: View {
   }
   
   func login() {
-    andrewLogin.attemptLogin(uponExistingUser: uponExistingUser, uponNewUser: uponNewUser, uponInvalidInput: uponInvalidInput)
+    andrewLogin.attemptLogin()
   }
 }

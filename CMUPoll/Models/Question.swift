@@ -23,6 +23,14 @@ struct Question: Identifiable {
     self.poll_id = poll_id
   }
   
+  static func sort(_ questions: [Question]) -> [Question] {
+    var questions = questions
+    questions.sort(by: { q1, q2 in
+      return q1.title.lowercased() < q2.title.lowercased()
+    })
+    return questions
+  }
+  
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(is_multiple_choice: Bool, title: String, poll_id: String, completion: @escaping (Question) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .question)
@@ -46,7 +54,7 @@ struct Question: Identifiable {
   }
   
   static func allQuestions(completion: @escaping ([Question]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .question)
+    let query = FirebaseDataHandler.colRef(collection: .question).order(by: "title")
     FirebaseDataHandler.get(query: query, completion: { data in
       let allQuestions: [Question] = ModelParser.parse(collection: .question, data: data) as! [Question]
       completion(allQuestions)
@@ -79,7 +87,6 @@ struct Question: Identifiable {
   
   func userHasAnswer(completion: @escaping (Bool) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let query = FirebaseDataHandler.colRef(collection: .answer)
@@ -88,6 +95,23 @@ struct Question: Identifiable {
     FirebaseDataHandler.get(query: query, completion: { data in
       let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
       completion(answers.count > 0)
+    })
+  }
+  
+  func userAnswer(completion: @escaping (Answer?) -> ()) {
+    guard let user = User.current else {
+      return
+    }
+    let query = FirebaseDataHandler.colRef(collection: .answer)
+      .whereField("user_id", isEqualTo: user.id)
+      .whereField("question_id", isEqualTo: id)
+    FirebaseDataHandler.get(query: query, completion: { data in
+      let answers: [Answer] = ModelParser.parse(collection: .answer, data: data) as! [Answer]
+      if (answers.count > 0) {
+        completion(answers[0])
+      } else {
+        completion(nil)
+      }
     })
   }
   

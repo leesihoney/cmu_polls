@@ -12,7 +12,9 @@ struct UploaderProfileView: View {
   let profile = Image("user_pic")
   let uploaderName: String
   let uploaderMajor: String
-  let uploaderGraduationYear: String
+  let uploaderGraduationYear: Int?
+  @State var majorGraduationYearText = ""
+  
   
   var body: some View {
     HStack(alignment: .center, spacing: 7) {
@@ -23,16 +25,32 @@ struct UploaderProfileView: View {
             .bold()
             .font(Font.system(size: 12, design: .default))
         }
-        Text("\(self.uploaderMajor) • Class of \(self.uploaderGraduationYear)")
+        Text(self.majorGraduationYearText)
           .font(Font.system(size: 10, design: .default))
           .foregroundColor(Color.gray)
+          .fixedSize(horizontal: false, vertical: true)
       }
+    }
+    .onAppear {
+      self.formatMajorGraduationYearText()
+    }
+  }
+  
+  func formatMajorGraduationYearText() {
+    var inputMajor = self.uploaderMajor
+    if inputMajor.count > 30 {
+      inputMajor = inputMajor[inputMajor.startIndex..<inputMajor.index(inputMajor.endIndex, offsetBy: -15)] + "..."
+    }
+    if let uploaderGraduationYear = self.uploaderGraduationYear {
+      self.majorGraduationYearText = "\(inputMajor) • Class of \(String(uploaderGraduationYear))"
+    } else {
+      self.majorGraduationYearText = "\(self.uploaderMajor)"
     }
   }
 }
 
-struct UploaderProfileView_Previews: PreviewProvider {
-  static var previews: some View {
-    UploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: "2020")
-  }
-}
+//struct UploaderProfileView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    UploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: 2020)
+//  }
+//}

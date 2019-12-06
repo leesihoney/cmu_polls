@@ -3,32 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E1CEED136AB02C90041F061 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58066635386C677E0A3F6B1E /* Pods_CMUPoll_CMUPollUITests.framework */; };
-		79264667B912633363FF16B7 /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C33BB32B02646F9B45FFD4B /* Pods_CMUPollTests.framework */; };
 		A70E95B9236B011B00C38F2B /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A70E95B8236B011A00C38F2B /* Podfile */; };
 		A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
-		A73F2A3F23726A2200F50FA2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */; };
 		A73F2A4023726C4D00F50FA2 /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
 		A73F2A4123726C5500F50FA2 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A73F2A4223726C5B00F50FA2 /* FirebaseDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */; };
 		A73F2A4323726C6500F50FA2 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A7577B3523710EC500FB055B /* PollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7577B3423710EC500FB055B /* PollTests.swift */; };
+		A775417B2398CA9200E36F79 /* KeyboardHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775417A2398CA9200E36F79 /* KeyboardHost.swift */; };
 		A7949F8F23752C3C009536D8 /* PollButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */; };
+		A79A175F239A1D0700E3C8C7 /* ModelParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A175E239A1D0700E3C8C7 /* ModelParserTests.swift */; };
 		A7A9587A236E3E4E009F2DF1 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		A7CEA1582373CD6600455C50 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1572373CD6600455C50 /* LoginView.swift */; };
-		B8F7F3825DD5C7A8D0AE1FD6 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D946BEDD662C575E13D5B066 /* Pods_CMUPoll.framework */; };
+		C88BD5E820DE68757638257C /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D755282F0BD3F78F77C9AA4 /* Pods_CMUPollTests.framework */; };
+		E4515EDBA3C79DA386A9F614 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFEF14C5562CDBF86B17BC3 /* Pods_CMUPoll.framework */; };
+		E5F370FA7728820BFA1B3059 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B60F30504936F167A9691A /* Pods_CMUPoll_CMUPollUITests.framework */; };
+		E808B2ED239961210027B87D /* PollCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808B2EC239961210027B87D /* PollCheckView.swift */; };
 		E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D09236FA0B100B875AE /* SearchBarView.swift */; };
 		E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0A236FA0B100B875AE /* AllPollsView.swift */; };
 		E8486D13236FA0B100B875AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
-		E8486D14236FA0B100B875AE /* PollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0C236FA0B100B875AE /* PollsView.swift */; };
 		E8486D15236FA0B100B875AE /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0D236FA0B100B875AE /* TagsView.swift */; };
 		E8486D16236FA0B100B875AE /* PollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0E236FA0B100B875AE /* PollView.swift */; };
 		E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0F236FA0B100B875AE /* TagFilterView.swift */; };
+		E896EA08239A22BA002525C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
+		E896EA09239A22BB002525C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
 		E8B6CBFA2371454B0056E18B /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBF22371454B0056E18B /* UserTests.swift */; };
 		E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBFC23714AE90056E18B /* TagTests.swift */; };
 		E8B6CBFF23714F7F0056E18B /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBFE23714F7E0056E18B /* QuestionTests.swift */; };
@@ -75,13 +78,30 @@
 		E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
 		E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
 		E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E3242366B0EA00F75AA2 /* Option.swift */; };
+		F00539002396ECD10088F2E3 /* BackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00538FF2396ECD10088F2E3 /* BackButtonView.swift */; };
+		F005390223974C310088F2E3 /* HiddenNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005390123974C310088F2E3 /* HiddenNavigationLink.swift */; };
+		F0053904239765560088F2E3 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0053903239765560088F2E3 /* TabbarView.swift */; };
+		F0053906239828BC0088F2E3 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0053905239828BC0088F2E3 /* CommentView.swift */; };
+		F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
+		F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
+		F005390C239889480088F2E3 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
+		F005390D239889490088F2E3 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
+		F03B89DE238A09B5002645E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */; };
+		F03B89E0238A1CC8002645E0 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B89DF238A1CC8002645E0 /* MyProfileView.swift */; };
 		F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92C2370F41800C9AF6A /* PollDetailView.swift */; };
 		F056C92F2371028F00C9AF6A /* AnswerBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */; };
 		F056C931237106FC00C9AF6A /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
+		F06DFC472383809000E72269 /* MyActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06DFC462383808F00E72269 /* MyActivityView.swift */; };
 		F0BDB49B2371358C00F855F6 /* AnswerGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */; };
 		F0BDB49D2371372E00F855F6 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49C2371372E00F855F6 /* BarGraphView.swift */; };
 		F0C9C4E223734C7D00C55D90 /* UploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */; };
 		F0C9C4E4237350A200C55D90 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
+		F0DF11AF2399F220009C8718 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
+		F0DF11B02399F221009C8718 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
+		F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
+		F0DF11B42399F231009C8718 /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
+		F0DF11B52399F24A009C8718 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
+		F0DF11B62399F24B009C8718 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,27 +122,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2C33BB32B02646F9B45FFD4B /* Pods_CMUPollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3CA6352E20CA4BB0C617A93A /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
-		58066635386C677E0A3F6B1E /* Pods_CMUPoll_CMUPollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll_CMUPollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E2267682CA9778829239BAC /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
+		09CE119C2805C1B8A17DBCFC /* Pods-CMUPollTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.release.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.release.xcconfig"; sourceTree = "<group>"; };
+		2D755282F0BD3F78F77C9AA4 /* Pods_CMUPollTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPollTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EFEF14C5562CDBF86B17BC3 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64B60F30504936F167A9691A /* Pods_CMUPoll_CMUPollUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll_CMUPollUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A226225C3C4824C94229CD6F /* Pods-CMUPoll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.release.xcconfig"; sourceTree = "<group>"; };
 		A70E95B8236B011A00C38F2B /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseDataHandler.swift; sourceTree = "<group>"; };
-		A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A7577B3423710EC500FB055B /* PollTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollTests.swift; sourceTree = "<group>"; };
+		A775417A2398CA9200E36F79 /* KeyboardHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHost.swift; sourceTree = "<group>"; };
 		A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollButtonStyle.swift; sourceTree = "<group>"; };
+		A79A175E239A1D0700E3C8C7 /* ModelParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParserTests.swift; sourceTree = "<group>"; };
 		A7A95879236E3E4E009F2DF1 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		A7CEA1552373CD3800455C50 /* AndrewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndrewLogin.swift; sourceTree = "<group>"; };
 		A7CEA1572373CD6600455C50 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		A9143C0D4088D5F0753B7D22 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
-		CEFA4713A45F08D250C1F42B /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D946BEDD662C575E13D5B066 /* Pods_CMUPoll.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CMUPoll.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEE09D13A2610536E590711E /* Pods-CMUPoll.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.release.xcconfig"; sourceTree = "<group>"; };
-		E245155F9E8BFF8045723D7F /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D52A2E120CAF37B653F4AA46 /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
+		D5BB28A5E83701B9E9281F0F /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E808B2EC239961210027B87D /* PollCheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollCheckView.swift; sourceTree = "<group>"; };
 		E8486D09236FA0B100B875AE /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E8486D0A236FA0B100B875AE /* AllPollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPollsView.swift; sourceTree = "<group>"; };
 		E8486D0B236FA0B100B875AE /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
-		E8486D0C236FA0B100B875AE /* PollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollsView.swift; sourceTree = "<group>"; };
 		E8486D0D236FA0B100B875AE /* TagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 		E8486D0E236FA0B100B875AE /* PollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollView.swift; sourceTree = "<group>"; };
 		E8486D0F236FA0B100B875AE /* TagFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagFilterView.swift; sourceTree = "<group>"; };
@@ -160,9 +179,18 @@
 		E8D6E31C2366B0D100F75AA2 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		E8D6E3202366B0E100F75AA2 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
 		E8D6E3242366B0EA00F75AA2 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		EAA904DD3E4D4536192E9A74 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		EB7B84F5585594C895A0C89B /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll-CMUPollUITests.release.xcconfig"; path = "Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests.release.xcconfig"; sourceTree = "<group>"; };
+		F00538FF2396ECD10088F2E3 /* BackButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonView.swift; sourceTree = "<group>"; };
+		F005390123974C310088F2E3 /* HiddenNavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenNavigationLink.swift; sourceTree = "<group>"; };
+		F0053903239765560088F2E3 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		F0053905239828BC0088F2E3 /* CommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentView.swift; sourceTree = "<group>"; };
+		F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F03B89DF238A1CC8002645E0 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
 		F056C92C2370F41800C9AF6A /* PollDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailView.swift; sourceTree = "<group>"; };
 		F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerBoxView.swift; sourceTree = "<group>"; };
 		F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollDetailDescriptionView.swift; sourceTree = "<group>"; };
+		F06DFC462383808F00E72269 /* MyActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivityView.swift; sourceTree = "<group>"; };
 		F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerGraphView.swift; sourceTree = "<group>"; };
 		F0BDB49C2371372E00F855F6 /* BarGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarGraphView.swift; sourceTree = "<group>"; };
 		F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploaderProfileView.swift; sourceTree = "<group>"; };
@@ -174,7 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8F7F3825DD5C7A8D0AE1FD6 /* Pods_CMUPoll.framework in Frameworks */,
+				E4515EDBA3C79DA386A9F614 /* Pods_CMUPoll.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -182,7 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79264667B912633363FF16B7 /* Pods_CMUPollTests.framework in Frameworks */,
+				C88BD5E820DE68757638257C /* Pods_CMUPollTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,59 +218,96 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E1CEED136AB02C90041F061 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */,
+				E5F370FA7728820BFA1B3059 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1277B994BFC5573CD6FC2762 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D946BEDD662C575E13D5B066 /* Pods_CMUPoll.framework */,
-				58066635386C677E0A3F6B1E /* Pods_CMUPoll_CMUPollUITests.framework */,
-				2C33BB32B02646F9B45FFD4B /* Pods_CMUPollTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		4210E7FB3A4DD4676D9FC967 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7E2267682CA9778829239BAC /* Pods-CMUPoll.debug.xcconfig */,
-				DEE09D13A2610536E590711E /* Pods-CMUPoll.release.xcconfig */,
-				CEFA4713A45F08D250C1F42B /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */,
-				A9143C0D4088D5F0753B7D22 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */,
-				E245155F9E8BFF8045723D7F /* Pods-CMUPollTests.debug.xcconfig */,
-				3CA6352E20CA4BB0C617A93A /* Pods-CMUPollTests.release.xcconfig */,
+				D52A2E120CAF37B653F4AA46 /* Pods-CMUPoll.debug.xcconfig */,
+				A226225C3C4824C94229CD6F /* Pods-CMUPoll.release.xcconfig */,
+				EAA904DD3E4D4536192E9A74 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */,
+				EB7B84F5585594C895A0C89B /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */,
+				D5BB28A5E83701B9E9281F0F /* Pods-CMUPollTests.debug.xcconfig */,
+				09CE119C2805C1B8A17DBCFC /* Pods-CMUPollTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A78BBF182398FE19006A35DA /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */,
+				E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */,
+				E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		A78BBF192398FE57006A35DA /* Plists */ = {
+			isa = PBXGroup;
+			children = (
+				E8D6E2E12366AFB100F75AA2 /* Info.plist */,
+				F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */,
+			);
+			path = Plists;
+			sourceTree = "<group>";
+		};
+		A78BBF1A2398FE7B006A35DA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */,
+				A7CEA1552373CD3800455C50 /* AndrewLogin.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		D678301117707C29549F4EED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EFEF14C5562CDBF86B17BC3 /* Pods_CMUPoll.framework */,
+				64B60F30504936F167A9691A /* Pods_CMUPoll_CMUPollUITests.framework */,
+				2D755282F0BD3F78F77C9AA4 /* Pods_CMUPollTests.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E8486D07236FA09200B875AE /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E8D6E2DE2366AFB100F75AA2 /* LaunchScreen.storyboard */,
+				E8D6E2D72366AFAF00F75AA2 /* ContentView.swift */,
+				A775417A2398CA9200E36F79 /* KeyboardHost.swift */,
+				A7CEA1572373CD6600455C50 /* LoginView.swift */,
+				E8CA4E182373CAB400AD3B72 /* InitializeUserView.swift */,
 				E8486D0A236FA0B100B875AE /* AllPollsView.swift */,
 				F056C92E2371028F00C9AF6A /* AnswerBoxView.swift */,
 				F0BDB49A2371358C00F855F6 /* AnswerGraphView.swift */,
 				F0BDB49C2371372E00F855F6 /* BarGraphView.swift */,
-				F056C92C2370F41800C9AF6A /* PollDetailView.swift */,
+				F005390123974C310088F2E3 /* HiddenNavigationLink.swift */,
+				F00538FF2396ECD10088F2E3 /* BackButtonView.swift */,
 				F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */,
-				E8486D0C236FA0B100B875AE /* PollsView.swift */,
 				E8486D0E236FA0B100B875AE /* PollView.swift */,
+				F056C92C2370F41800C9AF6A /* PollDetailView.swift */,
 				E8CA4E0E23729D0400AD3B72 /* PollCreateView.swift */,
-				F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */,
+				E808B2EC239961210027B87D /* PollCheckView.swift */,
+				F0053905239828BC0088F2E3 /* CommentView.swift */,
 				F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */,
 				E8CA4E0D23729D0400AD3B72 /* QuestionBoxView.swift */,
 				E8CA4E0C23729D0400AD3B72 /* RadioButtonQuestionView.swift */,
 				E8486D09236FA0B100B875AE /* SearchBarView.swift */,
-				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
 				E8486D0D236FA0B100B875AE /* TagsView.swift */,
+				E8486D0F236FA0B100B875AE /* TagFilterView.swift */,
 				E8486D0B236FA0B100B875AE /* TagView.swift */,
-				A7CEA1572373CD6600455C50 /* LoginView.swift */,
-				E8CA4E182373CAB400AD3B72 /* InitializeUserView.swift */,
+				F0053903239765560088F2E3 /* TabbarView.swift */,
+				F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */,
 				A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */,
+				F06DFC462383808F00E72269 /* MyActivityView.swift */,
+				F03B89DF238A1CC8002645E0 /* MyProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -256,7 +321,7 @@
 				E8D6E2F42366AFB100F75AA2 /* CMUPollUITests */,
 				E8D6E2CE2366AFAF00F75AA2 /* Products */,
 				4210E7FB3A4DD4676D9FC967 /* Pods */,
-				1277B994BFC5573CD6FC2762 /* Frameworks */,
+				D678301117707C29549F4EED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,20 +338,13 @@
 		E8D6E2CF2366AFAF00F75AA2 /* CMUPoll */ = {
 			isa = PBXGroup;
 			children = (
-				E8486D07236FA09200B875AE /* Views */,
-				E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */,
-				E8D6E2D22366AFAF00F75AA2 /* SceneDelegate.swift */,
-				E8D6E2D72366AFAF00F75AA2 /* ContentView.swift */,
-				A70E95BA236B012400C38F2B /* FirebaseDataHandler.swift */,
-				A7A95879236E3E4E009F2DF1 /* ModelParser.swift */,
-				A7CEA1552373CD3800455C50 /* AndrewLogin.swift */,
+				A78BBF182398FE19006A35DA /* Delegates */,
 				E8D6E3032366AFDD00F75AA2 /* Models */,
-				E8D6E2D92366AFB100F75AA2 /* Assets.xcassets */,
-				E8D6E2DE2366AFB100F75AA2 /* LaunchScreen.storyboard */,
-				E8D6E2E12366AFB100F75AA2 /* Info.plist */,
-				A73F2A3E23726A2200F50FA2 /* GoogleService-Info.plist */,
-				E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */,
+				E8486D07236FA09200B875AE /* Views */,
+				A78BBF1A2398FE7B006A35DA /* Helpers */,
+				A78BBF192398FE57006A35DA /* Plists */,
 				E8D6E2DB2366AFB100F75AA2 /* Preview Content */,
+				E8D6E2D92366AFB100F75AA2 /* Assets.xcassets */,
 			);
 			path = CMUPoll;
 			sourceTree = "<group>";
@@ -302,14 +360,15 @@
 		E8D6E2E92366AFB100F75AA2 /* CMUPollTests */ = {
 			isa = PBXGroup;
 			children = (
+				A79A175E239A1D0700E3C8C7 /* ModelParserTests.swift */,
+				A7577B3423710EC500FB055B /* PollTests.swift */,
 				E8B6CC0823716CE70056E18B /* LikeTests.swift */,
+				E8B6CBF22371454B0056E18B /* UserTests.swift */,
 				E8B6CC06237168790056E18B /* CommentTests.swift */,
+				E8B6CBFC23714AE90056E18B /* TagTests.swift */,
+				E8B6CBFE23714F7E0056E18B /* QuestionTests.swift */,
 				E8B6CC02237165CA0056E18B /* AnswerTests.swift */,
 				E8B6CC00237161800056E18B /* OptionTests.swift */,
-				E8B6CBFE23714F7E0056E18B /* QuestionTests.swift */,
-				E8B6CBFC23714AE90056E18B /* TagTests.swift */,
-				E8B6CBF22371454B0056E18B /* UserTests.swift */,
-				A7577B3423710EC500FB055B /* PollTests.swift */,
 				E8D6E2EC2366AFB100F75AA2 /* Info.plist */,
 			);
 			path = CMUPollTests;
@@ -327,6 +386,7 @@
 		E8D6E3032366AFDD00F75AA2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A7A95879236E3E4E009F2DF1 /* ModelParser.swift */,
 				E8D6E3042366B08D00F75AA2 /* Poll.swift */,
 				E8D6E3082366B09800F75AA2 /* Like.swift */,
 				E8D6E30C2366B0A500F75AA2 /* User.swift */,
@@ -347,12 +407,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D6E2FA2366AFB100F75AA2 /* Build configuration list for PBXNativeTarget "CMUPoll" */;
 			buildPhases = (
-				8763E22097FFE265B791E24D /* [CP] Check Pods Manifest.lock */,
+				C5FF14DD3E3A14C3A3156E12 /* [CP] Check Pods Manifest.lock */,
 				E8D6E2C92366AFAF00F75AA2 /* Sources */,
 				E8D6E2CA2366AFAF00F75AA2 /* Frameworks */,
 				E8D6E2CB2366AFAF00F75AA2 /* Resources */,
-				64A4D1ABCD3B91F3A35829E5 /* [CP] Embed Pods Frameworks */,
-				B88A7E366A24993F1374011A /* [CP] Copy Pods Resources */,
+				7DAB0467D0A7C3D78CA53A21 /* [CP] Embed Pods Frameworks */,
+				8056C5512D1381E2766BCAF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -367,7 +427,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D6E2FD2366AFB100F75AA2 /* Build configuration list for PBXNativeTarget "CMUPollTests" */;
 			buildPhases = (
-				DBDA5F5865AB8C01AB837A8D /* [CP] Check Pods Manifest.lock */,
+				21190D59DE5F405BA4BF65BD /* [CP] Check Pods Manifest.lock */,
 				E8D6E2E22366AFB100F75AA2 /* Sources */,
 				E8D6E2E32366AFB100F75AA2 /* Frameworks */,
 				E8D6E2E42366AFB100F75AA2 /* Resources */,
@@ -386,12 +446,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8D6E3002366AFB100F75AA2 /* Build configuration list for PBXNativeTarget "CMUPollUITests" */;
 			buildPhases = (
-				8AA8A5FB626CA9EDF6A59EE8 /* [CP] Check Pods Manifest.lock */,
+				551FAE9F006FA2362684593A /* [CP] Check Pods Manifest.lock */,
 				E8D6E2ED2366AFB100F75AA2 /* Sources */,
 				E8D6E2EE2366AFB100F75AA2 /* Frameworks */,
 				E8D6E2EF2366AFB100F75AA2 /* Resources */,
-				17550C07A53AF8040B25378A /* [CP] Embed Pods Frameworks */,
-				A06297ACFD6095836D03470D /* [CP] Copy Pods Resources */,
+				2E10A683FDF1468F150753FA /* [CP] Embed Pods Frameworks */,
+				BBBFA93BAC2C6B4CFA9FDA4F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -453,7 +513,7 @@
 			files = (
 				E8D6E2E02366AFB100F75AA2 /* LaunchScreen.storyboard in Resources */,
 				E8D6E2DD2366AFB100F75AA2 /* Preview Assets.xcassets in Resources */,
-				A73F2A3F23726A2200F50FA2 /* GoogleService-Info.plist in Resources */,
+				F03B89DE238A09B5002645E0 /* GoogleService-Info.plist in Resources */,
 				A70E95B9236B011B00C38F2B /* Podfile in Resources */,
 				E8D6E2DA2366AFB100F75AA2 /* Assets.xcassets in Resources */,
 			);
@@ -476,183 +536,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		17550C07A53AF8040B25378A /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RadioGroup/RadioGroup.framework",
-				"${BUILT_PRODUCTS_DIR}/SweeterSwift/SweeterSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioGroup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SweeterSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		64A4D1ABCD3B91F3A35829E5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/RadioGroup/RadioGroup.framework",
-				"${BUILT_PRODUCTS_DIR}/SweeterSwift/SweeterSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioGroup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SweeterSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8763E22097FFE265B791E24D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CMUPoll-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8AA8A5FB626CA9EDF6A59EE8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CMUPoll-CMUPollUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A06297ACFD6095836D03470D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B88A7E366A24993F1374011A /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh",
-				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DBDA5F5865AB8C01AB837A8D /* [CP] Check Pods Manifest.lock */ = {
+		21190D59DE5F405BA4BF65BD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -674,6 +558,118 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2E10A683FDF1468F150753FA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		551FAE9F006FA2362684593A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CMUPoll-CMUPollUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DAB0467D0A7C3D78CA53A21 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8056C5512D1381E2766BCAF4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll/Pods-CMUPoll-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBBFA93BAC2C6B4CFA9FDA4F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CMUPoll-CMUPollUITests/Pods-CMUPoll-CMUPollUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5FF14DD3E3A14C3A3156E12 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CMUPoll-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -683,8 +679,10 @@
 			files = (
 				E8D6E3092366B09800F75AA2 /* Like.swift in Sources */,
 				E8CA4E1023729D0400AD3B72 /* QuestionBoxView.swift in Sources */,
+				F00539002396ECD10088F2E3 /* BackButtonView.swift in Sources */,
 				E8D6E3152366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				E8D6E3192366B0C900F75AA2 /* Tag.swift in Sources */,
+				A775417B2398CA9200E36F79 /* KeyboardHost.swift in Sources */,
 				A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */,
 				F056C92D2370F41800C9AF6A /* PollDetailView.swift in Sources */,
 				F0BDB49B2371358C00F855F6 /* AnswerGraphView.swift in Sources */,
@@ -692,9 +690,10 @@
 				E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */,
 				F0C9C4E4237350A200C55D90 /* PollUploaderProfileView.swift in Sources */,
 				E8CA4E192373CAB400AD3B72 /* InitializeUserView.swift in Sources */,
+				F0053906239828BC0088F2E3 /* CommentView.swift in Sources */,
 				E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */,
-				E8486D14236FA0B100B875AE /* PollsView.swift in Sources */,
 				A70E95BB236B012400C38F2B /* FirebaseDataHandler.swift in Sources */,
+				F005390223974C310088F2E3 /* HiddenNavigationLink.swift in Sources */,
 				E8D6E3212366B0E100F75AA2 /* Answer.swift in Sources */,
 				A7949F8F23752C3C009536D8 /* PollButtonStyle.swift in Sources */,
 				E8D6E3052366B08D00F75AA2 /* Poll.swift in Sources */,
@@ -707,14 +706,18 @@
 				E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8CA4E0F23729D0400AD3B72 /* RadioButtonQuestionView.swift in Sources */,
 				F056C931237106FC00C9AF6A /* PollDetailDescriptionView.swift in Sources */,
+				E808B2ED239961210027B87D /* PollCheckView.swift in Sources */,
 				E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E2D82366AFAF00F75AA2 /* ContentView.swift in Sources */,
+				F03B89E0238A1CC8002645E0 /* MyProfileView.swift in Sources */,
 				E8CA4E1123729D0400AD3B72 /* PollCreateView.swift in Sources */,
 				E8D6E2D32366AFAF00F75AA2 /* SceneDelegate.swift in Sources */,
 				E8D6E31D2366B0D100F75AA2 /* Question.swift in Sources */,
+				F0053904239765560088F2E3 /* TabbarView.swift in Sources */,
 				E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */,
 				F056C92F2371028F00C9AF6A /* AnswerBoxView.swift in Sources */,
 				A7CEA1582373CD6600455C50 /* LoginView.swift in Sources */,
+				F06DFC472383809000E72269 /* MyActivityView.swift in Sources */,
 				E8D6E30D2366B0A500F75AA2 /* User.swift in Sources */,
 				E8486D13236FA0B100B875AE /* TagView.swift in Sources */,
 			);
@@ -724,24 +727,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F005390C239889480088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
+				F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */,
 				A73F2A4123726C5500F50FA2 /* ModelParser.swift in Sources */,
 				A73F2A4023726C4D00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8B6CBFA2371454B0056E18B /* UserTests.swift in Sources */,
 				E8D6E3122366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E31E2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8B6CBFF23714F7F0056E18B /* QuestionTests.swift in Sources */,
+				E896EA08239A22BA002525C1 /* AppDelegate.swift in Sources */,
 				A7577B3523710EC500FB055B /* PollTests.swift in Sources */,
 				E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8B6CC01237161800056E18B /* OptionTests.swift in Sources */,
 				E8B6CC0923716CE70056E18B /* LikeTests.swift in Sources */,
 				E8D6E3162366B0BD00F75AA2 /* PollTag.swift in Sources */,
+				F0DF11AF2399F220009C8718 /* TagView.swift in Sources */,
 				E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */,
 				E8B6CC03237165CA0056E18B /* AnswerTests.swift in Sources */,
 				E8D6E3222366B0E100F75AA2 /* Answer.swift in Sources */,
+				A79A175F239A1D0700E3C8C7 /* ModelParserTests.swift in Sources */,
 				E8D6E30E2366B0A500F75AA2 /* User.swift in Sources */,
+				F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */,
 				E8B6CC07237168790056E18B /* CommentTests.swift in Sources */,
 				E8D6E31A2366B0C900F75AA2 /* Tag.swift in Sources */,
 				E8D6E30A2366B09800F75AA2 /* Like.swift in Sources */,
+				F0DF11B52399F24A009C8718 /* PollUploaderProfileView.swift in Sources */,
 				E8D6E3062366B08D00F75AA2 /* Poll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -750,15 +760,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */,
 				A73F2A4323726C6500F50FA2 /* ModelParser.swift in Sources */,
+				E896EA09239A22BB002525C1 /* AppDelegate.swift in Sources */,
 				A73F2A4223726C5B00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E31F2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */,
+				F005390D239889490088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E3172366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				E8D6E3232366B0E100F75AA2 /* Answer.swift in Sources */,
+				F0DF11B42399F231009C8718 /* PollDetailDescriptionView.swift in Sources */,
+				F0DF11B62399F24B009C8718 /* PollUploaderProfileView.swift in Sources */,
 				E8D6E30F2366B0A500F75AA2 /* User.swift in Sources */,
 				E8D6E31B2366B0C900F75AA2 /* Tag.swift in Sources */,
+				F0DF11B02399F221009C8718 /* TagView.swift in Sources */,
 				E8D6E30B2366B09800F75AA2 /* Like.swift in Sources */,
 				E8D6E3072366B08D00F75AA2 /* Poll.swift in Sources */,
 				E8D6E2F62366AFB100F75AA2 /* CMUPollUITests.swift in Sources */,
@@ -910,16 +926,17 @@
 		};
 		E8D6E2FB2366AFB100F75AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E2267682CA9778829239BAC /* Pods-CMUPoll.debug.xcconfig */;
+			baseConfigurationReference = D52A2E120CAF37B653F4AA46 /* Pods-CMUPoll.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CMUPoll/Preview Content\"";
 				DEVELOPMENT_TEAM = D5RJ2CVD48;
 				ENABLE_PREVIEWS = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
-				INFOPLIST_FILE = CMUPoll/Info.plist;
+				INFOPLIST_FILE = CMUPoll/Plists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1003,6 +1020,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1010,16 +1028,17 @@
 		};
 		E8D6E2FC2366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DEE09D13A2610536E590711E /* Pods-CMUPoll.release.xcconfig */;
+			baseConfigurationReference = A226225C3C4824C94229CD6F /* Pods-CMUPoll.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"CMUPoll/Preview Content\"";
 				DEVELOPMENT_TEAM = D5RJ2CVD48;
 				ENABLE_PREVIEWS = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
-				INFOPLIST_FILE = CMUPoll/Info.plist;
+				INFOPLIST_FILE = CMUPoll/Plists/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1103,6 +1122,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.cmu.cmupoll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1110,7 +1130,7 @@
 		};
 		E8D6E2FE2366AFB100F75AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E245155F9E8BFF8045723D7F /* Pods-CMUPollTests.debug.xcconfig */;
+			baseConfigurationReference = D5BB28A5E83701B9E9281F0F /* Pods-CMUPollTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1132,7 +1152,7 @@
 		};
 		E8D6E2FF2366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3CA6352E20CA4BB0C617A93A /* Pods-CMUPollTests.release.xcconfig */;
+			baseConfigurationReference = 09CE119C2805C1B8A17DBCFC /* Pods-CMUPollTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1154,7 +1174,7 @@
 		};
 		E8D6E3012366AFB100F75AA2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEFA4713A45F08D250C1F42B /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */;
+			baseConfigurationReference = EAA904DD3E4D4536192E9A74 /* Pods-CMUPoll-CMUPollUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
@@ -1176,7 +1196,7 @@
 		};
 		E8D6E3022366AFB100F75AA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A9143C0D4088D5F0753B7D22 /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */;
+			baseConfigurationReference = EB7B84F5585594C895A0C89B /* Pods-CMUPoll-CMUPollUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";

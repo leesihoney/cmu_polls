@@ -9,33 +9,66 @@
 import Foundation
 import SwiftUI
 
-struct Comment: Identifiable {
+class Comment: Identifiable {
   var id: String
   var content: String
-  var posted_at: Date = Date()
+  var posted_at: String
   var user_id: String
   var comment_id: String?
   var poll_id: String
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, content: String, user_id: String, comment_id: String?, poll_id: String) {
+  init (id: String, content: String, posted_at: String, user_id: String, comment_id: String?, poll_id: String) {
     self.id = id
     self.content = content
+    self.posted_at = posted_at
     self.user_id = user_id
     self.comment_id = comment_id
     self.poll_id = poll_id
   }
+  
+  static func sort(_ comments: [Comment]) -> [Comment] {
+    var comments = comments
+    comments.sort(by: { c1, c2 in
+      return getDate(c1.posted_at) < getDate(c2.posted_at)
+    })
+    return comments
+  }
+  
+  private static func getDate(_ dateString: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.timeZone = TimeZone.current
+    dateFormatter.locale = Locale.current
+    return dateFormatter.date(from: dateString)!
+  }
+  
+  func getDateDisplayString() -> String {
+    let date = Comment.getDate(self.posted_at)
+    
+    let formatter = RelativeDateTimeFormatter()
+    formatter.dateTimeStyle = .named
+    return formatter.localizedString(for: date, relativeTo: Date())
+  }
+  
+  private static func getDateString() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH-mm:ss"
+    return dateFormatter.string(from: date)
+  }
+  
     
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(content: String, comment_id: String?, poll_id: String, completion: @escaping (Comment) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
+    let posted_at: String = getDateString()
     let colRef = FirebaseDataHandler.colRef(collection: .comment)
-    let data: [String:Any] = ["content": content, "user_id": user.id, "comment_id": comment_id as Any, "poll_id": poll_id]
+    let data: [String:Any] = ["content": content, "posted_at": posted_at, "user_id": user.id, "comment_id": comment_id as Any, "poll_id": poll_id]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let comment = Comment(id: documentId, content: content, user_id: user.id, comment_id: comment_id, poll_id: poll_id)
+      let comment = Comment(id: documentId, content: content, posted_at: posted_at, user_id: user.id, comment_id: comment_id, poll_id: poll_id)
       completion(comment)
     })
   }
@@ -54,6 +87,7 @@ struct Comment: Identifiable {
   
   static func allComments(completion: @escaping ([Comment]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .comment)
+      .order(by: "posted_at", descending: true)
     FirebaseDataHandler.get(query: query, completion: { data in
       let allComments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
       completion(allComments)
@@ -76,7 +110,7 @@ struct Comment: Identifiable {
     })
   }
   
-  mutating func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?, completion: @escaping () -> Void) {
+  func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .comment, documentId: id)
     var data: [String:Any] = [:]
     if let content = content {

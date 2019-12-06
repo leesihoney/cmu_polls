@@ -15,17 +15,22 @@ struct AnswerBoxView: View {
   let onNewAnswer: () -> Void
   @State var options = [Option]()
   @State private var selectedAnswer = 0
+  @State var user: User? = User.current
+  @State var initialized: Bool = false
+  @State private var showingAlert = false
+
+  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
       AnswerBoxTextView(question: question.title)
-      if (!options.isEmpty) {
+      if (self.initialized) {
         RadioGroupPicker(
           selectedIndex: $selectedAnswer,
           titles: options.map{ $0.text },
           selectedColor: UIColor(red: 57 / 255.0, green: 57 / 255.0, blue: 57 / 255.0, alpha: 0.6),
           isVertical: true,
           buttonSize: 18.0,
-          spacing: 17,
+          spacing: 6,
           itemSpacing: 21,
           isButtonAfterTitle: false,
           titleColor: UIColor(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0, alpha: 0.6),
@@ -39,9 +44,16 @@ struct AnswerBoxView: View {
       Button(action: {
         let option: Option = self.options[self.selectedAnswer]
         guard let user = User.current else {
-          print("No user is logged in!")
           return
         }
+        // To add points for answering a poll
+        self.question.userHasAnswer(completion: { bool in
+          if !bool {
+            User.current?.addPoints(type: .answer)
+            self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+            })
+          }
+        })
         Answer.withQuestionUser(question_id: self.question.id, user_id: user.id, completion: { answer in
           if var answer = answer {
             answer.update(user_id: user.id, question_id: self.question.id, option_id: option.id, completion: {
@@ -51,16 +63,24 @@ struct AnswerBoxView: View {
             Answer.create(question_id: self.question.id, option_id: option.id, completion: { answer in
               self.onNewAnswer()
             })
+            self.showingAlert = true
           }
         })
-      }) {
-          Text("Submit")
-      }.buttonStyle(PollButtonStyle())
+      }
+        
+      ) {
+        Text("Submit")
+      }
+      .buttonStyle(PollButtonStyle())
+      .alert(isPresented: $showingAlert) {
+      Alert(title: Text("Congratualations, you earned 5 points"), message: Text("You can use points to transfer into your bank"), dismissButton: .default(Text("OK")))
+      }
     }
     .padding(30)
     .border(Color(red: 235 / 255.0, green: 234 / 255.0, blue: 234 / 255.0, opacity: 0.6))
     .cornerRadius(8)
     .onAppear {
+      self.initialized = false
       self.getQuestionOptions()
     }
   }
@@ -68,7 +88,8 @@ struct AnswerBoxView: View {
   func getQuestionOptions() {
     self.question.options(completion: { options in
       DispatchQueue.main.async {
-        self.options = options
+        self.options = Option.sort(options)
+        self.initialized = true
       }
     })
   }
@@ -85,8 +106,8 @@ struct AnswerBoxTextView: View {
   }
 }
 
-struct AnswerBoxView_Previews: PreviewProvider {
-  static var previews: some View {
-    AnswerBoxView(question: Question(id: "1", is_multiple_choice: true, title: "Sample title", poll_id: "1"), onNewAnswer: {})
-  }
-}
+//struct AnswerBoxView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    AnswerBoxView(question: Question(id: "1", is_multiple_choice: true, title: "Sample title", poll_id: "1"), onNewAnswer: {})
+//  }
+//}

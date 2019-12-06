@@ -15,36 +15,71 @@ class Poll: Identifiable {
   var user_id: String
   var title : String
   var description: String
-  var posted_at: Date = Date()
+  var posted_at: String
   var link: String
   var is_private: Bool
   var is_closed: Bool
+  var passcode: String?
   
   // Used for double query
   var tagsFound: [Tag] = []
   var numTags: Int?
+  static var pollsFound: [Poll] = []
+  static var numPolls: Int?
   
   // NOTE: Used to initialize an instance that's already up on Firebase
-  init (id: String, user_id: String, title: String, description: String, link: String, is_private: Bool, is_closed: Bool) {
+  init (id: String, user_id: String, title: String, description: String, posted_at: String, link: String, is_private: Bool, is_closed: Bool, passcode: String?) {
     self.id = id
     self.user_id = user_id
     self.title = title
     self.description = description
+    self.posted_at = posted_at
     self.link = link
     self.is_private = is_private
     self.is_closed = is_closed
+    self.passcode = passcode
   }
   
-  // NOTE: Used to initialize a completely new instance and to upload to Firebase
-  static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, completion: @escaping (Poll) -> ()) {
+  static func sort(_ polls: [Poll]) -> [Poll] {
+    var polls = polls
+    polls.sort(by: { p1, p2 in
+      return getDate(p1.posted_at) < getDate(p2.posted_at)
+    })
+    return polls
+  }
+  
+  private static func getDateString() -> String {
+    let date = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    return dateFormatter.string(from: date)
+  }
+  
+  private static func getDate(_ dateString: String) -> Date {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    dateFormatter.timeZone = TimeZone.current
+    dateFormatter.locale = Locale.current
+    return dateFormatter.date(from: dateString)!
+  }
+  
+  func getDateDisplayString() -> String {
+    let date = Poll.getDate(self.posted_at)
+    
+    let formatter = RelativeDateTimeFormatter()
+    formatter.dateTimeStyle = .named
+    return formatter.localizedString(for: date, relativeTo: Date())
+  }
+  
+  static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, passcode: String?, completion: @escaping (Poll) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
-    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "link": link, "private": is_private, "closed": is_closed]
+    let posted_at: String = getDateString()
+    let data: [String:Any] = ["user_id": user.id, "title": title, "description": description, "posted_at": posted_at, "link": link, "private": is_private, "closed": is_closed, "passcode": passcode]
     let colRef = FirebaseDataHandler.colRef(collection: .poll)
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, link: link, is_private: is_private, is_closed: is_closed)
+      let poll = Poll(id: documentId, user_id: user.id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed, passcode: passcode)
       completion(poll)
     })
   }
@@ -61,8 +96,50 @@ class Poll: Identifiable {
     })
   }
   
+  private static func accumulatePolls(poll: Poll, completion: @escaping ([Poll]) -> ()) {
+    pollsFound.append(poll)
+    if pollsFound.count == numPolls! {
+      let sorted = Poll.sort(pollsFound)
+      completion(sorted)
+    }
+  }
+  
+  static func withTag(name: String, completion: @escaping ([Poll]) -> ()) {
+    // Find a Tag with a given name
+    let tagQuery = FirebaseDataHandler.colRef(collection: .tag)
+      .whereField("name", isEqualTo: name)
+    FirebaseDataHandler.get(query: tagQuery, completion: { data in
+      if data.isEmpty {
+        completion([])
+        return
+      }
+      let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
+      // Find PollTags associated with found Tag
+      let polltagQuery = FirebaseDataHandler.colRef(collection: .polltag)
+        .whereField("tag_id", isEqualTo: singleTag[0].id)
+      FirebaseDataHandler.get(query: polltagQuery, completion: { data in
+        if data.isEmpty {
+          completion([])
+          return
+        }
+        // Find Polls associated with found polltags
+        let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
+        self.numPolls = polltags.count
+        self.pollsFound = []
+        for polltag in polltags {
+          let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: polltag.poll_id)
+          FirebaseDataHandler.get(docRef: docRef, completion: { data in
+            let singlePoll: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
+            self.accumulatePolls(poll: singlePoll[0], completion: completion)
+          })
+        }
+      })
+    })
+  }
+  
   static func allPolls(completion: @escaping ([Poll]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .poll)
+      .order(by: "posted_at", descending: true)
     FirebaseDataHandler.get(query: query, completion: { data in
       let allPolls: [Poll] = ModelParser.parse(collection: .poll, data: data) as! [Poll]
       completion(allPolls)
@@ -88,6 +165,10 @@ class Poll: Identifiable {
   func tags(completion: @escaping ([Tag]) -> ()) {
     let query = FirebaseDataHandler.colRef(collection: .polltag).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
+      if data.isEmpty {
+        completion([])
+        return
+      }
       let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
       self.numTags = polltags.count
       self.tagsFound = []
@@ -101,10 +182,11 @@ class Poll: Identifiable {
     })
   }
   
+  /* NOTE: Excluded in the testing,
+     because it involves directly modifying other models' real data */
   func addTags(tagNames: [String]) {
     // SECURITY: If Poll's owner is not current user, Do NOT let pass
     if User.current?.id != self.user_id {
-      print("Current user is not the poll's owner!")
       return
     }
     
@@ -136,7 +218,7 @@ class Poll: Identifiable {
     let query = FirebaseDataHandler.colRef(collection: .comment).whereField("poll_id", isEqualTo: id)
     FirebaseDataHandler.get(query: query, completion: { data in
     let comments: [Comment] = ModelParser.parse(collection: .comment, data: data) as! [Comment]
-      completion(comments)
+      completion(Comment.sort(comments))
     })
   }
   
@@ -153,7 +235,7 @@ class Poll: Identifiable {
     })
   }
   
-  func update(user_id: String?, title: String?, description: String?, link: String?, is_private: Bool?, completion: @escaping () -> Void) {
+  func update(user_id: String?, title: String?, description: String?, link: String?, is_closed: Bool?, is_private: Bool?, passcode: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .poll, documentId: id)
     var data: [String:Any] = [:]
     if let user_id = user_id {
@@ -172,9 +254,17 @@ class Poll: Identifiable {
       data["link"] = link
       self.link = link
     }
+    if let is_closed = is_closed {
+      data["closed"] = is_closed
+      self.is_closed = is_closed
+    }
     if let is_private = is_private {
       data["private"] = is_private
       self.is_private = is_private
+    }
+    if let passcode = passcode {
+      data["passcode"] = passcode
+      self.passcode = passcode
     }
     FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }

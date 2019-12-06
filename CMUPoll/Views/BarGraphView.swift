@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BarGraphView: View {
   @State var bars: [Bar]
+  @State var userAnswer: String
   @State var toggleColorChanged = false
   
   var body: some View {
@@ -20,6 +21,7 @@ struct BarGraphView: View {
         }
       }
     }.onAppear {
+      self.toggleColorChanged = true
       self.resetBarWithHighestValue()
     }
   }
@@ -29,15 +31,8 @@ struct BarGraphView: View {
       return
     }
     
-    var maxBar: Bar = bars[0]
     for bar in bars {
-      if bar.value > maxBar.value {
-        maxBar = bar
-      }
-    }
-    
-    for bar in bars {
-      if bar.value == maxBar.value {
+      if bar.id == self.userAnswer {
         bar.color = Color.accentColor
       }
     }
@@ -78,7 +73,7 @@ struct BarsView: View {
 }
 
 class Bar: Identifiable {
-  let id: UUID
+  let id: String
   let value: Int
   let label: String
   
@@ -86,7 +81,7 @@ class Bar: Identifiable {
   let gray = Color(red: 196 / 255.0, green: 196 / 255.0, blue: 196 / 255.0)
   var color: Color
   
-  init(id: UUID, value: Int, label: String) {
+  init(id: String, value: Int, label: String) {
     self.id = id
     self.value = value
     self.label = label
@@ -96,13 +91,13 @@ class Bar: Identifiable {
   func toBlue() { self.color = blue }
 }
 
-struct BarGraphView_Previews: PreviewProvider {
-  static var previews: some View {
-    BarGraphView(bars: [
-      Bar(id: UUID(), value: 20, label: "Prof.H"),
-      Bar(id: UUID(), value: 5, label: "Prof.Z"),
-      Bar(id: UUID(), value: 10, label: "Prof.K"),
-    ])
-  }
-}
+//struct BarGraphView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    BarGraphView(bars: [
+//      Bar(id: "1", value: 20, label: "Prof.H"),
+//      Bar(id: "2", value: 5, label: "Prof.Z"),
+//      Bar(id: "3", value: 10, label: "Prof.K"),
+//    ], userAnswer: "1")
+//  }
+//}
 
