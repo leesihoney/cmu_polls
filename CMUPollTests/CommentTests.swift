@@ -43,7 +43,7 @@ class CommentTests: XCTestCase {
   func testInitializeComments() {
     XCTAssertEqual(Comment0!.id, "0")
     XCTAssertEqual(Comment0!.user_id, "0")
-    XCTAssertEqual(Comment0?.comment_id, "NULL")
+    XCTAssertEqual(Comment0!.comment_id, nil)
     XCTAssertEqual(Comment0!.poll_id, "0")
     XCTAssertEqual(Comment0!.content, "I agree with you! I love underground!")
     
