@@ -59,10 +59,23 @@ struct AllPollsView: View {
               ForEach(self.all_polls.filter {
                 self.searchTerm.isEmpty ? true : $0.title.localizedCaseInsensitiveContains(self.searchTerm)
               }) { poll in
-                NavigationLink(destination: PollDetailView(poll: poll)) {
-                  PollView(poll: poll)
-                }.disabled(poll.is_closed)
-                .buttonStyle(PlainButtonStyle())
+                if !poll.is_private {
+//                  Text("current poll.is_closed \(poll.title) \(String(poll.is_closed))")
+                  NavigationLink(destination:
+                  PollDetailView(poll: poll, callBack: self.combined)) {
+                    PollView(poll: poll)
+                  }.disabled(poll.is_closed)
+                    .buttonStyle(PlainButtonStyle())
+                }
+                  
+                else {
+                  NavigationLink(destination:
+                  PollCheckView(poll: poll, callBack: self.combined)) {
+                    PollView(poll: poll)
+                  }.disabled(poll.is_closed)
+                    .buttonStyle(PlainButtonStyle())
+                }
+                
               }
             }
           }
@@ -75,9 +88,15 @@ struct AllPollsView: View {
       .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0))
     }
     .onAppear {
-      self.initialized = false
-      self.getUserPolls()
+      self.combined()
+//      self.initialized = false
+//      self.getUserPolls()
     }
+  }
+  
+  func combined() {
+    self.initialized = false
+    self.getUserPolls()
   }
   
   func getUserPolls() {

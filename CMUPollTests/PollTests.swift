@@ -230,11 +230,11 @@ class PollTests: XCTestCase {
         XCTAssertEqual("test description", poll.description)
         XCTAssertEqual(false, poll.is_private)
         XCTAssertEqual(true, poll.is_closed)
-        poll.update(user_id: nil, title: "new title", description: nil, link: nil, is_private: true, passcode: "0505") {
+        poll.update(user_id: nil, title: "new title", description: nil, link: nil, is_closed: false, is_private: true, passcode: "0505") {
           XCTAssertEqual("new title", poll.title)
           XCTAssertEqual("test description", poll.description)
           XCTAssertEqual(true, poll.is_private)
-          XCTAssertEqual(true, poll.is_closed)
+          XCTAssertEqual(false, poll.is_closed)
           poll.delete {
             expectation.fulfill()
           }

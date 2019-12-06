@@ -144,4 +144,10 @@ class Tag: Identifiable, Hashable {
       }
     })
   }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .tag, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
+  }
+  
 }

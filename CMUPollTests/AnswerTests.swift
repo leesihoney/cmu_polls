@@ -51,7 +51,7 @@ class AnswerTests: XCTestCase {
     XCTAssertEqual(Answer1!.question_id, "1")
     XCTAssertEqual(Answer1!.option_id, "3")
   }
-    
+  
   func testQuestions0() {
     let expectation = self.expectation(description: "Fetch question0")
     Answer0!.question(completion: { questions in
@@ -63,7 +63,7 @@ class AnswerTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
-
+  
   func testQuestions1() {
     let expectation = self.expectation(description: "Fetch question1")
     Answer1!.question(completion: { questions in
@@ -75,7 +75,7 @@ class AnswerTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
-
+  
   func testOptions0() {
     let expectation = self.expectation(description: "Fetch options0")
     Answer0!.option(completion: { options in
@@ -86,7 +86,7 @@ class AnswerTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
-
+  
   func testOptions1() {
     let expectation = self.expectation(description: "Fetch options1")
     Answer1!.option(completion: { options in
@@ -99,28 +99,68 @@ class AnswerTests: XCTestCase {
   }
   
   func testUsers0() {
-     let expectation = self.expectation(description: "Fetch users0")
-     Answer0!.user(completion: { users in
-       XCTAssertEqual("0", users.id)
-       XCTAssertEqual("Aiden", users.first_name)
-       XCTAssertEqual("Lee", users.last_name)
-       XCTAssertEqual("Information Systems", users.major)
-       expectation.fulfill()
-     })
-     self.waitForExpectations(timeout: 5.0, handler: nil)
-   }
-
-   func testUsers1() {
-     let expectation = self.expectation(description: "Fetch users1")
-     Answer1!.user(completion: { users in
-       XCTAssertEqual("0", users.id)
-       XCTAssertEqual("Aiden", users.first_name)
-       XCTAssertEqual("Lee", users.last_name)
-       XCTAssertEqual("Information Systems", users.major)
-       expectation.fulfill()
-     })
-     self.waitForExpectations(timeout: 5.0, handler: nil)
-   }
+    let expectation = self.expectation(description: "Fetch users0")
+    Answer0!.user(completion: { users in
+      XCTAssertEqual("0", users.id)
+      XCTAssertEqual("Aiden", users.first_name)
+      XCTAssertEqual("Lee", users.last_name)
+      XCTAssertEqual("Information Systems", users.major)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
   
+  func testUsers1() {
+    let expectation = self.expectation(description: "Fetch users1")
+    Answer1!.user(completion: { users in
+      XCTAssertEqual("0", users.id)
+      XCTAssertEqual("Aiden", users.first_name)
+      XCTAssertEqual("Lee", users.last_name)
+      XCTAssertEqual("Information Systems", users.major)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testAllAnswers() {
+    let expectation = self.expectation(description: "Test allAnswers")
+    Answer.allAnswers() { answers in
+      XCTAssertEqual(20, answers.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  
+  func testWithQuestionUser() {
+    let expectation = self.expectation(description: "Test allAnswers")
+    Answer.withQuestionUser(question_id: "0", user_id: "0") { answer in
+      XCTAssertEqual("0", answer!.id)
+      XCTAssertEqual("0", answer!.question_id)
+      XCTAssertEqual("0", answer!.user_id)
+      XCTAssertEqual("0", answer!.option_id)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  
+  func testCreateUpdateDelete() {
+    let expectation = self.expectation(description: "Test create update delete")
+    User.withId(id: "2") { user in
+      User.current = user
+      Answer.create(question_id: "1", option_id: "1") { answer in
+        XCTAssertEqual("1", answer.question_id)
+        XCTAssertEqual("1", answer.option_id)
+        answer.update(user_id: user!.id, question_id: "2", option_id: "2") {
+          XCTAssertEqual("2", answer.question_id)
+          XCTAssertEqual("2", answer.option_id)
+          answer.delete {
+            expectation.fulfill()
+          }
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
 }
-

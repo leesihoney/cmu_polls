@@ -23,12 +23,15 @@
 		C88BD5E820DE68757638257C /* Pods_CMUPollTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D755282F0BD3F78F77C9AA4 /* Pods_CMUPollTests.framework */; };
 		E4515EDBA3C79DA386A9F614 /* Pods_CMUPoll.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EFEF14C5562CDBF86B17BC3 /* Pods_CMUPoll.framework */; };
 		E5F370FA7728820BFA1B3059 /* Pods_CMUPoll_CMUPollUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B60F30504936F167A9691A /* Pods_CMUPoll_CMUPollUITests.framework */; };
+		E808B2ED239961210027B87D /* PollCheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E808B2EC239961210027B87D /* PollCheckView.swift */; };
 		E8486D11236FA0B100B875AE /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D09236FA0B100B875AE /* SearchBarView.swift */; };
 		E8486D12236FA0B100B875AE /* AllPollsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0A236FA0B100B875AE /* AllPollsView.swift */; };
 		E8486D13236FA0B100B875AE /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
 		E8486D15236FA0B100B875AE /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0D236FA0B100B875AE /* TagsView.swift */; };
 		E8486D16236FA0B100B875AE /* PollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0E236FA0B100B875AE /* PollView.swift */; };
 		E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0F236FA0B100B875AE /* TagFilterView.swift */; };
+		E896EA08239A22BA002525C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
+		E896EA09239A22BB002525C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
 		E8B6CBFA2371454B0056E18B /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBF22371454B0056E18B /* UserTests.swift */; };
 		E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBFC23714AE90056E18B /* TagTests.swift */; };
 		E8B6CBFF23714F7F0056E18B /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBFE23714F7E0056E18B /* QuestionTests.swift */; };
@@ -79,9 +82,6 @@
 		F005390223974C310088F2E3 /* HiddenNavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F005390123974C310088F2E3 /* HiddenNavigationLink.swift */; };
 		F0053904239765560088F2E3 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0053903239765560088F2E3 /* TabbarView.swift */; };
 		F0053906239828BC0088F2E3 /* CommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0053905239828BC0088F2E3 /* CommentView.swift */; };
-		F005390723982AC20088F2E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
-		F005390823982ACB0088F2E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
-		F0053909239832240088F2E3 /* GoogleService-Info.plist in Sources */ = {isa = PBXBuildFile; fileRef = F03B89DD238A09B5002645E0 /* GoogleService-Info.plist */; };
 		F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		F005390C239889480088F2E3 /* CMUPoll.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D42366AFAF00F75AA2 /* CMUPoll.xcdatamodeld */; };
@@ -96,6 +96,12 @@
 		F0BDB49D2371372E00F855F6 /* BarGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BDB49C2371372E00F855F6 /* BarGraphView.swift */; };
 		F0C9C4E223734C7D00C55D90 /* UploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */; };
 		F0C9C4E4237350A200C55D90 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
+		F0DF11AF2399F220009C8718 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
+		F0DF11B02399F221009C8718 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
+		F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
+		F0DF11B42399F231009C8718 /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
+		F0DF11B52399F24A009C8718 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
+		F0DF11B62399F24B009C8718 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +138,7 @@
 		A7CEA1572373CD6600455C50 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D52A2E120CAF37B653F4AA46 /* Pods-CMUPoll.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPoll.debug.xcconfig"; path = "Target Support Files/Pods-CMUPoll/Pods-CMUPoll.debug.xcconfig"; sourceTree = "<group>"; };
 		D5BB28A5E83701B9E9281F0F /* Pods-CMUPollTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CMUPollTests.debug.xcconfig"; path = "Target Support Files/Pods-CMUPollTests/Pods-CMUPollTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E808B2EC239961210027B87D /* PollCheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollCheckView.swift; sourceTree = "<group>"; };
 		E8486D09236FA0B100B875AE /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		E8486D0A236FA0B100B875AE /* AllPollsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllPollsView.swift; sourceTree = "<group>"; };
 		E8486D0B236FA0B100B875AE /* TagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
@@ -287,6 +294,7 @@
 				E8486D0E236FA0B100B875AE /* PollView.swift */,
 				F056C92C2370F41800C9AF6A /* PollDetailView.swift */,
 				E8CA4E0E23729D0400AD3B72 /* PollCreateView.swift */,
+				E808B2EC239961210027B87D /* PollCheckView.swift */,
 				F0053905239828BC0088F2E3 /* CommentView.swift */,
 				F0C9C4E123734C7D00C55D90 /* UploaderProfileView.swift */,
 				E8CA4E0D23729D0400AD3B72 /* QuestionBoxView.swift */,
@@ -698,6 +706,7 @@
 				E8D6E3252366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8CA4E0F23729D0400AD3B72 /* RadioButtonQuestionView.swift in Sources */,
 				F056C931237106FC00C9AF6A /* PollDetailDescriptionView.swift in Sources */,
+				E808B2ED239961210027B87D /* PollCheckView.swift in Sources */,
 				E8D6E2D62366AFAF00F75AA2 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E2D82366AFAF00F75AA2 /* ContentView.swift in Sources */,
 				F03B89E0238A1CC8002645E0 /* MyProfileView.swift in Sources */,
@@ -720,26 +729,29 @@
 			files = (
 				F005390C239889480088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
 				F005390A239832350088F2E3 /* AndrewLogin.swift in Sources */,
-				F005390723982AC20088F2E3 /* AppDelegate.swift in Sources */,
 				A73F2A4123726C5500F50FA2 /* ModelParser.swift in Sources */,
 				A73F2A4023726C4D00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8B6CBFA2371454B0056E18B /* UserTests.swift in Sources */,
 				E8D6E3122366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E31E2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8B6CBFF23714F7F0056E18B /* QuestionTests.swift in Sources */,
+				E896EA08239A22BA002525C1 /* AppDelegate.swift in Sources */,
 				A7577B3523710EC500FB055B /* PollTests.swift in Sources */,
 				E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8B6CC01237161800056E18B /* OptionTests.swift in Sources */,
 				E8B6CC0923716CE70056E18B /* LikeTests.swift in Sources */,
 				E8D6E3162366B0BD00F75AA2 /* PollTag.swift in Sources */,
+				F0DF11AF2399F220009C8718 /* TagView.swift in Sources */,
 				E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */,
 				E8B6CC03237165CA0056E18B /* AnswerTests.swift in Sources */,
 				E8D6E3222366B0E100F75AA2 /* Answer.swift in Sources */,
 				A79A175F239A1D0700E3C8C7 /* ModelParserTests.swift in Sources */,
 				E8D6E30E2366B0A500F75AA2 /* User.swift in Sources */,
+				F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */,
 				E8B6CC07237168790056E18B /* CommentTests.swift in Sources */,
 				E8D6E31A2366B0C900F75AA2 /* Tag.swift in Sources */,
 				E8D6E30A2366B09800F75AA2 /* Like.swift in Sources */,
+				F0DF11B52399F24A009C8718 /* PollUploaderProfileView.swift in Sources */,
 				E8D6E3062366B08D00F75AA2 /* Poll.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,9 +761,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */,
-				F0053909239832240088F2E3 /* GoogleService-Info.plist in Sources */,
-				F005390823982ACB0088F2E3 /* AppDelegate.swift in Sources */,
 				A73F2A4323726C6500F50FA2 /* ModelParser.swift in Sources */,
+				E896EA09239A22BB002525C1 /* AppDelegate.swift in Sources */,
 				A73F2A4223726C5B00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E31F2366B0D100F75AA2 /* Question.swift in Sources */,
@@ -759,8 +770,11 @@
 				F005390D239889490088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
 				E8D6E3172366B0BD00F75AA2 /* PollTag.swift in Sources */,
 				E8D6E3232366B0E100F75AA2 /* Answer.swift in Sources */,
+				F0DF11B42399F231009C8718 /* PollDetailDescriptionView.swift in Sources */,
+				F0DF11B62399F24B009C8718 /* PollUploaderProfileView.swift in Sources */,
 				E8D6E30F2366B0A500F75AA2 /* User.swift in Sources */,
 				E8D6E31B2366B0C900F75AA2 /* Tag.swift in Sources */,
+				F0DF11B02399F221009C8718 /* TagView.swift in Sources */,
 				E8D6E30B2366B09800F75AA2 /* Like.swift in Sources */,
 				E8D6E3072366B08D00F75AA2 /* Poll.swift in Sources */,
 				E8D6E2F62366AFB100F75AA2 /* CMUPollUITests.swift in Sources */,

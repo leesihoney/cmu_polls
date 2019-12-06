@@ -52,7 +52,7 @@ struct Option: Identifiable {
   }
   
   static func allOptions(completion: @escaping ([Option]) -> ()) {
-    let query = FirebaseDataHandler.colRef(collection: .option).order(by: "id")
+    let query = FirebaseDataHandler.colRef(collection: .option).order(by: "text")
     FirebaseDataHandler.get(query: query, completion: { data in
       let allOptions: [Option] = ModelParser.parse(collection: .option, data: data) as! [Option]
       completion(allOptions)
@@ -74,4 +74,10 @@ struct Option: Identifiable {
       completion(answers)
     })
   }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .option, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
+  }
+  
 }
