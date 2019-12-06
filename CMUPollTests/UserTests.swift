@@ -162,15 +162,6 @@ class UserTests: XCTestCase {
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
-  func testLogout() {
-    User.withId(id: "2") { user in
-      User.current = user
-      XCTAssertNotNil(User.current)
-      User.logout()
-      XCTAssertNil(User.current)
-    }
-  }
-  
   func testWithEmail() {
     let expectation = self.expectation(description: "Test withEmail")
     User.withEmail(email: "sunghocho@andrew.cmu.edu") { user in
@@ -186,7 +177,7 @@ class UserTests: XCTestCase {
   
   func testWithEmailInvalid() {
     let expectation = self.expectation(description: "Test withEmail Invalid")
-    User.withEmail(email: "fake.name@andrew.cmu.edu") { user in
+    User.withEmail(email: "fakeName@andrew.cmu.edu") { user in
       XCTAssertNil(user)
       expectation.fulfill()
     }
@@ -207,8 +198,10 @@ class UserTests: XCTestCase {
     User.withId(id: "2") { user in
       user!.answeredPolls { polls in
         XCTAssertEqual(3, polls.count)
+        expectation.fulfill()
       }
     }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
   }
 
 }

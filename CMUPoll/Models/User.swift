@@ -172,6 +172,8 @@ class User: Identifiable {
     })
   }
   
+  /* NOTE: Excluded in the testing,
+  CMUPollTests Target cannot access the AppDelegate */
   static func logout() {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
@@ -190,7 +192,9 @@ class User: Identifiable {
     GIDSignIn.sharedInstance()?.delegate = nil
     GIDSignIn.sharedInstance()?.signOut()
     GIDSignIn.sharedInstance()?.disconnect()
-    delegate.uponLogOut!()
+    if (delegate.uponLogOut != nil) {
+      delegate.uponLogOut!()
+    }
   }
   
   func update(major: String?, graduation_year: Int?, points: Int?, completion: @escaping () -> Void) {
