@@ -29,6 +29,8 @@
 		E8486D15236FA0B100B875AE /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0D236FA0B100B875AE /* TagsView.swift */; };
 		E8486D16236FA0B100B875AE /* PollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0E236FA0B100B875AE /* PollView.swift */; };
 		E8486D17236FA0B100B875AE /* TagFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0F236FA0B100B875AE /* TagFilterView.swift */; };
+		E896EA08239A22BA002525C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
+		E896EA09239A22BB002525C1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D6E2D02366AFAF00F75AA2 /* AppDelegate.swift */; };
 		E8B6CBFA2371454B0056E18B /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBF22371454B0056E18B /* UserTests.swift */; };
 		E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBFC23714AE90056E18B /* TagTests.swift */; };
 		E8B6CBFF23714F7F0056E18B /* QuestionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B6CBFE23714F7E0056E18B /* QuestionTests.swift */; };
@@ -95,8 +97,6 @@
 		F0C9C4E4237350A200C55D90 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
 		F0DF11AF2399F220009C8718 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
 		F0DF11B02399F221009C8718 /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8486D0B236FA0B100B875AE /* TagView.swift */; };
-		F0DF11B12399F22C009C8718 /* PollDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92C2370F41800C9AF6A /* PollDetailView.swift */; };
-		F0DF11B22399F22C009C8718 /* PollDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C92C2370F41800C9AF6A /* PollDetailView.swift */; };
 		F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
 		F0DF11B42399F231009C8718 /* PollDetailDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */; };
 		F0DF11B52399F24A009C8718 /* PollUploaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C9C4E3237350A200C55D90 /* PollUploaderProfileView.swift */; };
@@ -288,11 +288,9 @@
 				F0BDB49C2371372E00F855F6 /* BarGraphView.swift */,
 				F005390123974C310088F2E3 /* HiddenNavigationLink.swift */,
 				F00538FF2396ECD10088F2E3 /* BackButtonView.swift */,
-				F056C92C2370F41800C9AF6A /* PollDetailView.swift */,
 				F056C930237106FC00C9AF6A /* PollDetailDescriptionView.swift */,
 				E8486D0E236FA0B100B875AE /* PollView.swift */,
 				F056C92C2370F41800C9AF6A /* PollDetailView.swift */,
-				A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */,
 				E8CA4E0E23729D0400AD3B72 /* PollCreateView.swift */,
 				E808B2EC239961210027B87D /* PollCheckView.swift */,
 				F0053905239828BC0088F2E3 /* CommentView.swift */,
@@ -734,6 +732,7 @@
 				E8D6E3122366B0B000F75AA2 /* Comment.swift in Sources */,
 				E8D6E31E2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8B6CBFF23714F7F0056E18B /* QuestionTests.swift in Sources */,
+				E896EA08239A22BA002525C1 /* AppDelegate.swift in Sources */,
 				A7577B3523710EC500FB055B /* PollTests.swift in Sources */,
 				E8D6E3262366B0EA00F75AA2 /* Option.swift in Sources */,
 				E8B6CC01237161800056E18B /* OptionTests.swift in Sources */,
@@ -742,7 +741,6 @@
 				F0DF11AF2399F220009C8718 /* TagView.swift in Sources */,
 				E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */,
 				E8B6CC03237165CA0056E18B /* AnswerTests.swift in Sources */,
-				F0DF11B12399F22C009C8718 /* PollDetailView.swift in Sources */,
 				E8D6E3222366B0E100F75AA2 /* Answer.swift in Sources */,
 				E8D6E30E2366B0A500F75AA2 /* User.swift in Sources */,
 				F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */,
@@ -760,9 +758,9 @@
 			files = (
 				F005390B2398323C0088F2E3 /* AndrewLogin.swift in Sources */,
 				A73F2A4323726C6500F50FA2 /* ModelParser.swift in Sources */,
+				E896EA09239A22BB002525C1 /* AppDelegate.swift in Sources */,
 				A73F2A4223726C5B00F50FA2 /* FirebaseDataHandler.swift in Sources */,
 				E8D6E3132366B0B000F75AA2 /* Comment.swift in Sources */,
-				F0DF11B22399F22C009C8718 /* PollDetailView.swift in Sources */,
 				E8D6E31F2366B0D100F75AA2 /* Question.swift in Sources */,
 				E8D6E3272366B0EA00F75AA2 /* Option.swift in Sources */,
 				F005390D239889490088F2E3 /* CMUPoll.xcdatamodeld in Sources */,
