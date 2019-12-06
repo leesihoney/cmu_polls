@@ -16,6 +16,7 @@
 		A7577B3523710EC500FB055B /* PollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7577B3423710EC500FB055B /* PollTests.swift */; };
 		A775417B2398CA9200E36F79 /* KeyboardHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = A775417A2398CA9200E36F79 /* KeyboardHost.swift */; };
 		A7949F8F23752C3C009536D8 /* PollButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */; };
+		A79A175F239A1D0700E3C8C7 /* ModelParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79A175E239A1D0700E3C8C7 /* ModelParserTests.swift */; };
 		A7A9587A236E3E4E009F2DF1 /* ModelParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A95879236E3E4E009F2DF1 /* ModelParser.swift */; };
 		A7CEA1562373CD3800455C50 /* AndrewLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1552373CD3800455C50 /* AndrewLogin.swift */; };
 		A7CEA1582373CD6600455C50 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CEA1572373CD6600455C50 /* LoginView.swift */; };
@@ -131,6 +132,7 @@
 		A7577B3423710EC500FB055B /* PollTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PollTests.swift; sourceTree = "<group>"; };
 		A775417A2398CA9200E36F79 /* KeyboardHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHost.swift; sourceTree = "<group>"; };
 		A7949F8E23752C3B009536D8 /* PollButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollButtonStyle.swift; sourceTree = "<group>"; };
+		A79A175E239A1D0700E3C8C7 /* ModelParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParserTests.swift; sourceTree = "<group>"; };
 		A7A95879236E3E4E009F2DF1 /* ModelParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelParser.swift; sourceTree = "<group>"; };
 		A7CEA1552373CD3800455C50 /* AndrewLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndrewLogin.swift; sourceTree = "<group>"; };
 		A7CEA1572373CD6600455C50 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 		E8D6E2E92366AFB100F75AA2 /* CMUPollTests */ = {
 			isa = PBXGroup;
 			children = (
+				A79A175E239A1D0700E3C8C7 /* ModelParserTests.swift */,
 				A7577B3423710EC500FB055B /* PollTests.swift */,
 				E8B6CC0823716CE70056E18B /* LikeTests.swift */,
 				E8B6CBF22371454B0056E18B /* UserTests.swift */,
@@ -742,6 +745,7 @@
 				E8B6CBFD23714AE90056E18B /* TagTests.swift in Sources */,
 				E8B6CC03237165CA0056E18B /* AnswerTests.swift in Sources */,
 				E8D6E3222366B0E100F75AA2 /* Answer.swift in Sources */,
+				A79A175F239A1D0700E3C8C7 /* ModelParserTests.swift in Sources */,
 				E8D6E30E2366B0A500F75AA2 /* User.swift in Sources */,
 				F0DF11B32399F231009C8718 /* PollDetailDescriptionView.swift in Sources */,
 				E8B6CC07237168790056E18B /* CommentTests.swift in Sources */,
