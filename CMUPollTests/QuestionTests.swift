@@ -110,5 +110,100 @@ class QuestionTests: XCTestCase {
      self.waitForExpectations(timeout: 5.0, handler: nil)
    }
 
+  func testAllQuestions() {
+    let expectation = self.expectation(description: "Test allQuestions")
+    Question.allQuestions { questions in
+      XCTAssertEqual(11, questions.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testSort() {
+    let expectation = self.expectation(description: "Test sort")
+    Question.allQuestions { questions in
+      XCTAssertEqual(11, questions.count)
+      let sorted = Question.sort(questions)
+      XCTAssertEqual(11, sorted.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testCreateUpdateDelete() {
+    let expectation = self.expectation(description: "Test create update delete")
+    
+    Question.create(is_multiple_choice: false, title: "Question title", poll_id: "0") { question in
+      var question = question
+      XCTAssertEqual(false, question.is_multiple_choice)
+      XCTAssertEqual("Question title", question.title)
+      XCTAssertEqual("0", question.poll_id)
+      question.update(is_multiple_choice: nil, title: "New title", poll_id: nil) {
+        XCTAssertEqual(false, question.is_multiple_choice)
+        XCTAssertEqual("New title", question.title)
+        XCTAssertEqual("0", question.poll_id)
+        question.delete {
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testUserHasAnswer0() {
+    let expectation = self.expectation(description: "Test userHasAnswer")
+    User.withId(id: "2") { user in
+      User.current = user
+      Question.withId(id: "3") { question in
+        question?.userHasAnswer { hasAnswer in
+          XCTAssertTrue(hasAnswer)
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testUserHasAnswer1() {
+    let expectation = self.expectation(description: "Test userHasAnswer")
+    User.withId(id: "2") { user in
+      User.current = user
+      Question.withId(id: "1") { question in
+        question?.userHasAnswer { hasAnswer in
+          XCTAssertFalse(hasAnswer)
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testUserAnswer0() {
+    let expectation = self.expectation(description: "Test userAnswer")
+    User.withId(id: "2") { user in
+      User.current = user
+      Question.withId(id: "3") { question in
+        question?.userAnswer { answer in
+          XCTAssertEqual("11", answer!.id)
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testUserAnswer1() {
+    let expectation = self.expectation(description: "Test userAnswer")
+    User.withId(id: "2") { user in
+      User.current = user
+      Question.withId(id: "1") { question in
+        question?.userAnswer { answer in
+          XCTAssertNil(answer)
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
 }
 
