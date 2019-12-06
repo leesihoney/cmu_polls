@@ -16,8 +16,8 @@ struct BackButtonView: View {
     }
 }
 
-struct BackButtonView_Previews: PreviewProvider {
-    static var previews: some View {
-      BackButtonView(label: "Back")
-    }
-}
+//struct BackButtonView_Previews: PreviewProvider {
+//    static var previews: some View {
+//      BackButtonView(label: "Back")
+//    }
+//}

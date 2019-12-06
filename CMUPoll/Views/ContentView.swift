@@ -61,7 +61,6 @@ struct ContentView: View {
       let result = try context.fetch(request)
       for login in result as! [Login] {
         if let id = login.user_id {
-          print("Found CoreData: \(id)")
           User.withId(id: id, completion: { user in
             if user != nil {
               User.current = user
@@ -76,10 +75,10 @@ struct ContentView: View {
   }
 }
 
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
-  }
-}
+//struct ContentView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    ContentView()
+//  }
+//}
 
 

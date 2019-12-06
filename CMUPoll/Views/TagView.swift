@@ -35,8 +35,8 @@ struct ClosedTagView: View {
       .cornerRadius(250.0)
   }
 }
-struct TagView_Previews: PreviewProvider {
-  static var previews: some View {
-    TagView(tagText: "IS")
-  }
-}
+//struct TagView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    TagView(tagText: "IS")
+//  }
+//}

@@ -26,7 +26,6 @@ class Answer: Identifiable {
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(question_id: String, option_id: String, completion: @escaping (Answer) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let colRef = FirebaseDataHandler.colRef(collection: .answer)

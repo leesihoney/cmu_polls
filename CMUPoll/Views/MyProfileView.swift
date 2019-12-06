@@ -101,7 +101,6 @@ struct MyProfileComponentView: View {
 struct SignOutButtonView: View {
   var body: some View {
     Button(action: {
-      print("Logout")
       User.logout()
     }, label: {
       Text("Sign Out")
@@ -111,8 +110,8 @@ struct SignOutButtonView: View {
   }
 }
 
-struct MyProfileView_Previews: PreviewProvider {
-  static var previews: some View {
-    MyProfileView()
-  }
-}
+//struct MyProfileView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    MyProfileView()
+//  }
+//}

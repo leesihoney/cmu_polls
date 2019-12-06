@@ -111,8 +111,8 @@ struct TotalAnswerNumberView: View {
   }
 }
 
-struct AnswerGraphView_Previews: PreviewProvider {
-  static var previews: some View {
-    AnswerGraphView(question: Question(id: "1", is_multiple_choice: true, title: "Sample title", poll_id: "1"), onEditedAnswer: {})
-  }
-}
+//struct AnswerGraphView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    AnswerGraphView(question: Question(id: "1", is_multiple_choice: true, title: "Sample title", poll_id: "1"), onEditedAnswer: {})
+//  }
+//}

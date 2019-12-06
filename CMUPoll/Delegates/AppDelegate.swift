@@ -123,14 +123,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     signedEmail = user.profile.email
     
     guard let email = signedEmail else {
-      print("User's email is not found!")
       self.uponInvalidInput!()
       return
     }
     
     // Validate email
     if (!validateEmail(email)) {
-      print("User's email is not valid!")
       self.uponInvalidInput!()
       signIn.disconnect()
       return
@@ -174,10 +172,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
   func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
             withError error: Error!) {
     // Perform any operations when the user disconnects from app here.
-    print("DISCONNECTED")
-//    signIn.delegate = nil
-//    signIn.presentingViewController = nil
-//    signIn.signOut()
   }
   
 }

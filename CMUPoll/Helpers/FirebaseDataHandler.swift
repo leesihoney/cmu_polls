@@ -26,9 +26,8 @@ class FirebaseDataHandler {
     var ref: DocumentReference? = nil
     ref = colRef.addDocument(data: data) { err in
       if let err = err {
-        print("Error adding document: \(err)")
+        return
       } else {
-        print("Document added with ID: \(ref!.documentID)")
         completion(ref!.documentID)
       }
     }
@@ -52,7 +51,7 @@ class FirebaseDataHandler {
     
     colRef.getDocuments() { (querySnapshot, err) in
       if let err = err {
-        print("Error getting documents: \(err)")
+        completion(data)
       } else {
         for document in querySnapshot!.documents {
           // Include document ID as "id" in document data
@@ -60,8 +59,8 @@ class FirebaseDataHandler {
           documentData["id"] = document.documentID
           data.append(documentData)
         }
+        completion(data)
       }
-      completion(data)
     }
   }
   
@@ -74,8 +73,6 @@ class FirebaseDataHandler {
         var documentData: FirebaseData = document.data()!
         documentData["id"] = document.documentID
         data.append(documentData)
-      } else {
-        print("Document does not exist")
       }
       completion(data)
     }
@@ -86,7 +83,7 @@ class FirebaseDataHandler {
     
     query.getDocuments() { (querySnapshot, err) in
       if let err = err {
-        print("Error getting documents: \(err)")
+        completion(data)
       } else {
         for document in querySnapshot!.documents {
           // Include document ID as "id" in document data
@@ -94,8 +91,8 @@ class FirebaseDataHandler {
           documentData["id"] = document.documentID
           data.append(documentData)
         }
+        completion(data)
       }
-      completion(data)
     }
   }
 
@@ -103,9 +100,8 @@ class FirebaseDataHandler {
   static func update(docRef: DocumentReference, data: FirebaseData, completion: @escaping () -> Void) {
     docRef.updateData(data) { err in
       if let err = err {
-        print("Error updating document: \(err)")
+        return
       } else {
-        print("Document successfully updated")
         completion()
       }
     }
@@ -115,9 +111,8 @@ class FirebaseDataHandler {
   static func delete(docRef: DocumentReference, completion: @escaping () -> Void) {
     docRef.delete() { err in
       if let err = err {
-        print("Error removing document: \(err)")
+        return
       } else {
-        print("Document successfully removed!")
         completion()
       }
     }

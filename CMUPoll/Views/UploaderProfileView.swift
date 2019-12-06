@@ -49,8 +49,8 @@ struct UploaderProfileView: View {
   }
 }
 
-struct UploaderProfileView_Previews: PreviewProvider {
-  static var previews: some View {
-    UploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: 2020)
-  }
-}
+//struct UploaderProfileView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    UploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: 2020)
+//  }
+//}

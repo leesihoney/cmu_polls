@@ -87,7 +87,6 @@ struct Question: Identifiable {
   
   func userHasAnswer(completion: @escaping (Bool) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let query = FirebaseDataHandler.colRef(collection: .answer)
@@ -101,7 +100,6 @@ struct Question: Identifiable {
   
   func userAnswer(completion: @escaping (Answer?) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let query = FirebaseDataHandler.colRef(collection: .answer)
