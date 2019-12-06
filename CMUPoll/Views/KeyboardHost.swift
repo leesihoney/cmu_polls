@@ -36,7 +36,7 @@ struct KeyboardHost<Content: View>: View {
     }
 
     var body: some View {
-        VStack {
+      VStack {
             view
             Rectangle()
                 .frame(height: keyboardHeight)
