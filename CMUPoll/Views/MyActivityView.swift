@@ -36,10 +36,8 @@ struct MyActivityView: View {
           .padding(.horizontal, 16)
         
         if self.chosenView == 0 {
-          //          MyActivityPollsView(keyword: "uploaded", polls: self.polls)
           MyActivityPollsView(keyword: "uploaded", polls: self.polls, callBack: self.combined)
         } else {
-          //          MyActivityPollsView(keyword: "answered", polls: self.answeredPolls)
           MyActivityPollsView(keyword: "answered", polls: self.answeredPolls, callBack: self.combined)
         }
       }
@@ -48,8 +46,6 @@ struct MyActivityView: View {
     }
     .onAppear {
       self.combined()
-      //      self.getUploadedPolls()
-      //      self.getAnsweredPolls()
     }
   }
   
@@ -97,7 +93,6 @@ struct MyActivityPollsView: View {
           VStack(alignment: .leading, spacing: 8) {
             ForEach(self.polls) { poll in
               if !poll.is_private {
-                //                  Text("current poll.is_closed \(poll.title) \(String(poll.is_closed))")
                 NavigationLink(destination:
                 PollDetailView(poll: poll, callBack: self.callBack)) {
                   PollView(poll: poll)
@@ -128,7 +123,6 @@ struct MyActivityPollsView: View {
   }
 }
 
-//}
 
 
 
