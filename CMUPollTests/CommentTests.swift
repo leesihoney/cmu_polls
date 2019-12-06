@@ -53,6 +53,27 @@ class CommentTests: XCTestCase {
     XCTAssertEqual(Comment1!.poll_id, "0")
     XCTAssertEqual(Comment1!.content, "Well, I like iNoodle the most")
   }
+  
+  func testAllComments() {
+     let expectation = self.expectation(description: "Test allComments")
+     Comment.allComments() { comments in
+       XCTAssertEqual(10, comments.count)
+       expectation.fulfill()
+     }
+     self.waitForExpectations(timeout: 5.0, handler: nil)
+   }
+  
+  func testSort() {
+    let expectation = self.expectation(description: "Test sort")
+    Comment.allComments() { comments in
+      XCTAssertEqual(10, comments.count)
+      let sorted = Comment.sort(comments)
+      XCTAssertEqual(10, sorted.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
       
   func testUsers0() {
      let expectation = self.expectation(description: "Fetch users0")
@@ -99,6 +120,32 @@ class CommentTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
+  
+  
+  func testCreateUpdateDelete() {
+    let expectation = self.expectation(description: "Test create update delete")
+    User.withId(id: "2") { user in
+      User.current = user
+      Comment.create(content: "I want to test this comment", comment_id: nil, poll_id: "0") { comment in
+        XCTAssertEqual("I want to test this comment", comment.content)
+        XCTAssertNil(comment.comment_id)
+        XCTAssertEqual("0", comment.poll_id)
+        comment.update(content: "I want to change this comment", user_id: "2", comment_id: nil, poll_id: "0") {
+          XCTAssertEqual("I want to change this comment", comment.content)
+          XCTAssertNil(comment.comment_id)
+          XCTAssertEqual("0", comment.poll_id)
+          comment.delete {
+            expectation.fulfill()
+          }
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
 
 }
 
+
+//static func create(content: String, comment_id: String?, poll_id: String, completion: @escaping (Comment) -> ()) {
+//mutating func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?, completion: @escaping () -> Void) {

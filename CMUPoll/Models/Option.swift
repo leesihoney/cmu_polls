@@ -74,4 +74,10 @@ struct Option: Identifiable {
       completion(answers)
     })
   }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .option, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
+  }
+  
 }

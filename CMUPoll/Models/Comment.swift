@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-struct Comment: Identifiable {
+class Comment: Identifiable {
   var id: String
   var content: String
   var posted_at: String
@@ -111,7 +111,7 @@ struct Comment: Identifiable {
     })
   }
   
-  mutating func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?, completion: @escaping () -> Void) {
+  func update(content: String?, user_id: String?, comment_id: String?, poll_id: String?, completion: @escaping () -> Void) {
     let docRef = FirebaseDataHandler.docRef(collection: .comment, documentId: id)
     var data: [String:Any] = [:]
     if let content = content {

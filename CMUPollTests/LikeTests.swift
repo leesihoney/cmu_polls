@@ -49,30 +49,42 @@ class LikeTests: XCTestCase {
     XCTAssertEqual(Like1!.user_id, "0")
     XCTAssertEqual(Like1?.poll_id, "1")
   }
-      
+  
+  
+  func testAllLikes() {
+    let expectation = self.expectation(description: "Fetch AllLikes")
+    Like.allLikes() { likes in
+      XCTAssertEqual(20, likes.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  
+  
   func testUsers0() {
-     let expectation = self.expectation(description: "Fetch users0")
-     Like0!.user(completion: { users in
-       XCTAssertEqual("0", users.id)
-       XCTAssertEqual("Aiden", users.first_name)
-       XCTAssertEqual("Lee", users.last_name)
-       XCTAssertEqual("Information Systems", users.major)
-       expectation.fulfill()
-     })
-     self.waitForExpectations(timeout: 5.0, handler: nil)
-   }
-
-   func testUsers1() {
-     let expectation = self.expectation(description: "Fetch users1")
-     Like1!.user(completion: { users in
-       XCTAssertEqual("0", users.id)
-       XCTAssertEqual("Aiden", users.first_name)
-       XCTAssertEqual("Lee", users.last_name)
-       XCTAssertEqual("Information Systems", users.major)
-       expectation.fulfill()
-     })
-     self.waitForExpectations(timeout: 5.0, handler: nil)
-   }
+    let expectation = self.expectation(description: "Fetch users0")
+    Like0!.user(completion: { users in
+      XCTAssertEqual("0", users.id)
+      XCTAssertEqual("Aiden", users.first_name)
+      XCTAssertEqual("Lee", users.last_name)
+      XCTAssertEqual("Information Systems", users.major)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testUsers1() {
+    let expectation = self.expectation(description: "Fetch users1")
+    Like1!.user(completion: { users in
+      XCTAssertEqual("0", users.id)
+      XCTAssertEqual("Aiden", users.first_name)
+      XCTAssertEqual("Lee", users.last_name)
+      XCTAssertEqual("Information Systems", users.major)
+      expectation.fulfill()
+    })
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
   
   func testPolls0() {
     let expectation = self.expectation(description: "Fetch poll0")
@@ -84,7 +96,7 @@ class LikeTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
-
+  
   func testPolls1() {
     let expectation = self.expectation(description: "Fetch poll1")
     Like1!.poll(completion: { polls in
@@ -95,6 +107,20 @@ class LikeTests: XCTestCase {
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
-
+  
+  func testCreateDelete() {
+    let expectation = self.expectation(description: "Test create delete")
+    User.withId(id: "2") { user in
+      User.current = user
+      Like.create(poll_id: "0") { like in
+        XCTAssertEqual("0", like.poll_id)
+        XCTAssertEqual("2", like.user_id)
+        like.delete {
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
 }
 
