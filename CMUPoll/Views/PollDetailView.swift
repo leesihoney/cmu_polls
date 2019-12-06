@@ -314,12 +314,8 @@ struct PollDetailView: View {
 
   func deleteLike() {
     let temp = self.likes.filter {$0.user_id == User.current?.id}
-    if temp.isEmpty {
-      return
-    }
-    else {
-      temp[0].delete(completion: { () in }
-      )
+    if !temp.isEmpty {
+      temp[0].delete(completion: { () in })
     }
   }
   func accumulateQuestionAnswered(question_id: String, hasAnswer: Bool) {
