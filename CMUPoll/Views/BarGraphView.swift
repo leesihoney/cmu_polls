@@ -91,13 +91,13 @@ class Bar: Identifiable {
   func toBlue() { self.color = blue }
 }
 
-struct BarGraphView_Previews: PreviewProvider {
-  static var previews: some View {
-    BarGraphView(bars: [
-      Bar(id: "1", value: 20, label: "Prof.H"),
-      Bar(id: "2", value: 5, label: "Prof.Z"),
-      Bar(id: "3", value: 10, label: "Prof.K"),
-    ], userAnswer: "1")
-  }
-}
+//struct BarGraphView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    BarGraphView(bars: [
+//      Bar(id: "1", value: 20, label: "Prof.H"),
+//      Bar(id: "2", value: 5, label: "Prof.Z"),
+//      Bar(id: "3", value: 10, label: "Prof.K"),
+//    ], userAnswer: "1")
+//  }
+//}
 

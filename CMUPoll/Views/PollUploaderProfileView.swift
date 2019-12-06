@@ -54,8 +54,8 @@ struct PollUploaderProfileView: View {
   
 }
 
-struct PollUploaderProfileView_Previews: PreviewProvider {
-  static var previews: some View {
-    PollUploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: 2020, uploadedDaysAgo: "29")
-  }
-}
+//struct PollUploaderProfileView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    PollUploaderProfileView(uploaderName: "Aiden Lee", uploaderMajor: "Information Systems", uploaderGraduationYear: 2020, uploadedDaysAgo: "29")
+//  }
+//}

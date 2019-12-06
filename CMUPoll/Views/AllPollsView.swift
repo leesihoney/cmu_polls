@@ -120,9 +120,9 @@ struct AllPollsView: View {
 }
 
 
-struct AllPollsView_Previews: PreviewProvider {
-  static var previews: some View {
-    AllPollsView()
-  }
-}
+//struct AllPollsView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    AllPollsView()
+//  }
+//}
 

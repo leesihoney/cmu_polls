@@ -133,12 +133,12 @@ struct ReplyButtonView: View {
     }
   }
 }
-struct CommentView_Previews: PreviewProvider {
-  static var previews: some View {
-    CommentView(comment: Comment(id: "1", content: "I honestly don’t like any of study places in CMU. They are all too noisy to concentrate.", posted_at: "2019-10-11",
-                                 user_id: "2",
-                                 comment_id: nil,
-                                 poll_id: "1"), onReply: {}
-    )
-  }
-}
+//struct CommentView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    CommentView(comment: Comment(id: "1", content: "I honestly don’t like any of study places in CMU. They are all too noisy to concentrate.", posted_at: "2019-10-11",
+//                                 user_id: "2",
+//                                 comment_id: nil,
+//                                 poll_id: "1"), onReply: {}
+//    )
+//  }
+//}

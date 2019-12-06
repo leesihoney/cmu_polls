@@ -162,8 +162,8 @@ struct InitializeUserView: View {
   }
 }
 
-struct InitializeUserView_Previews: PreviewProvider {
-  static var previews: some View {
-    InitializeUserView(first_name: "Aiden", last_name: "Lee", email: "siheonl@andrew.cmu.edu")
-  }
-}
+//struct InitializeUserView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    InitializeUserView(first_name: "Aiden", last_name: "Lee", email: "siheonl@andrew.cmu.edu")
+//  }
+//}

@@ -62,7 +62,6 @@ class Comment: Identifiable {
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(content: String, comment_id: String?, poll_id: String, completion: @escaping (Comment) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let posted_at: String = getDateString()

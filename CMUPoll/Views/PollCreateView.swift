@@ -209,7 +209,6 @@ struct PollCreateView: View {
       getPasscode = nil
     }
     Poll.create(title: self.title, description: self.description, link: "", is_private: self.is_private, is_closed: false, passcode: getPasscode, completion: { poll in
-      print("the poll has been created!")
       for questionInput in self.questions {
         Question.create(is_multiple_choice: false, title: questionInput.title, poll_id: poll.id, completion: { question in
           for optionInput in questionInput.optionInputs {

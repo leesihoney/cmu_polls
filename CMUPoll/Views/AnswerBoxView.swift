@@ -44,7 +44,6 @@ struct AnswerBoxView: View {
       Button(action: {
         let option: Option = self.options[self.selectedAnswer]
         guard let user = User.current else {
-          print("No user is logged in!")
           return
         }
         // To add points for answering a poll
@@ -107,8 +106,8 @@ struct AnswerBoxTextView: View {
   }
 }
 
-struct AnswerBoxView_Previews: PreviewProvider {
-  static var previews: some View {
-    AnswerBoxView(question: Question(id: "1", is_multiple_choice: true, title: "Sample title", poll_id: "1"), onNewAnswer: {})
-  }
-}
+//struct AnswerBoxView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    AnswerBoxView(question: Question(id: "1", is_multiple_choice: true, title: "Sample title", poll_id: "1"), onNewAnswer: {})
+//  }
+//}

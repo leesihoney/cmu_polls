@@ -52,11 +52,9 @@ struct PollCheckView : View {
             
             Button(action: {
               if self.passcode == self.poll.passcode {
-                print("You got it!")
                 self.verified = true
               }
               else {
-                print("You entered wrong passcode for the poll!")
                 self.showingAlert = true
                 self.passcode = ""
               }

@@ -73,7 +73,6 @@ class Poll: Identifiable {
   
   static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, passcode: String?, completion: @escaping (Poll) -> ()) {
     guard let user = User.current else {
-      print("No user is logged in!")
       return
     }
     let posted_at: String = getDateString()
@@ -188,7 +187,6 @@ class Poll: Identifiable {
   func addTags(tagNames: [String]) {
     // SECURITY: If Poll's owner is not current user, Do NOT let pass
     if User.current?.id != self.user_id {
-      print("Current user is not the poll's owner!")
       return
     }
     

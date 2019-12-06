@@ -37,8 +37,8 @@ struct TabbarView: View {
 }
 
 
-struct TabbarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabbarView()
-    }
-}
+//struct TabbarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabbarView()
+//    }
+//}
