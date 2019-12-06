@@ -29,7 +29,14 @@ class ModelParser {
 //        let link: String = (obj["link"] ?? "") as! String // Disabled
         let is_private: Bool = obj["private"] as! Bool
         let is_closed: Bool = obj["closed"] as! Bool
-        let passcode: String? = obj["passcode"] == nil ? nil : obj["passcode"] as? String
+        var passcode: String?
+        if obj["passcode"] == nil {
+          passcode = nil
+        } else if "\(String(describing: obj["passcode"]!))" == "<null>" {
+          passcode = nil
+        } else {
+          passcode = "\(String(describing: obj["passcode"]!))"
+        }
         let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: "", is_private: is_private, is_closed: is_closed, passcode: passcode)
         result.append(poll)
         break
@@ -59,7 +66,14 @@ class ModelParser {
         let content: String = obj["content"] as! String
         let posted_at: String = obj["posted_at"] as! String
         let user_id: String = "\(String(describing: obj["user_id"]!))"
-        let comment_id: String? = obj["comment_id"] == nil ? nil : "\(String(describing: obj["comment_id"]!))"
+        var comment_id: String?
+        if obj["comment_id"] == nil {
+          comment_id = nil
+        } else if "\(String(describing: obj["comment_id"]!))" == "<null>" {
+          comment_id = nil
+        } else {
+          comment_id = "\(String(describing: obj["comment_id"]!))"
+        }
         let poll_id: String = "\(String(describing: obj["poll_id"]!))"
         let comment = Comment(id: id, content: content, posted_at: posted_at, user_id: user_id, comment_id: comment_id, poll_id: poll_id)
         result.append(comment)

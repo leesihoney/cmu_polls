@@ -24,11 +24,20 @@ struct PollTag: Identifiable {
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(poll_id: String, tag_id: String, completion: @escaping (PollTag) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .polltag)
-    let data: [String:Any] = ["poll_id": poll_id, "tag_id": tag_id]
-    FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
-      let polltag = PollTag(id: documentId, poll_id: poll_id, tag_id: tag_id)
-      completion(polltag)
-    })
+    
+    let query = colRef
+      .whereField("poll_id", isEqualTo: poll_id)
+      .whereField("tag_id", isEqualTo: tag_id)
+    
+    FirebaseDataHandler.get(query: query) { result in
+      if result.isEmpty {
+        let data: [String:Any] = ["poll_id": poll_id, "tag_id": tag_id]
+        FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
+          let polltag = PollTag(id: documentId, poll_id: poll_id, tag_id: tag_id)
+          completion(polltag)
+        })
+      }
+    }
   }
   
   static func withId(id: String, completion: @escaping (PollTag?) -> ()) {

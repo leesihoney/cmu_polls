@@ -220,6 +220,13 @@ class PollTests: XCTestCase {
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
+  func testCreateInvalid() {
+    User.current = nil
+    Poll.create(title: "Test title", description: "Test description", link: "", is_private: false, is_closed: false, passcode: nil) { poll in
+      XCTAssertTrue(false)
+    }
+  }
+    
   func testCreateUpdateDelete() {
     let expectation = self.expectation(description: "Test create update delete")
     
@@ -230,9 +237,10 @@ class PollTests: XCTestCase {
         XCTAssertEqual("test description", poll.description)
         XCTAssertEqual(false, poll.is_private)
         XCTAssertEqual(true, poll.is_closed)
-        poll.update(user_id: nil, title: "new title", description: nil, link: nil, is_closed: false, is_private: true, passcode: "0505") {
+        poll.update(user_id: nil, title: "new title", description: "new description", link: "new link", is_closed: false, is_private: true, passcode: "0505") {
           XCTAssertEqual("new title", poll.title)
-          XCTAssertEqual("test description", poll.description)
+          XCTAssertEqual("new description", poll.description)
+          XCTAssertEqual("new link", poll.link)
           XCTAssertEqual(true, poll.is_private)
           XCTAssertEqual(false, poll.is_closed)
           poll.delete {
@@ -242,5 +250,21 @@ class PollTests: XCTestCase {
       }
     }
     self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testAddTag() {
+    User.withId(id: "5") { user in
+      User.current = user
+      Poll.withId(id: "9") { poll in
+        poll!.addTags(tagNames: ["Life", "Freshman"])
+      }
+    }
+  }
+  
+  func testAddTagInvalid() {
+    User.current = nil
+    Poll.withId(id: "9") { poll in
+      poll!.addTags(tagNames: ["Life", "Freshman"])
+    }
   }
 }
