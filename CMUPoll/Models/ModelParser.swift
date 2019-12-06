@@ -26,11 +26,11 @@ class ModelParser {
         let title: String = obj["title"] as! String
         let description: String = obj["description"] as! String
         let posted_at: String = obj["posted_at"] as! String
-        let link: String = (obj["link"] ?? "") as! String
+//        let link: String = (obj["link"] ?? "") as! String // Disabled
         let is_private: Bool = obj["private"] as! Bool
         let is_closed: Bool = obj["closed"] as! Bool
         let passcode: String? = obj["passcode"] as? String
-        let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: link, is_private: is_private, is_closed: is_closed, passcode: passcode)
+        let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: "", is_private: is_private, is_closed: is_closed, passcode: passcode)
         result.append(poll)
         break
         

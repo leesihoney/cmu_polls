@@ -77,7 +77,7 @@ class OptionTests: XCTestCase {
   func testAnswers0() {
     let expectation = self.expectation(description: "Fetch answers0")
     Option0!.answers(completion: { answers in
-      XCTAssertEqual(20, answers.count)
+      XCTAssertEqual(3, answers.count)
       expectation.fulfill()
     })
     self.waitForExpectations(timeout: 5.0, handler: nil)
