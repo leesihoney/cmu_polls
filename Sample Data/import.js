@@ -856,10 +856,10 @@ var user = [
   },
   {
     "id": 4,
-    "first_name": "Heimann",
-    "last_name": "Larry",
+    "first_name": "Larry",
+    "last_name": "Heimann",
     "email": "profh@cmu.edu",
-    "major": "NULL",
+    "major": "Information Systems",
     "points": 4124,
     "graduation year": "NULL"
   },
