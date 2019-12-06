@@ -173,7 +173,7 @@ class User: Identifiable {
   }
   
   /* NOTE: Excluded in the testing,
-  CMUPollTests Target cannot access the AppDelegate */
+  CMUPollTests Target cannot access the AppDelegate and CoreData */
   static func logout() {
     let delegate = UIApplication.shared.delegate as! AppDelegate
     
