@@ -71,7 +71,6 @@ class Poll: Identifiable {
     return formatter.localizedString(for: date, relativeTo: Date())
   }
   
-  // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(title: String, description: String, link: String, is_private: Bool, is_closed: Bool, passcode: String?, completion: @escaping (Poll) -> ()) {
     guard let user = User.current else {
       print("No user is logged in!")
@@ -113,6 +112,7 @@ class Poll: Identifiable {
     FirebaseDataHandler.get(query: tagQuery, completion: { data in
       if data.isEmpty {
         completion([])
+        return
       }
       let singleTag: [Tag] = ModelParser.parse(collection: .tag, data: data) as! [Tag]
       // Find PollTags associated with found Tag
@@ -121,6 +121,7 @@ class Poll: Identifiable {
       FirebaseDataHandler.get(query: polltagQuery, completion: { data in
         if data.isEmpty {
           completion([])
+          return
         }
         // Find Polls associated with found polltags
         let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
@@ -167,6 +168,7 @@ class Poll: Identifiable {
     FirebaseDataHandler.get(query: query, completion: { data in
       if data.isEmpty {
         completion([])
+        return
       }
       let polltags: [PollTag] = ModelParser.parse(collection: .polltag, data: data) as! [PollTag]
       self.numTags = polltags.count
@@ -181,6 +183,8 @@ class Poll: Identifiable {
     })
   }
   
+  /* NOTE: Excluded in the testing,
+     because it involves directly modifying other models' real data */
   func addTags(tagNames: [String]) {
     // SECURITY: If Poll's owner is not current user, Do NOT let pass
     if User.current?.id != self.user_id {
