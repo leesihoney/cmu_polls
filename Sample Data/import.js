@@ -856,10 +856,10 @@ var user = [
   },
   {
     "id": 4,
-    "first_name": "Heimann",
-    "last_name": "Larry",
+    "first_name": "Larry",
+    "last_name": "Heimann",
     "email": "profh@cmu.edu",
-    "major": "NULL",
+    "major": "Information Systems",
     "points": 4124,
     "graduation year": "NULL"
   },
@@ -929,7 +929,7 @@ deleteCollection(db, "option", 100);
 //     db.collection("comment").doc(obj.id.toString()).set({
 //         // id: obj.id.toString(),
 //         user_id: obj.user_id.toString(),
-//         comment_id: obj.comment_id.toString(),
+//         comment_id: obj.comment_id.toString() == "NULL" ? null : obj.comment_id.toString(),
 //         poll_id: obj.poll_id.toString(),
 //         content: obj.content,
 //         posted_at: obj.posted_at,
@@ -964,7 +964,7 @@ deleteCollection(db, "option", 100);
 //         private: obj.private == "TRUE" ? true : false,
 //         closed: obj.closed == "TRUE" ? true : false,
 //         description: obj.description,
-//         passcode: obj["passcode"],
+//         passcode: obj.passcode == "NULL" ? null : obj.passcode,
 //     }).then(function(docRef) {
 //         // console.log("Document written with ID: ", docRef.id);
 //     })
@@ -1047,7 +1047,7 @@ deleteCollection(db, "option", 100);
 //         email: obj.email,
 //         major: obj.major,
 //         points: obj.points,
-//         graduation_year: obj["graduation year"],
+//         graduation_year: obj["graduation year"] == "NULL" ? null : obj["graduation year"],
 //     }).then(function(docRef) {
 //         // console.log("Document written with ID: ", docRef.id);
 //     })

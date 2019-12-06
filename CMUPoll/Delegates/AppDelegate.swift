@@ -122,16 +122,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     signedFamilyName = user.profile.familyName
     signedEmail = user.profile.email
     
-    guard let givenName = signedGivenName else {
-      print("User's given name is not found!")
-      self.uponInvalidInput!()
-      return
-    }
-    guard let familyName = signedFamilyName else {
-      print("User's family name is not found!")
-      self.uponInvalidInput!()
-      return
-    }
     guard let email = signedEmail else {
       print("User's email is not found!")
       self.uponInvalidInput!()

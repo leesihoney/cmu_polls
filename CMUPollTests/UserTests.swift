@@ -136,10 +136,73 @@ class UserTests: XCTestCase {
 
   func testComments1() {
     let expectation = self.expectation(description: "Fetch comments1")
-    User1!.comments(completion: { comments in
+    User1!.comments { comments in
       XCTAssertEqual(2, comments.count)
       expectation.fulfill()
-    })
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testCreateUpdateDelete() {
+    let expectation = self.expectation(description: "Test create update delete")
+    
+    User.create(first_name: "John", last_name: "Doe", email: "john.doe@andrew.cmu.edu", major: "Psychology", graduation_year: 2010) { user in
+      XCTAssertEqual("John", user.first_name)
+      XCTAssertEqual("Doe", user.last_name)
+      XCTAssertEqual("Psychology", user.major)
+      XCTAssertEqual(2010, user.graduation_year)
+      user.update(major: "Math", graduation_year: nil, points: nil) {
+        XCTAssertEqual("John", user.first_name)
+        XCTAssertEqual("Doe", user.last_name)
+        XCTAssertEqual("Math", user.major)
+        XCTAssertEqual(2010, user.graduation_year)
+        user.delete {
+          expectation.fulfill()
+        }
+      }
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testWithEmail() {
+    let expectation = self.expectation(description: "Test withEmail")
+    User.withEmail(email: "sunghocho@andrew.cmu.edu") { user in
+      XCTAssertNotNil(user)
+      XCTAssertEqual("Sungho", user!.first_name)
+      XCTAssertEqual("Cho", user!.last_name)
+      XCTAssertEqual("Information Systems", user!.major)
+      XCTAssertEqual(2020, user!.graduation_year)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testWithEmailInvalid() {
+    let expectation = self.expectation(description: "Test withEmail Invalid")
+    User.withEmail(email: "fakeName@andrew.cmu.edu") { user in
+      XCTAssertNil(user)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testAllUsers() {
+    let expectation = self.expectation(description: "Test allUsers")
+    User.allUsers { users in
+      XCTAssertEqual(6, users.count)
+      expectation.fulfill()
+    }
+    self.waitForExpectations(timeout: 5.0, handler: nil)
+  }
+  
+  func testAnsweredPolls() {
+    let expectation = self.expectation(description: "Test answeredPolls")
+    User.withId(id: "2") { user in
+      user!.answeredPolls { polls in
+        XCTAssertEqual(3, polls.count)
+        expectation.fulfill()
+      }
+    }
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
 
