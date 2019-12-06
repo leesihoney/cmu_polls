@@ -27,7 +27,9 @@ struct PollDetailView: View {
   @State var commentContent: String = ""
   @State var commentsLoaded = false
   @State private var showingAlert = false
+  @State private var showingCloseAlert = false
   
+  let callBack: () -> Void
   
   
   
@@ -36,8 +38,30 @@ struct PollDetailView: View {
       VStack(alignment: .leading) {
         ScrollView() {
           VStack(alignment: .leading) {
-            if (pollUser != nil) {
-              PollUploaderProfileView(uploaderName: "\(pollUser!.first_name) \(pollUser!.last_name)", uploaderMajor: pollUser!.major, uploaderGraduationYear: String(pollUser!.graduation_year ?? 2020), uploadedDaysAgo: self.poll.getDateDisplayString())
+            ZStack (alignment: .topTrailing) {
+              HStack {
+                if (self.pollUser != nil) {
+                  PollUploaderProfileView(uploaderName: "\(self.pollUser!.first_name) \(self.pollUser!.last_name)", uploaderMajor: self.pollUser!.major, uploaderGraduationYear: self.pollUser!.graduation_year, uploadedDaysAgo: self.poll.getDateDisplayString())
+                }
+                
+                if user != nil && pollUser != nil && user!.id == pollUser!.id {
+                  Spacer()
+                  if self.poll.is_closed {
+                    ClosedTagView()
+                  } else {
+                    Button(action: {
+                      self.showingCloseAlert = true
+                    }) {
+                      Text("Close")
+                    }
+                    .alert(isPresented: $showingCloseAlert) { () -> Alert in
+                      Alert(title: Text("Are you sure you want to close this?"), message: Text("You cannot see the this poll again"), primaryButton: .destructive(Text("Close"), action: {
+                        self.closePoll()
+                      }), secondaryButton: .default(Text("Cancel")))
+                    }
+                  }
+                }
+              }
             }
             
             HStack(alignment: .firstTextBaseline) {
@@ -50,38 +74,9 @@ struct PollDetailView: View {
               Spacer()
               
               if !self.userAlreadyLiked {
-                Button(action: {
-                  print("like button is clicked!")
-                  print("here, likes: \(self.likes)")
-                  self.addLike()
-                  self.getPollLikes()
-                }) {
-                  Image(systemName: "hand.thumbsup")
-                    .foregroundColor(.gray)
-                    .frame(width: CGFloat(20.0), height: CGFloat(20.0)
-                      ,alignment: .bottomLeading)
-                  Text("Like")
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.gray)
-                    .font(Font.system(size: 10, design: .default))
-                }
-              }
-              else {
-                Button(action: {
-                  print("like button is unclicked!")
-                  print("here, likes: \(self.likes)")
-                  self.deleteLike()
-                  self.getPollLikes()
-                }) {
-                  Image(systemName: "hand.thumbsup.fill")
-                    .foregroundColor(.gray)
-                    .frame(width: CGFloat(20.0), height: CGFloat(20.0)
-                      ,alignment: .bottomLeading)
-                  Text("Unlike")
-                    .fontWeight(.regular)
-                    .foregroundColor(Color.gray)
-                    .font(Font.system(size: 10, design: .default))
-                }
+                LikeView(buttonAction: self.clickLikeBtn, imageSource: "hand.thumbsup", imageText: "Like")
+              } else {
+                LikeView(buttonAction: self.clickUnlikeBtn, imageSource: "hand.thumbsup.fill", imageText: "Unlike")
               }
             }
             
@@ -92,7 +87,8 @@ struct PollDetailView: View {
             }
             .padding(.vertical, 14)
             
-            PollDetailDescriptionView(description: poll.description)
+            PollDetailDescriptionView(description: self.poll.description)
+            
             Text(verbatim: "You will get 5 point per questions that you answered")
               .font(Font.system(size: 12, design: .default))
               .fontWeight(.semibold)
@@ -144,7 +140,6 @@ struct PollDetailView: View {
                 }
                 .padding(.vertical, 24)
               }
-              
             }
             .padding(.top, 33)
           }
@@ -187,13 +182,10 @@ struct PollDetailView: View {
                 action: {
                   self.replyingCommentUser = nil
                   self.replyingComment = nil
-              }, label: {
+              }) {
                 Image(systemName: "xmark.circle.fill")
                   .font(.system(size: 24))
-                
-                
               }
-              )
             }
             .padding()
             
@@ -205,19 +197,7 @@ struct PollDetailView: View {
             Button(
               action: {
                 if self.commentContent.count > 0 {
-                  Comment.create(content: self.commentContent, comment_id: self.replyingComment?.id, poll_id: self.poll.id ,completion: { comment in
-                    print("the comment has been created!")
-                    self.commentContent = ""
-                    self.replyingCommentUser = nil
-                    self.replyingComment = nil
-                    self.getPollComments()
-                    self.resetCommentsLoaded()
-                    // To add points for uploading a poll
-                    User.current?.addPoints(type: .comment)
-                    self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
-                    })
-                    self.showingAlert = true
-                  })
+                  self.saveComment()
                 }
                 
             }) { Text("Post") }
@@ -231,6 +211,52 @@ struct PollDetailView: View {
         .background(Color(red: 248 / 255.0, green: 248 / 255.0, blue: 248 / 255.0, opacity: 0.92))
       }
     }
+  }
+  
+  func clickLikeBtn() {
+    print("like button is clicked!")
+    print("here, likes: \(self.likes)")
+    self.addLike()
+    self.getPollLikes()
+  }
+  
+  func clickUnlikeBtn() {
+    print("like button is unclicked!")
+    print("here, likes: \(self.likes)")
+    self.deleteLike()
+    self.getPollLikes()
+  }
+  
+  func closePoll() {
+    print("Okay Click")
+    self.poll.update(user_id: String(self.pollUser!.id), title: self.poll.title, description: self.poll.description, link: self.poll.link, is_closed: true, is_private: self.poll.is_private , passcode: self.poll.passcode, completion: {})
+    
+    self.callBack()
+    
+  }
+  func replyCallback(comment: Comment) {
+    self.replyingComment = comment
+    self.replyingComment!.user(completion: { user in
+      DispatchQueue.main.async {
+        self.replyingCommentUser = user
+      }
+    })
+  }
+  func saveComment() {
+    Comment.create(content: self.commentContent, comment_id: self.replyingComment?.id, poll_id: self.poll.id ,completion: { comment in
+      print("the comment has been created!")
+      self.commentContent = ""
+      self.replyingCommentUser = nil
+      self.replyingComment = nil
+      self.getPollComments()
+      self.resetCommentsLoaded()
+      // To add points for uploading a poll
+      User.current?.addPoints(type: .comment)
+      self.user!.update(major: self.user?.major, graduation_year: self.user?.graduation_year, points: User.current?.points, completion: {
+      })
+      self.showingAlert = true
+    })
+    
   }
   
   func resetCommentsLoaded() {
@@ -324,8 +350,29 @@ struct PollDetailView: View {
   }
 }
 
-struct PollDetailView_Previews: PreviewProvider {
-  static var previews: some View {
-    PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "0"))
+struct LikeView: View {
+  let buttonAction: () -> Void
+  let imageSource: String
+  let imageText: String
+  var body: some View {
+    Button(action: {
+      self.buttonAction()
+    }) {
+      Image(systemName: self.imageSource)
+        .foregroundColor(.gray)
+        .font(.system(size: 20))
+      
+      Text(self.imageText)
+        .fontWeight(.regular)
+        .foregroundColor(Color.gray)
+        .font(Font.system(size: 10, design: .default))
+      
+    }
   }
 }
+
+//struct PollDetailView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    PollDetailView(poll: Poll(id: "1", user_id: "1", title: "Who is your favorite IS Professor?", description: "Nyo", posted_at: "2019-10-24", link: "", is_private: false, is_closed: false, passcode: "0"))
+//  }
+//}

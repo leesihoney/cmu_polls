@@ -47,7 +47,7 @@ class User: Identifiable {
   // NOTE: Used to initialize a completely new instance and to upload to Firebase
   static func create(first_name: String, last_name: String, email: String, major: String, graduation_year: Int?, completion: @escaping (User) -> ()) {
     let colRef = FirebaseDataHandler.colRef(collection: .user)
-    let data: [String:Any] = ["first_name": first_name, "last_name": last_name, "email": email, "major": major, "graduation_year": graduation_year ?? "NULL", "points": 0]
+    let data: [String:Any] = ["first_name": first_name, "last_name": last_name, "email": email, "major": major, "graduation_year": graduation_year ?? nil, "points": 0]
     FirebaseDataHandler.add(colRef: colRef, data: data, completion: { documentId in
       let user = User(id: documentId, first_name: first_name, last_name: last_name, email: email, major: major, graduation_year: graduation_year, points: nil)
       completion(user)
