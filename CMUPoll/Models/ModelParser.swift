@@ -29,7 +29,7 @@ class ModelParser {
 //        let link: String = (obj["link"] ?? "") as! String // Disabled
         let is_private: Bool = obj["private"] as! Bool
         let is_closed: Bool = obj["closed"] as! Bool
-        let passcode: String? = obj["passcode"] as? String
+        let passcode: String? = obj["passcode"] == nil ? nil : obj["passcode"] as? String
         let poll = Poll(id: id, user_id: user_id, title: title, description: description, posted_at: posted_at, link: "", is_private: is_private, is_closed: is_closed, passcode: passcode)
         result.append(poll)
         break
@@ -48,7 +48,7 @@ class ModelParser {
         let last_name: String = obj["last_name"] as! String
         let email: String = obj["email"] as! String
         let major: String = obj["major"] as! String
-        let graduation_year: Int? = Int("\(String(describing: obj["graduation_year"]!))")
+        let graduation_year: Int? = obj["graduation_year"] == nil ? nil : Int("\(String(describing: obj["graduation_year"]!))")
         let points: Int? = Int("\(String(describing: obj["points"]!))")
         let user = User(id: id, first_name: first_name, last_name: last_name, email: email, major: major, graduation_year: graduation_year, points: points)
         result.append(user)
@@ -59,7 +59,7 @@ class ModelParser {
         let content: String = obj["content"] as! String
         let posted_at: String = obj["posted_at"] as! String
         let user_id: String = "\(String(describing: obj["user_id"]!))"
-        let comment_id: String? = "\(String(describing: obj["comment_id"]!))"
+        let comment_id: String? = obj["comment_id"] == nil ? nil : "\(String(describing: obj["comment_id"]!))"
         let poll_id: String = "\(String(describing: obj["poll_id"]!))"
         let comment = Comment(id: id, content: content, posted_at: posted_at, user_id: user_id, comment_id: comment_id, poll_id: poll_id)
         result.append(comment)
