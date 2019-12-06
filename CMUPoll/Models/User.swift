@@ -215,4 +215,9 @@ class User: Identifiable {
     
     FirebaseDataHandler.update(docRef: docRef, data: data, completion: completion)
   }
+  
+  func delete(completion: @escaping () -> Void) {
+    let docRef = FirebaseDataHandler.docRef(collection: .user, documentId: id)
+    FirebaseDataHandler.delete(docRef: docRef, completion: completion)
+  }
 }

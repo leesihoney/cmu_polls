@@ -136,15 +136,15 @@ class UserTests: XCTestCase {
 
   func testComments1() {
     let expectation = self.expectation(description: "Fetch comments1")
-    User1!.comments(completion: { comments in
+    User1!.comments { comments in
       XCTAssertEqual(2, comments.count)
       expectation.fulfill()
-    })
+    }
     self.waitForExpectations(timeout: 5.0, handler: nil)
   }
   
-  func testCreateUpdate() {
-    let expectation = self.expectation(description: "Test create update")
+  func testCreateUpdateDelete() {
+    let expectation = self.expectation(description: "Test create update delete")
     
     User.create(first_name: "John", last_name: "Doe", email: "john.doe@andrew.cmu.edu", major: "Psychology", graduation_year: 2010) { user in
       XCTAssertEqual("John", user.first_name)
@@ -156,7 +156,9 @@ class UserTests: XCTestCase {
         XCTAssertEqual("Doe", user.last_name)
         XCTAssertEqual("Math", user.major)
         XCTAssertEqual(2010, user.graduation_year)
-        expectation.fulfill()
+        user.delete {
+          expectation.fulfill()
+        }
       }
     }
     self.waitForExpectations(timeout: 5.0, handler: nil)
