@@ -103,6 +103,7 @@ struct AnswerBoxTextView: View {
       .font(Font.system(size: 20, design: .default))
       .fontWeight(.semibold)
       .foregroundColor(Color(red: 91 / 255.0, green: 91 / 255.0, blue: 91 / 255.0, opacity: 1.0))
+      .fixedSize(horizontal: false, vertical: true)
   }
 }
 
